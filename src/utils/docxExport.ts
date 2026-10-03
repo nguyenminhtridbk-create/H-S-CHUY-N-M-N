@@ -1,0 +1,396 @@
+import {
+  Document,
+  Packer,
+  Paragraph,
+  TextRun,
+  Table,
+  TableRow,
+  TableCell,
+  WidthType,
+  AlignmentType,
+  BorderStyle,
+  UnderlineType,
+} from 'docx';
+import { SchoolDocument } from '../types/document';
+
+export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
+  const noBorder = {
+    top: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    bottom: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    left: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    right: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+  };
+
+  // Header 2-column table conforming to Vietnamese State Administration Standards & Decree 30/2020/NĐ-CP
+  const headerTable = new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: noBorder,
+    rows: [
+      new TableRow({
+        children: [
+          // Left: Cơ quan ban hành (Font 13pt = size 26)
+          new TableCell({
+            width: { size: 45, type: WidthType.PERCENTAGE },
+            borders: noBorder,
+            children: [
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: doc.issuingAuthorityTop || 'SỞ GIÁO DỤC VÀ ĐÀO TẠO ĐỒNG THÁP',
+                    size: 26, // 13pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { after: 20 },
+              }),
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: 'TRƯỜNG THCS VÀ THPT',
+                    bold: true,
+                    size: 26, // 13pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { after: 10 },
+              }),
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: 'ĐỐC BINH KIỀU',
+                    bold: true,
+                    size: 26, // 13pt
+                    underline: {
+                      type: UnderlineType.SINGLE,
+                    },
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { after: 60 },
+              }),
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: doc.documentNumber || 'Số:    /KH-THCS&THPTĐBK',
+                    size: 26, // 13pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+              }),
+            ],
+          }),
+          // Right: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 13 & 14pt)
+          new TableCell({
+            width: { size: 55, type: WidthType.PERCENTAGE },
+            borders: noBorder,
+            children: [
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: 'CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM',
+                    bold: true,
+                    size: 26, // 13pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { after: 20 },
+              }),
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: 'Độc lập - Tự do - Hạnh phúc',
+                    bold: true,
+                    size: 28, // 14pt
+                    underline: {
+                      type: UnderlineType.SINGLE,
+                    },
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { after: 80 },
+              }),
+              new Paragraph({
+                alignment: AlignmentType.RIGHT,
+                children: [
+                  new TextRun({
+                    text: doc.signDate || 'Đồng Tháp, ngày 28 tháng 9 năm 2026',
+                    italics: true,
+                    size: 27, // 13.5pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      }),
+    ],
+  });
+
+  const docChildren: (Paragraph | Table)[] = [
+    headerTable,
+    new Paragraph({ spacing: { before: 180, after: 120 } }),
+    // Document Title: KẾ HOẠCH (size 30 = 15pt bold)
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [
+        new TextRun({
+          text: doc.title.toUpperCase(),
+          bold: true,
+          size: 30, // 15pt
+          font: 'Times New Roman',
+        }),
+      ],
+      spacing: { before: 80, after: 40 },
+    }),
+  ];
+
+  // Subtitle / Trích yếu: e.g. "Tổ chức dạy học 2 buổi/ngày năm học 2026 - 2027" (size 28 = 14pt bold, underlined)
+  if (doc.subTitle) {
+    docChildren.push(
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new TextRun({
+            text: doc.subTitle,
+            bold: true,
+            size: 28, // 14pt
+            underline: {
+              type: UnderlineType.SINGLE,
+            },
+            font: 'Times New Roman',
+          }),
+        ],
+        spacing: { after: 220 },
+      })
+    );
+  } else {
+    docChildren.push(new Paragraph({ spacing: { after: 180 } }));
+  }
+
+  // Legal bases: Indent 1.27cm (720 twips), font 14pt (size 28), italic, justified
+  if (doc.legalBases && doc.legalBases.length > 0) {
+    doc.legalBases.forEach((base, idx) => {
+      const fullText = base.startsWith('Căn cứ') ? base : `Căn cứ ${base}`;
+      const isLast = idx === doc.legalBases.length - 1;
+      let formattedText = fullText;
+      if (isLast) {
+        if (!formattedText.endsWith('.')) formattedText = formattedText.replace(/;$/, '') + '.';
+      } else {
+        if (!formattedText.endsWith(';')) formattedText = formattedText.replace(/\.$/, '') + ';';
+      }
+
+      docChildren.push(
+        new Paragraph({
+          alignment: AlignmentType.JUSTIFIED,
+          children: [
+            new TextRun({
+              text: formattedText,
+              italics: true,
+              size: 28, // 14pt
+              font: 'Times New Roman',
+            }),
+          ],
+          indent: { firstLine: 720 }, // 1.27cm
+          spacing: { line: 280, after: 50 },
+        })
+      );
+    });
+    docChildren.push(new Paragraph({ spacing: { after: 100 } }));
+  }
+
+  // Transition phrase if plan
+  if (doc.type === 'plan') {
+    docChildren.push(
+      new Paragraph({
+        alignment: AlignmentType.JUSTIFIED,
+        children: [
+          new TextRun({
+            text: `Trường THCS và THPT Đốc Binh Kiều xây dựng ${doc.subTitle || doc.title} như sau:`,
+            size: 28, // 14pt
+            font: 'Times New Roman',
+          }),
+        ],
+        indent: { firstLine: 720 },
+        spacing: { line: 280, after: 100 },
+      })
+    );
+  }
+
+  // Sections
+  doc.sections.forEach((sec) => {
+    // Heading: Roman numeral heading bold 14pt
+    docChildren.push(
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: sec.heading,
+            bold: true,
+            size: 28, // 14pt
+            font: 'Times New Roman',
+          }),
+        ],
+        spacing: { before: 220, after: 100 },
+      })
+    );
+
+    // Content paragraphs
+    const paragraphs = sec.content.split('\n').filter((p) => p.trim().length > 0);
+    paragraphs.forEach((pText) => {
+      const trimmed = pText.trim();
+      const isBullet = trimmed.startsWith('-') || trimmed.startsWith('+');
+      const isNumbered = /^\d+(\.\d+)*\./.test(trimmed);
+      const isLetterSub = /^[a-z]\)/i.test(trimmed);
+
+      docChildren.push(
+        new Paragraph({
+          alignment: AlignmentType.JUSTIFIED,
+          children: [
+            new TextRun({
+              text: trimmed,
+              size: 28, // 14pt
+              font: 'Times New Roman',
+              bold: (isNumbered || isLetterSub) && !trimmed.includes(':') ? true : undefined,
+            }),
+          ],
+          indent: isBullet ? { left: 720 } : { firstLine: 720 }, // 1.27cm indent
+          spacing: { line: 280, after: 70 },
+        })
+      );
+    });
+  });
+
+  // Footer: Recipients (Left 11-12pt) & Signer (Right 13-14pt bold)
+  const signerLines = (doc.signerRole || 'HIỆU TRƯỞNG').split('\n');
+  const footerTable = new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: noBorder,
+    rows: [
+      new TableRow({
+        children: [
+          // Left: Nơi nhận (Font 12pt bold italic, list items 11pt)
+          new TableCell({
+            width: { size: 50, type: WidthType.PERCENTAGE },
+            borders: noBorder,
+            children: [
+              new Paragraph({
+                children: [
+                  new TextRun({
+                    text: 'Nơi nhận:',
+                    bold: true,
+                    italics: true,
+                    size: 24, // 12pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { after: 20 },
+              }),
+              ...(doc.recipients || [
+                '- Sở GDĐT Đồng Tháp (báo cáo);',
+                '- Hiệu trưởng, các Phó Hiệu trưởng;',
+                '- Các tổ chuyên môn, tổ văn phòng;',
+                '- Đoàn – Hội – Đội;',
+                '- Lưu: VT.',
+              ]).map(
+                (r) =>
+                  new Paragraph({
+                    children: [
+                      new TextRun({
+                        text: r.startsWith('-') ? r : `- ${r}`,
+                        size: 22, // 11pt
+                        font: 'Times New Roman',
+                      }),
+                    ],
+                    spacing: { line: 220, after: 20 },
+                  })
+              ),
+            ],
+          }),
+          // Right: Chức vụ & Họ tên người ký
+          new TableCell({
+            width: { size: 50, type: WidthType.PERCENTAGE },
+            borders: noBorder,
+            children: [
+              ...signerLines.map(
+                (line, idx) =>
+                  new Paragraph({
+                    alignment: AlignmentType.CENTER,
+                    children: [
+                      new TextRun({
+                        text: line.toUpperCase(),
+                        bold: true,
+                        size: idx === 0 && line.includes('KT.') ? 26 : 28, // 13-14pt
+                        font: 'Times New Roman',
+                      }),
+                    ],
+                    spacing: { after: 20 },
+                  })
+              ),
+              // Blank spacing for signature & seal
+              new Paragraph({
+                spacing: { before: 450, after: 450 },
+                children: [new TextRun({ text: ' ' })],
+              }),
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: doc.signerName || 'Nguyễn Minh Trí',
+                    bold: true,
+                    size: 28, // 14pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      }),
+    ],
+  });
+
+  docChildren.push(
+    new Paragraph({ spacing: { before: 200, after: 100 } }),
+    footerTable
+  );
+
+  // Document setup: Standard A4 margins according to Nghị định 30/2020/NĐ-CP
+  // Lề trên: 20mm (1134 twips)
+  // Lề dưới: 20mm (1134 twips)
+  // Lề trái: 30mm (1701 twips - để đóng tập hồ sơ)
+  // Lề phải: 15mm - 20mm (850 twips)
+  const docxFile = new Document({
+    sections: [
+      {
+        properties: {
+          page: {
+            margin: {
+              top: 1134, // 20mm
+              bottom: 1134, // 20mm
+              left: 1701, // 30mm (for document binding)
+              right: 850, // 15mm
+            },
+          },
+        },
+        children: docChildren,
+      },
+    ],
+  });
+
+  const blob = await Packer.toBlob(docxFile);
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  const safeFilename = `${doc.type.toUpperCase()}_${(doc.subTitle || doc.title).replace(/[^a-zA-Z0-9\u00C0-\u024F\u1E00-\u1EFF]/g, '_').substring(0, 40)}.docx`;
+  anchor.download = safeFilename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(url);
+}

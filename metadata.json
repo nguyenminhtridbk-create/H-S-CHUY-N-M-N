@@ -1,0 +1,6 @@
+{
+  "name": "Hồ Sơ Chuyên Môn THCS & THPT Đốc Binh Kiều",
+  "description": "Hệ thống quản lý chuyên môn, thẩm định kế hoạch giáo dục tổ chuyên môn, phân phối chương trình và kế hoạch bài dạy theo chuẩn Sở GDĐT Đồng Tháp, tích hợp định hướng chuyển đổi số & AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

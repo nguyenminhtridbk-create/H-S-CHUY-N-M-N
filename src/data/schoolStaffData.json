@@ -1,0 +1,5176 @@
+{
+  "departments": [
+    {
+      "id": "dept-bgh",
+      "name": "Ban Giám Hiệu",
+      "code": "BGH",
+      "color": "#0f172a"
+    },
+    {
+      "id": "dept-toan",
+      "name": "Tổ Toán",
+      "code": "TOAN",
+      "color": "#2563eb"
+    },
+    {
+      "id": "dept-ngu-van",
+      "name": "Tổ Ngữ Văn",
+      "code": "VAN",
+      "color": "#db2777"
+    },
+    {
+      "id": "dept-khxh",
+      "name": "Tổ Lịch sử - Địa lý - GDCD",
+      "code": "LS-DL-GDCD",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "dept-khtn",
+      "name": "Tổ Vật lý - Hóa học - Sinh học - Công nghệ",
+      "code": "KHTN-CN",
+      "color": "#ea580c"
+    },
+    {
+      "id": "dept-tieng-anh-tin",
+      "name": "Tổ Tiếng Anh - Tin học",
+      "code": "TA-TIN",
+      "color": "#0d9488"
+    },
+    {
+      "id": "dept-gdtc-qpan-nt",
+      "name": "Tổ GDTC - QPAN - Nghệ thuật",
+      "code": "GDTC-QPAN-NT",
+      "color": "#16a34a"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "sub-toan",
+      "name": "Toán học",
+      "shortName": "Toán",
+      "departmentId": "dept-toan",
+      "defaultPeriods": {
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 3,
+        "11": 3,
+        "12": 3
+      },
+      "color": "#3b82f6"
+    },
+    {
+      "id": "sub-van",
+      "name": "Ngữ văn",
+      "shortName": "Văn",
+      "departmentId": "dept-ngu-van",
+      "defaultPeriods": {
+        "6": 4,
+        "7": 4,
+        "8": 4,
+        "9": 4,
+        "10": 3,
+        "11": 3,
+        "12": 3
+      },
+      "color": "#ec4899"
+    },
+    {
+      "id": "sub-anh",
+      "name": "Tiếng Anh",
+      "shortName": "Anh",
+      "departmentId": "dept-tieng-anh-tin",
+      "defaultPeriods": {
+        "6": 3,
+        "7": 3,
+        "8": 3,
+        "9": 3,
+        "10": 3,
+        "11": 3,
+        "12": 3
+      },
+      "color": "#14b8a6"
+    },
+    {
+      "id": "sub-li",
+      "name": "Vật lí",
+      "shortName": "Lí",
+      "departmentId": "dept-khtn",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 1.3,
+        "9": 1.3,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#f97316",
+      "isElective": true
+    },
+    {
+      "id": "sub-hoa",
+      "name": "Hóa học",
+      "shortName": "Hóa",
+      "departmentId": "dept-khtn",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 1.3,
+        "9": 1.7,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#fb923c",
+      "isElective": true
+    },
+    {
+      "id": "sub-sinh",
+      "name": "Sinh học",
+      "shortName": "Sinh",
+      "departmentId": "dept-khtn",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 1.4,
+        "9": 1,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#84cc16",
+      "isElective": true
+    },
+    {
+      "id": "sub-khtn-cs",
+      "name": "KHTN (THCS)",
+      "shortName": "KHTN",
+      "departmentId": "dept-khtn",
+      "defaultPeriods": {
+        "6": 4,
+        "7": 4,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#ea580c"
+    },
+    {
+      "id": "sub-su",
+      "name": "Lịch sử",
+      "shortName": "Sử",
+      "departmentId": "dept-khxh",
+      "defaultPeriods": {
+        "6": 1.5,
+        "7": 1.5,
+        "8": 1.5,
+        "9": 1.5,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "sub-dia",
+      "name": "Địa lí",
+      "shortName": "Địa",
+      "departmentId": "dept-khxh",
+      "defaultPeriods": {
+        "6": 1.5,
+        "7": 1.5,
+        "8": 1.5,
+        "9": 1.5,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#a855f7",
+      "isElective": true
+    },
+    {
+      "id": "sub-lsdl-cs",
+      "name": "LS & ĐL (THCS)",
+      "shortName": "LS-ĐL",
+      "departmentId": "dept-khxh",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#9333ea"
+    },
+    {
+      "id": "sub-gdcd",
+      "name": "Giáo dục công dân",
+      "shortName": "GDCD",
+      "departmentId": "dept-khxh",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#4f46e5"
+    },
+    {
+      "id": "sub-gdktpl",
+      "name": "GDKT & Pháp luật",
+      "shortName": "GDKT&PL",
+      "departmentId": "dept-khxh",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#6366f1",
+      "isElective": true
+    },
+    {
+      "id": "sub-tin",
+      "name": "Tin học",
+      "shortName": "Tin",
+      "departmentId": "dept-tieng-anh-tin",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#0284c7"
+    },
+    {
+      "id": "sub-cn",
+      "name": "Công nghệ",
+      "shortName": "Công nghệ",
+      "departmentId": "dept-khtn",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#eab308"
+    },
+    {
+      "id": "sub-gdtc",
+      "name": "Giáo dục thể chất",
+      "shortName": "GDTC",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "defaultPeriods": {
+        "6": 2,
+        "7": 2,
+        "8": 2,
+        "9": 2,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#22c55e"
+    },
+    {
+      "id": "sub-gdqp",
+      "name": "GD Quốc phòng & An ninh",
+      "shortName": "GDQP",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 1
+      },
+      "color": "#15803d"
+    },
+    {
+      "id": "sub-qpan",
+      "name": "GD Quốc phòng & An ninh",
+      "shortName": "GDQP",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 1,
+        "11": 1,
+        "12": 1
+      },
+      "color": "#15803d"
+    },
+    {
+      "id": "sub-am-nhac",
+      "name": "Âm nhạc",
+      "shortName": "Âm nhạc",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#ec4899"
+    },
+    {
+      "id": "sub-my-thuat",
+      "name": "Mỹ thuật",
+      "shortName": "Mỹ thuật",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#f59e0b"
+    },
+    {
+      "id": "sub-hdtn",
+      "name": "HĐ Trải nghiệm, Hướng nghiệp (THPT)",
+      "shortName": "HĐTNHN",
+      "departmentId": "dept-ngu-van",
+      "defaultPeriods": {
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 0,
+        "10": 2,
+        "11": 2,
+        "12": 2
+      },
+      "color": "#f43f5e"
+    },
+    {
+      "id": "sub-hdtn-cd",
+      "name": "HĐTNHN (Chuyên đề)",
+      "shortName": "HĐTNHN (CĐ)",
+      "departmentId": "dept-ngu-van",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#ec4899"
+    },
+    {
+      "id": "sub-hdtn-qml",
+      "name": "HĐTNHN (Quy mô lớp)",
+      "shortName": "HĐTNHN (QML)",
+      "departmentId": "dept-ngu-van",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#f43f5e"
+    },
+    {
+      "id": "sub-shl",
+      "name": "Sinh hoạt lớp",
+      "shortName": "SHL",
+      "departmentId": "dept-ngu-van",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1
+      },
+      "color": "#fb7185"
+    },
+    {
+      "id": "sub-hdtn-shl",
+      "name": "Sinh hoạt lớp",
+      "shortName": "SHL",
+      "departmentId": "dept-ngu-van",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 0,
+        "11": 0,
+        "12": 0
+      },
+      "color": "#fb7185"
+    },
+    {
+      "id": "sub-gddp",
+      "name": "Giáo dục địa phương",
+      "shortName": "GD Địa phương",
+      "departmentId": "dept-khxh",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1
+      },
+      "color": "#06b6d4"
+    },
+    {
+      "id": "sub-chao-co",
+      "name": "Chào cờ",
+      "shortName": "Chào cờ",
+      "departmentId": "dept-bgh",
+      "defaultPeriods": {
+        "6": 1,
+        "7": 1,
+        "8": 1,
+        "9": 1,
+        "10": 1,
+        "11": 1,
+        "12": 1
+      },
+      "color": "#e11d48"
+    }
+  ],
+  "classes": [
+    {
+      "id": "cls-10cb1",
+      "name": "10CB1",
+      "grade": "10",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 37,
+      "homeroomTeacherId": "tch-khtn-5",
+      "roomNumber": "P.10-1",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-7"
+        },
+        "cd2": {
+          "title": "Hóa học",
+          "teacherId": "tch-khtn-9"
+        },
+        "cd3": {
+          "title": "Sinh học",
+          "teacherId": "tch-khtn-5"
+        }
+      }
+    },
+    {
+      "id": "cls-10cb2",
+      "name": "10CB2",
+      "grade": "10",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 29,
+      "homeroomTeacherId": "tch-khtn-9",
+      "roomNumber": "P.10-2",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-5"
+        },
+        "cd2": {
+          "title": "Hóa học",
+          "teacherId": "tch-khtn-9"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-9"
+        }
+      }
+    },
+    {
+      "id": "cls-10cb3",
+      "name": "10CB3",
+      "grade": "10",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 44,
+      "homeroomTeacherId": "tch-v-5",
+      "roomNumber": "P.10-3",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-5"
+        },
+        "cd2": {
+          "title": "Vật lý",
+          "teacherId": "tch-khtn-6"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-9"
+        }
+      }
+    },
+    {
+      "id": "cls-10cb4",
+      "name": "10CB4",
+      "grade": "10",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 47,
+      "homeroomTeacherId": "tch-av-9",
+      "roomNumber": "P.10-4",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-7"
+        },
+        "cd2": {
+          "title": "Vật lý",
+          "teacherId": "tch-khtn-6"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-9"
+        }
+      }
+    },
+    {
+      "id": "cls-10cb5",
+      "name": "10CB5",
+      "grade": "10",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 45,
+      "homeroomTeacherId": "tch-v-4",
+      "roomNumber": "P.10-5",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-4"
+        },
+        "cd2": {
+          "title": "Vật lý",
+          "teacherId": "tch-khtn-6"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-2"
+        }
+      }
+    },
+    {
+      "id": "cls-11cb1",
+      "name": "11CB1",
+      "grade": "11",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 45,
+      "homeroomTeacherId": "tch-khtn-1",
+      "roomNumber": "P.11-1",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-6"
+        },
+        "cd2": {
+          "title": "Hóa học",
+          "teacherId": "tch-khtn-7"
+        },
+        "cd3": {
+          "title": "Sinh học",
+          "teacherId": "tch-khtn-1"
+        }
+      }
+    },
+    {
+      "id": "cls-11cb2",
+      "name": "11CB2",
+      "grade": "11",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 35,
+      "homeroomTeacherId": "tch-khtn-8",
+      "roomNumber": "P.11-2",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-5"
+        },
+        "cd2": {
+          "title": "Hóa học",
+          "teacherId": "tch-khtn-8"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-8"
+        }
+      }
+    },
+    {
+      "id": "cls-11cb3",
+      "name": "11CB3",
+      "grade": "11",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 34,
+      "homeroomTeacherId": "tch-ls-5",
+      "roomNumber": "P.11-3",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-4"
+        },
+        "cd2": {
+          "title": "Vật lý",
+          "teacherId": "tch-khtn-6"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-8"
+        }
+      }
+    },
+    {
+      "id": "cls-11cb4",
+      "name": "11CB4",
+      "grade": "11",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 33,
+      "homeroomTeacherId": "tch-av-8",
+      "roomNumber": "P.11-4",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-4"
+        },
+        "cd2": {
+          "title": "Vật lý",
+          "teacherId": "tch-khtn-3"
+        },
+        "cd3": {
+          "title": "Tin học",
+          "teacherId": "tch-av-8"
+        }
+      }
+    },
+    {
+      "id": "cls-12cb1",
+      "name": "12CB1",
+      "grade": "12",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 28,
+      "homeroomTeacherId": "tch-khtn-7",
+      "roomNumber": "P.12-1",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-1"
+        },
+        "cd2": {
+          "title": "Văn",
+          "teacherId": "tch-v-5"
+        },
+        "cd3": {
+          "title": "Lịch sử",
+          "teacherId": "tch-ls-2"
+        }
+      }
+    },
+    {
+      "id": "cls-12cb2",
+      "name": "12CB2",
+      "grade": "12",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 23,
+      "homeroomTeacherId": "tch-v-6",
+      "roomNumber": "P.12-2",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-6"
+        },
+        "cd2": {
+          "title": "Văn",
+          "teacherId": "tch-v-6"
+        },
+        "cd3": {
+          "title": "Lịch sử",
+          "teacherId": "tch-ls-4"
+        }
+      }
+    },
+    {
+      "id": "cls-12cb3",
+      "name": "12CB3",
+      "grade": "12",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 47,
+      "homeroomTeacherId": "tch-t-7",
+      "roomNumber": "P.12-3",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-7"
+        },
+        "cd2": {
+          "title": "Văn",
+          "teacherId": "tch-v-1"
+        },
+        "cd3": {
+          "title": "Lịch sử",
+          "teacherId": "tch-ls-5"
+        }
+      }
+    },
+    {
+      "id": "cls-12cb4",
+      "name": "12CB4",
+      "grade": "12",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 47,
+      "homeroomTeacherId": "tch-ls-4",
+      "roomNumber": "P.12-4",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-1"
+        },
+        "cd2": {
+          "title": "Văn",
+          "teacherId": "tch-v-5"
+        },
+        "cd3": {
+          "title": "Lịch sử",
+          "teacherId": "tch-ls-4"
+        }
+      }
+    },
+    {
+      "id": "cls-12cb5",
+      "name": "12CB5",
+      "grade": "12",
+      "level": "THPT",
+      "campus": "THPTDBK",
+      "track": "CoBan",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-ls-2",
+      "roomNumber": "P.12-5",
+      "specialTopics": {
+        "cd1": {
+          "title": "Toán",
+          "teacherId": "tch-t-6"
+        },
+        "cd2": {
+          "title": "Văn",
+          "teacherId": "tch-v-1"
+        },
+        "cd3": {
+          "title": "Lịch sử",
+          "teacherId": "tch-ls-2"
+        }
+      }
+    },
+    {
+      "id": "cls-6a1",
+      "name": "6A1",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-khtn-18",
+      "roomNumber": "P.6-1"
+    },
+    {
+      "id": "cls-6a2",
+      "name": "6A2",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-khtn-13",
+      "roomNumber": "P.6-2"
+    },
+    {
+      "id": "cls-6a3",
+      "name": "6A3",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-av-14",
+      "roomNumber": "P.6-3"
+    },
+    {
+      "id": "cls-6a4",
+      "name": "6A4",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-td-8",
+      "roomNumber": "P.6-4"
+    },
+    {
+      "id": "cls-6a5",
+      "name": "6A5",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-khtn-24",
+      "roomNumber": "P.6-5"
+    },
+    {
+      "id": "cls-6a6",
+      "name": "6A6",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-t-8",
+      "roomNumber": "P.6-6"
+    },
+    {
+      "id": "cls-6a7",
+      "name": "6A7",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-ls-15",
+      "roomNumber": "P.6-7"
+    },
+    {
+      "id": "cls-6a8",
+      "name": "6A8",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-td-3",
+      "roomNumber": "P.6-8"
+    },
+    {
+      "id": "cls-6a9",
+      "name": "6A9",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-khtn-25",
+      "roomNumber": "P.6-9"
+    },
+    {
+      "id": "cls-6a10",
+      "name": "6A10",
+      "grade": "6",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-khtn-21",
+      "roomNumber": "P.6-10"
+    },
+    {
+      "id": "cls-7a1",
+      "name": "7A1",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 40,
+      "homeroomTeacherId": "tch-t-10",
+      "roomNumber": "P.7-1"
+    },
+    {
+      "id": "cls-7a2",
+      "name": "7A2",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 40,
+      "homeroomTeacherId": "tch-av-13",
+      "roomNumber": "P.7-2"
+    },
+    {
+      "id": "cls-7a3",
+      "name": "7A3",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 41,
+      "homeroomTeacherId": "tch-t-11",
+      "roomNumber": "P.7-3"
+    },
+    {
+      "id": "cls-7a4",
+      "name": "7A4",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 40,
+      "homeroomTeacherId": "tch-td-6",
+      "roomNumber": "P.7-4"
+    },
+    {
+      "id": "cls-7a5",
+      "name": "7A5",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 39,
+      "homeroomTeacherId": "tch-khtn-4",
+      "roomNumber": "P.7-5"
+    },
+    {
+      "id": "cls-7a6",
+      "name": "7A6",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 40,
+      "homeroomTeacherId": "tch-khtn-23",
+      "roomNumber": "P.7-6"
+    },
+    {
+      "id": "cls-7a7",
+      "name": "7A7",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 47,
+      "homeroomTeacherId": "tch-khtn-19",
+      "roomNumber": "P.7-7"
+    },
+    {
+      "id": "cls-7a8",
+      "name": "7A8",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 45,
+      "homeroomTeacherId": "tch-ls-3",
+      "roomNumber": "P.7-8"
+    },
+    {
+      "id": "cls-7a9",
+      "name": "7A9",
+      "grade": "7",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 45,
+      "homeroomTeacherId": "tch-td-11",
+      "roomNumber": "P.7-9"
+    },
+    {
+      "id": "cls-8a1",
+      "name": "8A1",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-t-9",
+      "roomNumber": "P.8-1"
+    },
+    {
+      "id": "cls-8a2",
+      "name": "8A2",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-khtn-22",
+      "roomNumber": "P.8-2"
+    },
+    {
+      "id": "cls-8a3",
+      "name": "8A3",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-ls-13",
+      "roomNumber": "P.8-3"
+    },
+    {
+      "id": "cls-8a4",
+      "name": "8A4",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-khtn-17",
+      "roomNumber": "P.8-4"
+    },
+    {
+      "id": "cls-8a5",
+      "name": "8A5",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-khtn-12",
+      "roomNumber": "P.8-5"
+    },
+    {
+      "id": "cls-8a6",
+      "name": "8A6",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-td-7",
+      "roomNumber": "P.8-6"
+    },
+    {
+      "id": "cls-8a7",
+      "name": "8A7",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 39,
+      "homeroomTeacherId": "tch-khtn-2",
+      "roomNumber": "P.8-7"
+    },
+    {
+      "id": "cls-8a8",
+      "name": "8A8",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 38,
+      "homeroomTeacherId": "tch-khtn-14",
+      "roomNumber": "P.8-8"
+    },
+    {
+      "id": "cls-8a9",
+      "name": "8A9",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 38,
+      "homeroomTeacherId": "tch-av-16",
+      "roomNumber": "P.8-9"
+    },
+    {
+      "id": "cls-8a10",
+      "name": "8A10",
+      "grade": "8",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 38,
+      "homeroomTeacherId": "tch-t-15",
+      "roomNumber": "P.8-10"
+    },
+    {
+      "id": "cls-9a1",
+      "name": "9A1",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-khtn-16",
+      "roomNumber": "P.9-1"
+    },
+    {
+      "id": "cls-9a2",
+      "name": "9A2",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 39,
+      "homeroomTeacherId": "tch-khtn-10",
+      "roomNumber": "P.9-2"
+    },
+    {
+      "id": "cls-9a3",
+      "name": "9A3",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 44,
+      "homeroomTeacherId": "tch-t-3",
+      "roomNumber": "P.9-3"
+    },
+    {
+      "id": "cls-9a4",
+      "name": "9A4",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-t-12",
+      "roomNumber": "P.9-4"
+    },
+    {
+      "id": "cls-9a5",
+      "name": "9A5",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 42,
+      "homeroomTeacherId": "tch-av-11",
+      "roomNumber": "P.9-5"
+    },
+    {
+      "id": "cls-9a6",
+      "name": "9A6",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSDBK",
+      "studentCount": 43,
+      "homeroomTeacherId": "tch-khtn-11",
+      "roomNumber": "P.9-6"
+    },
+    {
+      "id": "cls-9a7",
+      "name": "9A7",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 40,
+      "homeroomTeacherId": "tch-t-2",
+      "roomNumber": "P.9-7"
+    },
+    {
+      "id": "cls-9a8",
+      "name": "9A8",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 38,
+      "homeroomTeacherId": "tch-khtn-20",
+      "roomNumber": "P.9-8"
+    },
+    {
+      "id": "cls-9a9",
+      "name": "9A9",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 39,
+      "homeroomTeacherId": "tch-ls-16",
+      "roomNumber": "P.9-9"
+    },
+    {
+      "id": "cls-9a10",
+      "name": "9A10",
+      "grade": "9",
+      "level": "THCS",
+      "campus": "THCSTK",
+      "studentCount": 40,
+      "homeroomTeacherId": "tch-t-13",
+      "roomNumber": "P.9-10"
+    }
+  ],
+  "teachers": [
+    {
+      "id": "tch-bgh-1",
+      "name": "Lê Thanh Cường",
+      "code": "Cường.LT (HT)",
+      "gender": "Nam",
+      "birthDate": "10/17/1975",
+      "campus": "THPTDBK",
+      "departmentId": "dept-bgh",
+      "primarySubjectId": "sub-anh",
+      "role": "HieuTruong",
+      "customReductionPeriods": 0,
+      "baseStandardPeriods": 2,
+      "duties": [],
+      "notes": "Hiệu trưởng (THPTDBK) - Môn dạy: Tiếng Anh (Định mức 2t/tuần, không tính tiết kiêm nhiệm)"
+    },
+    {
+      "id": "tch-bgh-2",
+      "name": "Nguyễn Minh Trí",
+      "code": "Trí.NM (PHT)",
+      "gender": "Nam",
+      "birthDate": "23/10/1986",
+      "campus": "THPTDBK",
+      "departmentId": "dept-bgh",
+      "primarySubjectId": "sub-li",
+      "role": "PhoHieuTruong",
+      "customReductionPeriods": 0,
+      "baseStandardPeriods": 4,
+      "duties": [],
+      "notes": "Phó Hiệu trưởng (THPTDBK) - Môn dạy: Vật Lý (Định mức 4t/tuần, không tính tiết kiêm nhiệm)"
+    },
+    {
+      "id": "tch-bgh-3",
+      "name": "Phan Thanh Thảo",
+      "code": "Thảo.PT (PHT)",
+      "gender": "Nam",
+      "birthDate": "25/11/1966",
+      "campus": "THCSDBK",
+      "departmentId": "dept-bgh",
+      "primarySubjectId": "sub-su",
+      "role": "PhoHieuTruong",
+      "customReductionPeriods": 0,
+      "baseStandardPeriods": 4,
+      "duties": [],
+      "notes": "Phó Hiệu trưởng (THCSDBK) - Môn dạy: Lịch sử (Định mức 4t/tuần, không tính tiết kiêm nhiệm)"
+    },
+    {
+      "id": "tch-bgh-4",
+      "name": "Nguyễn Thanh Tòng",
+      "code": "Tòng.NT (PHT)",
+      "gender": "Nam",
+      "birthDate": "8/4/1979",
+      "campus": "THCSTK",
+      "departmentId": "dept-bgh",
+      "primarySubjectId": "sub-khtn-cs",
+      "role": "PhoHieuTruong",
+      "customReductionPeriods": 0,
+      "baseStandardPeriods": 4,
+      "duties": [],
+      "notes": "Phó Hiệu trưởng (THCSTK) - Môn dạy: KHTN (Định mức 4t/tuần, không tính tiết kiêm nhiệm)"
+    },
+    {
+      "id": "tch-t-1",
+      "name": "Nguyễn Văn Tới",
+      "code": "Tới.NV (TT)",
+      "gender": "Nam",
+      "birthDate": "6/1/1982",
+      "campus": "THPTDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "ToTruong",
+      "duties": [
+        {
+          "id": "duty-t1-totruong",
+          "type": "ToTruong",
+          "name": "Tổ trưởng chuyên môn",
+          "reductionPeriods": 3,
+          "notes": "Tổ trưởng Tổ Toán"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "Tổ trưởng Tổ Toán (THPTDBK) - Môn Toán (Khối 10-12)"
+    },
+    {
+      "id": "tch-t-2",
+      "name": "Trần Quốc Huy",
+      "code": "Huy.TQ (TP-9A7)",
+      "gender": "Nam",
+      "birthDate": "2/9/1982",
+      "campus": "THCSTK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-t2-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Toán (THCSTK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tổ phó Tổ Toán (Khối 6-9) - GVCN 9A7"
+    },
+    {
+      "id": "tch-t-3",
+      "name": "Nguyễn Thị Bích Lang",
+      "code": "Lang.NTB (TP-9A3)",
+      "gender": "Nữ",
+      "birthDate": "25/09/1980",
+      "campus": "THCSDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-t3-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Toán (THCSDBK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tổ phó Tổ Toán (Khối 6-9) - GVCN 9A3"
+    },
+    {
+      "id": "tch-t-4",
+      "name": "Trần Văn Giang",
+      "code": "Giang.TV",
+      "gender": "Nam",
+      "birthDate": "1/1/1977",
+      "campus": "THPTDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Môn Toán (Khối 10-12)"
+    },
+    {
+      "id": "tch-t-5",
+      "name": "Lê Cao Toàn",
+      "code": "Toàn.LC",
+      "gender": "Nam",
+      "birthDate": "7/1/1975",
+      "campus": "THPTDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Môn Toán (Khối 10-12)"
+    },
+    {
+      "id": "tch-t-6",
+      "name": "Lê Văn Toàn",
+      "code": "Toàn.LV",
+      "gender": "Nam",
+      "birthDate": "6/30/1983",
+      "campus": "THPTDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Môn Toán (Khối 10-12)"
+    },
+    {
+      "id": "tch-t-7",
+      "name": "Võ Thị Ngọc Hương",
+      "code": "Hương.VTN (12CB3)",
+      "gender": "Nữ",
+      "birthDate": "5/10/1982",
+      "campus": "THPTDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Môn Toán (Khối 10-12) - GVCN 12CB3"
+    },
+    {
+      "id": "tch-t-8",
+      "name": "Lê Thị Bình",
+      "code": "Bình.LT (6A6)",
+      "gender": "Nữ",
+      "birthDate": "27/07/1975",
+      "campus": "THCSDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Môn Toán (Khối 6-9) - GVCN 6A6"
+    },
+    {
+      "id": "tch-t-9",
+      "name": "Nguyễn Thái Hùng",
+      "code": "Hùng.NThái (8A1)",
+      "gender": "Nam",
+      "birthDate": "10/12/1980",
+      "campus": "THCSDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Môn Toán (Khối 6-9) - GVCN 8A1"
+    },
+    {
+      "id": "tch-t-10",
+      "name": "Nguyễn Văn Ngoan",
+      "code": "Ngoan.NV (7A1)",
+      "gender": "Nam",
+      "birthDate": "10/7/1981",
+      "campus": "THCSDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Môn Toán (Khối 6-9) - GVCN 7A1"
+    },
+    {
+      "id": "tch-t-11",
+      "name": "Nguyễn Quốc Nguyễn",
+      "code": "Nguyễn.NQ (7A3)",
+      "gender": "Nam",
+      "birthDate": "12/09/1982",
+      "campus": "THCSDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Môn Toán (Khối 6-9) - GVCN 7A3"
+    },
+    {
+      "id": "tch-t-12",
+      "name": "Nguyễn Văn Tài",
+      "code": "Tài.NV (9A4)",
+      "gender": "Nam",
+      "birthDate": "10/10/1983",
+      "campus": "THCSDBK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Môn Toán (Khối 6-9) - GVCN 9A4"
+    },
+    {
+      "id": "tch-t-13",
+      "name": "Nguyễn Thành Tín",
+      "code": "Tín.NT (9A10)",
+      "gender": "Nam",
+      "birthDate": "13/10/1988",
+      "campus": "THCSTK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Môn Toán (Khối 6-9) - GVCN 9A10"
+    },
+    {
+      "id": "tch-t-14",
+      "name": "Huỳnh Thị Huỳnh Nga",
+      "code": "Nga.HTH",
+      "gender": "Nữ",
+      "birthDate": "16/11/1992",
+      "campus": "THCSTK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Môn Toán (Khối 6-9)"
+    },
+    {
+      "id": "tch-t-15",
+      "name": "Trần Văn Nhuận",
+      "code": "Nhuận.TV (8A10)",
+      "gender": "Nam",
+      "birthDate": "1/14/1984",
+      "campus": "THCSTK",
+      "departmentId": "dept-toan",
+      "primarySubjectId": "sub-toan",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Môn Toán (Khối 6-9) - GVCN 8A10"
+    },
+    {
+      "id": "tch-v-1",
+      "name": "Tô Thị Lắm",
+      "code": "Lắm.TT",
+      "gender": "Nữ",
+      "birthDate": "7/11/1983",
+      "campus": "THPTDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "ToTruong",
+      "duties": [
+        {
+          "id": "duty-v1-totruong",
+          "type": "ToTruong",
+          "name": "Tổ trưởng chuyên môn",
+          "reductionPeriods": 3,
+          "notes": "Tổ trưởng Tổ Ngữ Văn"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tổ trưởng Tổ Ngữ văn (Khối 10-12)"
+    },
+    {
+      "id": "tch-v-2",
+      "name": "Trương Văn Nghĩa",
+      "code": "Nghĩa.TV (TP)",
+      "gender": "Nam",
+      "birthDate": "01/01/1977",
+      "campus": "THCSDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-v2-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Ngữ văn (THCSDBK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tổ phó Tổ Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-3",
+      "name": "Huỳnh Thị Vân Nhi",
+      "code": "Nhi.HTV (TP)",
+      "gender": "Nữ",
+      "birthDate": "1/1/1980",
+      "campus": "THCSTK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-v3-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Ngữ văn (THCSTK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tổ phó Tổ Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-4",
+      "name": "Hồ Văn Nhịnh",
+      "code": "Nhịnh.HV (10CB5)",
+      "gender": "Nam",
+      "birthDate": "4/22/1976",
+      "campus": "THPTDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Ngữ văn (Khối 10-12) - GVCN 10CB5"
+    },
+    {
+      "id": "tch-v-5",
+      "name": "Lê Thị Mỹ Ny",
+      "code": "Ny.LTM (10CB3)",
+      "gender": "Nữ",
+      "birthDate": "1/1/1985",
+      "campus": "THPTDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Ngữ văn (Khối 10-12) - GVCN 10CB3"
+    },
+    {
+      "id": "tch-v-6",
+      "name": "Trương Thị Mỹ Duyên",
+      "code": "Duyên.TTM (12CB2)",
+      "gender": "Nữ",
+      "birthDate": "3/25/1975",
+      "campus": "THPTDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Ngữ văn (Khối 10-12) - GVCN 12CB2"
+    },
+    {
+      "id": "tch-v-8",
+      "name": "Phạm Thanh Lâm",
+      "code": "Lâm.PT",
+      "gender": "Nam",
+      "birthDate": "04/04/1980",
+      "campus": "THCSDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-9",
+      "name": "Nguyễn Thị Kim Xoa",
+      "code": "Xoa.NTK",
+      "gender": "Nữ",
+      "birthDate": "10/07/1983",
+      "campus": "THCSDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-10",
+      "name": "Hứa Thùy Dương",
+      "code": "Dương.HT",
+      "gender": "Nữ",
+      "birthDate": "13/10/1985",
+      "campus": "THCSDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-11",
+      "name": "Lê Thị Hoài An",
+      "code": "An.LTH",
+      "gender": "Nữ",
+      "birthDate": "29/09/1995",
+      "campus": "THCSDBK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-13",
+      "name": "Nguyễn Thị Thảo",
+      "code": "Thảo.NT",
+      "gender": "Nữ",
+      "birthDate": "2/10/1978",
+      "campus": "THCSTK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-v-tk-vi",
+      "name": "Nguyễn Hiền Vi",
+      "code": "Vi.NH",
+      "gender": "Nữ",
+      "birthDate": "01/01/1988",
+      "campus": "THCSTK",
+      "departmentId": "dept-ngu-van",
+      "primarySubjectId": "sub-van",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Ngữ văn (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-1",
+      "name": "Lê Hồng Thúy",
+      "code": "Thúy.LH (TT)",
+      "gender": "Nữ",
+      "birthDate": "17/07/1975",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-gdcd",
+      "role": "ToTruong",
+      "duties": [
+        {
+          "id": "duty-ls1-totruong",
+          "type": "ToTruong",
+          "name": "Tổ trưởng chuyên môn",
+          "reductionPeriods": 3,
+          "notes": "Tổ trưởng Tổ Lịch sử - Địa lý - GDCD - GDKTPL"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tổ trưởng Tổ Lịch sử - Địa lý - GDCD - GDKTPL (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-2",
+      "name": "Trịnh Văn Sơn",
+      "code": "Sơn.TV (TP-12CB5)",
+      "gender": "Nam",
+      "birthDate": "5/25/1979",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-su",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-s2-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Lịch sử - Địa lý - GDCD - GDKTPL"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tổ phó Tổ KHXH (Khối 10-12) - GVCN 12CB5"
+    },
+    {
+      "id": "tch-ls-3",
+      "name": "Phạm Thị Mỹ Châu",
+      "code": "Châu.PTM (TP-7A8)",
+      "gender": "Nữ",
+      "birthDate": "27/04/1984",
+      "campus": "THCSTK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-lsdl-cs",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-ls3-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Lịch sử - Địa lý - GDCD - GDKTPL"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tổ phó Tổ KHXH (Khối 6-9) - GVCN 7A8"
+    },
+    {
+      "id": "tch-ls-4",
+      "name": "Nguyễn Thị Bé Trang",
+      "code": "Trang.NTB (12CB4)",
+      "gender": "Nữ",
+      "birthDate": "4/15/1984",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-su",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Sử (Khối 10-12) - GVCN 12CB4"
+    },
+    {
+      "id": "tch-ls-5",
+      "name": "Trần Văn Rỡ",
+      "code": "Rỡ.TV (11CB3)",
+      "gender": "Nam",
+      "birthDate": "8/21/1981",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-su",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Sử (Khối 10-12) - GVCN 11CB3"
+    },
+    {
+      "id": "tch-ls-6",
+      "name": "Trần Phước Hòa",
+      "code": "Hòa.TP",
+      "gender": "Nam",
+      "birthDate": "11/2/1982",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-dia",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Địa lý (Khối 10-12)"
+    },
+    {
+      "id": "tch-ls-7",
+      "name": "Ngô Anh Tuấn",
+      "code": "Tuấn.NA",
+      "gender": "Nam",
+      "birthDate": "11/22/1986",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-dia",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Địa lý (Khối 10-12)"
+    },
+    {
+      "id": "tch-ls-8",
+      "name": "Phạm Nguyễn Văn Trường",
+      "code": "Trường.PNV",
+      "gender": "Nữ",
+      "birthDate": "1/2/1995",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-gdktpl",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - GDKT&PL (Khối 10-12)"
+    },
+    {
+      "id": "tch-ls-9",
+      "name": "Lê Thị Kim The",
+      "code": "The.LTK",
+      "gender": "Nữ",
+      "birthDate": "18/08/1988",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-su",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Lịch sử (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-10",
+      "name": "Nguyễn Quốc Tấn",
+      "code": "Tấn.NQ",
+      "gender": "Nam",
+      "birthDate": "03/10/1987",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-su",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Lịch sử (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-11",
+      "name": "Nguyễn Thị Kim Đỉnh",
+      "code": "Đỉnh.NTK",
+      "gender": "Nữ",
+      "birthDate": "23/01/1988",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-dia",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Địa lý (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-12",
+      "name": "Nguyễn Thị Lý",
+      "code": "Lý.NT (TPT)",
+      "gender": "Nữ",
+      "birthDate": "01/01/1989",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-dia",
+      "role": "TongPhuTrachDoi",
+      "duties": [
+        {
+          "id": "duty-tch-ls-12-tpt",
+          "type": "TongPhuTrachDoi",
+          "name": "Tổng phụ trách Đội",
+          "reductionPeriods": 0,
+          "notes": "Trường trên 28 lớp - Định mức 2 tiết/tuần theo Thông tư 28/2009 & TT 05/2025"
+        }
+      ],
+      "baseStandardPeriods": 2,
+      "notes": "THCSDBK - Địa lý (Khối 6-9) - Tổng phụ trách Đội (Trường trên 28 lớp - Định mức 2 tiết/tuần)"
+    },
+    {
+      "id": "tch-ls-13",
+      "name": "Nguyễn Thị Xe",
+      "code": "Xe.NT",
+      "gender": "Nữ",
+      "birthDate": "01/01/1978",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-gdcd",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - GDCD (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-14",
+      "name": "Châu Thị Kim Hà",
+      "code": "Hà.CTK",
+      "gender": "Nữ",
+      "birthDate": "18/02/1984",
+      "campus": "THCSTK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-lsdl-cs",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - LS-ĐL (Khối 6-9)"
+    },
+    {
+      "id": "tch-ls-15",
+      "name": "Nguyễn Thị Kim Sang",
+      "code": "Sang.NTK (6A7)",
+      "gender": "Nữ",
+      "birthDate": "22/8/1988",
+      "campus": "THCSTK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-lsdl-cs",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - LS-ĐL (Khối 6-9) - GVCN 6A7"
+    },
+    {
+      "id": "tch-ls-16",
+      "name": "Nguyễn Mỹ Ngân",
+      "code": "Ngân.NM (9A9)",
+      "gender": "Nữ",
+      "birthDate": "12/11/1988",
+      "campus": "THCSTK",
+      "departmentId": "dept-khxh",
+      "primarySubjectId": "sub-gdcd",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - GDCD (Khối 6-9) - GVCN 9A9"
+    },
+    {
+      "id": "tch-khtn-1",
+      "name": "Bùi Kim Huỳnh",
+      "code": "Huỳnh.BK (TT-11CB1)",
+      "gender": "Nữ",
+      "birthDate": "4/19/1986",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "ToTruong",
+      "duties": [
+        {
+          "id": "duty-k1-totruong",
+          "type": "ToTruong",
+          "name": "Tổ trưởng chuyên môn",
+          "reductionPeriods": 3,
+          "notes": "Tổ trưởng Tổ KHTN-CN (THPTDBK)"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tổ trưởng Tổ KHTN-CN - Sinh học (Khối 10-12) - GVCN 11CB1"
+    },
+    {
+      "id": "tch-khtn-2",
+      "name": "Thái Văn Tiến",
+      "code": "Tiến.TV (TP-8A7)",
+      "gender": "Nam",
+      "birthDate": "1/1/1978",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-khtn-cs",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-k2-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ KHTN-CN (THCSTK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tổ phó Tổ KHTN-CN (Khối 6-9) - GVCN 8A7"
+    },
+    {
+      "id": "tch-khtn-3",
+      "name": "Phạm Biên Thùy",
+      "code": "Thùy.PB (TP)",
+      "gender": "Nam",
+      "birthDate": "1/1/1980",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-li",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-k3-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ KHTN-CN (THPTDBK)"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tổ phó Tổ KHTN-CN - Vật Lý (Khối 10-12)"
+    },
+    {
+      "id": "tch-khtn-4",
+      "name": "Nguyễn Thị Hiếu",
+      "code": "Hiếu.NT (TP-7A5)",
+      "gender": "Nữ",
+      "birthDate": "15/07/1980",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-k4-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ KHTN-CN (THCSDBK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tổ phó Tổ KHTN-CN - Sinh (Khối 6-9) - GVCN 7A5"
+    },
+    {
+      "id": "tch-khtn-5",
+      "name": "Cao Văn Tùng",
+      "code": "Tùng.CV (PC-10CB1)",
+      "gender": "Nam",
+      "birthDate": "7/17/1980",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "PhoCap",
+      "duties": [
+        {
+          "id": "duty-k5-phocap",
+          "type": "PhoCap",
+          "name": "Phổ cập giáo dục",
+          "reductionPeriods": 4,
+          "notes": "Kiêm Phổ cập giáo dục (-4t)"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Sinh học (Khối 10-12) - GVCN 10CB1 - Kiêm Phổ cập giáo dục (+4t)"
+    },
+    {
+      "id": "tch-khtn-6",
+      "name": "Trần Thị Ngọc Hiền",
+      "code": "Hiền.TTN",
+      "gender": "Nữ",
+      "birthDate": "3/18/1983",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-li",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Vật Lý (Khối 10-12)"
+    },
+    {
+      "id": "tch-khtn-7",
+      "name": "Phan Thị Ngọc Thơ",
+      "code": "Thơ.PTN (12CB1)",
+      "gender": "Nữ",
+      "birthDate": "8/6/1988",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-hoa",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Hóa học (Khối 10-12) - GVCN 12CB1"
+    },
+    {
+      "id": "tch-khtn-8",
+      "name": "Phạm Long Phi",
+      "code": "Phi.PL (11CB2)",
+      "gender": "Nam",
+      "birthDate": "4/20/1982",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-hoa",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Hóa (Khối 10-12) - GVCN 11CB2"
+    },
+    {
+      "id": "tch-khtn-9",
+      "name": "Trần Thị Kiều",
+      "code": "Kiều.TT (10CB2)",
+      "gender": "Nữ",
+      "birthDate": "11/18/1980",
+      "campus": "THPTDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-hoa",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Hóa (Khối 10-12) - GVCN 10CB2"
+    },
+    {
+      "id": "tch-khtn-10",
+      "name": "Trần Thị Hậu",
+      "code": "Hậu.TTH (9A2)",
+      "gender": "Nữ",
+      "birthDate": "01/01/1983",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-li",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Lý (Khối 6-9) - GVCN 9A2"
+    },
+    {
+      "id": "tch-khtn-11",
+      "name": "Lê Thái Phương",
+      "code": "Phương.LT (9A6)",
+      "gender": "Nam",
+      "birthDate": "01/01/1980",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-hoa",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Hóa (Khối 6-9) - GVCN 9A6"
+    },
+    {
+      "id": "tch-khtn-12",
+      "name": "Võ Hoàng Toàn",
+      "code": "Toàn.VH (8A5)",
+      "gender": "Nam",
+      "birthDate": "10/04/1987",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-hoa",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Hóa (Khối 6-9) - GVCN 8A5"
+    },
+    {
+      "id": "tch-khtn-13",
+      "name": "Nguyễn Thị Thắm",
+      "code": "Thắm.NT (6A2)",
+      "gender": "Nữ",
+      "birthDate": "11/11/1981",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-li",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Lý (Khối 6-9) - GVCN 6A2"
+    },
+    {
+      "id": "tch-khtn-14",
+      "name": "Nguyễn Thị Bích Phượng",
+      "code": "Phượng.NTB (8A8)",
+      "gender": "Nữ",
+      "birthDate": "14/4/1987",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-khtn-cs",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - KHTN (Khối 6-9) - GVCN 8A8"
+    },
+    {
+      "id": "tch-khtn-15",
+      "name": "Võ Ngọc Đình Văn",
+      "code": "Văn.VNĐ",
+      "gender": "Nam",
+      "birthDate": "23/11/1995",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-khtn-cs",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - KHTN (Khối 6-9)"
+    },
+    {
+      "id": "tch-khtn-16",
+      "name": "Nguyễn Thị Cẩm Nhung",
+      "code": "Nhung.NTC (9A1)",
+      "gender": "Nữ",
+      "birthDate": "13/03/1983",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Sinh (Khối 6-9) - GVCN 9A1"
+    },
+    {
+      "id": "tch-khtn-17",
+      "name": "Nguyễn Kim Ngân",
+      "code": "Ngân.NK (8A4)",
+      "gender": "Nữ",
+      "birthDate": "28/10/1990",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Sinh (Khối 6-9) - GVCN 8A4"
+    },
+    {
+      "id": "tch-khtn-18",
+      "name": "Hồ Thị Ngọc Tài",
+      "code": "Tài.HTN (6A1)",
+      "gender": "Nữ",
+      "birthDate": "6/7/1989",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Sinh (Khối 6-9) - GVCN 6A1"
+    },
+    {
+      "id": "tch-khtn-19",
+      "name": "Trần Kim Phương",
+      "code": "Phương.TK (7A7)",
+      "gender": "Nữ",
+      "birthDate": "3/4/1981",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Sinh học (Khối 6-9) - GVCN 7A7"
+    },
+    {
+      "id": "tch-khtn-20",
+      "name": "Đinh Thị Giàu",
+      "code": "Giàu.ĐT (9A8)",
+      "gender": "Nữ",
+      "birthDate": "8/9/1989",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Sinh học (Khối 6-9) - GVCN 9A8"
+    },
+    {
+      "id": "tch-khtn-21",
+      "name": "Nguyễn Thị Lụa",
+      "code": "Lụa.NT (6A10)",
+      "gender": "Nữ",
+      "birthDate": "4/4/1979",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-sinh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Sinh học (Khối 6-9) - GVCN 6A10"
+    },
+    {
+      "id": "tch-khtn-22",
+      "name": "Trần Phi Hải",
+      "code": "Hải.TP (8A2)",
+      "gender": "Nam",
+      "birthDate": "22/10/1977",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-cn",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Công nghệ (Khối 6-9) - GVCN 8A2"
+    },
+    {
+      "id": "tch-khtn-23",
+      "name": "Trần Thị Cẩm",
+      "code": "Cẩm.TT (7A6)",
+      "gender": "Nữ",
+      "birthDate": "01/01/1981",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-cn",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Công nghệ (Khối 6-9) - GVCN 7A6"
+    },
+    {
+      "id": "tch-khtn-24",
+      "name": "Lê Kim Ngân",
+      "code": "Ngân.LK (6A5)",
+      "gender": "Nữ",
+      "birthDate": "17/04/1986",
+      "campus": "THCSDBK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-cn",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Công nghệ (Khối 6-9) - GVCN 6A5"
+    },
+    {
+      "id": "tch-khtn-25",
+      "name": "Nguyễn Thị Ngọc Diễm",
+      "code": "Diễm.NTN (6A9)",
+      "gender": "Nữ",
+      "birthDate": "21/02/1989",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-cn",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Công nghệ (Khối 6-9) - GVCN 6A9"
+    },
+    {
+      "id": "tch-khtn-26",
+      "name": "Phan Văn Tặt",
+      "code": "Tặt.PV",
+      "gender": "Nam",
+      "birthDate": "1/1/1968",
+      "campus": "THCSTK",
+      "departmentId": "dept-khtn",
+      "primarySubjectId": "sub-cn",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Công nghệ (Khối 6-9)"
+    },
+    {
+      "id": "tch-av-1",
+      "name": "Lê Thị Ngọc Tuyền",
+      "code": "Tuyền.LTN (TT)",
+      "gender": "Nữ",
+      "birthDate": "11/2/1990",
+      "campus": "THCSTK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "ToTruong",
+      "duties": [
+        {
+          "id": "duty-av1-totruong",
+          "type": "ToTruong",
+          "name": "Tổ trưởng chuyên môn",
+          "reductionPeriods": 3,
+          "notes": "Tổ trưởng Tổ Ngoại ngữ - Tin học (THCSTK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tổ trưởng Tổ Ngoại ngữ - Tin học (Khối 6-9)"
+    },
+    {
+      "id": "tch-av-2",
+      "name": "Nguyễn Trung Hiếu",
+      "code": "Hiếu.NT (TP-Tin)",
+      "gender": "Nam",
+      "birthDate": "1/1/1984",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-tin",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-av2-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Ngoại ngữ - Tin học (THPTDBK)"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tổ phó Tổ Tiếng Anh - Tin học (Khối 10-12)"
+    },
+    {
+      "id": "tch-av-3",
+      "name": "Nguyễn Thị Mai Khanh",
+      "code": "Khanh.NTM (TP)",
+      "gender": "Nữ",
+      "birthDate": "17/11/1981",
+      "campus": "THCSDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-av3-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ Ngoại ngữ - Tin học (THCSDBK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tổ phó Tổ Ngoại ngữ - Tin học (Khối 6-9)"
+    },
+    {
+      "id": "tch-av-4",
+      "name": "Võ Thị Hiền Thi",
+      "code": "Thi.VTH",
+      "gender": "Nữ",
+      "birthDate": "4/25/1985",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tiếng Anh (Khối 10-12)"
+    },
+    {
+      "id": "tch-av-5",
+      "name": "Ngô Bảo Quốc",
+      "code": "Quốc.NB",
+      "gender": "Nam",
+      "birthDate": "8/30/1970",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tiếng Anh (Khối 10-12)"
+    },
+    {
+      "id": "tch-av-6",
+      "name": "Trương Sơn Bền",
+      "code": "Bền.TS",
+      "gender": "Nam",
+      "birthDate": "8/27/2000",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tiếng Anh (Khối 10-12)"
+    },
+    {
+      "id": "tch-av-7",
+      "name": "Nguyễn Thị Vân Anh",
+      "code": "Anh.NTV (Con nhỏ)",
+      "gender": "Nữ",
+      "birthDate": "11/8/1991",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "ConNho",
+      "duties": [
+        {
+          "id": "duty-av7-connho",
+          "type": "ConNho",
+          "name": "Nuôi con nhỏ (<36 tháng)",
+          "reductionPeriods": 3,
+          "notes": "Nữ giáo viên nuôi con nhỏ dưới 36 tháng tuổi (-3t)"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tiếng Anh (Khối 10-12) - Nuôi con nhỏ dưới 36 tháng (+3t)"
+    },
+    {
+      "id": "tch-av-8",
+      "name": "Đào Thị Ngọc Liên",
+      "code": "Liên.ĐTN (11CB4)",
+      "gender": "Nữ",
+      "birthDate": "11/2/1987",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-tin",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tin học (Khối 10-12) - GVCN 11CB4"
+    },
+    {
+      "id": "tch-av-9",
+      "name": "Lê Thị Thu Diễm",
+      "code": "Diễm.LTT (10CB4)",
+      "gender": "Nữ",
+      "birthDate": "8/5/1980",
+      "campus": "THPTDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-tin",
+      "role": "GVBM",
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tin học (Khối 10-12) - GVCN 10CB4"
+    },
+    {
+      "id": "tch-av-10",
+      "name": "Trần Thanh Hậu",
+      "code": "Hậu.TT",
+      "gender": "Nam",
+      "birthDate": "02/08/1976",
+      "campus": "THCSDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tiếng Anh (Khối 6-9)"
+    },
+    {
+      "id": "tch-av-11",
+      "name": "Hồ Mai Thảo",
+      "code": "Thảo.HM (9A5)",
+      "gender": "Nữ",
+      "birthDate": "22/11/1975",
+      "campus": "THCSDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tiếng Anh (Khối 6-9) - GVCN 9A5"
+    },
+    {
+      "id": "tch-av-12",
+      "name": "Nguyễn Thị Thùy Dương",
+      "code": "Dương.NTT (8A3)",
+      "gender": "Nữ",
+      "birthDate": "19/07/1982",
+      "campus": "THCSDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tiếng Anh (Khối 6-9) - GVCN 8A3"
+    },
+    {
+      "id": "tch-av-13",
+      "name": "Mai Phước Lộc",
+      "code": "Lộc.MP (7A2)",
+      "gender": "Nam",
+      "birthDate": "28/08/1982",
+      "campus": "THCSDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tiếng Anh (Khối 6-9) - GVCN 7A2"
+    },
+    {
+      "id": "tch-av-14",
+      "name": "Bùi Kim Phướng",
+      "code": "Phướng.BK (6A3)",
+      "gender": "Nữ",
+      "birthDate": "07/10/1989",
+      "campus": "THCSDBK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-tin",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tin học (Khối 6-9) - GVCN 6A3"
+    },
+    {
+      "id": "tch-av-15",
+      "name": "Lê Minh Thành",
+      "code": "Thành.LM",
+      "gender": "Nam",
+      "birthDate": "1/1/1989",
+      "campus": "THCSTK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-anh",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tiếng Anh (Khối 6-9)"
+    },
+    {
+      "id": "tch-av-16",
+      "name": "Lê Phước Hậu",
+      "code": "Hậu.LP (8A9)",
+      "gender": "Nam",
+      "birthDate": "2/25/1980",
+      "campus": "THCSTK",
+      "departmentId": "dept-tieng-anh-tin",
+      "primarySubjectId": "sub-tin",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tin học (Khối 6-9) - GVCN 8A9"
+    },
+    {
+      "id": "tch-td-1",
+      "name": "Lê Văn Nguyên",
+      "code": "Nguyên.LV (TT)",
+      "gender": "Nam",
+      "birthDate": "01/01/1975",
+      "campus": "THCSDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "ToTruong",
+      "duties": [
+        {
+          "id": "duty-td1-totruong",
+          "type": "ToTruong",
+          "name": "Tổ trưởng chuyên môn",
+          "reductionPeriods": 3,
+          "notes": "Tổ trưởng Tổ GDTC - QPAN - Nghệ thuật (THCSDBK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Tổ trưởng Tổ GDTC - QPAN - Nghệ thuật (Khối 6-9)"
+    },
+    {
+      "id": "tch-td-2",
+      "name": "Nguyễn Kim Rạng",
+      "code": "Rạng.NK (TP)",
+      "gender": "Nữ",
+      "birthDate": "3/26/1986",
+      "campus": "THPTDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdqp",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-td2-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ GDTC - QPAN - Nghệ thuật (THPTDBK)"
+        }
+      ],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - Tổ phó Tổ GDTC-QPAN (Khối 10-12)"
+    },
+    {
+      "id": "tch-td-3",
+      "name": "Lê Thị Ngọc Điệp",
+      "code": "Điệp.LTN (TP-6A8)",
+      "gender": "Nữ",
+      "birthDate": "2/2/1978",
+      "campus": "THCSTK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "ToPho",
+      "duties": [
+        {
+          "id": "duty-td3-topho",
+          "type": "ToPho",
+          "name": "Tổ phó chuyên môn",
+          "reductionPeriods": 1,
+          "notes": "Tổ phó Tổ GDTC - QPAN - Nghệ thuật (THCSTK)"
+        }
+      ],
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Tổ phó Tổ GDTC - QPAN - Nghệ thuật (Khối 6-9) - GVCN 6A8"
+    },
+    {
+      "id": "tch-td-4",
+      "name": "Hồ Hoài Ngân",
+      "code": "Ngân.HH",
+      "gender": "Nam",
+      "birthDate": "7/6/1989",
+      "campus": "THPTDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 17,
+      "notes": "THPTDBK - GDTC (Khối 10-12)"
+    },
+    {
+      "id": "tch-td-5",
+      "name": "Lê Minh Đạt",
+      "code": "Đạt.LM",
+      "gender": "Nam",
+      "birthDate": "10/10/1969",
+      "campus": "THCSDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-my-thuat",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Mỹ thuật (Khối 6-9)"
+    },
+    {
+      "id": "tch-td-6",
+      "name": "Lê Ngọc Ẩn",
+      "code": "Ẩn.LN (7A4)",
+      "gender": "Nam",
+      "birthDate": "10/10/1983",
+      "campus": "THCSDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "GVBM",
+      "duties": [],
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - GDTC (Khối 6-9) - GVCN 7A4"
+    },
+    {
+      "id": "tch-td-7",
+      "name": "Huỳnh Thanh Dân",
+      "code": "Dân.HT (8A6)",
+      "gender": "Nam",
+      "birthDate": "05/12/1992",
+      "campus": "THCSDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - GDTC (Khối 6-9) - GVCN 8A6"
+    },
+    {
+      "id": "tch-td-8",
+      "name": "Nguyễn Thanh Hùng",
+      "code": "Hùng.NThanh (6A4)",
+      "gender": "Nam",
+      "birthDate": "25/02/1980",
+      "campus": "THCSDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - GDTC (Khối 6-9) - GVCN 6A4"
+    },
+    {
+      "id": "tch-td-9",
+      "name": "Lê Thị Tuyết Xanh",
+      "code": "Xanh.LTT",
+      "gender": "Nữ",
+      "birthDate": "06/03/1981",
+      "campus": "THCSDBK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-am-nhac",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSDBK - Âm nhạc (Khối 6-9)"
+    },
+    {
+      "id": "tch-td-10",
+      "name": "Trần Thị Mỹ Quốc",
+      "code": "Quốc.TTM",
+      "gender": "Nữ",
+      "birthDate": "7/9/1986",
+      "campus": "THCSTK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-my-thuat",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Mỹ thuật (Khối 6-9)"
+    },
+    {
+      "id": "tch-td-11",
+      "name": "Lê Văn Chính",
+      "code": "Chính.LV (7A9)",
+      "gender": "Nam",
+      "birthDate": "1/1/1982",
+      "campus": "THCSTK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-gdtc",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - GDTC (Khối 6-9) - GVCN 7A9"
+    },
+    {
+      "id": "tch-td-12",
+      "name": "Nguyễn Anh Văn",
+      "code": "Văn.NA",
+      "gender": "Nam",
+      "birthDate": "23/06/1986",
+      "campus": "THCSTK",
+      "departmentId": "dept-gdtc-qpan-nt",
+      "primarySubjectId": "sub-am-nhac",
+      "role": "GVBM",
+      "baseStandardPeriods": 19,
+      "notes": "THCSTK - Âm nhạc (Khối 6-9)"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "as-tkb-cls-10cb1-sub-hdtn",
+      "classId": "cls-10cb1",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-5",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-10cb2-sub-hdtn",
+      "classId": "cls-10cb2",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-9",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-10cb3-sub-hdtn",
+      "classId": "cls-10cb3",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-9",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-10cb4-sub-hdtn",
+      "classId": "cls-10cb4",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-9",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-10cb5-sub-hdtn",
+      "classId": "cls-10cb5",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-9",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-10cb1-sub-shl",
+      "classId": "cls-10cb1",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-khtn-5",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-10cb2-sub-shl",
+      "classId": "cls-10cb2",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-khtn-9",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-10cb3-sub-shl",
+      "classId": "cls-10cb3",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-v-5",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-10cb4-sub-shl",
+      "classId": "cls-10cb4",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-av-9",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-10cb5-sub-shl",
+      "classId": "cls-10cb5",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-v-4",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-11cb1-sub-hdtn",
+      "classId": "cls-11cb1",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-8",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-11cb2-sub-hdtn",
+      "classId": "cls-11cb2",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-8",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-11cb3-sub-hdtn",
+      "classId": "cls-11cb3",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-8",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-11cb4-sub-hdtn",
+      "classId": "cls-11cb4",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-8",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-11cb1-sub-shl",
+      "classId": "cls-11cb1",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-khtn-1",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-11cb2-sub-shl",
+      "classId": "cls-11cb2",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-khtn-8",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-11cb3-sub-shl",
+      "classId": "cls-11cb3",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-ls-5",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-11cb4-sub-shl",
+      "classId": "cls-11cb4",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-av-8",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-12cb1-sub-hdtn",
+      "classId": "cls-12cb1",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-khtn-7",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-12cb2-sub-hdtn",
+      "classId": "cls-12cb2",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-v-6",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-12cb3-sub-hdtn",
+      "classId": "cls-12cb3",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-ls-5",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-12cb4-sub-hdtn",
+      "classId": "cls-12cb4",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-ls-4",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-12cb5-sub-hdtn",
+      "classId": "cls-12cb5",
+      "subjectId": "sub-hdtn",
+      "teacherId": "tch-bgh-2",
+      "periodsPerWeek": 2,
+      "note": "HĐTNHN (THPT) - 2 tiết/tuần theo TKB"
+    },
+    {
+      "id": "as-tkb-cls-12cb1-sub-shl",
+      "classId": "cls-12cb1",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-khtn-7",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-12cb2-sub-shl",
+      "classId": "cls-12cb2",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-v-6",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-12cb3-sub-shl",
+      "classId": "cls-12cb3",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-t-7",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-12cb4-sub-shl",
+      "classId": "cls-12cb4",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-ls-4",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-12cb5-sub-shl",
+      "classId": "cls-12cb5",
+      "subjectId": "sub-shl",
+      "teacherId": "tch-ls-2",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a1-sub-hdtn-cd",
+      "classId": "cls-6a1",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-16",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a1-sub-hdtn-shl",
+      "classId": "cls-6a1",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-18",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a2-sub-hdtn-cd",
+      "classId": "cls-6a2",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-13",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a2-sub-hdtn-shl",
+      "classId": "cls-6a2",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-13",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a3-sub-hdtn-cd",
+      "classId": "cls-6a3",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-16",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a3-sub-hdtn-shl",
+      "classId": "cls-6a3",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-av-14",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a4-sub-hdtn-cd",
+      "classId": "cls-6a4",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-13",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a4-sub-hdtn-shl",
+      "classId": "cls-6a4",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-td-8",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a5-sub-hdtn-cd",
+      "classId": "cls-6a5",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-24",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a5-sub-hdtn-shl",
+      "classId": "cls-6a5",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-24",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a6-sub-hdtn-cd",
+      "classId": "cls-6a6",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-24",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a6-sub-hdtn-shl",
+      "classId": "cls-6a6",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-t-8",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a1-sub-khtn-cs",
+      "classId": "cls-7a1",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-4",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a1-sub-hdtn-cd",
+      "classId": "cls-7a1",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-av-14",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a1-sub-hdtn-shl",
+      "classId": "cls-7a1",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-t-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a2-sub-hdtn-cd",
+      "classId": "cls-7a2",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-23",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a2-sub-khtn-cs",
+      "classId": "cls-7a2",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-4",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a2-sub-hdtn-shl",
+      "classId": "cls-7a2",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-av-13",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a3-sub-hdtn-cd",
+      "classId": "cls-7a3",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-23",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a3-sub-hdtn-shl",
+      "classId": "cls-7a3",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-t-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a4-sub-hdtn-cd",
+      "classId": "cls-7a4",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-23",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a4-sub-hdtn-shl",
+      "classId": "cls-7a4",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-td-6",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a5-sub-hdtn-cd",
+      "classId": "cls-7a5",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-23",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a5-sub-khtn-cs",
+      "classId": "cls-7a5",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-4",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a5-sub-hdtn-shl",
+      "classId": "cls-7a5",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-av-14",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a6-sub-hdtn-cd",
+      "classId": "cls-7a6",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-23",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a6-sub-hdtn-shl",
+      "classId": "cls-7a6",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-23",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a1-sub-hdtn-cd",
+      "classId": "cls-8a1",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a1-sub-sinh",
+      "classId": "cls-8a1",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a1-sub-hdtn-shl",
+      "classId": "cls-8a1",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-t-9",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a2-sub-hdtn-cd",
+      "classId": "cls-8a2",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a2-sub-sinh",
+      "classId": "cls-8a2",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-18",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a2-sub-hdtn-shl",
+      "classId": "cls-8a2",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-22",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a3-sub-hdtn-cd",
+      "classId": "cls-8a3",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a3-sub-hdtn-shl",
+      "classId": "cls-8a3",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-ls-13",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a4-sub-hdtn-cd",
+      "classId": "cls-8a4",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a4-sub-hdtn-shl",
+      "classId": "cls-8a4",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-17",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a5-sub-hdtn-cd",
+      "classId": "cls-8a5",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a5-sub-hdtn-shl",
+      "classId": "cls-8a5",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-12",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a6-sub-hdtn-cd",
+      "classId": "cls-8a6",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a6-sub-hdtn-shl",
+      "classId": "cls-8a6",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-td-7",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a1-sub-hdtn-cd",
+      "classId": "cls-9a1",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-16",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a1-sub-hdtn-shl",
+      "classId": "cls-9a1",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-16",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a2-sub-hdtn-cd",
+      "classId": "cls-9a2",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-16",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a2-sub-hdtn-shl",
+      "classId": "cls-9a2",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-10",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a3-sub-hdtn-cd",
+      "classId": "cls-9a3",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a3-sub-hdtn-shl",
+      "classId": "cls-9a3",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-22",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a4-sub-hdtn-cd",
+      "classId": "cls-9a4",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a4-sub-hdtn-shl",
+      "classId": "cls-9a4",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-t-12",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a5-sub-hdtn-cd",
+      "classId": "cls-9a5",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a5-sub-hdtn-shl",
+      "classId": "cls-9a5",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-av-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a6-sub-hdtn-cd",
+      "classId": "cls-9a6",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a6-sub-hdtn-shl",
+      "classId": "cls-9a6",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-11",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-toan",
+      "classId": "cls-6a7",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-15",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-hdtn-cd",
+      "classId": "cls-6a7",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-van",
+      "classId": "cls-6a7",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-tk-vi",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-khtn-cs",
+      "classId": "cls-6a7",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-21",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-su",
+      "classId": "cls-6a7",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-am-nhac",
+      "classId": "cls-6a7",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-my-thuat",
+      "classId": "cls-6a7",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-dia",
+      "classId": "cls-6a7",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-gdtc",
+      "classId": "cls-6a7",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-gdcd",
+      "classId": "cls-6a7",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-anh",
+      "classId": "cls-6a7",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-tin",
+      "classId": "cls-6a7",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-cn",
+      "classId": "cls-6a7",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a7-sub-hdtn-shl",
+      "classId": "cls-6a7",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-su",
+      "classId": "cls-6a8",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-khtn-cs",
+      "classId": "cls-6a8",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-21",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-hdtn-cd",
+      "classId": "cls-6a8",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-anh",
+      "classId": "cls-6a8",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-1",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-gdtc",
+      "classId": "cls-6a8",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-am-nhac",
+      "classId": "cls-6a8",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-cn",
+      "classId": "cls-6a8",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-dia",
+      "classId": "cls-6a8",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-van",
+      "classId": "cls-6a8",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-tk-vi",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-my-thuat",
+      "classId": "cls-6a8",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-gdcd",
+      "classId": "cls-6a8",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-toan",
+      "classId": "cls-6a8",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-15",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-tin",
+      "classId": "cls-6a8",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a8-sub-hdtn-shl",
+      "classId": "cls-6a8",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-toan",
+      "classId": "cls-6a9",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-khtn-cs",
+      "classId": "cls-6a9",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-hdtn-cd",
+      "classId": "cls-6a9",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-anh",
+      "classId": "cls-6a9",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-1",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-gdtc",
+      "classId": "cls-6a9",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-gdcd",
+      "classId": "cls-6a9",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-su",
+      "classId": "cls-6a9",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-van",
+      "classId": "cls-6a9",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-3",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-am-nhac",
+      "classId": "cls-6a9",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-my-thuat",
+      "classId": "cls-6a9",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-tin",
+      "classId": "cls-6a9",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-cn",
+      "classId": "cls-6a9",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-dia",
+      "classId": "cls-6a9",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a9-sub-hdtn-shl",
+      "classId": "cls-6a9",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-anh",
+      "classId": "cls-6a10",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-1",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-dia",
+      "classId": "cls-6a10",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-tin",
+      "classId": "cls-6a10",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-hdtn-cd",
+      "classId": "cls-6a10",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-21",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-toan",
+      "classId": "cls-6a10",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-2",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-am-nhac",
+      "classId": "cls-6a10",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-gdcd",
+      "classId": "cls-6a10",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-gdtc",
+      "classId": "cls-6a10",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-my-thuat",
+      "classId": "cls-6a10",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-van",
+      "classId": "cls-6a10",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-su",
+      "classId": "cls-6a10",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-cn",
+      "classId": "cls-6a10",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-khtn-cs",
+      "classId": "cls-6a10",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-21",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-6a10-sub-hdtn-shl",
+      "classId": "cls-6a10",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-21",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-toan",
+      "classId": "cls-7a7",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-14",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-tin",
+      "classId": "cls-7a7",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-hdtn-cd",
+      "classId": "cls-7a7",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-19",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-khtn-cs",
+      "classId": "cls-7a7",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-19",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-anh",
+      "classId": "cls-7a7",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-6",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-lsdl-cs",
+      "classId": "cls-7a7",
+      "subjectId": "sub-lsdl-cs",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-van",
+      "classId": "cls-7a7",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-tk-vi",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-my-thuat",
+      "classId": "cls-7a7",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-gdtc",
+      "classId": "cls-7a7",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-gdcd",
+      "classId": "cls-7a7",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-cn",
+      "classId": "cls-7a7",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-am-nhac",
+      "classId": "cls-7a7",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a7-sub-hdtn-shl",
+      "classId": "cls-7a7",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-19",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-van",
+      "classId": "cls-7a8",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-tk-vi",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-hdtn-cd",
+      "classId": "cls-7a8",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-gdtc",
+      "classId": "cls-7a8",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-gdcd",
+      "classId": "cls-7a8",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-lsdl-cs",
+      "classId": "cls-7a8",
+      "subjectId": "sub-lsdl-cs",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-anh",
+      "classId": "cls-7a8",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-6",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-khtn-cs",
+      "classId": "cls-7a8",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-19",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-cn",
+      "classId": "cls-7a8",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-toan",
+      "classId": "cls-7a8",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-14",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-am-nhac",
+      "classId": "cls-7a8",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-my-thuat",
+      "classId": "cls-7a8",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-tin",
+      "classId": "cls-7a8",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a8-sub-hdtn-shl",
+      "classId": "cls-7a8",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-lsdl-cs",
+      "classId": "cls-7a9",
+      "subjectId": "sub-lsdl-cs",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-toan",
+      "classId": "cls-7a9",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-14",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-hdtn-cd",
+      "classId": "cls-7a9",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-khtn-cs",
+      "classId": "cls-7a9",
+      "subjectId": "sub-khtn-cs",
+      "teacherId": "tch-khtn-19",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-gdtc",
+      "classId": "cls-7a9",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-van",
+      "classId": "cls-7a9",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-tk-vi",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-my-thuat",
+      "classId": "cls-7a9",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-anh",
+      "classId": "cls-7a9",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-6",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-gdcd",
+      "classId": "cls-7a9",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-cn",
+      "classId": "cls-7a9",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-tin",
+      "classId": "cls-7a9",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-am-nhac",
+      "classId": "cls-7a9",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-7a9-sub-hdtn-shl",
+      "classId": "cls-7a9",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-hdtn-cd",
+      "classId": "cls-8a7",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-toan",
+      "classId": "cls-8a7",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-14",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-cn",
+      "classId": "cls-8a7",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1.44,
+      "note": "Công nghệ 8 (HK1: 26t/18w - T1-8: 2t/w, T9-18: 1t/w)"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-van",
+      "classId": "cls-8a7",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-3",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-gdtc",
+      "classId": "cls-8a7",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-anh",
+      "classId": "cls-8a7",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-1",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-gdcd",
+      "classId": "cls-8a7",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-am-nhac",
+      "classId": "cls-8a7",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-su",
+      "classId": "cls-8a7",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 8 (HK1: 26t/18w, Cả năm: 50t)"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-dia",
+      "classId": "cls-8a7",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 8 (HK1: 28t/18w, Cả năm: 55t)"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-tin",
+      "classId": "cls-8a7",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-my-thuat",
+      "classId": "cls-8a7",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-hdtn-shl",
+      "classId": "cls-8a7",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-hdtn-cd",
+      "classId": "cls-8a8",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-van",
+      "classId": "cls-8a8",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-cn",
+      "classId": "cls-8a8",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1.44,
+      "note": "Công nghệ 8 (HK1: 26t/18w - T1-8: 2t/w, T9-18: 1t/w)"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-am-nhac",
+      "classId": "cls-8a8",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-gdtc",
+      "classId": "cls-8a8",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-toan",
+      "classId": "cls-8a8",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-14",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-gdcd",
+      "classId": "cls-8a8",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-su",
+      "classId": "cls-8a8",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 8 (HK1: 26t/18w, Cả năm: 50t)"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-anh",
+      "classId": "cls-8a8",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-dia",
+      "classId": "cls-8a8",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 8 (HK1: 28t/18w, Cả năm: 55t)"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-tin",
+      "classId": "cls-8a8",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-my-thuat",
+      "classId": "cls-8a8",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-hdtn-shl",
+      "classId": "cls-8a8",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-hdtn-cd",
+      "classId": "cls-8a9",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần (Thầy Thái Văn Tiến nhận từ Thầy Phan Văn Tặt từ Tuần 4)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-toan",
+      "classId": "cls-8a9",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-15",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-anh",
+      "classId": "cls-8a9",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-1",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-su",
+      "classId": "cls-8a9",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 8 (HK1: 26t/18w, Cả năm: 50t)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-cn",
+      "classId": "cls-8a9",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1.44,
+      "note": "Công nghệ 8 (HK1: 26t/18w - T1-8: 2t/w, T9-18: 1t/w)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-gdtc",
+      "classId": "cls-8a9",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-van",
+      "classId": "cls-8a9",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-3",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-am-nhac",
+      "classId": "cls-8a9",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-my-thuat",
+      "classId": "cls-8a9",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-tin",
+      "classId": "cls-8a9",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-dia",
+      "classId": "cls-8a9",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 8 (HK1: 28t/18w, Cả năm: 55t)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-gdcd",
+      "classId": "cls-8a9",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-hdtn-shl",
+      "classId": "cls-8a9",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần (Thầy Thái Văn Tiến nhận từ Thầy Phan Văn Tặt từ Tuần 4)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-hdtn-cd",
+      "classId": "cls-8a10",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần (Thầy Thái Văn Tiến nhận từ Thầy Phan Văn Tặt từ Tuần 4)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-anh",
+      "classId": "cls-8a10",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-su",
+      "classId": "cls-8a10",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 8 (HK1: 26t/18w, Cả năm: 50t)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-cn",
+      "classId": "cls-8a10",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1.44,
+      "note": "Công nghệ 8 (HK1: 26t/18w - T1-8: 2t/w, T9-18: 1t/w)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-am-nhac",
+      "classId": "cls-8a10",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-gdtc",
+      "classId": "cls-8a10",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-3",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-gdcd",
+      "classId": "cls-8a10",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-my-thuat",
+      "classId": "cls-8a10",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-van",
+      "classId": "cls-8a10",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-toan",
+      "classId": "cls-8a10",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-15",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-tin",
+      "classId": "cls-8a10",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-dia",
+      "classId": "cls-8a10",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-15",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 8 (HK1: 28t/18w, Cả năm: 55t)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-hdtn-shl",
+      "classId": "cls-8a10",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-2",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần (Thầy Thái Văn Tiến nhận từ Thầy Phan Văn Tặt từ Tuần 4)"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-hdtn-cd",
+      "classId": "cls-9a7",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-bgh-4",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-tin",
+      "classId": "cls-9a7",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-toan",
+      "classId": "cls-9a7",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-2",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-van",
+      "classId": "cls-9a7",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-gdtc",
+      "classId": "cls-9a7",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-dia",
+      "classId": "cls-9a7",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 9 (HK1: 28t/18w, Cả năm: 53t)"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-cn",
+      "classId": "cls-9a7",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-su",
+      "classId": "cls-9a7",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 9 (HK1: 26t/18w, Cả năm: 52t)"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-gdcd",
+      "classId": "cls-9a7",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-anh",
+      "classId": "cls-9a7",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-am-nhac",
+      "classId": "cls-9a7",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-my-thuat",
+      "classId": "cls-9a7",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-hdtn-shl",
+      "classId": "cls-9a7",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-bgh-4",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-hdtn-cd",
+      "classId": "cls-9a8",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-toan",
+      "classId": "cls-9a8",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-van",
+      "classId": "cls-9a8",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-3",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-anh",
+      "classId": "cls-9a8",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-gdcd",
+      "classId": "cls-9a8",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-my-thuat",
+      "classId": "cls-9a8",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-gdtc",
+      "classId": "cls-9a8",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-am-nhac",
+      "classId": "cls-9a8",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-tin",
+      "classId": "cls-9a8",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-su",
+      "classId": "cls-9a8",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 9 (HK1: 26t/18w, Cả năm: 52t)"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-cn",
+      "classId": "cls-9a8",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-dia",
+      "classId": "cls-9a8",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 9 (HK1: 28t/18w, Cả năm: 53t)"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-hdtn-shl",
+      "classId": "cls-9a8",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-hdtn-cd",
+      "classId": "cls-9a9",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-van",
+      "classId": "cls-9a9",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-3",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-toan",
+      "classId": "cls-9a9",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-2",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-gdcd",
+      "classId": "cls-9a9",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-su",
+      "classId": "cls-9a9",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 9 (HK1: 26t/18w, Cả năm: 52t)"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-dia",
+      "classId": "cls-9a9",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 9 (HK1: 28t/18w, Cả năm: 53t)"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-gdtc",
+      "classId": "cls-9a9",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-my-thuat",
+      "classId": "cls-9a9",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-anh",
+      "classId": "cls-9a9",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-cn",
+      "classId": "cls-9a9",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-tin",
+      "classId": "cls-9a9",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-am-nhac",
+      "classId": "cls-9a9",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-hdtn-shl",
+      "classId": "cls-9a9",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-hdtn-cd",
+      "classId": "cls-9a10",
+      "subjectId": "sub-hdtn-cd",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Chuyên đề) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-anh",
+      "classId": "cls-9a10",
+      "subjectId": "sub-anh",
+      "teacherId": "tch-av-15",
+      "periodsPerWeek": 3,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-toan",
+      "classId": "cls-9a10",
+      "subjectId": "sub-toan",
+      "teacherId": "tch-t-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-dia",
+      "classId": "cls-9a10",
+      "subjectId": "sub-dia",
+      "teacherId": "tch-ls-3",
+      "periodsPerWeek": 1.56,
+      "note": "Phân công chuyên môn Địa lí 9 (HK1: 28t/18w, Cả năm: 53t)"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-gdtc",
+      "classId": "cls-9a10",
+      "subjectId": "sub-gdtc",
+      "teacherId": "tch-td-11",
+      "periodsPerWeek": 2,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-gdcd",
+      "classId": "cls-9a10",
+      "subjectId": "sub-gdcd",
+      "teacherId": "tch-ls-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-su",
+      "classId": "cls-9a10",
+      "subjectId": "sub-su",
+      "teacherId": "tch-ls-14",
+      "periodsPerWeek": 1.44,
+      "note": "Phân công chuyên môn Lịch sử 9 (HK1: 26t/18w, Cả năm: 52t)"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-cn",
+      "classId": "cls-9a10",
+      "subjectId": "sub-cn",
+      "teacherId": "tch-khtn-25",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-van",
+      "classId": "cls-9a10",
+      "subjectId": "sub-van",
+      "teacherId": "tch-v-13",
+      "periodsPerWeek": 4,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-my-thuat",
+      "classId": "cls-9a10",
+      "subjectId": "sub-my-thuat",
+      "teacherId": "tch-td-10",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-am-nhac",
+      "classId": "cls-9a10",
+      "subjectId": "sub-am-nhac",
+      "teacherId": "tch-td-12",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-tin",
+      "classId": "cls-9a10",
+      "subjectId": "sub-tin",
+      "teacherId": "tch-av-16",
+      "periodsPerWeek": 1,
+      "note": "Bổ sung từ TKB Tuần 1"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-hdtn-shl",
+      "classId": "cls-9a10",
+      "subjectId": "sub-hdtn-shl",
+      "teacherId": "tch-khtn-26",
+      "periodsPerWeek": 1,
+      "note": "HĐTNHN (Sinh hoạt lớp) - 1 tiết/tuần"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-li",
+      "classId": "cls-8a7",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-hoa",
+      "classId": "cls-8a7",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Hóa 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a7-sub-sinh",
+      "classId": "cls-8a7",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Sinh 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-li",
+      "classId": "cls-8a8",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-hoa",
+      "classId": "cls-8a8",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Hóa 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a8-sub-sinh",
+      "classId": "cls-8a8",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Sinh 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-li",
+      "classId": "cls-8a9",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-hoa",
+      "classId": "cls-8a9",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Hóa 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a9-sub-sinh",
+      "classId": "cls-8a9",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Sinh 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-li",
+      "classId": "cls-8a10",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-hoa",
+      "classId": "cls-8a10",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Hóa 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-8a10-sub-sinh",
+      "classId": "cls-8a10",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 8 (Sinh 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-li",
+      "classId": "cls-9a7",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 9 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-hoa",
+      "classId": "cls-9a7",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.61,
+      "note": "Phân công chuyên môn KHTN 9 (Hóa 29t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a7-sub-sinh",
+      "classId": "cls-9a7",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.06,
+      "note": "Phân công chuyên môn KHTN 9 (Sinh 19t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-li",
+      "classId": "cls-9a8",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 9 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-hoa",
+      "classId": "cls-9a8",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.61,
+      "note": "Phân công chuyên môn KHTN 9 (Hóa 29t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a8-sub-sinh",
+      "classId": "cls-9a8",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.06,
+      "note": "Phân công chuyên môn KHTN 9 (Sinh 19t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-li",
+      "classId": "cls-9a9",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 9 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-hoa",
+      "classId": "cls-9a9",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.61,
+      "note": "Phân công chuyên môn KHTN 9 (Hóa 29t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a9-sub-sinh",
+      "classId": "cls-9a9",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.06,
+      "note": "Phân công chuyên môn KHTN 9 (Sinh 19t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-li",
+      "classId": "cls-9a10",
+      "subjectId": "sub-li",
+      "teacherId": "tch-khtn-14",
+      "periodsPerWeek": 1.33,
+      "note": "Phân công chuyên môn KHTN 9 (Lý 24t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-hoa",
+      "classId": "cls-9a10",
+      "subjectId": "sub-hoa",
+      "teacherId": "tch-khtn-15",
+      "periodsPerWeek": 1.61,
+      "note": "Phân công chuyên môn KHTN 9 (Hóa 29t/18w)"
+    },
+    {
+      "id": "as-tkb-cls-9a10-sub-sinh",
+      "classId": "cls-9a10",
+      "subjectId": "sub-sinh",
+      "teacherId": "tch-khtn-20",
+      "periodsPerWeek": 1.06,
+      "note": "Phân công chuyên môn KHTN 9 (Sinh 19t/18w)"
+    }
+  ]
+}
