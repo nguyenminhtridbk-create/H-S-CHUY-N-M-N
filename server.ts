@@ -3,6 +3,8 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { PDFParse } from 'pdf-parse';
+import mammoth from 'mammoth';
 
 dotenv.config();
 
@@ -980,17 +982,21 @@ QUY ĐỊNH BẮT BUỘC VỀ ĐỘ DÀI VÀ TÍNH CỤ THỂ (TUYỆT ĐỐI KH
    - Đội ngũ: 120 CB-GV-NV (102 giáo viên trực tiếp giảng dạy), cơ cấu 08 tổ chuyên môn.
    - Ban Giám hiệu: Thầy Hiệu trưởng Lê Thanh Cường phụ trách chung, Thầy Phó Hiệu trưởng Nguyễn Minh Trí trực tiếp phụ trách chuyên môn.
 ${is2BuoiPlan ? `
-3. ĐẶC BIỆT ĐỐI VỚI KẾ HOẠCH DẠY HỌC 2 BUỔI/NGÀY (Phải có đầy đủ 5 phần chi tiết):
-   - Phần I: Mục đích, yêu cầu (Phụ đạo học sinh có nguy cơ chưa đạt YCCĐ, bồi dưỡng HSG, rèn kỹ năng số/AI/STEM, nguyên tắc tự nguyện, cấm thu tiền trái quy định).
-   - Phần II: Đặc điểm tình hình và cơ cấu điều kiện (Phân bổ số lớp, số học sinh của 3 điểm trường, thuận lợi và khó khăn khi điểm Tân Kiều cách 11km).
-   - Phần III: Nội dung, hình thức và khung thời gian hoạt động:
-     + Buổi sáng (6h30 - 11h30, 5 tiết): Chính khóa các môn tư duy cao.
-     + Buổi chiều (14h20 - 17h00, 3 tiết): 4 nhóm hoạt động cụ thể: (1) Củng cố kiến thức, phụ đạo miễn phí học sinh có nguy cơ chưa đạt YCCĐ các môn Toán, Văn, Anh, KHTN; (2) Bồi dưỡng học sinh giỏi; (3) Hoạt động giáo dục STEM, CLB Tin học - AI, CLB Tiếng Anh; (4) Rèn luyện thể dục thể thao và nghệ thuật.
-   - Phần IV: Bố trí đội ngũ, cơ sở vật chất và kinh phí:
-     + Nguyên tắc phân công giáo viên: Phải bố trí dạy liền buổi tại cùng 1 điểm trường; cấm xếp giáo viên sáng dạy Đốc Binh Kiều, chiều chạy 11km sang Tân Kiều trong cùng một ngày.
-     + Mở cửa thư viện và phòng máy tính buổi chiều để học sinh tự học và nghiên cứu.
-     + Kinh phí từ ngân sách nhà nước, tuyệt đối không thu tiền học thêm sai quy định.
-   - Phần V: Tổ chức thực hiện: Phân công trách nhiệm rõ ràng cho Hiệu trưởng Lê Thanh Cường, Phó Hiệu trưởng Nguyễn Minh Trí, 08 Tổ chuyên môn, bộ phận Điểm Tân Kiều, GV bộ môn, GV chủ nhiệm.
+3. QUY ĐỊNH BẮT BUỘC KHI CỤ THỂ HÓA KẾ HOẠCH DẠY HỌC 2 BUỔI/NGÀY (BÁM SÁT KẾ HOẠCH CỦA SỞ GDĐT ĐỒNG THÁP):
+   - Quy tắc 1 (Khung sườn cứng): Bắt buộc bám theo đúng 5 mục lớn của Sở GDĐT:
+     * I. MỤC ĐÍCH, YÊU CẦU (Mục đích a, b, c, d; Yêu cầu a, b, c, d bám sát Sở).
+     * II. NỘI DUNG, HÌNH THỨC TỔ CHỨC DẠY HỌC 2 BUỔI/NGÀY:
+       + 1. Đối với cấp trung học cơ sở: 39 lớp (24 lớp điểm Đốc Binh Kiều, 15 lớp điểm Tân Kiều cách 11km). Thời lượng, thời khóa biểu (sáng khối 8,9; chiều khối 6,7), nội dung Buổi 1 chính khóa và Buổi 2 (phụ đạo miễn phí học sinh chưa đạt YCCĐ, bồi dưỡng HSG lớp 9, ôn thi vào lớp 10, STEM, Tin học-AI, CLB).
+       + 2. Đối với cấp trung học phổ thông: 14 lớp (Khối 10, 11, 12 tại Điểm chính). Thời lượng, thời khóa biểu sáng chính khóa, chiều buổi 2 (phụ đạo, bồi dưỡng HSG tỉnh, ôn thi tốt nghiệp THPT theo tổ hợp KHTN/KHXH, NCKH kỹ thuật).
+       (LƯU Ý: XÓA BỎ MỤC TIỂU HỌC CỦA SỞ VÌ TRƯỜNG CHỈ CÓ THCS VÀ THPT).
+     * III. KINH PHÍ VÀ ĐIỀU KIỆN THỰC HIỆN: Kinh phí ngân sách chi thường xuyên theo định mức và Công văn 9179/BTC-NSNN; chủ trương xã hội hóa giáo dục đúng quy định, nguyên tắc tự nguyện, công khai, tuyệt đối không thu tiền sai quy định; khai thác 19 phòng bộ môn và các phòng máy tính.
+     * IV. TỔ CHỨC THỰC HIỆN: Phân công nhiệm vụ có 'hồn' gắn liền hệ thống phân công chuyên môn phancongchuyenmonthcsthptdbk.vercel.app:
+       + Ban Giám hiệu: Thầy Hiệu trưởng Lê Thanh Cường chỉ đạo chung; Thầy Phó Hiệu trưởng Nguyễn Minh Trí trực tiếp phụ trách chuyên môn 2 buổi/ngày toàn trường, duyệt kế hoạch buổi 2, xếp TKB, giám sát kê khai thừa thiếu tiết trên webapp phân công chuyên môn; Cán bộ phụ trách Điểm Tân Kiều.
+       + 07 Tổ chuyên môn: Xây dựng kế hoạch dạy buổi 2, phân công giáo viên theo định mức, theo dõi kê khai thừa thiếu tiết.
+       + Giáo viên bộ môn, Giáo viên chủ nhiệm, Ban đại diện CMHS.
+     * V. CHẾ ĐỘ THÔNG TIN, BÁO CÁO: Báo cáo định kỳ học kỳ 1 và cuối năm học về Sở GDĐT Đồng Tháp (qua Phòng GDPT).
+   - Quy tắc 2 (Căn cứ pháp lý): Phải bám sát căn cứ của Sở (Chỉ thị 17/CT-TTg, Thông tư 32/2018, Công văn 9179/BTC-NSNN, Công văn 5208/BGDĐT-GDPT, Kế hoạch 1251/KH-UBND của UBND tỉnh, Kế hoạch triển khai của Sở GDĐT, Quyết định 2606/QĐ-UBND sáp nhập trường, Kế hoạch GD nhà trường 28/KH-THCS&THPTĐBK).
+   - Quy tắc 3 (Có hồn): Nội dung phù hợp cấp THCS, THPT, phân công nhiệm vụ cụ thể, thực tế trường sáp nhập 3 điểm cách nhau 11km.
 ` : ''}
 
 HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGHỊ ĐỊNH 30/2020/NĐ-CP:
@@ -1242,6 +1248,43 @@ b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 
   } catch (error: any) {
     console.error('Error in auto-research-and-build:', error);
     res.status(500).json({ success: false, error: error.message || 'Lỗi tra cứu và xây dựng văn bản' });
+  }
+});
+
+// Endpoint to extract clean text from uploaded PDF / DOCX
+app.post('/api/extract-text', async (req, res) => {
+  try {
+    const { base64, fileName } = req.body;
+    if (!base64) {
+      return res.status(400).json({ error: 'Missing base64 data' });
+    }
+    const buffer = Buffer.from(base64, 'base64');
+    let text = '';
+    const lower = (fileName || '').toLowerCase();
+
+    if (lower.endsWith('.pdf')) {
+      const parser = new PDFParse({ data: buffer });
+      const parsed = await parser.getText();
+      text = parsed.text || '';
+    } else if (lower.endsWith('.docx')) {
+      const parsed = await mammoth.extractRawText({ buffer });
+      text = parsed.value || '';
+    } else {
+      text = buffer.toString('utf-8');
+    }
+
+    // Clean page artifacts
+    text = text
+      .replace(/-- \d+ of \d+ --/g, '')
+      .replace(/Trang \d+\/\d+/g, '')
+      .replace(/Trang \d+/g, '')
+      .replace(/[ \t]+/g, ' ')
+      .trim();
+
+    res.json({ success: true, text });
+  } catch (err: any) {
+    console.error('Error in /api/extract-text:', err);
+    res.status(500).json({ success: false, error: err.message || 'Không thể trích xuất nội dung file' });
   }
 });
 

@@ -140,101 +140,139 @@ Trong quá trình thực hiện, nếu có khó khăn, vướng mắc, các tậ
     issuingAuthority: 'TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU',
     signerRole: 'KT. HIỆU TRƯỞNG\nPHÓ HIỆU TRƯỞNG',
     signerName: 'Nguyễn Minh Trí',
-    sourceDirectiveId: 'directive-5208',
-    sourceDirective: 'Công văn số 5208/BGDĐT-GDPT và Hướng dẫn số 1061/HD-SGDĐT Sở GDĐT Đồng Tháp',
+    sourceDirectiveId: 'directive-1251-ubnd',
+    sourceDirective: 'Kế hoạch số 1251/KH-UBND ngày 17/8/2026 của UBND tỉnh Đồng Tháp và Kế hoạch triển khai của Sở GDĐT',
     legalBases: [
-      'Thông tư số 32/2018/TT-BGDĐT ngày 26/12/2018 của Bộ GDĐT ban hành Chương trình GDPT',
-      'Thông tư số 15/2026/TT-BGDĐT ngày 24/3/2026 của Bộ GDĐT ban hành Điều lệ trường TH, THCS, THPT và trường phổ thông có nhiều cấp học',
-      'Công văn số 5208/BGDĐT-GDPT ngày 07/8/2026 của Bộ GDĐT về hướng dẫn thực hiện nhiệm vụ GDPT năm học 2026 - 2027',
-      'Hướng dẫn số 1061/HD-SGDĐT ngày 28/8/2026 của Sở GDĐT tỉnh Đồng Tháp về thực hiện nhiệm vụ giáo dục phổ thông năm học 2026 - 2027',
-      'Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của UBND tỉnh Đồng Tháp về việc sáp nhập thành Trường THCS và THPT Đốc Binh Kiều',
-      'Nghị quyết Hội nghị Cán bộ, viên chức Trường THCS và THPT Đốc Binh Kiều năm học 2026 - 2027',
+      'Chỉ thị số 17/CT-TTg ngày 06 tháng 6 năm 2025 của Thủ tướng Chính phủ về tăng cường sự phối hợp giữa nhà trường, gia đình và xã hội trong công tác giáo dục trẻ em, học sinh',
+      'Thông tư số 32/2018/TT-BGDĐT ngày 26 tháng 12 năm 2018 của Bộ trưởng Bộ Giáo dục và Đào tạo ban hành Chương trình giáo dục phổ thông',
+      'Công văn số 9179/BTC-NSNN ngày 25 tháng 6 năm 2025 của Bộ Tài chính về việc kinh phí thực hiện dạy học 2 buổi/ngày',
+      'Công văn số 5208/BGDĐT-GDPT ngày 07 tháng 8 năm 2026 của Bộ Giáo dục và Đào tạo về việc tổ chức dạy học 2 buổi/ngày cấp trung học cơ sở và cấp trung học phổ thông',
+      'Kế hoạch số 1251/KH-UBND ngày 17 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
+      'Kế hoạch triển khai của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
+      'Quyết định số 2606/QĐ-UBND ngày 13 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập Trường THCS Đốc Binh Kiều, Trường THCS Tân Kiều và Trường THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều',
+      'Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 28/KH-THCS&THPTĐBK ngày 05 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều',
     ],
     sections: [
       {
         heading: 'I. MỤC ĐÍCH, YÊU CẦU',
         content: `1. Mục đích:
-- Nâng cao chất lượng giáo dục toàn diện, củng cố và nâng cao chất lượng giáo dục đại trà và giáo dục mũi nhọn cho học sinh toàn trường ở cả 2 cấp học (THCS và THPT).
-- Tạo điều kiện thuận lợi cho học sinh được rèn luyện kỹ năng tự học, kỹ năng thực hành thí nghiệm, năng lực số và ứng dụng Trí tuệ nhân tạo (AI); tham gia các hoạt động giáo dục STEM, trải nghiệm hướng nghiệp và rèn luyện thể chất, nghệ thuật.
-- Khắc phục tình trạng học thêm, dạy thêm sai quy định; giúp đỡ kịp thời những học sinh có nguy cơ chưa đạt yêu cầu cần đạt (YCCĐ) và bồi dưỡng chuyên sâu cho học sinh giỏi tham gia các kỳ thi cấp tỉnh.
+a) Tổ chức thực hiện nghiêm túc, đồng bộ các nội dung của Chỉ thị số 17/CT-TTg của Thủ tướng Chính phủ và Kế hoạch số 1251/KH-UBND của UBND tỉnh Đồng Tháp; nâng cao chất lượng giáo dục toàn diện cho 2.143 học sinh ở cả 2 cấp học (THCS và THPT) tại 3 điểm trường của Trường THCS và THPT Đốc Binh Kiều.
+b) Nâng cao chất lượng các hoạt động giáo dục toàn diện về Đức - Trí - Thể - Mỹ, bao gồm: giáo dục đạo đức, kỹ năng sống, giáo dục STEM/STEAM, giáo dục văn hóa đọc, văn hóa học đường, giáo dục thể chất, nghệ thuật, giáo dục tài chính; phát triển năng lực ngoại ngữ, năng lực số, năng lực trí tuệ nhân tạo (AI); hình thành ý thức và thói quen tự học suốt đời cho học sinh.
+c) Nâng cao chất lượng giờ học chính khóa; khắc phục triệt để tình trạng dạy thêm, học thêm không đúng quy định; xây dựng môi trường giáo dục lành mạnh, an toàn, bảo đảm công bằng trong tiếp cận giáo dục giữa điểm trường chính và điểm trường lẻ.
+d) Sử dụng hiệu quả đội ngũ 101 cán bộ, giáo viên và cơ sở vật chất hiện có tại 3 điểm trường (Điểm chính THPT, Điểm THCS Đốc Binh Kiều, Điểm THCS Tân Kiều); phát huy tối đa tinh thần đổi mới phương pháp dạy học và kiểm tra, đánh giá theo hướng phát triển năng lực, phẩm chất người học.
 
 2. Yêu cầu:
-- Tổ chức dạy học 2 buổi/ngày phải bảo đảm tính tự nguyện, đồng thuận của cha mẹ học sinh; phù hợp với điều kiện cơ sở vật chất và đội ngũ giáo viên của từng điểm trường (Điểm chính, Điểm Đốc Binh Kiều và Điểm Tân Kiều cách 11km).
-- Không gây quá tải cho học sinh và giáo viên; phân định rành mạch giữa chương trình chính khóa và các hoạt động giáo dục tăng cường buổi thứ 2.
-- Bảo đảm an toàn tuyệt đối cho học sinh trong suốt thời gian học tập tại trường.`,
+a) Thực hiện hiệu quả mục tiêu Chương trình GDPT 2018, bảo đảm về thời lượng dạy học các môn học và tổ chức các hoạt động giáo dục; không gây quá tải, phù hợp tâm sinh lý lứa tuổi và sức khỏe của học sinh THCS và THPT.
+b) Bảo đảm quyền lợi, đáp ứng nhu cầu, nguyện vọng học tập của học sinh; phù hợp với điều kiện thực tế của từng điểm trường và địa phương 2 xã Đốc Binh Kiều và Tân Kiều; thực hiện hiệu quả chủ trương xã hội hóa giáo dục bảo đảm nguyên tắc tự nguyện, công khai, minh bạch, đúng quy định của pháp luật.
+c) Tổ chức thực hiện dạy học 2 buổi/ngày bảo đảm sử dụng hiệu quả cơ sở vật chất (phòng học, 19 phòng học bộ môn, phòng máy vi tính, sân thể thao) và phân công đội ngũ giáo viên hợp lý; phát huy vai trò chủ động, sáng tạo của 07 tổ chuyên môn.
+d) Thời lượng dạy học buổi 1 và buổi 2 trong tuần thực hiện linh hoạt trong sắp xếp thời khóa biểu; phân định rành mạch giữa chương trình chính khóa và các hoạt động giáo dục tăng cường buổi thứ 2; bảo đảm an toàn giao thông cho học sinh và giáo viên khi di chuyển giữa các điểm trường.`,
       },
       {
-        heading: 'II. ĐẶC ĐIỂM TÌNH HÌNH VÀ CƠ CẤU ĐIỀU KIỆN TỔ CHỨC',
-        content: `1. Quy mô học sinh và lớp học:
-- Toàn trường: 53 lớp với 2.143 học sinh (Cấp THCS: 39 lớp với 1.613 HS; Cấp THPT: 14 lớp với 530 HS).
-- Phân bổ theo 3 điểm trường:
-  + Điểm chính (Khối 10, 11, 12): 14 lớp, 530 học sinh. Có 12 phòng học kiên cố, 09 phòng bộ môn, phòng máy tính.
-  + Điểm Đốc Binh Kiều (Khối 6, 7, 8, 9): 24 lớp, 983 học sinh. Có 22 phòng học, sân bóng đá mini, sân bóng chuyền.
-  + Điểm Tân Kiều (Khối 6, 7, 8, 9 - cách điểm chính 11 km): 15 lớp, 557 học sinh. Có 09 phòng học, 10 phòng bộ môn.
+        heading: 'II. NỘI DUNG, HÌNH THỨC TỔ CHỨC DẠY HỌC 2 BUỔI/NGÀY',
+        content: `Nội dung, hình thức tổ chức dạy học 2 buổi/ngày tại Trường THCS và THPT Đốc Binh Kiều được triển khai thực hiện nghiêm túc theo Kế hoạch số 1251/KH-UBND của UBND tỉnh Đồng Tháp và văn bản chỉ đạo của Sở Giáo dục và Đào tạo, cụ thể đối với 2 cấp học như sau:
 
-2. Thuận lợi và khó khăn:
-- Thuận lợi: Được sự quan tâm của Sở GDĐT Đồng Tháp, chính quyền địa phương và sự đồng thuận cao của Ban đại diện cha mẹ học sinh. Đội ngũ giáo viên gồm 102 thầy cô có năng lực chuyên môn vững vàng, 100% đạt chuẩn và trên chuẩn.
-- Khó khăn: Địa bàn trải rộng trên 2 xã; Điểm Tân Kiều cách điểm chính 11 km đòi hỏi phương án điều phối lịch học linh hoạt để tránh giáo viên phải di chuyển nhiều lần trong ngày giữa các điểm trường; cơ sở vật chất phòng bộ môn tại điểm Tân Kiều cần tiếp tục bổ sung vật tư tiêu hao.`,
+1. Đối với cấp trung học cơ sở (Quy mô: 39 lớp với 1.613 học sinh tại 2 điểm trường):
+a) Thời lượng và bố trí thời gian:
+- Tổ chức dạy học 2 buổi/ngày cho học sinh cấp THCS tại 2 điểm: Điểm THCS Đốc Binh Kiều (24 lớp, 983 HS) và Điểm THCS Tân Kiều (15 lớp, 557 HS - cách điểm chính 11 km).
+- Bố trí thời gian học tập 6 ngày/tuần (từ thứ Hai đến thứ Bảy), mỗi ngày không quá 7 tiết học, mỗi tiết 45 phút.
+- Khung thời gian học tập trong ngày:
+  + Buổi sáng (tối đa 5 tiết, từ 7h00 đến 11h30): Bố trí dạy học chính khóa đối với Khối 8 và Khối 9; tổ chức các hoạt động bồi dưỡng, phụ đạo, trải nghiệm buổi 2 đối với Khối 6 và Khối 7.
+  + Buổi chiều (tối đa 3 tiết, từ 14h20 đến 17h00): Bố trí dạy học chính khóa đối với Khối 6 và Khối 7; tổ chức các hoạt động buổi 2 (phụ đạo, bồi dưỡng HSG, CLB) đối với Khối 8 và Khối 9.
+b) Nội dung và hình thức dạy học:
+- Buổi 1 (Chính khóa): Thực hiện đầy đủ kế hoạch giáo dục môn học và hoạt động giáo dục theo Chương trình GDPT 2018 ban hành kèm theo Thông tư số 32/2018/TT-BGDĐT.
+- Buổi 2 (Tăng cường & Phát triển năng lực):
+  + Tổ chức ôn tập, phụ đạo củng cố kiến thức cho học sinh có nguy cơ chưa đạt yêu cầu cần đạt (YCCĐ) các môn Toán, Ngữ văn, Tiếng Anh, Khoa học tự nhiên (hoàn toàn miễn phí, không thu tiền học sinh).
+  + Bồi dưỡng học sinh giỏi lớp 9 tham gia kỳ thi chọn HSG cấp huyện và cấp tỉnh Đồng Tháp.
+  + Tổ chức ôn tập, củng cố kiến thức trọng tâm cho học sinh lớp 9 chuẩn bị kỳ thi tuyển sinh vào lớp 10 THPT.
+  + Tổ chức hoạt động giáo dục STEM/STEAM, câu lạc bộ Tin học - Trí tuệ nhân tạo (AI), hoạt động trải nghiệm hướng nghiệp, giáo dục kỹ năng sống, an toàn giao thông, văn hóa đọc tại thư viện trường, rèn luyện thể dục thể thao (bóng đá, bóng chuyền, cầu lông, điền kinh) và văn nghệ.
+- Đa dạng hóa hình thức tổ chức dạy học: Phân chia nhóm học sinh theo năng lực, trình độ; tổ chức câu lạc bộ theo sở thích; tăng cường thời lượng tự học có hướng dẫn của giáo viên bộ môn tại thư viện và phòng bộ môn.
+
+2. Đối với cấp trung học phổ thông (Quy mô: 14 lớp với 530 học sinh tại Điểm chính):
+a) Thời lượng và bố trí thời gian:
+- Tổ chức dạy học 2 buổi/ngày cho học sinh Khối 10 (5 lớp, 203 HS), Khối 11 (4 lớp, 142 HS), Khối 12 (5 lớp, 185 HS) tại Điểm trường chính.
+- Bố trí thời gian học tập 6 ngày/tuần, mỗi ngày không quá 7 tiết học, mỗi tiết 45 phút.
+- Khung thời gian:
+  + Buổi sáng (tối đa 5 tiết, từ 7h00 đến 11h30): Dạy học toàn bộ chương trình chính khóa các môn bắt buộc và cụm chuyên đề lựa chọn.
+  + Buổi chiều (tối đa 3 tiết, từ 14h20 đến 17h00, 3-4 buổi/tuần): Dạy học buổi 2 theo định hướng phân hóa và năng khiếu.
+b) Nội dung và hình thức dạy học:
+- Buổi 1 (Chính khóa): Hoàn thành đầy đủ chuẩn kiến thức, kỹ năng của Chương trình GDPT 2018; bảo đảm tiến độ phân phối chương trình của các tổ chuyên môn.
+- Buổi 2 (Tăng cường & Chuyên sâu):
+  + Tổ chức phụ đạo, giúp đỡ học sinh chưa đạt chuẩn ở các môn Toán, Ngữ văn, Tiếng Anh, Vật lý, Hóa học, Sinh học, Lịch sử, Địa lý.
+  + Bồi dưỡng chuyên sâu các đội tuyển học sinh giỏi cấp tỉnh khối 10, 11, 12 ở các môn văn hóa.
+  + Tổ chức ôn tập thi Tốt nghiệp THPT cho học sinh Khối 12 theo 2 nhóm định hướng nghề nghiệp: Tổ hợp Khoa học tự nhiên và Tổ hợp Khoa học xã hội.
+  + Tổ chức nghiên cứu khoa học kỹ thuật dành cho học sinh trung học; giáo dục STEM; câu lạc bộ chuyển đổi số và ứng dụng AI; tư vấn tâm lý học đường và hướng nghiệp - phân luồng sau THPT; các hoạt động tình nguyện, rèn luyện thể chất, giáo dục quốc phòng và an ninh.
+- Đa dạng hóa hình thức tổ chức: Học theo nhóm nguyện vọng tổ hợp môn thi; sinh hoạt chuyên đề tại phòng thí nghiệm, phòng máy vi tính; hướng dẫn tự học kết hợp học tập trực tuyến trên hệ thống quản lý học tập số của nhà trường.`,
       },
       {
-        heading: 'III. NỘI DUNG, HÌNH THỨC VÀ KHUNG THỜI GIAN HOẠT ĐỘNG 2 BUỔI/NGÀY',
-        content: `1. Nội dung tổ chức dạy học:
-a) Buổi sáng (Chính khóa khối 8, 9, 10, 11, 12 và tăng cường khối 6, 7):
-- Thực hiện đầy đủ chương trình các môn học bắt buộc và môn học lựa chọn theo Chương trình GDPT 2018.
-- Bố trí các môn có tính tư duy cao vào các tiết đầu buổi sáng.
-b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 11, 12):
-- Hoạt động 1: Củng cố kiến thức, phụ đạo học sinh có nguy cơ chưa đạt YCCĐ các môn Toán, Ngữ văn, Tiếng Anh, KHTN (hoàn toàn miễn phí, không thu tiền của học sinh).
-- Hoạt động 2: Bồi dưỡng học sinh giỏi lớp 9 và khối 10, 11, 12 chuẩn bị kỳ thi chọn HSG cấp tỉnh Đồng Tháp.
-- Hoạt động 3: Giáo dục STEM, trải nghiệm hướng nghiệp, hoạt động câu lạc bộ Tin học - Trí tuệ nhân tạo (AI), câu lạc bộ Văn học, Tiếng Anh giao tiếp.
-- Hoạt động 4: Rèn luyện thể dục thể thao (bóng đá, bóng chuyền, cầu lông, điền kinh) và văn hóa nghệ thuật.
+        heading: 'III. KINH PHÍ VÀ ĐIỀU KIỆN THỰC HIỆN',
+        content: `1. Kinh phí từ ngân sách nhà nước:
+- Nhà trường chủ động sử dụng nguồn ngân sách chi thường xuyên được giao hằng năm theo định mức học sinh để chi trả cho các hoạt động dạy học 2 buổi/ngày theo đúng hướng dẫn tại Công văn số 9179/BTC-NSNN của Bộ Tài chính và quy chế chi tiêu nội bộ của đơn vị.
+- Ưu tiên bố trí kinh phí phục vụ mua sắm vật tư tiêu hao thực hành thí nghiệm, tài liệu ôn tập, duy trì đường truyền Internet tốc độ cao, hỗ trợ giáo viên tham gia bồi dưỡng học sinh giỏi và phụ đạo học sinh yếu kém.
 
-2. Khung thời gian biểu hoạt động trong ngày (Áp dụng thống nhất cho cả 3 điểm trường):
-- Buổi sáng (tối đa 5 tiết):
-  + 6h30 - 6h45: Vệ sinh trường lớp
-  + 6h45 - 7h00: Sinh hoạt đầu giờ
-  + 7h00 - 7h45: Tiết 1 (nghỉ 10 phút)
-  + 7h55 - 8h40: Tiết 2 (nghỉ 15 phút)
-  + 8h55 - 9h40: Tiết 3 (nghỉ 10 phút)
-  + 9h50 - 10h35: Tiết 4 (nghỉ 10 phút)
-  + 10h45 - 11h30: Tiết 5
-- Buổi chiều (tối đa 3 tiết):
-  + 14h20 - 15h05: Tiết 1 (nghỉ 15 phút)
-  + 15h20 - 16h05: Tiết 2 (nghỉ 10 phút)
-  + 16h15 - 17h00: Tiết 3 (nghỉ kết thúc)`,
+2. Nguồn lực xã hội hóa giáo dục:
+- Huy động các nguồn tài trợ, đóng góp tự nguyện hợp pháp từ cha mẹ học sinh, các tổ chức, cựu học sinh, doanh nghiệp trên địa bàn theo đúng quy định tại Thông tư số 16/2018/TT-BGDĐT.
+- Thực hiện nghiêm túc nguyên tắc tự nguyện, công khai, dân chủ, minh bạch; tuyệt đối không cào bằng, không quy định mức thu bình quân, không lợi dụng danh nghĩa ban đại diện cha mẹ học sinh để thu tiền trái quy định; không thu bất kỳ khoản tiền nào ngoài danh mục cho phép.
+
+3. Điều kiện bảo đảm về cơ sở vật chất:
+- Khai thác tối đa hiệu suất sử dụng của 14 phòng học và 09 phòng bộ môn kiên cố tại Điểm chính; 22 phòng học tại Điểm Đốc Binh Kiều; 09 phòng học và 10 phòng bộ môn tại Điểm Tân Kiều.
+- Mở cửa toàn bộ hệ thống phòng máy vi tính, thư viện tại cả 3 điểm trường trong suốt các buổi chiều để phục vụ học sinh tự học, đọc sách, nghiên cứu tài liệu số và khai thác học liệu điện tử.`,
       },
       {
-        heading: 'IV. BỐ TRÍ ĐỘI NGŨ, CƠ SỞ VẬT CHẤT VÀ KINH PHÍ',
-        content: `1. Phân công đội ngũ giáo viên:
-- Ban Giám hiệu phân công giáo viên giảng dạy đúng chuyên ngành đào tạo, bảo đảm định mức tiết dạy theo quy định của Bộ GDĐT và Nghị định của Chính phủ.
-- Ưu tiên bố trí giáo viên dạy liền buổi tại cùng một điểm trường (đặc biệt các giáo viên được phân công giảng dạy tại Điểm Tân Kiều), tránh tình trạng sáng dạy điểm Đốc Binh Kiều, chiều dạy điểm Tân Kiều trong cùng một ngày.
+        heading: 'IV. TỔ CHỨC THỰC HIỆN',
+        content: `Để kế hoạch dạy học 2 buổi/ngày đạt chất lượng thực chất và hiệu quả cao, nhà trường phân công trách nhiệm cụ thể, xuyên suốt gắn liền với hệ thống điều hành chuyên môn của đơn vị như sau:
 
-2. Khai thác cơ sở vật chất:
-- Tận dụng tối đa 09 phòng bộ môn tại Điểm chính, 22 phòng học tại Điểm Đốc Binh Kiều và 10 phòng bộ môn tại Điểm Tân Kiều.
-- Mở cửa phòng máy vi tính và thư viện trong suốt các buổi chiều để học sinh tự học, tra cứu tài liệu số và nghiên cứu khoa học dưới sự hướng dẫn của giáo viên quản lý.
+1. Ban Giám hiệu:
+- Thầy Hiệu trưởng Lê Thanh Cường: Lãnh đạo, chỉ đạo chung toàn diện; chịu trách nhiệm trước Sở GDĐT về việc tổ chức dạy học 2 buổi/ngày của đơn vị; phê duyệt kế hoạch, quyết định phân công nhiệm vụ; bảo đảm kinh phí, cơ sở vật chất, an ninh trật tự và an toàn trường học tại cả 3 điểm trường.
+- Thầy Phó Hiệu trưởng Nguyễn Minh Trí:
+  + Trực tiếp phụ trách chỉ đạo, điều hành công tác chuyên môn dạy học 2 buổi/ngày đối với cả 2 cấp THCS và THPT trên toàn trường.
+  + Trực tiếp xây dựng, điều chỉnh thời khóa biểu 53 lớp khoa học, hợp lý, bảo đảm không gây quá tải cho học sinh và giáo viên; ưu tiên sắp xếp lịch dạy cho giáo viên liền buổi tại cùng một điểm trường để giảm thiểu việc di chuyển giữa các điểm trường (đặc biệt Điểm Tân Kiều cách điểm chính 11 km).
+  + Phê duyệt kế hoạch dạy học buổi 2 của 07 tổ chuyên môn; ký duyệt danh sách học sinh phụ đạo và học sinh giỏi; chỉ đạo việc đổi mới kiểm tra, đánh giá thường xuyên.
+  + Giám sát chặt chẽ phân công giảng dạy, theo dõi việc kê khai thừa - thiếu tiết hàng tuần và tổng hợp kê khai tiết của 101 cán bộ, giáo viên trên hệ thống quản lý chuyên môn trực tuyến của nhà trường (https://phancongchuyenmonthcsthptdbk.vercel.app/), bảo đảm công khai, minh bạch, đúng định mức quy định.
+  + Thường xuyên kiểm tra, đôn đốc nền nếp dạy học buổi chiều tại 3 điểm trường; kịp thời tháo gỡ những khó khăn, vướng mắc phát sinh trong quá trình triển khai.
+- Cán bộ phụ trách Điểm Tân Kiều: Thường trực quản lý nền nếp, theo dõi sĩ số học sinh, kiểm tra cơ sở vật chất, thiết bị dạy học và an ninh trường học tại điểm lẻ Tân Kiều; báo cáo định kỳ về Ban Giám hiệu.
 
-3. Kinh phí thực hiện:
-- Nguồn ngân sách nhà nước cấp chi thường xuyên theo định mức học sinh.
-- Các nguồn hỗ trợ hợp pháp khác theo quy định hiện hành, tuyệt đối không thu tiền học thêm sai quy định.`,
+2. Các Tổ chuyên môn (07 tổ: Tổ Toán 15 GV, Tổ Ngữ văn 17 GV, Tổ KHXH 16 GV, Tổ KHTN-CN 26 GV, Tổ Tiếng Anh - Tin học 16 GV, Tổ GDTC-QPAN-NT 12 GV, Tổ Văn phòng 14 NV):
+- Căn cứ kế hoạch này, từng tổ chuyên môn tổ chức họp thống nhất, xây dựng Kế hoạch dạy học 2 buổi/ngày chi tiết cho từng môn học thuộc tổ phụ trách; xác định rõ nội dung củng cố, phụ đạo và nội dung bồi dưỡng nâng cao.
+- Phân công giáo viên trong tổ giảng dạy buổi 2 đúng chuyên môn đào tạo, công bằng, phù hợp với định mức tiết dạy được giao; theo dõi và hướng dẫn giáo viên thực hiện kê khai giờ dạy trung thực, chính xác hàng tuần trên hệ thống phân công chuyên môn.
+- Tổ chức sinh hoạt chuyên môn định kỳ theo nghiên cứu bài học; biên soạn hệ thống phiếu học tập, đề cương ôn tập, tài liệu bồi dưỡng HSG và ngân hàng câu hỏi kiểm tra phân hóa theo năng lực học sinh.
+
+3. Giáo viên bộ môn:
+- Thực hiện nghiêm túc kế hoạch dạy học buổi 2 đã được phê duyệt; lên lớp đúng giờ, chuẩn bị giáo án chu đáo, quản lý học sinh nghiêm túc trong suốt tiết học; ghi chép sổ đầu bài đầy đủ, chính xác.
+- Đổi mới mạnh mẽ phương pháp dạy học, tăng cường tương tác, phát huy tính tích cực, chủ động của học sinh; tuyệt đối không cắt xén nội dung chương trình chính khóa để chuyển sang dạy vào buổi 2.
+- Thường xuyên rà soát, nắm chắc năng lực từng học sinh trong lớp; kịp thời động viên, hỗ trợ học sinh có học lực yếu kém để giúp các em tiến bộ; đồng thời bồi dưỡng những em có năng khiếu.
+- Thực hiện cập nhật kết quả đánh giá, nhận xét học sinh trên hệ thống hồ sơ sổ sách điện tử đúng tiến độ quy định.
+
+4. Giáo viên chủ nhiệm:
+- Phối hợp chặt chẽ với cha mẹ học sinh để thông báo rõ ràng thời khóa biểu học tập 2 buổi/ngày; nắm chắc hoàn cảnh gia đình, điều kiện đi lại của từng học sinh trong lớp.
+- Quản lý chặt chẽ sĩ số học sinh, điểm danh đầu giờ mỗi buổi học; kịp thời liên hệ với gia đình khi học sinh vắng học không rõ lý do; giáo dục học sinh ý thức chấp hành an toàn giao thông, giữ gìn vệ sinh và an ninh trật tự trong giờ nghỉ giữa 2 buổi.
+- Lập danh sách học sinh có nhu cầu tham gia phụ đạo, bồi dưỡng hoặc tham gia các câu lạc bộ buổi 2 gửi về Ban Giám hiệu (qua Phó Hiệu trưởng Nguyễn Minh Trí) phê duyệt.
+
+5. Ban Đại diện Cha mẹ học sinh và các Đoàn thể trong nhà trường:
+- Ban Đại diện Cha mẹ học sinh: Phối hợp cùng nhà trường tuyên truyền, tạo sự đồng thuận cao; tạo điều kiện thuận lợi nhất về phương tiện đi lại, phương án ăn trưa/nghỉ trưa an toàn cho học sinh học 2 buổi/ngày.
+- Đoàn Thanh niên, Đội Thiếu niên: Tổ chức các hoạt động văn hóa, văn nghệ, giải thể thao học đường, câu lạc bộ sở thích, các buổi sinh hoạt chuyên đề bổ ích vào các buổi chiều, tạo sân chơi lành mạnh giúp học sinh phát triển toàn diện.`,
       },
       {
-        heading: 'V. TỔ CHỨC THỰC HIỆN',
-        content: `1. Ban Giám hiệu:
-- Thầy Hiệu trưởng Lê Thanh Cường phê duyệt kế hoạch, chỉ đạo chung về cơ sở vật chất và công tác an ninh, an toàn trường học.
-- Thầy Phó Hiệu trưởng Nguyễn Minh Trí trực tiếp phụ trách điều hành chuyên môn dạy học 2 buổi/ngày; xếp thời khóa biểu khoa học, kiểm tra nền nếp dạy học buổi chiều; ký duyệt danh sách học sinh phụ đạo và học sinh giỏi.
-- Phân công cán bộ phụ trách Điểm Tân Kiều theo dõi sĩ số, bảo đảm an ninh trật tự và vệ sinh môi trường tại điểm trường lẻ.
+        heading: 'V. CHẾ ĐỘ THÔNG TIN, BÁO CÁO',
+        content: `1. Chế độ thông tin, báo cáo:
+- Định kỳ hằng tuần, các Tổ trưởng chuyên môn tổng hợp tình hình thực hiện dạy học buổi 2 và tình hình kê khai tiết dạy của giáo viên trong tổ, báo cáo Phó Hiệu trưởng phụ trách chuyên môn qua giao ban chuyên môn.
+- Nhà trường thực hiện nghiêm túc chế độ báo cáo kết quả tổ chức dạy học 2 buổi/ngày về Sở Giáo dục và Đào tạo Đồng Tháp (qua Phòng Giáo dục Phổ thông, Email: giaoducphothong@dongthap.edu.vn) theo đúng quy định:
+  + Báo cáo sơ kết Học kỳ I trước ngày 15 tháng 01 năm 2027.
+  + Báo cáo tổng kết năm học trước ngày 30 tháng 5 năm 2027.
+  + Báo cáo đột xuất khi có yêu cầu của cơ quan quản lý cấp trên.
 
-2. Các Tổ chuyên môn và Giáo viên:
-- 08 Tổ chuyên môn xây dựng kế hoạch phân phối tiết dạy tăng cường, biên soạn đề cương, tài liệu ôn tập và phiếu học tập phù hợp từng đối tượng học sinh.
-- Giáo viên bộ môn thực hiện nghiêm túc giờ giấc lên lớp, đổi mới phương pháp giảng dạy, ghi chép sổ đầu bài đầy đủ.
-- Giáo viên chủ nhiệm phối hợp chặt chẽ với cha mẹ học sinh để quản lý giờ giấc, chuyên cần của học sinh giữa 2 buổi học./.`,
+2. Khen thưởng và kiểm tra, giám sát:
+- Ban Giám hiệu tổ chức kiểm tra định kỳ và đột xuất nền nếp dạy học buổi 2 tại cả 3 điểm trường; kịp thời chấn chỉnh các biểu hiện dạy thêm, học thêm sai quy định hoặc gây quá tải cho học sinh.
+- Kết quả thực hiện kế hoạch dạy học 2 buổi/ngày là một trong những tiêu chí quan trọng để đánh giá, xếp loại thi đua của các tổ chuyên môn, cán bộ quản lý và giáo viên vào cuối học kỳ và cuối năm học 2026 - 2027./.`,
       },
     ],
     recipients: [
-      'Sở GDĐT Đồng Tháp (báo cáo);',
-      'Hiệu trưởng, các Phó Hiệu trưởng;',
-      '08 Tổ chuyên môn, Tổ Văn phòng;',
-      'Bộ phận phụ trách Điểm Tân Kiều;',
-      'Ban Đại diện CMHS trường;',
+      'Sở GDĐT Đồng Tháp (để báo cáo);',
+      'UBND huyện Tháp Mười (để báo cáo);',
+      'UBND xã Đốc Binh Kiều, UBND xã Tân Kiều (để phối hợp);',
+      'Ban Giám hiệu trường (để chỉ đạo);',
+      '07 Tổ chuyên môn, Tổ Văn phòng (để thực hiện);',
+      'Bộ phận phụ trách Điểm Tân Kiều (để thực hiện);',
+      'Ban Đại diện Cha mẹ học sinh trường (để phối hợp);',
       'Lưu: VT, CM.',
     ],
     status: 'official',

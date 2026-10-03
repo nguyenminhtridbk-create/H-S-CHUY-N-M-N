@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { DepartmentDirective, SchoolDocument } from '../types/document';
 import { extractTextFromFile } from '../utils/fileReader';
+import { AdministrativeDirectiveViewerModal } from './AdministrativeDirectiveViewerModal';
 
 interface DepartmentDirectivesTabProps {
   directives: DepartmentDirective[];
@@ -172,32 +173,6 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
         </button>
       </div>
 
-      {/* Kiến trúc tối ưu & Giải đáp kỹ thuật */}
-      <div className="bg-gradient-to-r from-blue-50/80 via-indigo-50/50 to-slate-50 border border-blue-200/80 rounded-xl p-4 text-xs text-slate-700 shadow-2xs space-y-2">
-        <div className="flex items-center gap-2 font-bold text-blue-900 text-sm">
-          <BookOpen className="w-4 h-4 text-blue-700" />
-          <span>Giải pháp lưu trữ tối ưu: Dữ liệu văn bản có cấu trúc trên WebApp</span>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-slate-600">
-          <div className="bg-white/90 p-3 rounded-lg border border-blue-100">
-            <span className="font-semibold text-slate-800 block mb-1">
-              1. Có nên để file PDF thô trong thư mục hay chuyển lên WebApp?
-            </span>
-            <p className="leading-relaxed">
-              <strong>Nên chuyển nội dung thành dữ liệu có cấu trúc sẵn trên WebApp</strong> theo 6 chuyên đề (như đang hiển thị bên dưới). Nhờ đó, Thầy/Cô và đồng nghiệp xem được ngay lập tức trên máy tính/điện thoại không cần tải file nặng, tìm kiếm tức thì và 1-click tạo kế hoạch trường.
-            </p>
-          </div>
-          <div className="bg-white/90 p-3 rounded-lg border border-blue-100">
-            <span className="font-semibold text-slate-800 block mb-1">
-              2. Để file trong thư mục có gây nặng GitHub hoặc WebApp không?
-            </span>
-            <p className="leading-relaxed">
-              <strong>Có</strong>: Thư mục chứa các file scan PDF nặng tới <strong>~45 MB</strong> (trong đó có 2 file &gt;11MB và nhiều file trùng lặp). Nếu bundle vào WebApp sẽ làm ứng dụng tải chậm. Khi chuyển sang text trên WebApp, dung lượng chỉ còn <strong>~350 KB</strong> (nhẹ hơn 100 lần), GitHub và WebApp chạy siêu mượt.
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Topic Filter Pills */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
         {TOPICS.map((t) => (
@@ -343,63 +318,16 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
         })}
       </div>
 
-      {/* MODAL 1: VIEW FULL CONTENT OF SỞ'S DIRECTIVE */}
+      {/* MODAL 1: VIEW FULL CONTENT OF SỞ'S DIRECTIVE - OFFICIAL DECREE 30 FORMAT */}
       {selectedDirectiveForView && (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] flex flex-col border border-slate-200">
-            {/* Header */}
-            <div className="px-6 py-4 bg-gradient-to-r from-blue-950 to-indigo-950 text-white rounded-t-2xl flex items-center justify-between">
-              <div>
-                <div className="flex items-center gap-2 text-xs text-amber-300">
-                  <span className="font-bold">{selectedDirectiveForView.issuingAuthority}</span>
-                  <span>·</span>
-                  <span>{selectedDirectiveForView.documentNumber}</span>
-                </div>
-                <h3 className="font-bold text-base mt-0.5">{selectedDirectiveForView.title}</h3>
-              </div>
-              <button
-                onClick={() => setSelectedDirectiveForView(null)}
-                className="text-slate-300 hover:text-white p-1 rounded-lg hover:bg-white/10 transition"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Content */}
-            <div className="p-6 overflow-y-auto space-y-4 font-mono text-xs text-slate-800 leading-relaxed bg-slate-50/50">
-              <pre className="whitespace-pre-wrap font-sans text-xs leading-relaxed text-slate-800">
-                {selectedDirectiveForView.fullContent}
-              </pre>
-            </div>
-
-            {/* Footer Actions */}
-            <div className="px-6 py-3 bg-white border-t border-slate-200 rounded-b-2xl flex justify-between items-center">
-              <span className="text-xs text-slate-500">
-                Ký bởi: {selectedDirectiveForView.signer}
-              </span>
-
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setSelectedDirectiveForView(null)}
-                  className="px-4 py-2 border border-slate-300 hover:bg-slate-50 rounded-lg text-xs font-semibold text-slate-700"
-                >
-                  Đóng
-                </button>
-                <button
-                  onClick={() => {
-                    const dir = selectedDirectiveForView;
-                    setSelectedDirectiveForView(null);
-                    onContextualizeDirective(dir);
-                  }}
-                  className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-xs font-bold flex items-center gap-1.5"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                  <span>Xây dựng văn bản của trường từ chỉ đạo này</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <AdministrativeDirectiveViewerModal
+          directive={selectedDirectiveForView}
+          onClose={() => setSelectedDirectiveForView(null)}
+          onContextualize={(dir) => {
+            setSelectedDirectiveForView(null);
+            onContextualizeDirective(dir);
+          }}
+        />
       )}
 
       {/* MODAL 2: ADD NEW DIRECTIVE FROM SỞ */}

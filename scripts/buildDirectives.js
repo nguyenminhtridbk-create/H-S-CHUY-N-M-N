@@ -8,16 +8,23 @@ async function extract(path) {
     return '';
   }
   try {
+    let text = '';
     if (path.endsWith('.docx')) {
       const res = await mammoth.extractRawText({ path });
-      return res.value.trim();
-    }
-    if (path.endsWith('.pdf')) {
+      text = res.value.trim();
+    } else if (path.endsWith('.pdf')) {
       const buf = fs.readFileSync(path);
       const parser = new PDFParse({ data: buf });
       const res = await parser.getText();
-      return res.text.trim();
+      text = res.text.trim();
     }
+
+    // Clean artifacts: remove page markers (-- 1 of 7 --), running page numbers, excessive whitespace
+    return text
+      .replace(/-- \d+ of \d+ --/g, '')
+      .replace(/Trang \d+\/\d+/g, '')
+      .replace(/Trang \d+/g, '')
+      .replace(/[ \t]+/g, ' ');
   } catch (err) {
     console.error('Error extracting:', path, err.message);
   }

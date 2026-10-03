@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { SchoolDocument } from '../types/document';
 import { exportDocumentToDocx } from '../utils/docxExport';
+import { AdministrativeDirectiveViewerModal } from './AdministrativeDirectiveViewerModal';
 
 interface DocumentEditorViewProps {
   document: SchoolDocument;
@@ -267,16 +268,16 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 <div className="w-full border-b-2 border-slate-900 mt-0.5"></div>
               </div>
 
-              {/* Địa danh và ngày tháng năm: Font 13.5-14pt, chữ thường, NGHIÊNG */}
+              {/* Địa danh và ngày tháng năm: Font 13.5-14pt, chữ thường, NGHIÊNG, canh giữa theo Tiêu ngữ */}
               {isEditing ? (
                 <input
                   type="text"
                   value={doc.signDate}
                   onChange={(e) => setDoc({ ...doc, signDate: e.target.value })}
-                  className="text-[13.5pt] italic text-right border border-slate-300 rounded px-2 py-0.5 mt-2 w-full"
+                  className="text-[13.5pt] italic text-center border border-slate-300 rounded px-2 py-0.5 mt-2 w-full"
                 />
               ) : (
-                <span className="text-[13.5pt] italic self-end pr-2 mt-2">
+                <span className="text-[13.5pt] italic text-center mt-2 block">
                   {doc.signDate || 'Đồng Tháp, ngày 28 tháng 9 năm 2026'}
                 </span>
               )}
@@ -469,53 +470,21 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
       {/* Source Directive View Modal */}
       {showSourceModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
-            <div className="px-6 py-4 bg-amber-50 border-b border-amber-200 flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-amber-800" />
-                <h3 className="font-bold text-amber-950 text-base">
-                  Văn Bản Chỉ Đạo Gốc Của Sở GDĐT Đồng Tháp
-                </h3>
-              </div>
-              <button
-                onClick={() => setShowSourceModal(false)}
-                className="p-1.5 rounded-lg text-slate-500 hover:bg-amber-100 transition"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="p-6 overflow-y-auto space-y-4 text-xs sm:text-sm">
-              <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
-                <span className="text-xs font-bold text-slate-500 uppercase">Căn cứ nguồn:</span>
-                <p className="font-semibold text-slate-900 mt-1">{doc.sourceDirective}</p>
-              </div>
-
-              {doc.sourceDirectiveFullText ? (
-                <div>
-                  <h4 className="font-bold text-slate-800 mb-2">Toàn văn văn bản của Sở được lưu trong hệ thống:</h4>
-                  <div className="p-4 bg-amber-50/40 rounded-xl border border-amber-200 font-mono text-xs whitespace-pre-wrap leading-relaxed text-slate-800">
-                    {doc.sourceDirectiveFullText}
-                  </div>
-                </div>
-              ) : (
-                <p className="text-slate-500 italic">
-                  Văn bản này được liên kết thông qua số hiệu văn bản của Sở GDĐT Đồng Tháp. Thầy có thể mở tab "3. Chỉ Đạo Của Sở" để xem chi tiết hoặc tải thêm văn bản mới.
-                </p>
-              )}
-            </div>
-
-            <div className="px-6 py-3 bg-slate-50 border-t border-slate-200 flex justify-end">
-              <button
-                onClick={() => setShowSourceModal(false)}
-                className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-xs font-bold shadow"
-              >
-                Đã hiểu
-              </button>
-            </div>
-          </div>
-        </div>
+        <AdministrativeDirectiveViewerModal
+          directive={{
+            id: doc.sourceDirectiveId || 'directive-source',
+            documentNumber: doc.sourceDirective || 'Văn bản chỉ đạo của Sở GDĐT',
+            title: doc.sourceDirective || 'Chỉ đạo của Sở Giáo dục và Đào tạo Đồng Tháp',
+            issuingAuthority: 'SỞ GIÁO DỤC VÀ ĐÀO TẠO TỈNH ĐỒNG THÁP',
+            signDate: 'Đồng Tháp',
+            signer: 'KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn',
+            summary: doc.sourceDirective || '',
+            fullContent: doc.sourceDirectiveFullText || doc.sourceDirective || 'Văn bản liên kết từ chỉ đạo của Sở GDĐT.',
+            createdDate: new Date().toISOString(),
+          }}
+          onClose={() => setShowSourceModal(false)}
+          onContextualize={() => setShowSourceModal(false)}
+        />
       )}
     </div>
   );

@@ -32,7 +32,21 @@ export default function App() {
           map.set(initDir.id, initDir);
         }
         for (const userDir of parsed) {
-          if (!map.has(userDir.id)) {
+          if (map.has(userDir.id)) continue;
+          const isDuplicate = Array.from(map.values()).some((existing) => {
+            const sameNumber =
+              existing.documentNumber &&
+              userDir.documentNumber &&
+              existing.documentNumber.trim().toLowerCase() === userDir.documentNumber.trim().toLowerCase();
+            const sameTitle =
+              existing.title.trim().toLowerCase() === userDir.title.trim().toLowerCase();
+            const sameFile =
+              existing.fileName &&
+              userDir.fileName &&
+              existing.fileName.trim().toLowerCase() === userDir.fileName.trim().toLowerCase();
+            return sameNumber || sameTitle || sameFile;
+          });
+          if (!isDuplicate) {
             map.set(userDir.id, userDir);
           }
         }
@@ -51,7 +65,22 @@ export default function App() {
   const [documentsList, setDocumentsList] = useState<SchoolDocument[]>(() => {
     try {
       const saved = localStorage.getItem('dbk_school_documents_archive');
-      return saved ? JSON.parse(saved) : INITIAL_SCHOOL_DOCUMENTS;
+      if (saved) {
+        const parsed: SchoolDocument[] = JSON.parse(saved);
+        const map = new Map<string, SchoolDocument>();
+        for (const doc of parsed) {
+          map.set(doc.id, doc);
+        }
+        for (const initDoc of INITIAL_SCHOOL_DOCUMENTS) {
+          if (initDoc.id === 'doc-kh-2buoi') {
+            map.set(initDoc.id, initDoc);
+          } else if (!map.has(initDoc.id)) {
+            map.set(initDoc.id, initDoc);
+          }
+        }
+        return Array.from(map.values());
+      }
+      return INITIAL_SCHOOL_DOCUMENTS;
     } catch {
       return INITIAL_SCHOOL_DOCUMENTS;
     }
@@ -59,7 +88,8 @@ export default function App() {
 
   // Current document for Viewing / Editing in Editor
   const [currentDocument, setCurrentDocument] = useState<SchoolDocument>(() => {
-    return documentsList[0] || INITIAL_SCHOOL_DOCUMENTS[0];
+    const found2Buoi = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'doc-kh-2buoi');
+    return found2Buoi || documentsList[0] || INITIAL_SCHOOL_DOCUMENTS[0];
   });
 
   // Custom School Facts
@@ -101,7 +131,22 @@ export default function App() {
 
   // Handler: Add new directive to webapp repository
   const handleAddDirective = (newDirective: DepartmentDirective) => {
-    setDirectivesList((prev) => [newDirective, ...prev]);
+    setDirectivesList((prev) => {
+      const existingIdx = prev.findIndex(
+        (d) =>
+          d.id === newDirective.id ||
+          (d.documentNumber &&
+            newDirective.documentNumber &&
+            d.documentNumber.trim().toLowerCase() === newDirective.documentNumber.trim().toLowerCase()) ||
+          d.title.trim().toLowerCase() === newDirective.title.trim().toLowerCase()
+      );
+      if (existingIdx !== -1) {
+        const copy = [...prev];
+        copy[existingIdx] = { ...copy[existingIdx], ...newDirective };
+        return copy;
+      }
+      return [newDirective, ...prev];
+    });
   };
 
   // Handler: Delete directive
