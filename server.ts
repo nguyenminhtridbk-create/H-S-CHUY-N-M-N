@@ -999,7 +999,10 @@ ${is2BuoiPlan ? `
      * Chỉ trích dẫn ĐÚNG VĂN BẢN GỐC mà mình cần đọc để xây dựng kế hoạch này (tối đa 2-3 căn cứ, không trích dẫn dài dòng).
      * Trích dẫn rõ: Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp. (Để trống số và ngày nếu văn bản gốc là bản dự thảo để người dùng tự bổ sung).
      * Kèm Quyết định số 2606/QĐ-UBND ngày 13/8/2026 sáp nhập trường và Kế hoạch giáo dục nhà trường số 28/KH-THCS&THPTĐBK. Tuyệt đối không trích dẫn thêm các chỉ thị hay công văn ngoài ngành dài dòng.
-   - Quy tắc 3 (Có hồn): Nội dung phù hợp cấp THCS, THPT, phân công nhiệm vụ cụ thể, thực tế trường sáp nhập 3 điểm cách nhau 11km.
+   - Quy tắc 4 (VĂN PHONG TỰ NHIÊN, CHUẨN MỰC SƯ PHẠM, KHÔNG 'MÁY MÓC KIỂU AI'):
+     * TUYỆT ĐỐI KHÔNG liệt kê chi tiết các tổ chuyên môn kèm số giáo viên (ví dụ KHÔNG viết "Các Tổ chuyên môn (07 tổ: Tổ Toán 15 GV, Tổ Ngữ văn 17 GV...)"). Chỉ viết tự nhiên, đúng chức danh: "Các Tổ chuyên môn và Tổ Văn phòng:".
+     * TUYỆT ĐỐI KHÔNG chèn số liệu cụ thể (101 cán bộ giáo viên, số lớp, số học sinh) vào các câu văn miêu tả chung chung (KHÔNG viết "Sử dụng hiệu quả đội ngũ 101 cán bộ, giáo viên", chỉ viết "Sử dụng hiệu quả đội ngũ cán bộ, giáo viên").
+     * Số lượng học sinh, số lớp chỉ ghi khi thực sự cần thiết, tuyệt đối không phô trương số liệu vụn vặt gây phản cảm kiểu máy móc.
 ` : ''}
 
 HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGHỊ ĐỊNH 30/2020/NĐ-CP:
@@ -1159,7 +1162,7 @@ b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 
 - Phân công cán bộ phụ trách Điểm Tân Kiều theo dõi sĩ số, bảo đảm an ninh trật tự và vệ sinh môi trường tại điểm trường lẻ.
 
 2. Các Tổ chuyên môn và Giáo viên:
-- 08 Tổ chuyên môn xây dựng kế hoạch phân phối tiết dạy tăng cường, biên soạn đề cương, tài liệu ôn tập và phiếu học tập phù hợp từng đối tượng học sinh.
+- Các tổ chuyên môn xây dựng kế hoạch phân phối tiết dạy tăng cường, biên soạn đề cương, tài liệu ôn tập và phiếu học tập phù hợp từng đối tượng học sinh.
 - Giáo viên bộ môn thực hiện nghiêm túc giờ giấc lên lớp, đổi mới phương pháp giảng dạy, ghi chép sổ đầu bài đầy đủ.
 - Giáo viên chủ nhiệm phối hợp chặt chẽ với cha mẹ học sinh để quản lý giờ giấc, chuyên cần của học sinh giữa 2 buổi học./.`
             }

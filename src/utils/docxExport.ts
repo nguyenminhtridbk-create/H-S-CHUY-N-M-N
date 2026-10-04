@@ -250,9 +250,9 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
 
       let indentConfig;
       if (isPlusBullet) {
-        indentConfig = { left: 1247, hanging: 283 }; // ~2.2cm left, 0.5cm hanging
+        indentConfig = { firstLine: 850 }; // 1.5cm first line indent only, subsequent lines align to normal margin
       } else if (isDashBullet) {
-        indentConfig = { left: 850, hanging: 283 }; // ~1.5cm left, 0.5cm hanging
+        indentConfig = { firstLine: 567 }; // 1.0cm first line indent only, subsequent lines align to normal margin
       } else {
         indentConfig = { firstLine: 567 }; // 1.0cm indent for paragraphs, numbered items, and letter items
       }

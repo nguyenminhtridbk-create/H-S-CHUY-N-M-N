@@ -35,17 +35,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
   onBack,
   onViewSourceDirective,
 }) => {
-  const [doc, setDoc] = useState<SchoolDocument>(() => {
-    if (initialDoc.id === 'doc-kh-2buoi' && initialDoc.legalBases && initialDoc.legalBases.length > 1) {
-      return {
-        ...initialDoc,
-        legalBases: [
-          'Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
-        ],
-      };
-    }
-    return initialDoc;
-  });
+  const [doc, setDoc] = useState<SchoolDocument>(initialDoc);
   const [isEditing, setIsEditing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -54,16 +44,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
   // Sync when initialDoc changes
   React.useEffect(() => {
-    if (initialDoc.id === 'doc-kh-2buoi' && initialDoc.legalBases && initialDoc.legalBases.length > 1) {
-      setDoc({
-        ...initialDoc,
-        legalBases: [
-          'Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
-        ],
-      });
-    } else {
-      setDoc(initialDoc);
-    }
+    setDoc(initialDoc);
   }, [initialDoc]);
 
   // Handle Save
@@ -446,24 +427,24 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                       const trimmed = paragraph.trim();
                       if (!trimmed) return <div key={pIdx} className="h-1.5" />;
                       
-                      // 1. Dấu cộng cấp 2 (sub-bullet): + ...
+                      // 1. Dấu cộng cấp 2 (sub-bullet): + ... (chỉ thụt đầu hàng 1.5cm, từ hàng thứ 2 canh đều lề trái bình thường)
                       if (trimmed.startsWith('+')) {
                         return (
                           <p
                             key={pIdx}
-                            className="pl-[2.2cm] -indent-[0.5cm] text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                            className="indent-[1.5cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
                           >
                             {trimmed}
                           </p>
                         );
                       }
 
-                      // 2. Dấu gạch đầu dòng cấp 1 (bullet): - ...
+                      // 2. Dấu gạch đầu dòng cấp 1 (bullet): - ... (chỉ thụt đầu hàng 1cm, từ hàng thứ 2 canh đều lề trái bình thường)
                       if (trimmed.startsWith('-')) {
                         return (
                           <p
                             key={pIdx}
-                            className="pl-[1.5cm] -indent-[0.5cm] text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                            className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
                           >
                             {trimmed}
                           </p>
