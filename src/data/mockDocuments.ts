@@ -143,12 +143,9 @@ Trong quá trình thực hiện, nếu có khó khăn, vướng mắc, các tậ
     sourceDirectiveId: 'directive-1251-ubnd',
     sourceDirective: 'Kế hoạch số 1251/KH-UBND ngày 17/8/2026 của UBND tỉnh Đồng Tháp và Kế hoạch triển khai của Sở GDĐT',
     legalBases: [
-      'Chỉ thị số 17/CT-TTg ngày 06 tháng 6 năm 2025 của Thủ tướng Chính phủ về tăng cường sự phối hợp giữa nhà trường, gia đình và xã hội trong công tác giáo dục trẻ em, học sinh',
       'Thông tư số 32/2018/TT-BGDĐT ngày 26 tháng 12 năm 2018 của Bộ trưởng Bộ Giáo dục và Đào tạo ban hành Chương trình giáo dục phổ thông',
-      'Công văn số 9179/BTC-NSNN ngày 25 tháng 6 năm 2025 của Bộ Tài chính về việc kinh phí thực hiện dạy học 2 buổi/ngày',
       'Công văn số 5208/BGDĐT-GDPT ngày 07 tháng 8 năm 2026 của Bộ Giáo dục và Đào tạo về việc tổ chức dạy học 2 buổi/ngày cấp trung học cơ sở và cấp trung học phổ thông',
-      'Kế hoạch số 1251/KH-UBND ngày 17 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
-      'Kế hoạch triển khai của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
+      'Kế hoạch của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
       'Quyết định số 2606/QĐ-UBND ngày 13 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập Trường THCS Đốc Binh Kiều, Trường THCS Tân Kiều và Trường THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều',
       'Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 28/KH-THCS&THPTĐBK ngày 05 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều',
     ],
@@ -156,7 +153,7 @@ Trong quá trình thực hiện, nếu có khó khăn, vướng mắc, các tậ
       {
         heading: 'I. MỤC ĐÍCH, YÊU CẦU',
         content: `1. Mục đích:
-a) Tổ chức thực hiện nghiêm túc, đồng bộ các nội dung của Chỉ thị số 17/CT-TTg của Thủ tướng Chính phủ và Kế hoạch số 1251/KH-UBND của UBND tỉnh Đồng Tháp; nâng cao chất lượng giáo dục toàn diện cho 2.143 học sinh ở cả 2 cấp học (THCS và THPT) tại 3 điểm trường của Trường THCS và THPT Đốc Binh Kiều.
+a) Tổ chức thực hiện nghiêm túc, hiệu quả Kế hoạch của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về tổ chức dạy học 2 buổi/ngày; nâng cao chất lượng giáo dục toàn diện cho 2.143 học sinh ở cả 2 cấp học (THCS và THPT) tại 3 điểm trường của Trường THCS và THPT Đốc Binh Kiều.
 b) Nâng cao chất lượng các hoạt động giáo dục toàn diện về Đức - Trí - Thể - Mỹ, bao gồm: giáo dục đạo đức, kỹ năng sống, giáo dục STEM/STEAM, giáo dục văn hóa đọc, văn hóa học đường, giáo dục thể chất, nghệ thuật, giáo dục tài chính; phát triển năng lực ngoại ngữ, năng lực số, năng lực trí tuệ nhân tạo (AI); hình thành ý thức và thói quen tự học suốt đời cho học sinh.
 c) Nâng cao chất lượng giờ học chính khóa; khắc phục triệt để tình trạng dạy thêm, học thêm không đúng quy định; xây dựng môi trường giáo dục lành mạnh, an toàn, bảo đảm công bằng trong tiếp cận giáo dục giữa điểm trường chính và điểm trường lẻ.
 d) Sử dụng hiệu quả đội ngũ 101 cán bộ, giáo viên và cơ sở vật chất hiện có tại 3 điểm trường (Điểm chính THPT, Điểm THCS Đốc Binh Kiều, Điểm THCS Tân Kiều); phát huy tối đa tinh thần đổi mới phương pháp dạy học và kiểm tra, đánh giá theo hướng phát triển năng lực, phẩm chất người học.

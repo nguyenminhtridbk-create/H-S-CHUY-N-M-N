@@ -244,9 +244,19 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
     const paragraphs = sec.content.split('\n').filter((p) => p.trim().length > 0);
     paragraphs.forEach((pText) => {
       const trimmed = pText.trim();
-      const isBullet = trimmed.startsWith('-') || trimmed.startsWith('+');
+      const isPlusBullet = trimmed.startsWith('+');
+      const isDashBullet = trimmed.startsWith('-');
       const isNumbered = /^\d+(\.\d+)*\./.test(trimmed);
-      const isLetterSub = /^[a-z]\)/i.test(trimmed);
+      const isLetterSub = /^[a-zđ]\)/i.test(trimmed);
+
+      let indentConfig;
+      if (isPlusBullet) {
+        indentConfig = { left: 1247, hanging: 283 }; // ~2.2cm left, 0.5cm hanging
+      } else if (isDashBullet) {
+        indentConfig = { left: 850, hanging: 283 }; // ~1.5cm left, 0.5cm hanging
+      } else {
+        indentConfig = { firstLine: 567 }; // 1.0cm indent for paragraphs, numbered items, and letter items
+      }
 
       docChildren.push(
         new Paragraph({
@@ -256,11 +266,11 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
               text: trimmed,
               size: 28, // 14pt
               font: 'Times New Roman',
-              bold: (isNumbered || isLetterSub) && !trimmed.includes(':') ? true : undefined,
+              bold: isNumbered ? true : undefined, // Numbered items like 1. Mục đích: are bold; a), b)... are normal
             }),
           ],
-          indent: isBullet ? { left: 720 } : { firstLine: 720 }, // 1.27cm indent
-          spacing: { line: 280, after: 70 },
+          indent: indentConfig,
+          spacing: { line: 280, before: isNumbered ? 120 : 40, after: 60 },
         })
       );
     });
@@ -371,10 +381,10 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
         properties: {
           page: {
             margin: {
-              top: 1134, // 20mm
-              bottom: 1134, // 20mm
-              left: 1701, // 30mm (for document binding)
-              right: 850, // 15mm
+              top: 1134, // 20mm (2 cm)
+              bottom: 1134, // 20mm (2 cm)
+              left: 1701, // 30mm (3 cm - lề trái)
+              right: 1134, // 20mm (2 cm - lề phải)
             },
           },
         },

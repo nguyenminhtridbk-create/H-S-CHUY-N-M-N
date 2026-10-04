@@ -208,11 +208,30 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
       {/* A4 Paper Document Canvas - Strict Decree 30/2020/NĐ-CP Typography */}
       <div className="bg-slate-200/70 p-4 sm:p-8 rounded-xl flex justify-center overflow-x-auto print:bg-white print:p-0">
+        <style dangerouslySetInnerHTML={{ __html: `
+          @page {
+            size: A4 portrait;
+            margin-top: 2cm;
+            margin-bottom: 2cm;
+            margin-left: 3cm;
+            margin-right: 2cm;
+          }
+          @media print {
+            body { background: white !important; }
+            .print\\:hidden { display: none !important; }
+          }
+        ` }} />
+
         <div 
-          className="bg-white text-slate-900 shadow-md print:shadow-none w-full max-w-[850px] min-h-[1130px] p-8 sm:p-14 text-[14pt] leading-[1.35] transition-all"
+          className="bg-white text-slate-900 shadow-md print:shadow-none w-full max-w-[850px] min-h-[1130px] text-[14pt] leading-[1.4] transition-all"
           style={{
             fontFamily: '"Times New Roman", Times, serif',
-            lineHeight: '1.35',
+            lineHeight: '1.4',
+            paddingTop: '2cm',
+            paddingBottom: '2cm',
+            paddingLeft: '3cm',
+            paddingRight: '2cm',
+            boxSizing: 'border-box',
           }}
         >
           {/* Header 2-column table conforming to Decree 30 and School Sample */}
@@ -320,7 +339,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
             )}
           </div>
 
-          {/* Legal Bases: Indented 1.27cm, font 14pt, text-justify */}
+          {/* Legal Bases: Indented 1.0cm, font 14pt italic, text-justify */}
           {doc.legalBases && doc.legalBases.length > 0 && (
             <div className="space-y-1.5 mb-5 text-justify">
               {doc.legalBases.map((base, idx) => {
@@ -335,7 +354,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 }
 
                 return (
-                  <p key={idx} className="indent-[1.27cm] text-[14pt] leading-[1.35] text-slate-900 italic">
+                  <p key={idx} className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 italic text-justify">
                     {formattedText}
                   </p>
                 );
@@ -345,13 +364,13 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
           {/* Transition phrase if plan */}
           {doc.type === 'plan' && (
-            <p className="indent-[1.27cm] text-[14pt] leading-[1.35] text-slate-900 mb-4 font-normal text-justify">
+            <p className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 mb-4 font-normal text-justify">
               Trường THCS và THPT Đốc Binh Kiều xây dựng {doc.subTitle || doc.title} như sau:
             </p>
           )}
 
-          {/* Sections Body: Roman Numeral Headings, Numbered items, Indent 1.27cm */}
-          <div className="space-y-5 text-justify">
+          {/* Sections Body: Roman Numeral Headings, Numbered items, Indent 1.0cm */}
+          <div className="space-y-4 text-justify">
             {doc.sections.map((section, sIdx) => (
               <div key={sIdx} className="space-y-2">
                 {isEditing ? (
@@ -366,7 +385,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                     className="font-bold text-[14pt] uppercase border border-slate-300 rounded px-2 py-1 w-full"
                   />
                 ) : (
-                  <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 mt-4 mb-2">
+                  <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 mt-5 mb-2 pl-0 indent-0">
                     {section.heading}
                   </h2>
                 )}
@@ -388,22 +407,61 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                       const trimmed = paragraph.trim();
                       if (!trimmed) return <div key={pIdx} className="h-1.5" />;
                       
-                      const isBullet = trimmed.startsWith('-') || trimmed.startsWith('+');
-                      const isNumberHeader = /^\d+(\.\d+)*\./.test(trimmed);
-                      const isLetterHeader = /^[a-z]\)/i.test(trimmed);
+                      // 1. Dấu cộng cấp 2 (sub-bullet): + ...
+                      if (trimmed.startsWith('+')) {
+                        return (
+                          <p
+                            key={pIdx}
+                            className="pl-[2.2cm] -indent-[0.5cm] text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                          >
+                            {trimmed}
+                          </p>
+                        );
+                      }
 
+                      // 2. Dấu gạch đầu dòng cấp 1 (bullet): - ...
+                      if (trimmed.startsWith('-')) {
+                        return (
+                          <p
+                            key={pIdx}
+                            className="pl-[1.5cm] -indent-[0.5cm] text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                          >
+                            {trimmed}
+                          </p>
+                        );
+                      }
+
+                      // 3. Tiêu đề số thứ tự cấp 1 & 2: 1. Mục đích:, 2. Yêu cầu:, 1.1...
+                      // BẮT BUỘC IN ĐẬM VÀ THỤT ĐẦU DÒNG 1cm
+                      if (/^\d+(\.\d+)*\./.test(trimmed)) {
+                        return (
+                          <p
+                            key={pIdx}
+                            className="indent-[1cm] text-[14pt] font-bold text-slate-950 mt-3 mb-1 leading-[1.4] text-justify"
+                          >
+                            {trimmed}
+                          </p>
+                        );
+                      }
+
+                      // 4. Mục chữ cái: a), b), c), d)...
+                      // ĐÚNG LÀ CHỮ THƯỜNG, THỤT ĐẦU DÒNG 1cm
+                      if (/^[a-zđ]\)/i.test(trimmed)) {
+                        return (
+                          <p
+                            key={pIdx}
+                            className="indent-[1cm] text-[14pt] font-normal text-slate-900 leading-[1.4] text-justify"
+                          >
+                            {trimmed}
+                          </p>
+                        );
+                      }
+
+                      // 5. Đoạn văn xuôi thông thường: Thụt đầu dòng 1cm, chữ thường
                       return (
                         <p
                           key={pIdx}
-                          className={`${
-                            isBullet ? 'pl-[1.27cm]' : 'indent-[1.27cm]'
-                          } ${
-                            isNumberHeader && !trimmed.includes(':') 
-                              ? 'font-bold text-slate-950' 
-                              : isLetterHeader 
-                              ? 'font-semibold text-slate-900' 
-                              : 'text-slate-900'
-                          } text-[14pt] leading-[1.35] text-justify`}
+                          className="indent-[1cm] text-[14pt] font-normal text-slate-900 leading-[1.4] text-justify"
                         >
                           {trimmed}
                         </p>
@@ -417,7 +475,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
           {/* Footer: Recipients (Left 11-12pt) & Signer (Right 13-14pt bold) */}
           <div className="grid grid-cols-12 gap-4 mt-12 pt-4 items-start border-t border-slate-200">
-            {/* Left: Nơi nhận */}
+            {/* Left: Nơi nhận (Tiêu đề 12pt bold italic, danh sách 11pt thường) */}
             <div className="col-span-6 text-left">
               <strong className="text-[12pt] font-bold italic block mb-1">
                 Nơi nhận:
@@ -430,9 +488,9 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                   className="w-full text-[11pt] border border-slate-300 rounded p-1"
                 />
               ) : (
-                <div className="space-y-0.5 text-[11pt] leading-tight text-slate-800">
+                <div className="space-y-0.5 text-[11pt] leading-[1.3] text-slate-800">
                   {doc.recipients.map((rec, rIdx) => (
-                    <span key={rIdx} className="block">
+                    <span key={rIdx} className="block text-[11pt] font-normal">
                       {rec.startsWith('-') ? rec : `- ${rec}`}
                     </span>
                   ))}
