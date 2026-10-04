@@ -72,7 +72,7 @@ export default function App() {
           map.set(doc.id, doc);
         }
         for (const initDoc of INITIAL_SCHOOL_DOCUMENTS) {
-          if (initDoc.id === 'doc-kh-2buoi') {
+          if (initDoc.id === 'doc-kh-2buoi' || initDoc.id === 'doc-kh-gd-34') {
             map.set(initDoc.id, initDoc);
           } else if (!map.has(initDoc.id)) {
             map.set(initDoc.id, initDoc);
@@ -102,20 +102,24 @@ export default function App() {
     }
   });
 
-  // Ensure doc-kh-2buoi always uses the single legal base standard upon mount
+  // Ensure doc-kh-2buoi and doc-kh-gd-34 always use the latest official data upon mount
   useEffect(() => {
     const latest2Buoi = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === 'doc-kh-2buoi');
-    if (latest2Buoi) {
-      setCurrentDocument((prev) => {
-        if (prev.id === 'doc-kh-2buoi') {
-          return latest2Buoi;
-        }
-        return prev;
+    const latest34 = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === 'doc-kh-gd-34');
+    
+    setDocumentsList((prev) => {
+      return prev.map((d) => {
+        if (d.id === 'doc-kh-2buoi' && latest2Buoi) return latest2Buoi;
+        if (d.id === 'doc-kh-gd-34' && latest34) return latest34;
+        return d;
       });
-      setDocumentsList((prev) => {
-        return prev.map((d) => (d.id === 'doc-kh-2buoi' ? latest2Buoi : d));
-      });
-    }
+    });
+
+    setCurrentDocument((prev) => {
+      if (prev.id === 'doc-kh-2buoi' && latest2Buoi) return latest2Buoi;
+      if (prev.id === 'doc-kh-gd-34' && latest34) return latest34;
+      return prev;
+    });
   }, []);
 
   // Save directives list to localStorage
@@ -314,6 +318,13 @@ export default function App() {
             <SchoolContextPanel
               customFacts={customFacts}
               onUpdateCustomFacts={setCustomFacts}
+              onViewSchoolPlanDoc={() => {
+                const plan34 = documentsList.find((d) => d.id === 'doc-kh-gd-34') || INITIAL_SCHOOL_DOCUMENTS[0];
+                if (plan34) {
+                  setCurrentDocument(plan34);
+                  setActiveTab('editor');
+                }
+              }}
             />
 
             <TeacherDirectoryTab

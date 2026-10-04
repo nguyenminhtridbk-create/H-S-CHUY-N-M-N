@@ -40,17 +40,41 @@ Chính sách của Đảng và Nhà nước về đổi mới căn bản, toàn 
 
 2. Đặc điểm nhà trường:
 2.1. Quy mô học sinh năm học 2026 - 2027:
-- Toàn trường có 53 lớp với 2.143 học sinh (bình quân 40,5 học sinh/lớp), 25 học sinh khuyết tật. Cụ thể:
-  + Cấp THCS (39 lớp - 1.613 học sinh): Khối 6 có 10 lớp (417 HS, 6 HS khuyết tật); Khối 7 có 9 lớp (377 HS, 6 HS khuyết tật); Khối 8 có 10 lớp (409 HS, 7 HS khuyết tật); Khối 9 có 10 lớp (410 HS, 3 HS khuyết tật).
-  + Cấp THPT (14 lớp - 530 học sinh): Khối 10 có 5 lớp (203 HS, 1 HS khuyết tật); Khối 11 có 4 lớp (142 HS, 2 HS khuyết tật); Khối 12 có 5 lớp (185 HS).
+Toàn trường có 53 lớp với 2.143 học sinh (bình quân 40,5 học sinh/lớp), 25 học sinh khuyết tật:
+- Cấp THCS (39 lớp - 1.613 học sinh):
+  + Khối 6: 10 lớp, 417 học sinh (bình quân 41,7 HS/lớp), 6 học sinh khuyết tật.
+  + Khối 7: 9 lớp, 377 học sinh (bình quân 41,9 HS/lớp), 6 học sinh khuyết tật.
+  + Khối 8: 10 lớp, 409 học sinh (bình quân 40,9 HS/lớp), 7 học sinh khuyết tật.
+  + Khối 9: 10 lớp, 410 học sinh (bình quân 41,0 HS/lớp), 3 học sinh khuyết tật.
+- Cấp THPT (14 lớp - 530 học sinh):
+  + Khối 10: 5 lớp, 203 học sinh (bình quân 40,6 HS/lớp), 1 học sinh khuyết tật.
+  + Khối 11: 4 lớp, 142 học sinh (bình quân 35,0 HS/lớp), 2 học sinh khuyết tật.
+  + Khối 12: 5 lớp, 185 học sinh (bình quân 37,0 HS/lớp).
+
 2.2. Đội ngũ cán bộ, giáo viên, nhân viên:
-- Tổng số: 120 người. Trong đó: Ban Giám hiệu 04; Giáo viên 102; Nhân viên 14. Có 85 Đảng viên, 09 Thạc sĩ.
-- Cơ cấu 08 Tổ: Ban Giám hiệu (04), Tổ Toán (15), Tổ Ngữ văn - Thư viện - Thiết bị (17), Tổ Lịch sử - Địa lý - GDCD - GDKTPL (16), Tổ Vật lý - Hóa học - Sinh học - Công nghệ (26), Tổ Ngoại ngữ - Tin học (16), Tổ GDTC - QPAN - Nghệ thuật (12), Tổ Văn phòng (14).
-2.3. Cơ sở vật chất tại 03 điểm trường:
-- Nhà trường có 03 điểm trường với tổng diện tích khuôn viên 35.380,5 m²:
-  + Điểm chính (THPT Đốc Binh Kiều cũ): 15.683 m², khối 10-12, 14 phòng học, 09 phòng bộ môn kiên cố, 03 phòng lắp ghép, hệ thống PCCC vách tường 02 máy bơm, 11 tủ chữa cháy.
-  + Điểm Đốc Binh Kiều (THCS Đốc Binh Kiều cũ): 11.126,7 m², khối 6-9, 22 phòng học, 05 phòng chức năng, 01 nhà công vụ, sân bóng đá mini, sân bóng chuyền.
-  + Điểm Tân Kiều (THCS Tân Kiều cũ - cách điểm chính 11 km): 8.570,8 m², khối 6-9, 09 phòng học, 10 phòng bộ môn, 10 phòng làm việc và sinh hoạt, có phòng PHT thường trực.`,
+Tổng số 120 người, trong đó: Ban Giám hiệu 04; Giáo viên 102; Nhân viên 14. Nữ 65 người; Đảng viên 85 người; Trình độ Thạc sĩ 09 người.
+- Phân bổ theo 08 tổ:
+  + Ban Giám hiệu: 4 người (4 Đảng viên, 1 ThS).
+  + Tổ Toán: 15 người (4 nữ, 11 Đảng viên).
+  + Tổ Ngữ văn - Thư viện - Thiết bị: 17 người (12 nữ, 16 Đảng viên, 2 ThS).
+  + Tổ Lịch sử - Địa lý - GDCD - GDKTPL: 16 người (11 nữ, 10 Đảng viên, 2 ThS).
+  + Tổ Vật lý - Hóa học - Sinh học - Công nghệ: 26 người (17 nữ, 19 Đảng viên, 3 ThS).
+  + Tổ Ngoại ngữ - Tin học: 16 người (9 nữ, 10 Đảng viên, 1 ThS).
+  + Tổ GDTC - QPAN - Nghệ thuật: 12 người (4 nữ, 11 Đảng viên).
+  + Tổ Văn phòng: 14 người (8 nữ, 4 Đảng viên).
+- Thống kê chuyên môn: 96 giáo viên giảng dạy bộ môn đạt chuẩn 100% (88 Đại học, 8 Thạc sĩ).
+
+2.3. Cơ sở vật chất tại 03 điểm trường (Tổng diện tích khuôn viên: 35.380,5 m²):
+- Điểm chính (THPT Đốc Binh Kiều cũ): 15.683 m², khối 10-12 (14 lớp, 530 HS). Gồm khu hiệu bộ; 09 phòng học kiên cố, 03 phòng lắp ghép; 09 phòng học bộ môn; thư viện; 3 khu vệ sinh học sinh riêng biệt; hệ thống PCCC 02 máy bơm, 11 tủ chữa cháy vách tường.
+- Điểm Đốc Binh Kiều (THCS Đốc Binh Kiều cũ): 11.126,7 m², khối 6-9 (24 lớp, 983 HS). Gồm khu làm việc BGH và Văn phòng; 22 phòng học; 05 phòng chức năng; 01 nhà công vụ; sân bóng đá mini, sân bóng chuyền, khu tập luyện GDTC.
+- Điểm Tân Kiều (THCS Tân Kiều cũ - cách điểm chính 11 km): 8.570,8 m², khối 6-9 (15 lớp, 557 HS). Gồm 09 phòng học; 10 phòng bộ môn; 10 phòng làm việc và sinh hoạt, có phòng Ban Giám hiệu thường trực.
+
+2.4. Đánh giá chất lượng giáo dục năm học 2025 - 2026:
+- Học sinh đỗ tốt nghiệp THPT năm 2026: 151/151 học sinh (100%).
+- Học sinh tốt nghiệp THCS năm 2026: 361/362 học sinh (99,72%). Trong đó: Điểm Đốc Binh Kiều 249/249 (100%), Điểm Tân Kiều 112/113 (99,12%).
+- Tuyển sinh vào lớp 10 năm học 2026 - 2027: 313/361 học sinh (86,7%).
+- Tỷ lệ học sinh đỗ Đại học đạt 70%.
+- Học sinh giỏi cấp tỉnh đạt 11 giải (Ngữ văn: 1 ba, 3 KK; Hóa học: 1 KK; Lịch sử: 1 nhì, 3 ba, 1 KK; GDKTPL: 1 KK).`,
       },
       {
         heading: 'II. NHIỆM VỤ TRỌNG TÂM NĂM HỌC 2026 - 2027',
@@ -66,7 +90,7 @@ Bảy là, phấn đấu thực hiện các tiêu chí trường đạt chuẩn 
         heading: 'III. CÁC NHIỆM VỤ VÀ GIẢI PHÁP CỤ THỂ NĂM HỌC 2026 - 2027',
         content: `1. Công tác chính trị tư tưởng:
 - Tổ chức học tập, quán triệt nghị quyết, chỉ thị của Đảng, pháp luật Nhà nước. Tiếp tục học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh.
-- Thực hiện tốt các cuộc vận động: "Mỗi thầy, cô giáo là tấm gương đạo đức, tự học và sáng tạo", "Đổi mới, sáng tạo trong dạy và học".
+- Thực hiện tốt các cuộc vận động: "Mỗi thầy, cô giáo là tấm gương đạo đức, tự học và sáng tạo", "Đổi mới, sáng tạo trong dạy và học". Mỗi cán bộ, giáo viên, nhân viên là một tuyên truyền viên về việc xây dựng hình ảnh nhà trường.
 - Xây dựng trường học hạnh phúc, phát động phong trào đoàn kết, kỷ cương, trách nhiệm trong tập thể sư phạm.
 
 2. Thực hiện Chương trình GDPT 2018 bảo đảm chất lượng và hiệu quả:
@@ -75,43 +99,107 @@ Bảy là, phấn đấu thực hiện các tiêu chí trường đạt chuẩn 
 - Tổ chức các nhóm môn học lựa chọn và chuyên đề học tập: tư vấn học sinh, cha mẹ học sinh chọn môn theo năng lực, sở trường và định hướng nghề nghiệp.
 - Đổi mới phương pháp dạy học theo hướng phát triển năng lực, phẩm chất; chú trọng giáo dục STEM, nghiên cứu khoa học, trải nghiệm sáng tạo.
 
-3. Đổi mới phương pháp, hình thức dạy học, kiểm tra đánh giá và phát triển năng lực số:
-- 100% giáo viên đổi mới phương pháp dạy học, không đọc chép, không viết lời thoại rườm rà "GV hỏi - HS đáp", tập trung chuỗi 4 hoạt động học của học sinh.
-- Đa dạng hóa kiểm tra đánh giá: vấn đáp, viết, thực hành, dự án, sản phẩm học tập; 100% đề kiểm tra định kỳ có ma trận và bảng đặc tả.
-- Triển khai học bạ số, hồ sơ điện tử, hệ thống quản lý học tập trực tuyến LMS kết nối 3 điểm trường. Khai thác ứng dụng Trí tuệ nhân tạo (AI) an toàn trong quản lý và dạy học.`,
-      },
-      {
-        heading: 'IV. KHUNG KẾ HOẠCH THỜI GIAN VÀ KHUNG THỜI GIAN HOẠT ĐỘNG TRONG NGÀY',
-        content: `1. Khung thời gian thực hiện năm học:
-- Tựu trường: Khối 9, 12 ngày 22/8/2026; Khối 6, 7, 8, 10, 11 ngày 28/8/2026.
-- Khai giảng: 05/9/2026.
-- Học kỳ 1: 18 tuần thực học từ 07/9/2026 đến 10/01/2027.
-- Học kỳ 2: 17 tuần thực học từ 11/01/2027 đến 23/5/2027.
-- Kết thúc năm học chậm nhất ngày 31/5/2027.
+3. Tăng cường các điều kiện để đảm bảo chất lượng:
+- Phòng học: Rà soát, sắp xếp hợp lý, thuận lợi cho học sinh.
+- Cơ sở vật chất, thiết bị, học liệu: Đầu tư, nâng cấp, khai thác hiệu quả phòng học, phòng bộ môn, phòng thực hành. Ứng dụng CNTT, xây dựng kho học liệu số phục vụ dạy học và kiểm tra, đánh giá.
+- Đội ngũ giáo viên, cán bộ quản lý: Bảo đảm đủ giáo viên cho tất cả các môn học. Bồi dưỡng thường xuyên, nâng cao năng lực dạy học tích hợp, ngoại ngữ. Hướng tới tiếng Anh là ngôn ngữ thứ hai trong trường.
 
-2. Khung thời gian hoạt động trong ngày (Áp dụng thống nhất cho cả 3 điểm trường):
-- Buổi sáng: Khối 8, 9, 10, 11, 12 học chính khóa và chương trình 2 buổi/ngày; Khối 6, 7 học trải nghiệm, bồi dưỡng HSG, phụ đạo yếu:
-  + 6h30 - 6h45: Vệ sinh trường, lớp (15 phút)
-  + 6h45 - 7h00: Sinh hoạt đầu giờ (15 phút)
-  + 7h00 - 7h45: Học tiết 1 (nghỉ 10 phút đổi tiết)
-  + 7h55 - 8h40: Học tiết 2 (nghỉ 15 phút đổi tiết)
-  + 8h55 - 9h40: Học tiết 3 (nghỉ 10 phút đổi tiết)
-  + 9h50 - 10h35: Học tiết 4 (nghỉ 10 phút đổi tiết)
-  + 10h45 - 11h30: Học tiết 5
-- Buổi chiều: Khối 6, 7 học chính khóa và chương trình 2 buổi/ngày; Khối 8, 9, 10, 11, 12 học bồi dưỡng HSG, phụ đạo, CLB:
-  + 14h20 - 15h05: Học tiết 1 (nghỉ 15 phút đổi tiết)
-  + 15h20 - 16h05: Học tiết 2 (nghỉ 10 phút đổi tiết)
-  + 16h15 - 17h00: Học tiết 3`,
+4. Thực hiện hiệu quả các phương pháp, hình thức tổ chức dạy học, kiểm tra đánh giá, hướng nghiệp, phân luồng và phát triển năng lực số:
+- 100% giáo viên đổi mới phương pháp dạy học, tăng cường hoạt động trải nghiệm, dạy học dự án.
+- Đa dạng hóa kiểm tra đánh giá: vấn đáp, viết, thực hành, quan sát, sản phẩm học tập. 100% đề kiểm tra định kỳ có ma trận và bảng đặc tả.
+- Nâng cao chất lượng giáo dục hướng nghiệp, phân luồng sau THCS và THPT.
+- Phát triển năng lực số: Triển khai học bạ số, hồ sơ điện tử, hệ thống quản lý học tập trực tuyến. Ứng dụng AI và dữ liệu lớn trong quản lý, tư vấn hướng nghiệp, cá nhân hóa học tập. Bảo đảm an toàn thông tin và dữ liệu cá nhân.
+
+5. Nâng cao chất lượng phổ cập giáo dục và thực hiện công bằng trong tiếp cận giáo dục:
+- Thực hiện giáo dục hòa nhập đối với 25 học sinh khuyết tật; xây dựng và triển khai kế hoạch giáo dục cá nhân.
+- Quan tâm hỗ trợ học sinh dân tộc thiểu số và học sinh có hoàn cảnh khó khăn.
+
+6. Tiếp tục đổi mới công tác quản lý trong nhà trường:
+- Đổi mới quản trị trường học: Dân chủ, kỷ cương, thân thiện, an toàn; lấy chất lượng làm thước đo.
+- Quản lý chương trình và kế hoạch giáo dục: Đẩy mạnh kiểm tra nội bộ, sinh hoạt chuyên môn theo nghiên cứu bài học.
+- Chuẩn bị điều kiện ban đầu để trường đạt chuẩn Quốc gia mức độ 1 vào năm 2029.`,
       },
       {
-        heading: 'V. TỔ CHỨC THỰC HIỆN',
+        heading: 'IV. MỘT SỐ CHỈ TIÊU CƠ BẢN NĂM HỌC 2026 - 2027',
+        content: `1. Chỉ tiêu nâng cao chất lượng dạy học:
+a) Mục tiêu học tập và rèn luyện:
+- Khối 10-12 (530 học sinh):
+  + Học tập: Tốt 36,04% (191 HS); Khá 44,72% (237 HS); Đạt 18,30% (97 HS); Chưa đạt dưới 0,94% (5 HS).
+  + Rèn luyện: Tốt 96,04% (509 HS); Khá 3,96% (21 HS); không có học sinh Chưa đạt.
+  + Danh hiệu: 35 học sinh xuất sắc, 156 học sinh giỏi.
+- Khối 6-9 (1.590 học sinh tại điểm Đốc Binh Kiều và Tân Kiều):
+  + Học tập: Tốt 31,26% (497 HS); Khá 34,65% (551 HS); Đạt 33,33% (530 HS); Chưa đạt 0,75% (12 HS).
+  + Rèn luyện: Tốt 91,64% (1.457 HS); Khá 6,42% (102 HS); Đạt 1,95% (31 HS); không có học sinh Chưa đạt.
+  + Danh hiệu: 204 học sinh xuất sắc, 293 học sinh giỏi.
+
+b) Chỉ tiêu thi tốt nghiệp và tuyển sinh:
+- Tốt nghiệp THPT năm 2027: 185/185 học sinh (tỉ lệ 100%).
+- Điểm trung bình thi tốt nghiệp THPT năm 2027: Phấn đấu đạt 5,99 điểm toàn trường (Toán 5,14; Ngữ văn 7,52; Lịch sử 7,81; Tiếng Anh 4,82; Vật lí 4,82; Hóa học 6,79; Sinh học 5,36; Địa lí 5,83; GDKT&PL 5,85).
+- Tốt nghiệp THCS năm 2027: 407/407 học sinh (tỉ lệ 100%). Trong đó: Điểm Đốc Binh Kiều 250/250 (100%), Điểm Tân Kiều 157/157 (100%).
+- Tuyển sinh vào lớp 10 năm học 2027 - 2028: Đạt 90% số học sinh tốt nghiệp THCS (Điểm Đốc Binh Kiều 227/250 = 90,8%; Điểm Tân Kiều 142/157 = 90%).
+- Tuyển sinh vào các trường nghề: 10% học sinh tốt nghiệp THCS.
+- Tỷ lệ học sinh đỗ Đại học: Đạt trên 75%.
+- Học sinh giỏi cấp tỉnh: Phấn đấu đạt 18 giải (Toán: 01, Vật lý: 01, Địa lý: 01, Tiếng Anh: 01, Tin học: 01, Ngữ văn: 05, Hóa học: 01, Sinh học: 01, Lịch sử: 06, GDKTPL: 01).
+
+2. Chỉ tiêu nâng cao chất lượng đội ngũ cán bộ, giáo viên, nhân viên:
+- 100% giáo viên đạt chuẩn trình độ chuyên môn đào tạo; phấn đấu 01 giáo viên đăng ký học sau đại học trong năm học 2026-2027.
+- Chuẩn nghề nghiệp: 100% giáo viên đạt chuẩn trở lên (70% Tốt, 25% Khá, 5% Đạt).
+- Đánh giá viên chức: 100% hoàn thành nhiệm vụ trở lên (20% Hoàn thành xuất sắc nhiệm vụ, 80% Hoàn thành tốt nhiệm vụ).
+- Viết sáng kiến kinh nghiệm: Mỗi tổ phấn đấu đạt tối thiểu 40% số sáng kiến so với số lượng giáo viên, nhân viên trong tổ.
+- Quy định dự giờ, thao giảng:
+  + Hiệu trưởng: dự giờ ít nhất 10% giáo viên/học kỳ.
+  + Phó Hiệu trưởng: dự giờ ít nhất 30% giáo viên/học kỳ (theo Điểm trường phụ trách).
+  + Tổ trưởng chuyên môn: dự giờ 100% giáo viên trong tổ ở điểm trường công tác, ít nhất 30% giáo viên ở 2 điểm còn lại.
+  + Tổ phó chuyên môn: dự giờ ít nhất 100% giáo viên trong tổ theo điểm trường mình đang công tác.
+  + Giáo viên dự giờ đồng nghiệp: ít nhất 04 tiết/học kỳ.
+  + Tổ chuyên môn tổ chức dạy minh họa: 01 tiết/học kỳ; xây dựng ít nhất 01 bài học/chuyên đề nghiên cứu/môn học/học kỳ.
+  + Mỗi tổ đăng ký ít nhất 01 giáo viên tham gia thi Giáo viên dạy giỏi cấp tỉnh.
+- Công tác phát triển Đảng: Phấn đấu kết nạp 02 học sinh vào Đảng Cộng sản Việt Nam.
+
+3. Chỉ tiêu thi đua, khen thưởng:
+- Tập thể: Phấn đấu Trường THCS và THPT Đốc Binh Kiều đạt danh hiệu Tập thể lao động xuất sắc.
+- Khen thưởng: 06 cá nhân được tặng Bằng khen của UBND tỉnh Đồng Tháp.
+- Cấp trường: 100% CB-GV-NV hoàn thành tốt nhiệm vụ trở lên (20% Lao động xuất sắc, 70% Lao động tiên tiến).`,
+      },
+      {
+        heading: 'V. KHUNG KẾ HOẠCH THỜI GIAN VÀ KHUNG THỜI GIAN HOẠT ĐỘNG TRONG NGÀY',
+        content: `1. Khung thời gian thực hiện chương trình:
+- Tựu trường: Khối 9 và Khối 12 ngày 22/8/2026; Khối 6, 7, 8, 10 và 11 ngày 28/8/2026.
+- Khai giảng: Ngày 05/9/2026.
+- Học kỳ 1 (18 tuần thực học): Từ ngày 07/9/2026 đến ngày 10/01/2027.
+- Học kỳ 2 (17 tuần thực học): Từ ngày 11/01/2027 đến ngày 23/5/2027.
+- Hoàn tất hồ sơ, tổng kết năm học: Từ ngày 24/5/2027 đến ngày 30/5/2027. Kết thúc năm học chậm nhất ngày 31/5/2027.
+
+2. Khung thời gian hoạt động trong ngày (Áp dụng thống nhất cho cả 3 điểm trường - MỖI BUỔI 5 TIẾT):
+a) Buổi sáng (Từ 6h30 đến 11h30):
+Thực hiện chương trình chính khóa đối với khối 8, 9, 10, 11, 12 và chương trình dạy học 2 buổi/ngày (nếu có), dạy học trải nghiệm, bồi dưỡng học sinh giỏi, phụ đạo học sinh yếu, sinh hoạt các câu lạc bộ đối với khối 6, 7.
+- 6h30 - 6h45 (15 phút): Vệ sinh trường, lớp.
+- 6h45 - 7h00 (15 phút): Sinh hoạt đầu giờ.
+- 7h00 - 7h45 (45 phút): Học tiết 1 (nghỉ 10 phút đổi tiết).
+- 7h55 - 8h40 (45 phút): Học tiết 2 (nghỉ 15 phút đổi tiết).
+- 8h55 - 9h40 (45 phút): Học tiết 3 (nghỉ 10 phút đổi tiết).
+- 9h50 - 10h35 (45 phút): Học tiết 4 (nghỉ 10 phút đổi tiết).
+- 10h45 - 11h30 (45 phút): Học tiết 5.
+
+b) Buổi chiều (Từ 12h00 đến 17h00):
+Thực hiện chương trình chính khóa đối với khối 6, 7 và chương trình dạy học 2 buổi/ngày (nếu có), dạy học trải nghiệm, bồi dưỡng học sinh giỏi, phụ đạo học sinh yếu, sinh hoạt các câu lạc bộ đối với các khối còn lại (khối 8, 9, 10, 11, 12).
+- 12h00 – 12h15 (15 phút): Vệ sinh trường, lớp.
+- 12h15 – 12h30 (15 phút): Sinh hoạt đầu giờ.
+- 12h30 – 13h15 (45 phút): Học tiết 1 (nghỉ 10 phút đổi tiết).
+- 13h25 – 14h10 (45 phút): Học tiết 2 (nghỉ 10 phút đổi tiết).
+- 14h20 – 15h05 (45 phút): Học tiết 3 (nghỉ 15 phút đổi tiết).
+- 15h20 – 16h05 (45 phút): Học tiết 4 (nghỉ 10 phút đổi tiết).
+- 16h15 – 17h00 (45 phút): Học tiết 5.`,
+      },
+      {
+        heading: 'VI. TỔ CHỨC THỰC HIỆN',
         content: `1. Ban Giám hiệu:
-- Thầy Hiệu trưởng Lê Thanh Cường phụ trách chung, chỉ đạo tài chính, tổ chức và đối ngoại.
-- Thầy Phó Hiệu trưởng Nguyễn Minh Trí trực tiếp phụ trách chuyên môn toàn trường; ký duyệt kế hoạch các tổ chuyên môn, duyệt đề kiểm tra định kỳ; theo dõi, thẩm định Kế hoạch bài dạy của giáo viên.
-- Phân công cán bộ Ban Giám hiệu thường trực tại Điểm trường Tân Kiều để nắm bắt tình hình và kịp thời giải quyết các vướng mắc chuyên môn.
+- Thầy Hiệu trưởng Lê Thanh Cường: Lãnh đạo, điều hành chung toàn diện hoạt động của nhà trường; chịu trách nhiệm trước Sở GDĐT về thực hiện kế hoạch giáo dục.
+- Thầy Phó Hiệu trưởng Nguyễn Minh Trí: Trực tiếp phụ trách chỉ đạo chuyên môn toàn trường; ký duyệt kế hoạch các tổ chuyên môn, thời khóa biểu, duyệt đề kiểm tra định kỳ; theo dõi, thẩm định Kế hoạch bài dạy của giáo viên.
+- Phân công cán bộ Ban Giám hiệu thường trực tại Điểm Tân Kiều để nắm bắt tình hình và kịp thời giải quyết các vướng mắc chuyên môn.
 
-2. Các Tổ chuyên môn và Giáo viên:
-- Hoàn thành Kế hoạch giáo dục của Tổ trước ngày 05/9/2026 gửi Phó Hiệu trưởng phê duyệt.
+2. Các Tổ chuyên môn và Tổ Văn phòng:
+- Căn cứ Kế hoạch giáo dục nhà trường, từng tổ xây dựng Kế hoạch dạy học môn học và Kế hoạch giáo dục của tổ trước ngày 05/9/2026 gửi Phó Hiệu trưởng phê duyệt.
 - Duy trì nền nếp sinh hoạt chuyên môn định kỳ 2 tuần/lần theo hướng nghiên cứu bài học; tăng cường họp trực tuyến kết nối điểm chính và điểm Tân Kiều.
 - Giáo viên nghiêm túc thực hiện phân công chuyên môn, giảng dạy đúng phân phối chương trình, tích cực ứng dụng học liệu số.
 
@@ -162,22 +250,21 @@ d) Thời lượng dạy học buổi 1 và buổi 2 trong tuần thực hiện 
       },
       {
         heading: 'II. NỘI DUNG, HÌNH THỨC TỔ CHỨC DẠY HỌC 2 BUỔI/NGÀY',
-        content: `Nội dung, hình thức tổ chức dạy học 2 buổi/ngày tại Trường THCS và THPT Đốc Binh Kiều được triển khai thực hiện nghiêm túc theo Kế hoạch của Sở Giáo dục và Đào tạo, cụ thể đối với 2 cấp học như sau:
+        content: `Nội dung, hình thức tổ chức dạy học 2 buổi/ngày tại Trường THCS và THPT Đốc Binh Kiều được triển khai thực hiện nghiêm túc theo Kế hoạch của Sở Giáo dục và Đào tạo và Kế hoạch giáo dục nhà trường số 34/KH-THCS&THPTĐBK, cụ thể đối với 2 cấp học như sau:
 
 1. Đối với cấp trung học cơ sở:
 a) Thời lượng và bố trí thời gian:
-- Tổ chức dạy học 2 buổi/ngày cho học sinh cấp THCS tại Điểm THCS Đốc Binh Kiều và Điểm THCS Tân Kiều.
-- Bố trí thời gian học tập 6 ngày/tuần (từ thứ Hai đến thứ Bảy), mỗi ngày không quá 7 tiết học, mỗi tiết 45 phút.
-- Khung thời gian học tập trong ngày:
-  + Buổi sáng (tối đa 5 tiết, từ 7h00 đến 11h30): Bố trí dạy học chính khóa đối với Khối 8 và Khối 9; tổ chức các hoạt động bồi dưỡng, phụ đạo, trải nghiệm buổi 2 đối với Khối 6 và Khối 7.
-  + Buổi chiều (tối đa 3 tiết, từ 14h20 đến 17h00): Bố trí dạy học chính khóa đối với Khối 6 và Khối 7; tổ chức các hoạt động buổi 2 (phụ đạo, bồi dưỡng HSG, CLB) đối với Khối 8 và Khối 9.
+- Tổ chức dạy học 2 buổi/ngày cho học sinh cấp THCS tại Điểm THCS Đốc Binh Kiều (khối 6-9) và Điểm THCS Tân Kiều (khối 6-9).
+- Bố trí thời gian học tập 6 ngày/tuần (từ thứ Hai đến thứ Bảy), mỗi ngày không quá 7 tiết học, mỗi tiết 45 phút theo đúng khung thời gian hoạt động trong ngày đã được nhà trường ban hành thống nhất:
+  + Đối với Khối 6 và Khối 7: Buổi chiều học chương trình chính khóa (từ 12h30 đến 17h00, tối đa 5 tiết); buổi sáng tham gia các hoạt động giáo dục 2 buổi/ngày (từ 7h00 đến 11h30) gồm dạy học trải nghiệm, bồi dưỡng học sinh giỏi, phụ đạo học sinh yếu, sinh hoạt các câu lạc bộ.
+  + Đối với Khối 8 và Khối 9: Buổi sáng học chương trình chính khóa (từ 7h00 đến 11h30, tối đa 5 tiết); buổi chiều tham gia các hoạt động giáo dục 2 buổi/ngày (từ 12h30 đến 17h00) gồm bồi dưỡng học sinh giỏi, phụ đạo học sinh yếu, ôn tập tuyển sinh lớp 10, sinh hoạt câu lạc bộ và giáo dục STEM.
 b) Nội dung và hình thức dạy học:
 - Buổi 1 (Chính khóa): Thực hiện đầy đủ kế hoạch giáo dục môn học và hoạt động giáo dục theo Chương trình GDPT 2018 ban hành kèm theo Thông tư số 32/2018/TT-BGDĐT.
 - Buổi 2 (Tăng cường & Phát triển năng lực):
   + Tổ chức ôn tập, phụ đạo củng cố kiến thức cho học sinh có nguy cơ chưa đạt yêu cầu cần đạt (YCCĐ) các môn Toán, Ngữ văn, Tiếng Anh, Khoa học tự nhiên (hoàn toàn miễn phí, không thu tiền học sinh).
-  + Bồi dưỡng học sinh giỏi lớp 9 tham gia kỳ thi chọn HSG cấp huyện và cấp tỉnh Đồng Tháp.
-  + Tổ chức ôn tập, củng cố kiến thức trọng tâm cho học sinh lớp 9 chuẩn bị kỳ thi tuyển sinh vào lớp 10 THPT.
-  + Tổ chức hoạt động giáo dục STEM/STEAM, câu lạc bộ Tin học - Trí tuệ nhân tạo (AI), hoạt động trải nghiệm hướng nghiệp, giáo dục kỹ năng sống, an toàn giao thông, văn hóa đọc tại thư viện trường, rèn luyện thể dục thể thao (bóng đá, bóng chuyền, cầu lông, điền kinh) và văn nghệ.
+  + Bồi dưỡng học sinh giỏi lớp 9 tham gia kỳ thi chọn HSG cấp huyện và cấp tỉnh Đồng Tháp (phấn đấu cùng toàn trường đạt 18 giải cấp tỉnh).
+  + Tổ chức ôn tập, củng cố kiến thức trọng tâm cho học sinh lớp 9 chuẩn bị kỳ thi tuyển sinh vào lớp 10 THPT (mục tiêu tuyển sinh vào lớp 10 đạt 90%).
+  + Tổ chức hoạt động giáo dục STEM/STEAM, câu lạc bộ Tin học - Trí tuệ nhân tạo (AI), hoạt động trải nghiệm hướng nghiệp, giáo dục kỹ năng sống, an toàn giao thông, văn hóa đọc tại thư viện trường, rèn luyện thể dục thể thao và văn nghệ.
 - Đa dạng hóa hình thức tổ chức dạy học: Phân chia nhóm học sinh theo năng lực, trình độ; tổ chức câu lạc bộ theo sở thích; tăng cường thời lượng tự học có hướng dẫn của giáo viên bộ môn tại thư viện và phòng bộ môn.
 
 2. Đối với cấp trung học phổ thông:
@@ -185,14 +272,14 @@ a) Thời lượng và bố trí thời gian:
 - Tổ chức dạy học 2 buổi/ngày cho học sinh Khối 10, Khối 11, Khối 12 tại Điểm trường chính.
 - Bố trí thời gian học tập 6 ngày/tuần, mỗi ngày không quá 7 tiết học, mỗi tiết 45 phút.
 - Khung thời gian:
-  + Buổi sáng (tối đa 5 tiết, từ 7h00 đến 11h30): Dạy học toàn bộ chương trình chính khóa các môn bắt buộc và cụm chuyên đề lựa chọn.
-  + Buổi chiều (tối đa 3 tiết, từ 14h20 đến 17h00, 3-4 buổi/tuần): Dạy học buổi 2 theo định hướng phân hóa và năng khiếu.
+  + Buổi sáng (từ 7h00 đến 11h30, tối đa 5 tiết): Dạy học toàn bộ chương trình chính khóa các môn bắt buộc và cụm chuyên đề lựa chọn.
+  + Buổi chiều (từ 12h30 đến 17h00, tối đa 3-4 tiết, bố trí 3-4 buổi/tuần): Dạy học buổi 2 theo định hướng phân hóa, ôn thi tốt nghiệp THPT và bồi dưỡng năng khiếu.
 b) Nội dung và hình thức dạy học:
 - Buổi 1 (Chính khóa): Hoàn thành đầy đủ chuẩn kiến thức, kỹ năng của Chương trình GDPT 2018; bảo đảm tiến độ phân phối chương trình của các tổ chuyên môn.
 - Buổi 2 (Tăng cường & Chuyên sâu):
   + Tổ chức phụ đạo, giúp đỡ học sinh chưa đạt chuẩn ở các môn Toán, Ngữ văn, Tiếng Anh, Vật lý, Hóa học, Sinh học, Lịch sử, Địa lý.
-  + Bồi dưỡng chuyên sâu các đội tuyển học sinh giỏi cấp tỉnh khối 10, 11, 12 ở các môn văn hóa.
-  + Tổ chức ôn tập thi Tốt nghiệp THPT cho học sinh Khối 12 theo 2 nhóm định hướng nghề nghiệp: Tổ hợp Khoa học tự nhiên và Tổ hợp Khoa học xã hội.
+  + Bồi dưỡng chuyên sâu các đội tuyển học sinh giỏi cấp tỉnh khối 10, 11, 12 ở các môn văn hóa (phấn đấu đạt giải cấp tỉnh theo chỉ tiêu 18 giải của trường).
+  + Tổ chức ôn tập thi Tốt nghiệp THPT năm 2027 cho học sinh Khối 12 (mục tiêu tốt nghiệp 100%, điểm trung bình toàn trường đạt 5,99 điểm, tỷ lệ đỗ Đại học trên 75%) theo 2 nhóm định hướng nghề nghiệp: Tổ hợp Khoa học tự nhiên và Tổ hợp Khoa học xã hội.
   + Tổ chức nghiên cứu khoa học kỹ thuật dành cho học sinh trung học; giáo dục STEM; câu lạc bộ chuyển đổi số và ứng dụng AI; tư vấn tâm lý học đường và hướng nghiệp - phân luồng sau THPT; các hoạt động tình nguyện, rèn luyện thể chất, giáo dục quốc phòng và an ninh.
 - Đa dạng hóa hình thức tổ chức: Học theo nhóm nguyện vọng tổ hợp môn thi; sinh hoạt chuyên đề tại phòng thí nghiệm, phòng máy vi tính; hướng dẫn tự học kết hợp học tập trực tuyến trên hệ thống quản lý học tập số của nhà trường.`,
       },
@@ -248,62 +335,22 @@ b) Nội dung và hình thức dạy học:
         heading: 'V. CHẾ ĐỘ THÔNG TIN, BÁO CÁO',
         content: `1. Chế độ thông tin, báo cáo:
 - Định kỳ hằng tuần, các Tổ trưởng chuyên môn tổng hợp tình hình thực hiện dạy học buổi 2 và tình hình kê khai tiết dạy của giáo viên trong tổ, báo cáo Phó Hiệu trưởng phụ trách chuyên môn qua giao ban chuyên môn.
-- Nhà trường thực hiện nghiêm túc chế độ báo cáo kết quả tổ chức dạy học 2 buổi/ngày về Sở Giáo dục và Đào tạo Đồng Tháp (qua Phòng Giáo dục Phổ thông, Email: giaoducphothong@dongthap.edu.vn) theo đúng quy định:
-  + Báo cáo sơ kết Học kỳ I trước ngày 15 tháng 01 năm 2027.
-  + Báo cáo tổng kết năm học trước ngày 30 tháng 5 năm 2027.
-  + Báo cáo đột xuất khi có yêu cầu của cơ quan quản lý cấp trên.
+- Cuối mỗi học kỳ và kết thúc năm học, Ban Giám hiệu tổ chức họp sơ kết, tổng kết đánh giá rút kinh nghiệm công tác dạy học 2 buổi/ngày; biểu dương, khen thưởng các tập thể, cá nhân có thành tích xuất sắc; đồng thời báo cáo kết quả thực hiện về Sở Giáo dục và Đào tạo tỉnh Đồng Tháp theo quy định.
 
-2. Khen thưởng và kiểm tra, giám sát:
-- Ban Giám hiệu tổ chức kiểm tra định kỳ và đột xuất nền nếp dạy học buổi 2 tại cả 3 điểm trường; kịp thời chấn chỉnh các biểu hiện dạy thêm, học thêm sai quy định hoặc gây quá tải cho học sinh.
-- Kết quả thực hiện kế hoạch dạy học 2 buổi/ngày là một trong những tiêu chí quan trọng để đánh giá, xếp loại thi đua của các tổ chuyên môn, cán bộ quản lý và giáo viên vào cuối học kỳ và cuối năm học 2026 - 2027./.`,
+2. Hiệu lực thi hành:
+- Kế hoạch này có hiệu lực thi hành kể từ ngày ký và được áp dụng trong toàn thể cán bộ quản lý, giáo viên, nhân viên và học sinh Trường THCS và THPT Đốc Binh Kiều trong năm học 2026 - 2027.
+- Trong quá trình triển khai thực hiện, nếu có khó khăn, vướng mắc phát sinh vượt thẩm quyền giải quyết, các tổ chuyên môn, cá nhân phản ánh kịp thời về Ban Giám hiệu (qua Phó Hiệu trưởng Nguyễn Minh Trí) để xem xét, điều chỉnh cho phù hợp với thực tiễn./.`,
       },
     ],
     recipients: [
       'Sở GDĐT Đồng Tháp (để báo cáo);',
-      'Ban Giám hiệu (để chỉ đạo);',
+      'Hiệu trưởng (để chỉ đạo);',
+      'Các Phó Hiệu trưởng (để phối hợp);',
       'Các tổ chuyên môn, văn phòng (để thực hiện);',
+      'Ban ĐD Cha mẹ học sinh (để phối hợp);',
+      'Đoàn trường, Đội TNTP (để phối hợp);',
       'Lưu: VT, CM.',
     ],
-    status: 'official',
-  },
-  {
-    id: 'doc-qd-105',
-    type: 'decision',
-    typeLabel: 'Quyết định',
-    documentNumber: 'Số: 105/QĐ-THCS&THPTĐBK',
-    title: 'QUYẾT ĐỊNH',
-    subTitle: 'Ban hành Quy chế hoạt động chuyên môn và quản lý hồ sơ sổ sách điện tử',
-    signDate: 'Đồng Tháp, ngày 02 tháng 9 năm 2026',
-    createdDate: new Date('2026-09-02').toISOString(),
-    issuingAuthorityTop: 'SỞ GDĐT TỈNH ĐỒNG THÁP',
-    issuingAuthority: 'TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU',
-    signerRole: 'HIỆU TRƯỞNG',
-    signerName: 'Lê Thanh Cường',
-    legalBases: [
-      'Thông tư số 15/2026/TT-BGDĐT ngày 24/3/2026 của Bộ trưởng Bộ GDĐT ban hành Điều lệ trường TH, THCS, THPT và trường phổ thông có nhiều cấp học',
-      'Thông tư số 70/2026/TT-BGDĐT ngày 22/8/2026 của Bộ GDĐT Quy định về quản lý và sử dụng học bạ số trong các cơ sở giáo dục phổ thông',
-      'Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của UBND tỉnh Đồng Tháp về việc sáp nhập thành Trường THCS và THPT Đốc Binh Kiều',
-      'Xét đề nghị của Phó Hiệu trưởng phụ trách chuyên môn Trường THCS và THPT Đốc Binh Kiều',
-    ],
-    sections: [
-      {
-        heading: 'QUYẾT ĐỊNH:',
-        content: `Điều 1. Ban hành kèm theo Quyết định này "Quy chế hoạt động chuyên môn và quản lý hồ sơ, sổ sách điện tử" của Trường THCS và THPT Đốc Binh Kiều áp dụng cho năm học 2026 - 2027.
-
-Điều 2. Quy chế này quy định chi tiết về:
-1. Chế độ làm việc, định mức tiết dạy, sinh hoạt tổ chuyên môn định kỳ 2 tuần/lần theo nghiên cứu bài học.
-2. Quy định quản lý hồ sơ sổ sách hoàn toàn trên môi trường số (học bạ số, sổ điểm điện tử, giáo án điện tử có ký duyệt số, không in ấn hồ sơ giấy hình thức).
-3. Quy định về ra đề kiểm tra định kỳ có ma trận, bảng đặc tả và phân công trách nhiệm bảo đảm chất lượng dạy học đồng bộ tại cả 3 điểm trường (Đốc Binh Kiều và Tân Kiều cách 11km).
-
-Điều 3. Các ông (bà) Phó Hiệu trưởng, Tổ trưởng các Tổ chuyên môn, Trưởng các bộ phận đoàn thể và toàn thể cán bộ, giáo viên, nhân viên Trường THCS và THPT Đốc Binh Kiều chịu trách nhiệm thi hành Quyết định này kể từ ngày ký./.`,
-      },
-    ],
-    recipients: [
-      'Như Điều 3 (để thi hành);',
-      'Sở GDĐT Đồng Tháp (báo cáo);',
-      'BGH trường;',
-      'Lưu: VT, CM.',
-    ],
-    status: 'official',
+    status: 'draft',
   },
 ];

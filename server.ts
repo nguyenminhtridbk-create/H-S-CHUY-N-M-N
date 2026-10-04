@@ -27,12 +27,12 @@ const ai = new GoogleGenAI({
   },
 });
 
-// System reference prompt grounded in Official Documents of Sở GDĐT Đồng Tháp & Official 25-page School Plan PDF
+// System reference prompt grounded in Official Documents of Sở GDĐT Đồng Tháp & Official 26-page School Plan PDF (Số: 34/KH-THCS&THPTĐBK)
 const SYSTEM_PROMPT_OFFICIAL = `
 Bạn là Chuyên gia Quản lý Giáo dục và Thư ký Chuyên môn cao cấp của TRƯỜNG THCS VÀ THPT ĐỐC BINH KIỀU (trực thuộc SỞ GDĐT TỈNH ĐỒNG THÁP).
 Bạn làm việc trực tiếp cùng Thầy Phó Hiệu Trưởng Nguyễn Minh Trí và Thầy Hiệu Trưởng Lê Thanh Cường.
 
-HỒ SƠ THỰC TẾ CHUẨN XÁC CỦA TRƯỜNG (Từ Kế hoạch Giáo dục Nhà trường năm học 2026 - 2027 dài 25 trang):
+HỒ SƠ VÀ DỮ LIỆU THỰC TẾ CHUẨN XÁC CỦA TRƯỜNG (Từ Kế hoạch Giáo dục Nhà trường năm học 2026 - 2027 số 34/KH-THCS&THPTĐBK dài 26 trang):
 1. Cơ sở pháp lý sáp nhập:
    Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của UBND tỉnh Đồng Tháp về việc sáp nhập THCS Đốc Binh Kiều, THCS Tân Kiều và THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều.
 2. Quy mô mạng lưới:
@@ -40,30 +40,47 @@ HỒ SƠ THỰC TẾ CHUẨN XÁC CỦA TRƯỜNG (Từ Kế hoạch Giáo dục
    - Cấp THCS: 39 lớp (1.613 HS) gồm Khối 6 (10 lớp, 417 HS); Khối 7 (9 lớp, 377 HS); Khối 8 (10 lớp, 409 HS); Khối 9 (10 lớp, 410 HS).
    - Cấp THPT: 14 lớp (530 HS) gồm Khối 10 (5 lớp, 203 HS); Khối 11 (4 lớp, 142 HS); Khối 12 (5 lớp, 185 HS).
 3. Đội ngũ cán bộ, giáo viên, nhân viên:
-   - Tổng cộng: 120 người (04 Ban Giám hiệu, 102 Giáo viên, 14 Nhân viên). 85 Đảng viên, 09 Thạc sĩ.
+   - Tổng cộng: 120 người (04 Ban Giám hiệu, 102 Giáo viên, 14 Nhân viên). 65 nữ, 85 Đảng viên, 09 Thạc sĩ.
+   - 96 giáo viên giảng dạy bộ môn đạt chuẩn 100% (88 ĐH, 8 ThS).
    - Cơ cấu 08 Tổ: Ban Giám hiệu (04), Tổ Toán (15), Tổ Ngữ văn - Thư viện - Thiết bị (17), Tổ Lịch sử - Địa lý - GDCD - GDKTPL (16), Tổ Vật lý - Hóa học - Sinh học - Công nghệ (26), Tổ Ngoại ngữ - Tin học (16), Tổ GDTC - QPAN - Nghệ thuật (12), Tổ Văn phòng (14).
 4. Phân bổ cơ sở vật chất tại 03 điểm trường (Tổng diện tích: 35.380,5 m²):
-   - Điểm chính (THPT Đốc Binh Kiều cũ): 15.683 m², khối 10-12 (14 lớp, 530 HS), 14 phòng học, 09 phòng bộ môn kiên cố, 03 phòng lắp ghép, hệ thống PCCC 2 máy bơm, 11 tủ chữa cháy.
+   - Điểm chính (THPT Đốc Binh Kiều cũ): 15.683 m², khối 10-12 (14 lớp, 530 HS), 14 phòng học (9 kiên cố, 3 lắp ghép), 09 phòng bộ môn, PCCC 2 máy bơm, 11 tủ chữa cháy.
    - Điểm Đốc Binh Kiều (THCS Đốc Binh Kiều cũ): 11.126,7 m², khối 6-9 (24 lớp, 983 HS), 22 phòng học, 05 phòng chức năng, sân bóng mini.
    - Điểm Tân Kiều (THCS Tân Kiều cũ - cách điểm chính 11 km): 8.570,8 m², khối 6-9 (15 lớp, 557 HS), 09 phòng học, 10 phòng bộ môn, phòng PHT thường trực.
-5. Khung thời gian hoạt động dạy học 2 buổi/ngày (Áp dụng thống nhất cho cả 3 điểm trường):
-   - Buổi sáng: Khối 8, 9, 10, 11, 12 học chính khóa & 2 buổi/ngày; Khối 6, 7 học trải nghiệm, bồi dưỡng HSG, phụ đạo yếu:
-     * 6h30 - 6h45: Vệ sinh trường, lớp
-     * 6h45 - 7h00: Sinh hoạt đầu giờ
-     * 7h00 - 7h45 (Tiết 1, nghỉ 10p), 7h55 - 8h40 (Tiết 2, nghỉ 15p), 8h55 - 9h40 (Tiết 3, nghỉ 10p), 9h50 - 10h35 (Tiết 4, nghỉ 10p), 10h45 - 11h30 (Tiết 5)
-   - Buổi chiều: Khối 6, 7 học chính khóa & 2 buổi/ngày; Khối 8, 9, 10, 11, 12 học bồi dưỡng HSG, phụ đạo, CLB, STEM:
-     * 14h20 - 15h05 (Tiết 1, nghỉ 15p), 15h20 - 16h05 (Tiết 2, nghỉ 10p), 16h15 - 17h00 (Tiết 3)
+5. KHUNG THỜI GIAN HOẠT ĐỘNG TRONG NGÀY (ÁP DỤNG THỐNG NHẤT 3 ĐIỂM TRƯỜNG - MỖI BUỔI ĐỦ 5 TIẾT):
+   - BUỔI SÁNG (6h30 - 11h30): Khối 8, 9, 10, 11, 12 học chính khóa & 2 buổi/ngày; Khối 6, 7 học trải nghiệm, bồi dưỡng HSG, phụ đạo yếu, sinh hoạt CLB:
+     * 6h30 - 6h45 (15 phút): Vệ sinh trường, lớp
+     * 6h45 - 7h00 (15 phút): Sinh hoạt đầu giờ
+     * 7h00 - 7h45: Tiết 1 (nghỉ 10 phút đổi tiết)
+     * 7h55 - 8h40: Tiết 2 (nghỉ 15 phút đổi tiết)
+     * 8h55 - 9h40: Tiết 3 (nghỉ 10 phút đổi tiết)
+     * 9h50 - 10h35: Tiết 4 (nghỉ 10 phút đổi tiết)
+     * 10h45 - 11h30: Tiết 5
+   - BUỔI CHIỀU (12h00 - 17h00 - ĐỦ 5 TIẾT): Khối 6, 7 học chính khóa & 2 buổi/ngày; Khối 8, 9, 10, 11, 12 học bồi dưỡng HSG, phụ đạo yếu, ôn thi vào 10, ôn thi tốt nghiệp THPT, CLB, STEM:
+     * 12h00 - 12h15 (15 phút): Vệ sinh trường, lớp
+     * 12h15 - 12h30 (15 phút): Sinh hoạt đầu giờ
+     * 12h30 - 13h15: Tiết 1 (nghỉ 10 phút đổi tiết)
+     * 13h25 - 14h10: Tiết 2 (nghỉ 10 phút đổi tiết)
+     * 14h20 - 15h05: Tiết 3 (nghỉ 15 phút đổi tiết)
+     * 15h20 - 16h05: Tiết 4 (nghỉ 10 phút đổi tiết)
+     * 16h15 - 17h00: Tiết 5
+6. CÁC CHỈ TIÊU CHUYÊN MÔN CHÍNH XÁC NĂM HỌC 2026 - 2027:
+   - Tốt nghiệp THPT 2027: 185/185 HS (100%). Điểm thi tốt nghiệp THPT TB toàn trường: 5,99 (Toán 5.14, Văn 7.52, Sử 7.81, Anh 4.82, Lý 4.82, Hóa 6.79, Sinh 5.36, Địa 5.83, GDKTPL 5.85).
+   - Tốt nghiệp THCS 2027: 407/407 HS (100%) (ĐBK 250/250, Tân Kiều 157/157).
+   - Tuyển sinh vào lớp 10 năm học 2027 - 2028: Đạt 90% HS tốt nghiệp THCS (ĐBK: 227/250 = 90,8%; Tân Kiều: 142/157 = 90%). Nghề: 10%.
+   - Tỷ lệ đỗ Đại học: Trên 75%.
+   - Học sinh giỏi cấp tỉnh: Phấn đấu 18 giải (Toán 1, Lý 1, Địa 1, Anh 1, Tin 1, Văn 5, Hóa 1, Sinh 1, Sử 6, GDKTPL 1).
+   - Dự giờ: Hiệu trưởng >= 10% GV/kỳ; PHT >= 30% GV/kỳ (theo Điểm trường); TTCM dự 100% GV ở điểm công tác, >= 30% ở 2 điểm còn lại; GV dự đồng nghiệp >= 4 tiết/kỳ.
+   - Chuẩn quốc gia: Phấn đấu đạt chuẩn Quốc gia mức độ 1 vào năm 2029.
 
-QUY ĐỊNH THỂ THỨC VĂN BẢN VÀ YÊU CẦU CHẤT LƯỢNG NỘI DUNG:
-- Thể thức chuẩn Nghị định số 30/2020/NĐ-CP:
-  + Header trái: SỞ GDĐT TỈNH ĐỒNG THÁP (font 13 đứng) / TRƯỜNG THCS VÀ THPT (font 13 đậm) / ĐỐC BINH KIỀU (font 13 đậm gạch chân) / Số: .../KH-THCS&THPTĐBK (font 13 đứng).
-  + Header phải: CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM (font 13 đậm) / Độc lập - Tự do - Hạnh phúc (font 14 đậm gạch chân) / Đồng Tháp, ngày... tháng... năm... (font 13-14 nghiêng).
-  + Tiêu đề: Tên loại văn bản in hoa đậm font 15; Trích yếu in thường đậm font 14 có gạch chân.
-  + Thụt đầu dòng 1.27cm, khoảng cách dòng 1.35-1.4, căn đều 2 bên (Justified).
-- YÊU CẦU VỀ NỘI DUNG:
-  + Nội dung PHẢI DÀI, CHI TIẾT, TOÀN DIỆN, SÂU SẮC, KHÔNG VIẾT CHUNG CHUNG TÓM TẮT.
-  + Phải có số liệu lớp học, sĩ số học sinh, phân công trách nhiệm rõ ràng cho Ban Giám hiệu (PHT Nguyễn Minh Trí), các tổ chuyên môn, điểm trường Tân Kiều và giáo viên.
-`;
+QUY TẮC BẮT BUỘC KHI SOẠN THẢO VĂN BẢN (KHÔNG ĐƯỢC PHẠM VÀO):
+- Quy tắc 1 (Căn cứ pháp lý): Chỉ viện dẫn các văn bản thật sự làm cơ sở trực tiếp cho văn bản. Không nhồi nhét tràn lan các nghị định chung chung.
+- Quy tắc 2 (Chỉ đạo tổ chức): Kế hoạch hoặc Quyết định do Phó Hiệu trưởng Nguyễn Minh Trí ký thay Hiệu trưởng (KT. HIỆU TRƯỞNG / PHÓ HIỆU TRƯỞNG).
+- Quy tắc 3 (Đề mục & Tiêu đề): Khoảng cách đoạn (Spacing) trên dưới đề mục lớn là 6pt đều nhau.
+- Quy tắc 4 (Văn phong sư phạm tự nhiên, không lộ dấu vết AI):
+  + KHÔNG liệt kê chi tiết từng tổ chuyên môn kèm số giáo viên trong ngoặc đơn (Ví dụ: TUYỆT ĐỐI KHÔNG VIẾT "Các Tổ chuyên môn (07 tổ: Tổ Toán 15 GV, Tổ Ngữ văn 17 GV...)". CHỈ ĐƯỢC GHI: "Các Tổ chuyên môn và Tổ Văn phòng:").
+  + KHÔNG chèn con số cụ thể vào những câu chỉ đạo chung trừ khi thật sự cần thiết (Dùng: "đội ngũ cán bộ, giáo viên", "học sinh ở cả 2 cấp học (THCS và THPT) tại các điểm trường").
+  + Khung thời gian hoạt động: Buổi sáng 7h00 - 11h30 (5 tiết), Buổi chiều 12h30 - 17h00 (5 tiết). TUYỆT ĐỐI KHÔNG GHI BUỔI CHIỀU CHỈ CÓ 3 TIẾT!`;
 
 /**
  * Robust execution with auto-retry across models and intelligent pedagogical fallback
@@ -1021,7 +1038,7 @@ HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGH�
   "legalBases": [
     "Căn cứ [Tên văn bản gốc của Sở GDĐT/Bộ GDĐT cần đọc, ghi rõ Số hiệu và Ngày ban hành nếu có, nếu chưa rõ thì để trống số    / ngày    tháng    năm 2026]...",
     "Căn cứ Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của UBND tỉnh Đồng Tháp về việc sáp nhập thành Trường THCS và THPT Đốc Binh Kiều",
-    "Căn cứ Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 28/KH-THCS&THPTĐBK của Trường THCS và THPT Đốc Binh Kiều"
+    "Căn cứ Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 34/KH-THCS&THPTĐBK ngày 25 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều"
   ],
   "sections": [
     {
@@ -1034,7 +1051,7 @@ HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGH�
     },
     {
       "heading": "III. NỘI DUNG, HÌNH THỨC VÀ KHUNG THỜI GIAN HOẠT ĐỘNG",
-      "content": "1. Nội dung tổ chức dạy học:\\na) Buổi sáng (6h30 - 11h30):...\\nb) Buổi chiều (14h20 - 17h00) gồm 4 hoạt động:...\\n\\n2. Khung thời gian biểu hoạt động trong ngày:..."
+      "content": "1. Nội dung tổ chức dạy học:\\na) Buổi sáng (6h30 - 11h30 - đủ 5 tiết):...\\nb) Buổi chiều (12h00 - 17h00 - đủ 5 tiết):...\\n\\n2. Khung thời gian biểu hoạt động trong ngày:..."
     },
     {
       "heading": "IV. BỐ TRÍ ĐỘI NGŨ, CƠ SỞ VẬT CHẤT VÀ KINH PHÍ",
@@ -1135,10 +1152,14 @@ b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 
   + 8h55 - 9h40: Tiết 3 (nghỉ 10 phút đổi tiết)
   + 9h50 - 10h35: Tiết 4 (nghỉ 10 phút đổi tiết)
   + 10h45 - 11h30: Tiết 5
-- Buổi chiều (tối đa 3 tiết):
-  + 14h20 - 15h05: Tiết 1 (nghỉ 15 phút đổi tiết)
-  + 15h20 - 16h05: Tiết 2 (nghỉ 10 phút đổi tiết)
-  + 16h15 - 17h00: Tiết 3 (nghỉ kết thúc buổi học)`
+- Buổi chiều (tối đa 5 tiết - từ 12h00 đến 17h00):
+  + 12h00 – 12h15: Vệ sinh trường lớp (15 phút)
+  + 12h15 – 12h30: Sinh hoạt đầu giờ (15 phút)
+  + 12h30 – 13h15: Tiết 1 (nghỉ 10 phút đổi tiết)
+  + 13h25 – 14h10: Tiết 2 (nghỉ 10 phút đổi tiết)
+  + 14h20 – 15h05: Tiết 3 (nghỉ 15 phút đổi tiết)
+  + 15h20 – 16h05: Tiết 4 (nghỉ 10 phút đổi tiết)
+  + 16h15 – 17h00: Tiết 5 (kết thúc buổi học)`
             },
             {
               heading: 'IV. BỐ TRÍ ĐỘI NGŨ, CƠ SỞ VẬT CHẤT VÀ KINH PHÍ',
@@ -1177,7 +1198,7 @@ b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 
       }
 
       let contentII = `Quy mô áp dụng: Toàn trường với 53 lớp và 2.143 học sinh; 120 cán bộ giáo viên nhân viên (102 giáo viên trực tiếp giảng dạy). Trong đó: 39 lớp cấp THCS (24 lớp điểm chính Đốc Binh Kiều với 983 HS, 15 lớp điểm Tân Kiều cách 11km với 557 HS) và 14 lớp cấp THPT với 530 HS.`;
-      let contentIII = `Thời gian thực hiện theo khung năm học 2026 - 2027 (đủ 35 tuần thực học, HK1: 18 tuần, HK2: 17 tuần). Khung giờ hoạt động buổi sáng từ 7h00 đến 11h30 (5 tiết), buổi chiều từ 14h20 đến 17h00 (3 tiết).`;
+      let contentIII = `Thời gian thực hiện theo khung năm học 2026 - 2027 (đủ 35 tuần thực học, HK1: 18 tuần, HK2: 17 tuần). Khung giờ hoạt động buổi sáng từ 7h00 đến 11h30 (5 tiết), buổi chiều từ 12h30 đến 17h00 (5 tiết).`;
 
       if (topic.toLowerCase().includes('giáo viên dạy giỏi') || topic.toLowerCase().includes('gvdg')) {
         specificLegal.push('Thông tư số 22/2019/TT-BGDĐT ngày 20/12/2019 của Bộ GDĐT ban hành Quy định Hội thi giáo viên dạy giỏi cơ sở giáo dục phổ thông');
