@@ -358,22 +358,22 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
             )}
           </div>
 
-          {/* Legal Bases: Indented 1.0cm, font 14pt italic, text-justify */}
+          {/* Legal Bases: Indented 1.0cm, font 14pt regular (chữ thường đứng, không in nghiêng), text-justify */}
           {isEditing ? (
-            <div className="mb-5 space-y-1.5 p-3 bg-amber-50/50 rounded-lg border border-amber-200">
+            <div className="mb-5 space-y-1.5 p-3 bg-slate-50 rounded-lg border border-slate-200">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-amber-900 uppercase tracking-wide">
-                  Căn cứ xây dựng kế hoạch (Ngắn gọn - đúng văn bản gốc cần đọc):
+                <label className="text-xs font-bold text-slate-800 uppercase tracking-wide">
+                  Căn cứ xây dựng kế hoạch (Chữ thường đứng, không in nghiêng):
                 </label>
-                <span className="text-[11px] text-amber-700 italic">
-                  (Mỗi dòng 1 căn cứ, nếu thiếu số/ngày thì để trống ...)
+                <span className="text-[11px] text-slate-500">
+                  (Chỉ cần 1 căn cứ văn bản gốc của Sở)
                 </span>
               </div>
               <textarea
                 value={doc.legalBases ? doc.legalBases.join('\n') : ''}
                 onChange={(e) => setDoc({ ...doc, legalBases: e.target.value.split('\n').filter(l => l.trim().length > 0) })}
-                rows={4}
-                className="w-full text-[13.5pt] italic border border-slate-300 rounded p-2 font-serif leading-relaxed text-slate-800"
+                rows={3}
+                className="w-full text-[13.5pt] font-normal not-italic border border-slate-300 rounded p-2 font-serif leading-relaxed text-slate-900"
                 placeholder="Ví dụ: Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở GDĐT Đồng Tháp..."
               />
             </div>
@@ -392,7 +392,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                   }
 
                   return (
-                    <p key={idx} className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 italic text-justify">
+                    <p key={idx} className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 font-normal not-italic text-justify">
                       {formattedText}
                     </p>
                   );

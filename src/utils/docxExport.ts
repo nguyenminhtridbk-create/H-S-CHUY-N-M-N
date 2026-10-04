@@ -192,12 +192,11 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
           children: [
             new TextRun({
               text: formattedText,
-              italics: true,
               size: 28, // 14pt
               font: 'Times New Roman',
             }),
           ],
-          indent: { firstLine: 720 }, // 1.27cm
+          indent: { firstLine: 567 }, // 1.0cm indent
           spacing: { line: 280, after: 50 },
         })
       );
