@@ -233,11 +233,10 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
             }),
           ],
           indent: { firstLine: 567 }, // 1.0cm indent
-          spacing: { line: 280, after: 50 },
+          spacing: { line: 280, after: 60 },
         })
       );
     });
-    docChildren.push(new Paragraph({ spacing: { after: 100 } }));
   }
 
   // Transition phrase if plan
@@ -253,14 +252,14 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
           }),
         ],
         indent: { firstLine: 720 },
-        spacing: { line: 280, after: 100 },
+        spacing: { line: 280, after: 120 },
       })
     );
   }
 
   // Sections
   doc.sections.forEach((sec) => {
-    // Heading: Roman numeral heading bold 14pt
+    // Heading: Roman numeral heading bold 14pt (giãn đoạn trên 6pt = 120 twips, dưới 6pt = 120 twips đều nhau)
     docChildren.push(
       new Paragraph({
         children: [
@@ -271,7 +270,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
             font: 'Times New Roman',
           }),
         ],
-        spacing: { before: 220, after: 100 },
+        spacing: { before: 120, after: 120 },
       })
     );
 

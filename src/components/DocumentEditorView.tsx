@@ -360,7 +360,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
             </div>
           ) : (
             doc.legalBases && doc.legalBases.length > 0 && (
-              <div className="space-y-1.5 mb-5 text-justify">
+              <div className="space-y-1.5 mb-2 text-justify">
                 {doc.legalBases.map((base, idx) => {
                   const fullText = base.startsWith('Căn cứ') ? base : `Căn cứ ${base}`;
                   const isLast = idx === doc.legalBases.length - 1;
@@ -384,13 +384,13 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
           {/* Transition phrase if plan */}
           {doc.type === 'plan' && (
-            <p className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 mb-4 font-normal text-justify">
+            <p className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 mb-3 font-normal text-justify">
               Nay Trường THCS và THPT Đốc Binh Kiều xây dựng {doc.subTitle ? (doc.subTitle.toLowerCase().startsWith('kế hoạch') ? doc.subTitle : `Kế hoạch ${doc.subTitle.toLowerCase()}`) : (doc.title.toLowerCase().startsWith('kế hoạch') ? doc.title : `Kế hoạch ${doc.title.toLowerCase()}`)} như sau:
             </p>
           )}
 
           {/* Sections Body: Roman Numeral Headings, Numbered items, Indent 1.0cm */}
-          <div className="space-y-4 text-justify">
+          <div className="space-y-3 text-justify">
             {doc.sections.map((section, sIdx) => (
               <div key={sIdx} className="space-y-2">
                 {isEditing ? (
@@ -405,7 +405,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                     className="font-bold text-[14pt] uppercase border border-slate-300 rounded px-2 py-1 w-full"
                   />
                 ) : (
-                  <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 mt-5 mb-2 pl-0 indent-0">
+                  <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] pl-0 indent-0">
                     {section.heading}
                   </h2>
                 )}
