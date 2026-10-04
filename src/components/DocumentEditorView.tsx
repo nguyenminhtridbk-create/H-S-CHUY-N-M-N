@@ -340,26 +340,46 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           </div>
 
           {/* Legal Bases: Indented 1.0cm, font 14pt italic, text-justify */}
-          {doc.legalBases && doc.legalBases.length > 0 && (
-            <div className="space-y-1.5 mb-5 text-justify">
-              {doc.legalBases.map((base, idx) => {
-                const fullText = base.startsWith('Căn cứ') ? base : `Căn cứ ${base}`;
-                const isLast = idx === doc.legalBases.length - 1;
-                // Nghị định 30: các căn cứ kết thúc bằng dấu chấm phẩy (;), căn cứ cuối cùng kết thúc bằng dấu chấm (.)
-                let formattedText = fullText;
-                if (isLast) {
-                  if (!formattedText.endsWith('.')) formattedText = formattedText.replace(/;$/, '') + '.';
-                } else {
-                  if (!formattedText.endsWith(';')) formattedText = formattedText.replace(/\.$/, '') + ';';
-                }
-
-                return (
-                  <p key={idx} className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 italic text-justify">
-                    {formattedText}
-                  </p>
-                );
-              })}
+          {isEditing ? (
+            <div className="mb-5 space-y-1.5 p-3 bg-amber-50/50 rounded-lg border border-amber-200">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-bold text-amber-900 uppercase tracking-wide">
+                  Căn cứ xây dựng kế hoạch (Ngắn gọn - đúng văn bản gốc cần đọc):
+                </label>
+                <span className="text-[11px] text-amber-700 italic">
+                  (Mỗi dòng 1 căn cứ, nếu thiếu số/ngày thì để trống ...)
+                </span>
+              </div>
+              <textarea
+                value={doc.legalBases ? doc.legalBases.join('\n') : ''}
+                onChange={(e) => setDoc({ ...doc, legalBases: e.target.value.split('\n').filter(l => l.trim().length > 0) })}
+                rows={4}
+                className="w-full text-[13.5pt] italic border border-slate-300 rounded p-2 font-serif leading-relaxed text-slate-800"
+                placeholder="Ví dụ: Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở GDĐT Đồng Tháp..."
+              />
             </div>
+          ) : (
+            doc.legalBases && doc.legalBases.length > 0 && (
+              <div className="space-y-1.5 mb-5 text-justify">
+                {doc.legalBases.map((base, idx) => {
+                  const fullText = base.startsWith('Căn cứ') ? base : `Căn cứ ${base}`;
+                  const isLast = idx === doc.legalBases.length - 1;
+                  // Nghị định 30: các căn cứ kết thúc bằng dấu chấm phẩy (;), căn cứ cuối cùng kết thúc bằng dấu chấm (.)
+                  let formattedText = fullText;
+                  if (isLast) {
+                    if (!formattedText.endsWith('.')) formattedText = formattedText.replace(/;$/, '') + '.';
+                  } else {
+                    if (!formattedText.endsWith(';')) formattedText = formattedText.replace(/\.$/, '') + ';';
+                  }
+
+                  return (
+                    <p key={idx} className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 italic text-justify">
+                      {formattedText}
+                    </p>
+                  );
+                })}
+              </div>
+            )
           )}
 
           {/* Transition phrase if plan */}
@@ -477,16 +497,119 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           <div className="grid grid-cols-12 gap-4 mt-12 pt-4 items-start border-t border-slate-200">
             {/* Left: Nơi nhận (Tiêu đề 12pt bold italic, danh sách 11pt thường) */}
             <div className="col-span-6 text-left">
-              <strong className="text-[12pt] font-bold italic block mb-1">
-                Nơi nhận:
-              </strong>
+              <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
+                <strong className="text-[12pt] font-bold italic">
+                  Nơi nhận:
+                </strong>
+                {isEditing && (
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setDoc({
+                          ...doc,
+                          recipients: [
+                            'Sở GDĐT Đồng Tháp (để báo cáo);',
+                            'Ban Giám hiệu (để chỉ đạo);',
+                            'Các tổ chuyên môn, văn phòng (để thực hiện);',
+                            'Lưu: VT, CM.',
+                          ],
+                        });
+                      }}
+                      className="text-[10.5px] px-2 py-0.5 rounded bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold transition"
+                      title="Áp dụng chuẩn Nơi nhận tinh gọn 4 dòng"
+                    >
+                      ⚡ Chuẩn tinh gọn (4 dòng)
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const cleaned = doc.recipients.filter((r) => {
+                          const lower = r.toLowerCase();
+                          return (
+                            !lower.includes('huyện tháp mười') &&
+                            !lower.includes('ubnd xã') &&
+                            !lower.includes('điểm tân kiều') &&
+                            !lower.includes('cha mẹ học sinh') &&
+                            !lower.includes('cmhs')
+                          );
+                        });
+                        setDoc({
+                          ...doc,
+                          recipients: cleaned.length >= 2 ? cleaned : [
+                            'Sở GDĐT Đồng Tháp (để báo cáo);',
+                            'Ban Giám hiệu (để chỉ đạo);',
+                            'Các tổ chuyên môn, văn phòng (để thực hiện);',
+                            'Lưu: VT, CM.',
+                          ],
+                        });
+                      }}
+                      className="text-[10.5px] px-2 py-0.5 rounded bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 font-semibold transition"
+                      title="Lọc bỏ bớt các nơi nhận ngoài thẩm quyền"
+                    >
+                      🧹 Tự động lọc bớt
+                    </button>
+                  </div>
+                )}
+              </div>
+
               {isEditing ? (
-                <textarea
-                  value={doc.recipients.join('\n')}
-                  onChange={(e) => setDoc({ ...doc, recipients: e.target.value.split('\n') })}
-                  rows={6}
-                  className="w-full text-[11pt] border border-slate-300 rounded p-1"
-                />
+                <div className="space-y-1.5">
+                  <textarea
+                    value={doc.recipients.join('\n')}
+                    onChange={(e) => setDoc({ ...doc, recipients: e.target.value.split('\n') })}
+                    rows={5}
+                    className="w-full text-[11pt] border border-slate-300 rounded p-1.5 font-normal leading-normal"
+                    placeholder="Mỗi dòng là một nơi nhận..."
+                  />
+                  <div className="flex items-center gap-1 flex-wrap text-[10px] text-slate-500">
+                    <span className="font-medium text-slate-600">Thêm nhanh:</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!doc.recipients.some(r => r.includes('Sở GDĐT'))) {
+                          setDoc({ ...doc, recipients: ['Sở GDĐT Đồng Tháp (để báo cáo);', ...doc.recipients] });
+                        }
+                      }}
+                      className="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                    >
+                      + Sở GDĐT
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!doc.recipients.some(r => r.includes('Ban Giám hiệu'))) {
+                          setDoc({ ...doc, recipients: [...doc.recipients, 'Ban Giám hiệu (để chỉ đạo);'] });
+                        }
+                      }}
+                      className="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                    >
+                      + Ban Giám hiệu
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!doc.recipients.some(r => r.includes('chuyên môn'))) {
+                          setDoc({ ...doc, recipients: [...doc.recipients, 'Các tổ chuyên môn, văn phòng (để thực hiện);'] });
+                        }
+                      }}
+                      className="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                    >
+                      + Các tổ chuyên môn
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!doc.recipients.some(r => r.includes('Lưu:'))) {
+                          setDoc({ ...doc, recipients: [...doc.recipients, 'Lưu: VT, CM.'] });
+                        }
+                      }}
+                      className="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                    >
+                      + Lưu: VT, CM
+                    </button>
+                  </div>
+                </div>
               ) : (
                 <div className="space-y-0.5 text-[11pt] leading-[1.3] text-slate-800">
                   {doc.recipients.map((rec, rIdx) => (

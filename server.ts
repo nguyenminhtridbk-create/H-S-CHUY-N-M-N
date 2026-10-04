@@ -995,7 +995,10 @@ ${is2BuoiPlan ? `
        + 07 Tổ chuyên môn: Xây dựng kế hoạch dạy buổi 2, phân công giáo viên theo định mức, theo dõi kê khai thừa thiếu tiết.
        + Giáo viên bộ môn, Giáo viên chủ nhiệm, Ban đại diện CMHS.
      * V. CHẾ ĐỘ THÔNG TIN, BÁO CÁO: Báo cáo định kỳ học kỳ 1 và cuối năm học về Sở GDĐT Đồng Tháp (qua Phòng GDPT).
-   - Quy tắc 2 (Căn cứ pháp lý): Phải bám sát căn cứ của Sở (Chỉ thị 17/CT-TTg, Thông tư 32/2018, Công văn 9179/BTC-NSNN, Công văn 5208/BGDĐT-GDPT, Kế hoạch 1251/KH-UBND của UBND tỉnh, Kế hoạch triển khai của Sở GDĐT, Quyết định 2606/QĐ-UBND sáp nhập trường, Kế hoạch GD nhà trường 28/KH-THCS&THPTĐBK).
+   - Quy tắc 2 (Căn cứ pháp lý - BẮT BUỘC RẤT NGẮN GỌN):
+     * Chỉ trích dẫn ĐÚNG VĂN BẢN GỐC mà mình cần đọc để xây dựng kế hoạch này (tối đa 2-3 căn cứ, không trích dẫn dài dòng).
+     * Trích dẫn rõ: Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp. (Để trống số và ngày nếu văn bản gốc là bản dự thảo để người dùng tự bổ sung).
+     * Kèm Quyết định số 2606/QĐ-UBND ngày 13/8/2026 sáp nhập trường và Kế hoạch giáo dục nhà trường số 28/KH-THCS&THPTĐBK. Tuyệt đối không trích dẫn thêm các chỉ thị hay công văn ngoài ngành dài dòng.
    - Quy tắc 3 (Có hồn): Nội dung phù hợp cấp THCS, THPT, phân công nhiệm vụ cụ thể, thực tế trường sáp nhập 3 điểm cách nhau 11km.
 ` : ''}
 
@@ -1013,11 +1016,9 @@ HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGH�
   "signerName": "${signerName}",
   "sourceDirective": "Tra cứu pháp luật & Hướng dẫn chuyên môn Bộ GDĐT, Sở GDĐT Đồng Tháp",
   "legalBases": [
-    "Căn cứ Thông tư số 32/2018/TT-BGDĐT...",
-    "Căn cứ Thông tư số 15/2026/TT-BGDĐT ngày 24/3/2026 của Bộ GDĐT ban hành Điều lệ trường TH, THCS, THPT và trường phổ thông có nhiều cấp học",
-    "Căn cứ Công văn số 5208/BGDĐT-GDPT ngày 07/8/2026 của Bộ GDĐT...",
-    "Căn cứ Hướng dẫn số 1061/HD-SGDĐT ngày 28/8/2026 của Sở GDĐT Đồng Tháp...",
-    "Căn cứ Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của UBND tỉnh Đồng Tháp về việc sáp nhập thành Trường THCS và THPT Đốc Binh Kiều"
+    "Căn cứ [Tên văn bản gốc của Sở GDĐT/Bộ GDĐT cần đọc, ghi rõ Số hiệu và Ngày ban hành nếu có, nếu chưa rõ thì để trống số    / ngày    tháng    năm 2026]...",
+    "Căn cứ Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của UBND tỉnh Đồng Tháp về việc sáp nhập thành Trường THCS và THPT Đốc Binh Kiều",
+    "Căn cứ Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 28/KH-THCS&THPTĐBK của Trường THCS và THPT Đốc Binh Kiều"
   ],
   "sections": [
     {
@@ -1042,11 +1043,9 @@ HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGH�
     }
   ],
   "recipients": [
-    "Sở GDĐT Đồng Tháp (báo cáo);",
-    "Hiệu trưởng, các Phó Hiệu trưởng;",
-    "08 Tổ chuyên môn, Tổ Văn phòng;",
-    "Bộ phận phụ trách Điểm Tân Kiều;",
-    "Ban Đại diện CMHS trường;",
+    "Sở GDĐT Đồng Tháp (để báo cáo);",
+    "Ban Giám hiệu (để chỉ đạo);",
+    "Các tổ chuyên môn, văn phòng (để thực hiện);",
     "Lưu: VT, CM."
   ]
 }
@@ -1057,13 +1056,10 @@ HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGH�
       const defaultDocNum = `Số: ${Math.floor(Math.random() * 50) + 50}/${targetCodePrefix}`;
       const upperTopic = topic.trim().toUpperCase();
 
-      // Topic specific legal bases and contents
+      // Topic specific legal bases and contents (Strictly concise, direct source directives)
       let specificLegal = [
-        'Thông tư số 32/2018/TT-BGDĐT ngày 26 tháng 12 năm 2018 của Bộ Giáo dục và Đào tạo ban hành Chương trình GDPT',
-        'Thông tư số 15/2026/TT-BGDĐT ngày 24 tháng 3 năm 2026 của Bộ Giáo dục và Đào tạo ban hành Điều lệ trường TH, THCS, THPT và trường phổ thông có nhiều cấp học',
-        'Công văn số 5208/BGDĐT-GDPT ngày 07 tháng 8 năm 2026 của Bộ GDĐT về việc hướng dẫn thực hiện nhiệm vụ giáo dục phổ thông năm học 2026 - 2027',
-        'Hướng dẫn số 1061/HD-SGDĐT ngày 28 tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về việc thực hiện nhiệm vụ giáo dục phổ thông năm học 2026 - 2027',
-        'Quyết định số 2606/QĐ-UBND ngày 13/8/2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập thành Trường THCS và THPT Đốc Binh Kiều',
+        'Quyết định số 2606/QĐ-UBND ngày 13 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập Trường THCS Đốc Binh Kiều, Trường THCS Tân Kiều và Trường THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều',
+        'Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 28/KH-THCS&THPTĐBK ngày 05 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều',
       ];
 
       // SPECIALIZED DEEP GENERATOR FOR: DẠY HỌC 2 BUỔI / NGÀY
@@ -1079,8 +1075,12 @@ HÃY XUẤT RA DỮ LIỆU ĐỊNH DẠNG JSON ĐÚNG CHUẨN THỂ THỨC NGH�
           issuingAuthority: 'TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU',
           signerRole: signerRole,
           signerName: signerName,
-          sourceDirective: 'Công văn 5208/BGDĐT-GDPT & Hướng dẫn 1061/HD-SGDĐT Sở GDĐT Đồng Tháp',
-          legalBases: specificLegal,
+          sourceDirective: 'Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở GDĐT Đồng Tháp',
+          legalBases: [
+            'Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
+            'Quyết định số 2606/QĐ-UBND ngày 13 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập Trường THCS Đốc Binh Kiều, Trường THCS Tân Kiều và Trường THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều',
+            'Kế hoạch giáo dục nhà trường năm học 2026 - 2027 số 28/KH-THCS&THPTĐBK ngày 05 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều',
+          ],
           sections: [
             {
               heading: 'I. MỤC ĐÍCH, YÊU CẦU',
@@ -1165,11 +1165,9 @@ b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 
             }
           ],
           recipients: [
-            'Sở GDĐT Đồng Tháp (báo cáo);',
-            'Hiệu trưởng, các Phó Hiệu trưởng;',
-            '08 Tổ chuyên môn, Tổ Văn phòng;',
-            'Bộ phận phụ trách Điểm Tân Kiều;',
-            'Ban Đại diện CMHS trường;',
+            'Sở GDĐT Đồng Tháp (để báo cáo);',
+            'Ban Giám hiệu (để chỉ đạo);',
+            'Các tổ chuyên môn, văn phòng (để thực hiện);',
             'Lưu: VT, CM.'
           ]
         };
@@ -1230,8 +1228,7 @@ b) Buổi chiều (Chính khóa khối 6, 7 và tăng cường khối 8, 9, 10, 
         recipients: [
           'Sở GDĐT Đồng Tháp (để báo cáo);',
           'Ban Giám hiệu (để chỉ đạo);',
-          '07 Tổ chuyên môn (để thực hiện);',
-          'Bộ phận phụ trách Điểm Tân Kiều;',
+          'Các tổ chuyên môn, văn phòng (để thực hiện);',
           'Lưu: VT, CM.'
         ]
       };
