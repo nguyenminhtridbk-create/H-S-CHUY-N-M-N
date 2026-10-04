@@ -253,8 +253,8 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 ĐỐC BINH KIỀU
               </strong>
 
-              {/* Gạch chân dưới ĐỐC BINH KIỀU: dài 1/3 đến 1/2 dòng chữ */}
-              <div className="w-20 border-b-2 border-slate-900 mt-1 mb-2"></div>
+              {/* Gạch chân dưới ĐỐC BINH KIỀU: dài 1/3 đến 1/2 dòng chữ, cách hở không đè dấu nặng */}
+              <div className="w-20 border-b-2 border-slate-900 mt-1.5 mb-2"></div>
 
               {/* Số, ký hiệu: Font 13, chữ thường, đứng */}
               {isEditing ? (
@@ -283,8 +283,8 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 <strong className="text-[14pt] font-bold">
                   Độc lập - Tự do - Hạnh phúc
                 </strong>
-                {/* Gạch chân dưới Tiêu ngữ: dài bằng 100% dòng chữ */}
-                <div className="w-full border-b-2 border-slate-900 mt-0.5"></div>
+                {/* Gạch chân dưới Tiêu ngữ: dài bằng 100% dòng chữ, cách hở không đè dấu nặng */}
+                <div className="w-full border-b-2 border-slate-900 mt-1.5"></div>
               </div>
 
               {/* Địa danh và ngày tháng năm: Font 13.5-14pt, chữ thường, NGHIÊNG, canh giữa theo Tiêu ngữ */}
@@ -331,8 +331,8 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                     <span className="text-[14pt] font-bold inline-block">
                       {doc.subTitle}
                     </span>
-                    {/* Gạch chân dưới trích yếu: dài 1/3 dòng chữ */}
-                    <div className="w-36 border-b-2 border-slate-900 mx-auto mt-1"></div>
+                    {/* Gạch chân dưới trích yếu: dài 1/3 dòng chữ, cách hở không đè dấu nặng */}
+                    <div className="w-36 border-b-2 border-slate-900 mx-auto mt-1.5"></div>
                   </div>
                 )}
               </>
@@ -636,10 +636,8 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 ))}
               </div>
 
-              {/* Space for physical signature / seal (40-50px) */}
-              <div className="my-6 text-xs text-slate-300 select-none print:my-12">
-                (Ký, ghi rõ họ tên và đóng dấu)
-              </div>
+              {/* Space for physical signature / seal (blank space) */}
+              <div className="h-20 print:h-28" />
 
               <strong className="text-[14pt] font-bold tracking-tight text-slate-950">
                 {doc.signerName}

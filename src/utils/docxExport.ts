@@ -19,6 +19,15 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
     bottom: { style: BorderStyle.NONE, size: 0, color: 'auto' },
     left: { style: BorderStyle.NONE, size: 0, color: 'auto' },
     right: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    insideHorizontal: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    insideVertical: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+  };
+
+  const cellNoBorder = {
+    top: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    bottom: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    left: { style: BorderStyle.NONE, size: 0, color: 'auto' },
+    right: { style: BorderStyle.NONE, size: 0, color: 'auto' },
   };
 
   // Header 2-column table conforming to Vietnamese State Administration Standards & Decree 30/2020/NĐ-CP
@@ -31,7 +40,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
           // Left: Cơ quan ban hành (Font 13pt = size 26)
           new TableCell({
             width: { size: 45, type: WidthType.PERCENTAGE },
-            borders: noBorder,
+            borders: cellNoBorder,
             children: [
               new Paragraph({
                 alignment: AlignmentType.CENTER,
@@ -63,13 +72,22 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                     text: 'ĐỐC BINH KIỀU',
                     bold: true,
                     size: 26, // 13pt
-                    underline: {
-                      type: UnderlineType.SINGLE,
-                    },
                     font: 'Times New Roman',
                   }),
                 ],
-                spacing: { after: 60 },
+                spacing: { after: 10 },
+              }),
+              // Đường kẻ ngang dưới tên đơn vị: dài 1/3 - 1/2 độ dài tên, có khoảng cách không đè dấu nặng
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: '────────',
+                    size: 14, // 7pt nét thanh mảnh
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { before: 20, after: 60 },
               }),
               new Paragraph({
                 alignment: AlignmentType.CENTER,
@@ -86,7 +104,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
           // Right: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 13 & 14pt)
           new TableCell({
             width: { size: 55, type: WidthType.PERCENTAGE },
-            borders: noBorder,
+            borders: cellNoBorder,
             children: [
               new Paragraph({
                 alignment: AlignmentType.CENTER,
@@ -107,13 +125,22 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                     text: 'Độc lập - Tự do - Hạnh phúc',
                     bold: true,
                     size: 28, // 14pt
-                    underline: {
-                      type: UnderlineType.SINGLE,
-                    },
                     font: 'Times New Roman',
                   }),
                 ],
-                spacing: { after: 80 },
+                spacing: { after: 10 },
+              }),
+              // Đường kẻ ngang dưới Tiêu ngữ: dài bằng độ dài dòng chữ, có khoảng cách hở không đè dấu nặng
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: '──────────────────────────',
+                    size: 14, // 7pt nét thanh mảnh
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { before: 20, after: 80 },
               }),
               new Paragraph({
                 alignment: AlignmentType.RIGHT,
@@ -151,7 +178,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
     }),
   ];
 
-  // Subtitle / Trích yếu: e.g. "Tổ chức dạy học 2 buổi/ngày năm học 2026 - 2027" (size 28 = 14pt bold, underlined)
+  // Subtitle / Trích yếu: e.g. "Tổ chức dạy học 2 buổi/ngày năm học 2026 - 2027" (size 28 = 14pt bold, có đường kẻ hở không đè dấu nặng)
   if (doc.subTitle) {
     docChildren.push(
       new Paragraph({
@@ -161,13 +188,22 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
             text: doc.subTitle,
             bold: true,
             size: 28, // 14pt
-            underline: {
-              type: UnderlineType.SINGLE,
-            },
             font: 'Times New Roman',
           }),
         ],
-        spacing: { after: 220 },
+        spacing: { after: 10 },
+      }),
+      // Đường kẻ ngang dưới trích yếu: dài 1/3 - 1/2 độ dài dòng chữ theo NĐ 30, hở ra không đè lên dấu nặng
+      new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [
+          new TextRun({
+            text: '────────────────',
+            size: 14, // 7pt nét thanh mảnh
+            font: 'Times New Roman',
+          }),
+        ],
+        spacing: { before: 20, after: 200 },
       })
     );
   } else {
@@ -286,7 +322,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
           // Left: Nơi nhận (Font 12pt bold italic, list items 11pt)
           new TableCell({
             width: { size: 50, type: WidthType.PERCENTAGE },
-            borders: noBorder,
+            borders: cellNoBorder,
             children: [
               new Paragraph({
                 children: [
@@ -324,7 +360,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
           // Right: Chức vụ & Họ tên người ký
           new TableCell({
             width: { size: 50, type: WidthType.PERCENTAGE },
-            borders: noBorder,
+            borders: cellNoBorder,
             children: [
               ...signerLines.map(
                 (line, idx) =>
