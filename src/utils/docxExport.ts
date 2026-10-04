@@ -212,7 +212,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
         alignment: AlignmentType.JUSTIFIED,
         children: [
           new TextRun({
-            text: `Trường THCS và THPT Đốc Binh Kiều xây dựng ${doc.subTitle || doc.title} như sau:`,
+            text: `Nay Trường THCS và THPT Đốc Binh Kiều xây dựng ${doc.subTitle ? (doc.subTitle.toLowerCase().startsWith('kế hoạch') ? doc.subTitle : `Kế hoạch ${doc.subTitle.toLowerCase()}`) : (doc.title.toLowerCase().startsWith('kế hoạch') ? doc.title : `Kế hoạch ${doc.title.toLowerCase()}`)} như sau:`,
             size: 28, // 14pt
             font: 'Times New Roman',
           }),

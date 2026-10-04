@@ -102,6 +102,22 @@ export default function App() {
     }
   });
 
+  // Ensure doc-kh-2buoi always uses the single legal base standard upon mount
+  useEffect(() => {
+    const latest2Buoi = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === 'doc-kh-2buoi');
+    if (latest2Buoi) {
+      setCurrentDocument((prev) => {
+        if (prev.id === 'doc-kh-2buoi') {
+          return latest2Buoi;
+        }
+        return prev;
+      });
+      setDocumentsList((prev) => {
+        return prev.map((d) => (d.id === 'doc-kh-2buoi' ? latest2Buoi : d));
+      });
+    }
+  }, []);
+
   // Save directives list to localStorage
   useEffect(() => {
     try {

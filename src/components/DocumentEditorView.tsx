@@ -35,7 +35,17 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
   onBack,
   onViewSourceDirective,
 }) => {
-  const [doc, setDoc] = useState<SchoolDocument>(initialDoc);
+  const [doc, setDoc] = useState<SchoolDocument>(() => {
+    if (initialDoc.id === 'doc-kh-2buoi' && initialDoc.legalBases && initialDoc.legalBases.length > 1) {
+      return {
+        ...initialDoc,
+        legalBases: [
+          'Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
+        ],
+      };
+    }
+    return initialDoc;
+  });
   const [isEditing, setIsEditing] = useState(false);
   const [copied, setCopied] = useState(false);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -44,7 +54,16 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
   // Sync when initialDoc changes
   React.useEffect(() => {
-    setDoc(initialDoc);
+    if (initialDoc.id === 'doc-kh-2buoi' && initialDoc.legalBases && initialDoc.legalBases.length > 1) {
+      setDoc({
+        ...initialDoc,
+        legalBases: [
+          'Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về Triển khai tổ chức dạy học 2 buổi/ngày đối với cơ sở giáo dục phổ thông trên địa bàn tỉnh Đồng Tháp',
+        ],
+      });
+    } else {
+      setDoc(initialDoc);
+    }
   }, [initialDoc]);
 
   // Handle Save
@@ -385,7 +404,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           {/* Transition phrase if plan */}
           {doc.type === 'plan' && (
             <p className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 mb-4 font-normal text-justify">
-              Trường THCS và THPT Đốc Binh Kiều xây dựng {doc.subTitle || doc.title} như sau:
+              Nay Trường THCS và THPT Đốc Binh Kiều xây dựng {doc.subTitle ? (doc.subTitle.toLowerCase().startsWith('kế hoạch') ? doc.subTitle : `Kế hoạch ${doc.subTitle.toLowerCase()}`) : (doc.title.toLowerCase().startsWith('kế hoạch') ? doc.title : `Kế hoạch ${doc.title.toLowerCase()}`)} như sau:
             </p>
           )}
 
