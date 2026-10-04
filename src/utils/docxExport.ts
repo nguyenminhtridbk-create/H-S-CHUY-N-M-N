@@ -37,9 +37,9 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
     rows: [
       new TableRow({
         children: [
-          // Left: Cơ quan ban hành (Font 13pt = size 26)
+          // Left: Cơ quan ban hành (Font 12.5-13pt = size 25-26)
           new TableCell({
-            width: { size: 45, type: WidthType.PERCENTAGE },
+            width: { size: 38, type: WidthType.PERCENTAGE },
             borders: cellNoBorder,
             children: [
               new Paragraph({
@@ -47,7 +47,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                 children: [
                   new TextRun({
                     text: doc.issuingAuthorityTop || 'SỞ GIÁO DỤC VÀ ĐÀO TẠO ĐỒNG THÁP',
-                    size: 26, // 13pt
+                    size: 25, // 12.5pt
                     font: 'Times New Roman',
                   }),
                 ],
@@ -59,7 +59,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                   new TextRun({
                     text: 'TRƯỜNG THCS VÀ THPT',
                     bold: true,
-                    size: 26, // 13pt
+                    size: 25, // 12.5pt
                     font: 'Times New Roman',
                   }),
                 ],
@@ -71,7 +71,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                   new TextRun({
                     text: 'ĐỐC BINH KIỀU',
                     bold: true,
-                    size: 26, // 13pt
+                    size: 25, // 12.5pt
                     font: 'Times New Roman',
                   }),
                 ],
@@ -94,16 +94,16 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                 children: [
                   new TextRun({
                     text: doc.documentNumber || 'Số:    /KH-THCS&THPTĐBK',
-                    size: 26, // 13pt
+                    size: 25, // 12.5pt
                     font: 'Times New Roman',
                   }),
                 ],
               }),
             ],
           }),
-          // Right: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 13 & 14pt)
+          // Right: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 12.5 & 13.5pt rộng 62% để không bao giờ bị nhảy chữ NAM)
           new TableCell({
-            width: { size: 55, type: WidthType.PERCENTAGE },
+            width: { size: 62, type: WidthType.PERCENTAGE },
             borders: cellNoBorder,
             children: [
               new Paragraph({
@@ -112,7 +112,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                   new TextRun({
                     text: 'CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM',
                     bold: true,
-                    size: 26, // 13pt
+                    size: 25, // 12.5pt chuẩn Nghị định 30 (12-13pt), vừa vặn tuyệt đối 1 hàng
                     font: 'Times New Roman',
                   }),
                 ],
@@ -124,7 +124,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                   new TextRun({
                     text: 'Độc lập - Tự do - Hạnh phúc',
                     bold: true,
-                    size: 28, // 14pt
+                    size: 27, // 13.5pt
                     font: 'Times New Roman',
                   }),
                 ],
@@ -377,11 +377,12 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                     spacing: { after: 20 },
                   })
               ),
-              // Blank spacing for signature & seal
-              new Paragraph({
-                spacing: { before: 450, after: 450 },
-                children: [new TextRun({ text: ' ' })],
-              }),
+              // Blank spacing for signature & seal: Enter xuống thêm các hàng rộng rãi để Thầy ký và đóng dấu
+              new Paragraph({ children: [new TextRun({ text: '' })], spacing: { line: 280 } }),
+              new Paragraph({ children: [new TextRun({ text: '' })], spacing: { line: 280 } }),
+              new Paragraph({ children: [new TextRun({ text: '' })], spacing: { line: 280 } }),
+              new Paragraph({ children: [new TextRun({ text: '' })], spacing: { line: 280 } }),
+              new Paragraph({ children: [new TextRun({ text: '' })], spacing: { line: 280 } }),
               new Paragraph({
                 alignment: AlignmentType.CENTER,
                 children: [

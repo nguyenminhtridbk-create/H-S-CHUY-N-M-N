@@ -271,10 +271,10 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
               )}
             </div>
 
-            {/* Right Header: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 13 & 14pt) */}
+            {/* Right Header: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 12.5 & 14pt) */}
             <div className="col-span-7 text-center flex flex-col items-center">
-              {/* CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM: Font 13, in hoa, đứng, ĐẬM */}
-              <strong className="text-[13pt] font-bold uppercase tracking-tight">
+              {/* CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM: Font 12.5, in hoa, đứng, ĐẬM, không ngắt dòng */}
+              <strong className="text-[12.5pt] font-bold uppercase tracking-tight whitespace-nowrap">
                 CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
               </strong>
 
@@ -636,8 +636,8 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 ))}
               </div>
 
-              {/* Space for physical signature / seal (blank space) */}
-              <div className="h-20 print:h-28" />
+              {/* Space for physical signature / seal: Enter xuống thêm 2 hàng rộng rãi để ký và đóng dấu */}
+              <div className="h-28 print:h-36" />
 
               <strong className="text-[14pt] font-bold tracking-tight text-slate-950">
                 {doc.signerName}
