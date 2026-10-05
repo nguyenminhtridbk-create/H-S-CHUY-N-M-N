@@ -79,8 +79,8 @@ export default function App() {
 
   // Current document for Viewing / Editing in Editor
   const [currentDocument, setCurrentDocument] = useState<SchoolDocument>(() => {
-    const foundDTHT = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'doc-kh-dtht-48');
-    return foundDTHT || INITIAL_SCHOOL_DOCUMENTS[0];
+    const found2Buoi = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'doc-kh-2buoi');
+    return found2Buoi || INITIAL_SCHOOL_DOCUMENTS[0];
   });
 
   // Custom School Facts
