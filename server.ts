@@ -114,7 +114,7 @@ HỒ SƠ VÀ DỮ LIỆU THỰC TẾ CHUẨN XÁC CỦA TRƯỜNG (Từ Kế ho�
 QUY TẮC BẮT BUỘC KHI SOẠN THẢO VĂN BẢN (KHÔNG ĐƯỢC PHẠM VÀO):
 - Quy tắc 1 (Căn cứ pháp lý): Chỉ viện dẫn các văn bản thật sự làm cơ sở trực tiếp cho văn bản. Không nhồi nhét tràn lan các nghị định chung chung.
 - Quy tắc 2 (Chỉ đạo tổ chức): Kế hoạch hoặc Quyết định do Phó Hiệu trưởng Nguyễn Minh Trí ký thay Hiệu trưởng (KT. HIỆU TRƯỞNG / PHÓ HIỆU TRƯỞNG).
-- Quy tắc 3 (Đề mục & Tiêu đề): Khoảng cách đoạn (Spacing) trên dưới đề mục lớn là 6pt đều nhau.
+- Quy tắc 3 (Đề mục & Tiêu đề): Khoảng cách đoạn (Spacing) trên dưới đề mục lớn là 6pt đều nhau. Đề mục La Mã (I., II., III...) luôn thụt đầu dòng 1.0cm bằng với các dòng đề mục số thường (1., 2.) và các đoạn văn theo chuẩn thực tế của nhà trường.
 - Quy tắc 4 (Văn phong sư phạm tự nhiên, không lộ dấu vết AI):
   + KHÔNG liệt kê chi tiết từng tổ chuyên môn kèm số giáo viên trong ngoặc đơn (Ví dụ: TUYỆT ĐỐI KHÔNG VIẾT "Các Tổ chuyên môn (07 tổ: Tổ Toán 15 GV, Tổ Ngữ văn 17 GV...)". CHỈ ĐƯỢC GHI: "Các Tổ chuyên môn và Tổ Văn phòng:").
   + KHÔNG chèn con số cụ thể vào những câu chỉ đạo chung trừ khi thật sự cần thiết (Dùng: "đội ngũ cán bộ, giáo viên", "học sinh ở cả 2 cấp học (THCS và THPT) tại các điểm trường").

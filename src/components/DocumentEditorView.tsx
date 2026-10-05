@@ -518,12 +518,12 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                         newSections[sIdx].heading = e.target.value;
                         setDoc({ ...doc, sections: newSections });
                       }}
-                      style={{ fontFamily: '"Times New Roman", Times, serif' }}
-                      className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] pl-0 indent-0 w-full bg-transparent border-0 border-b border-dashed border-transparent hover:border-slate-300 focus:border-blue-400 focus:bg-blue-50/20 outline-none transition"
+                      style={{ fontFamily: '"Times New Roman", Times, serif', textIndent: '1cm' }}
+                      className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] indent-[1cm] pl-0 w-full bg-transparent border-0 border-b border-dashed border-transparent hover:border-slate-300 focus:border-blue-400 focus:bg-blue-50/20 outline-none transition"
                     />
                   </div>
                 ) : (
-                  <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] pl-0 indent-0">
+                  <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] indent-[1cm] pl-0 text-justify">
                     {section.heading}
                   </h2>
                 )}
