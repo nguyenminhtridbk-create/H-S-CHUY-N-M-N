@@ -264,5 +264,22 @@ export const INITIAL_DEPARTMENT_DIRECTIVES: DepartmentDirective[] = [
     "linkedSchoolDocumentIds": [
       "doc-kh-gd-34"
     ]
+  },
+  {
+    "id": "directive-471-ktdg",
+    "documentNumber": "Số: 471/SGDĐT-GDPT",
+    "title": "Công văn hướng dẫn thực hiện kiểm tra, đánh giá đối với cấp THCS, THPT",
+    "issuingAuthority": "SỞ GIÁO DỤC VÀ ĐÀO TẠO TỈNH ĐỒNG THÁP",
+    "signDate": "Đồng Tháp, ngày 14 tháng 4 năm 2025",
+    "signer": "KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn",
+    "topic": "Kiểm tra đánh giá",
+    "fileSize": "922 KB (Bản scan PDF & Bản Word có ma trận, bảng đặc tả)",
+    "summary": "Công văn gốc của Sở GDĐT hướng dẫn kiểm tra đánh giá theo Chương trình GDPT 2018: cấu trúc đề kiểm tra định kỳ cấp THPT theo định dạng 3 phần trắc nghiệm mới (Nhiều lựa chọn, Đúng/Sai, Trả lời ngắn) và Tự luận theo tỉ lệ 4:3:3; quy định môn Ngữ văn không dùng ngữ liệu SGK; môn Tiếng Anh đủ 4 kỹ năng; quy chế 6 bước tổ chức kiểm tra tập trung, bảo mật và phúc khảo.",
+    "fullContent": "UBND TỈNH ĐỒNG THÁP\nSỞ GIÁO DỤC VÀ ĐÀO TẠO\nSố: 471/SGDĐT-GDPT\nĐồng Tháp, ngày 14 tháng 4 năm 2025\n\nV/v thực hiện kiểm tra, đánh giá đối với cấp THCS, THPT\n\nKính gửi: - Uỷ ban nhân dân các huyện, thị xã, thành phố;\n- Thủ trưởng các đơn vị trực thuộc Sở.\n\nCăn cứ Thông tư số 22/2021/TT-BGDĐT ngày 20 tháng 7 năm 2021 của Bộ Giáo dục và Đào tạo (GDĐT) quy định về đánh giá học sinh trung học cơ sở (THCS) và học sinh trung học phổ thông (THPT);\nCăn cứ Công văn số 7991/BGDĐT-GDTrH ngày 20 tháng 12 năm 2024 của Bộ GDĐT về việc hướng dẫn xây dựng ma trận, bảng đặc tả đề kiểm tra định kì các môn học cấp THCS, THPT;\nSở GDĐT hướng dẫn các cơ sở giáo dục trung học trên địa bàn tỉnh triển khai thực hiện công tác kiểm tra, đánh giá học sinh như sau:\n\nI. MỤC ĐÍCH, YÊU CẦU\n- Đánh giá chính xác, khách quan năng lực và phẩm chất học sinh theo chuẩn cần đạt của Chương trình GDPT 2018; đánh giá vì sự tiến bộ của học sinh, không gây áp lực quá tải.\n- Đổi mới phương thức đánh giá định kỳ cấp THPT theo cấu trúc định dạng đề thi tốt nghiệp THPT từ năm 2025 của Bộ GDĐT.\n- Thực hiện nghiêm túc quy trình ra đề, in sao bảo mật, coi kiểm tra chéo, rọc phách chấm tập trung 2 vòng độc lập, trả bài sửa lỗi và chấm phúc khảo công khai, minh bạch.\n\nII. CẤU TRÚC ĐỀ VÀ MA TRẬN ĐỀ KIỂM TRA ĐỊNH KỲ\n1. Cấp THPT (các môn Toán, Vật lí, Hóa học, Sinh học, Địa lí, Lịch sử, KTPL, Tin học, Công nghệ, Tiếng Anh):\n- Phần I: Trắc nghiệm 4 lựa chọn (0,25đ/câu đúng).\n- Phần II: Trắc nghiệm dạng Đúng/Sai (04 ý lệnh: đúng 1 ý được 0,1đ; đúng 2 ý được 0,25đ; đúng 3 ý được 0,5đ; đúng 4 ý được 1,0đ).\n- Phần III: Trắc nghiệm dạng trả lời ngắn (Toán 0,5đ/câu; các môn khác 0,25đ/câu).\n- Phần Tự luận: Kiểm tra tư duy vận dụng, giải quyết vấn đề (3,0đ).\n- Tỉ lệ phân bổ mức độ nhận thức: Nhận biết 40% (4,0đ) - Thông hiểu 30% (3,0đ) - Vận dụng 30% (3,0đ).\n\n2. Môn Ngữ văn (THCS và THPT):\n- Tuyệt đối tránh sử dụng các ngữ liệu, đoạn trích đã có trong SGK học sinh đang học để làm ngữ liệu kiểm tra đọc hiểu và viết.\n- Lớp 6, 7, 8: 6,0đ Đọc hiểu + 4,0đ Viết.\n- Lớp 9, 10, 11, 12: 100% tự luận, gồm 5,0đ Đọc hiểu (5 câu) + 5,0đ Viết (nghị luận xã hội/nghị luận văn học).\n\n3. Cấp THCS: Tiếp tục sử dụng ma trận hiện hành chuẩn 4:3:3, khuyến khích từng bước tiếp cận định dạng mới để học sinh thích ứng khi lên cấp THPT.\n\nIII. TỔ CHỨC THỰC HIỆN\nYêu cầu Hiệu trưởng các cơ sở giáo dục xây dựng và ban hành Kế hoạch kiểm tra, đánh giá học sinh năm học của đơn vị, hoàn thiện quy chế, phân công trách nhiệm rõ ràng, chuẩn bị tốt cơ sở vật chất và an toàn bảo mật tuyệt đối.",
+    "createdDate": "2025-04-14T00:00:00.000Z",
+    "fileName": "CV_471_SGDDT_Huong_dan_KTDG_THCS_THPT.pdf",
+    "linkedSchoolDocumentIds": [
+      "doc-kh-ktdg-52"
+    ]
   }
 ];
