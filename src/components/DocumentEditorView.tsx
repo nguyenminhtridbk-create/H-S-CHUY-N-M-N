@@ -544,72 +544,150 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                     placeholder="Nhập nội dung cho phần này..."
                   />
                 ) : (
-                  <div className="space-y-2">
-                    {section.content.split('\n').map((paragraph, pIdx) => {
-                      const trimmed = paragraph.trim();
-                      if (!trimmed) return <div key={pIdx} className="h-1.5" />;
-                      
-                      // 1. Dấu cộng cấp 2 (sub-bullet): + ... (chỉ thụt đầu hàng 1.5cm, từ hàng thứ 2 canh đều lề trái bình thường)
-                      if (trimmed.startsWith('+')) {
-                        return (
-                          <p
-                            key={pIdx}
-                            className="indent-[1.5cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
-                          >
-                            {trimmed}
-                          </p>
-                        );
-                      }
+                  (() => {
+                    const lines = section.content.split('\n');
+                    const blocks: Array<{ type: 'paragraph'; text: string } | { type: 'table'; rows: string[][] }> = [];
+                    let tableLines: string[] = [];
 
-                      // 2. Dấu gạch ngang cấp 1 (bullet): - ... (chỉ thụt đầu hàng 1.0cm, từ hàng thứ 2 canh đều lề trái bình thường)
-                      if (trimmed.startsWith('-')) {
-                        return (
-                          <p
-                            key={pIdx}
-                            className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
-                          >
-                            {trimmed}
-                          </p>
-                        );
-                      }
+                    for (let i = 0; i < lines.length; i++) {
+                      const line = lines[i];
+                      const trimmed = line.trim();
 
-                      // 3. Số thứ tự: 1. , 2. , 1.1. (In đậm, thụt 1.0cm, từ hàng thứ 2 canh đều lề trái)
-                      const isNumbered = /^\d+(\.\d+)*\./.test(trimmed);
-                      if (isNumbered) {
-                        return (
-                          <p
-                            key={pIdx}
-                            className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-bold"
-                          >
-                            {trimmed}
-                          </p>
-                        );
+                      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+                        tableLines.push(trimmed);
+                      } else {
+                        if (tableLines.length > 0) {
+                          const parsedRows = tableLines
+                            .filter((tl) => !tl.includes('---'))
+                            .map((tl) => tl.split('|').map((c) => c.trim()).slice(1, -1));
+                          if (parsedRows.length > 0) {
+                            blocks.push({ type: 'table', rows: parsedRows });
+                          }
+                          tableLines = [];
+                        }
+                        blocks.push({ type: 'paragraph', text: line });
                       }
+                    }
 
-                      // 4. Tiểu mục chữ cái: a), b)... (chữ thường, thụt 1.0cm)
-                      const isLetterSub = /^[a-zđ]\)/i.test(trimmed);
-                      if (isLetterSub) {
-                        return (
-                          <p
-                            key={pIdx}
-                            className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
-                          >
-                            {trimmed}
-                          </p>
-                        );
+                    if (tableLines.length > 0) {
+                      const parsedRows = tableLines
+                        .filter((tl) => !tl.includes('---'))
+                        .map((tl) => tl.split('|').map((c) => c.trim()).slice(1, -1));
+                      if (parsedRows.length > 0) {
+                        blocks.push({ type: 'table', rows: parsedRows });
                       }
+                    }
 
-                      // 5. Đoạn văn xuôi thông thường (thụt 1.0cm)
-                      return (
-                        <p
-                          key={pIdx}
-                          className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
-                        >
-                          {trimmed}
-                        </p>
-                      );
-                    })}
-                  </div>
+                    return (
+                      <div className="space-y-2">
+                        {blocks.map((block, bIdx) => {
+                          if (block.type === 'table') {
+                            const headers = block.rows[0] || [];
+                            const dataRows = block.rows.slice(1);
+                            return (
+                              <div key={bIdx} className="overflow-x-auto my-3">
+                                <table className="w-full border-collapse border border-slate-800 text-[12pt] leading-[1.3] text-slate-900">
+                                  <thead>
+                                    <tr className="bg-slate-100 font-bold">
+                                      {headers.map((th, thIdx) => (
+                                        <th
+                                          key={thIdx}
+                                          className="border border-slate-800 px-2 py-1.5 text-center font-bold"
+                                        >
+                                          {th}
+                                        </th>
+                                      ))}
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {dataRows.map((cells, rIdx) => (
+                                      <tr key={rIdx} className={rIdx % 2 === 1 ? 'bg-slate-50/60' : 'bg-white'}>
+                                        {cells.map((td, cIdx) => (
+                                          <td
+                                            key={cIdx}
+                                            className={`border border-slate-800 px-2 py-1.5 ${
+                                              cIdx === 0 || td.length <= 6 || (/^\d/.test(td) && td.length < 15)
+                                                ? 'text-center'
+                                                : 'text-left'
+                                            }`}
+                                          >
+                                            {td}
+                                          </td>
+                                        ))}
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            );
+                          }
+
+                          const trimmed = block.text.trim();
+                          if (!trimmed) return <div key={bIdx} className="h-1.5" />;
+
+                          // 1. Dấu cộng cấp 2 (sub-bullet): + ...
+                          if (trimmed.startsWith('+')) {
+                            return (
+                              <p
+                                key={bIdx}
+                                className="indent-[1.5cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                              >
+                                {trimmed}
+                              </p>
+                            );
+                          }
+
+                          // 2. Dấu gạch ngang cấp 1 (bullet): - ...
+                          if (trimmed.startsWith('-')) {
+                            return (
+                              <p
+                                key={bIdx}
+                                className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                              >
+                                {trimmed}
+                              </p>
+                            );
+                          }
+
+                          // 3. Số thứ tự: 1. , 2. , 1.1. (In đậm, thụt 1.0cm)
+                          const isNumbered = /^\d+(\.\d+)*\./.test(trimmed);
+                          if (isNumbered) {
+                            return (
+                              <p
+                                key={bIdx}
+                                className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-bold"
+                              >
+                                {trimmed}
+                              </p>
+                            );
+                          }
+
+                          // 4. Tiểu mục chữ cái: a), b)...
+                          const isLetterSub = /^[a-zđ]\)/i.test(trimmed);
+                          if (isLetterSub) {
+                            return (
+                              <p
+                                key={bIdx}
+                                className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                              >
+                                {trimmed}
+                              </p>
+                            );
+                          }
+
+                          // 5. Đoạn văn xuôi thông thường
+                          return (
+                            <p
+                              key={bIdx}
+                              className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
+                            >
+                              {trimmed}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()
                 )}
               </div>
             ))}

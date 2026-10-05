@@ -296,10 +296,88 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
       })
     );
 
-    // Content paragraphs
-    const paragraphs = sec.content.split('\n').filter((p) => p.trim().length > 0);
-    paragraphs.forEach((pText) => {
-      const trimmed = pText.trim();
+    // Content paragraphs and tables
+    const lines = sec.content.split('\n');
+    const blocks: Array<{ type: 'paragraph'; text: string } | { type: 'table'; rows: string[][] }> = [];
+    let tableLines: string[] = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = line.trim();
+
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        tableLines.push(trimmed);
+      } else {
+        if (tableLines.length > 0) {
+          const parsedRows = tableLines
+            .filter((tl) => !tl.includes('---'))
+            .map((tl) => tl.split('|').map((c) => c.trim()).slice(1, -1));
+          if (parsedRows.length > 0) {
+            blocks.push({ type: 'table', rows: parsedRows });
+          }
+          tableLines = [];
+        }
+        if (trimmed.length > 0) {
+          blocks.push({ type: 'paragraph', text: trimmed });
+        }
+      }
+    }
+
+    if (tableLines.length > 0) {
+      const parsedRows = tableLines
+        .filter((tl) => !tl.includes('---'))
+        .map((tl) => tl.split('|').map((c) => c.trim()).slice(1, -1));
+      if (parsedRows.length > 0) {
+        blocks.push({ type: 'table', rows: parsedRows });
+      }
+    }
+
+    blocks.forEach((block) => {
+      if (block.type === 'table') {
+        const contentTable = new Table({
+          width: { size: 100, type: WidthType.PERCENTAGE },
+          borders: {
+            top: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+            bottom: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+            left: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+            right: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+            insideHorizontal: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+            insideVertical: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+          },
+          rows: block.rows.map((rowCells, rIdx) => {
+            const isHeader = rIdx === 0;
+            return new TableRow({
+              children: rowCells.map((cellText, cIdx) => {
+                const isCenter = cIdx === 0 || cellText.length <= 6 || (/^\d/.test(cellText) && cellText.length < 15);
+                return new TableCell({
+                  borders: cellNoBorder, // Individual cells don't double border
+                  children: [
+                    new Paragraph({
+                      alignment: isHeader ? AlignmentType.CENTER : isCenter ? AlignmentType.CENTER : AlignmentType.LEFT,
+                      children: [
+                        new TextRun({
+                          text: cellText,
+                          bold: isHeader,
+                          size: 24, // 12pt
+                          font: 'Times New Roman',
+                        }),
+                      ],
+                      spacing: { line: 240, before: 60, after: 60 },
+                    }),
+                  ],
+                });
+              }),
+            });
+          }),
+        });
+
+        docChildren.push(new Paragraph({ spacing: { before: 80 } }));
+        docChildren.push(contentTable);
+        docChildren.push(new Paragraph({ spacing: { after: 120 } }));
+        return;
+      }
+
+      const trimmed = block.text;
       const isPlusBullet = trimmed.startsWith('+');
       const isDashBullet = trimmed.startsWith('-');
       const isNumbered = /^\d+(\.\d+)*\./.test(trimmed);

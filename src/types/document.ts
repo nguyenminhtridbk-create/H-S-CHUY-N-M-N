@@ -59,6 +59,7 @@ export interface SchoolDocument {
   sections: DocumentSection[];
   recipients: string[]; // Nơi nhận
   notes?: string;
+  updatedAt?: string;
   status: 'draft' | 'reviewed' | 'official';
 }
 
