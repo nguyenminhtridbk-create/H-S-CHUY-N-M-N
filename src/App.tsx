@@ -67,18 +67,9 @@ export default function App() {
       const saved = localStorage.getItem('dbk_school_documents_archive');
       if (saved) {
         const parsed: SchoolDocument[] = JSON.parse(saved);
-        const map = new Map<string, SchoolDocument>();
-        for (const doc of parsed) {
-          map.set(doc.id, doc);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
         }
-        for (const initDoc of INITIAL_SCHOOL_DOCUMENTS) {
-          if (initDoc.id === 'doc-kh-2buoi' || initDoc.id === 'doc-kh-gd-34') {
-            map.set(initDoc.id, initDoc);
-          } else if (!map.has(initDoc.id)) {
-            map.set(initDoc.id, initDoc);
-          }
-        }
-        return Array.from(map.values());
       }
       return INITIAL_SCHOOL_DOCUMENTS;
     } catch {
@@ -102,24 +93,25 @@ export default function App() {
     }
   });
 
-  // Ensure doc-kh-2buoi and doc-kh-gd-34 always use the latest official data upon mount
+  // Load documents from backend server storage on mount
   useEffect(() => {
-    const latest2Buoi = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === 'doc-kh-2buoi');
-    const latest34 = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === 'doc-kh-gd-34');
-    
-    setDocumentsList((prev) => {
-      return prev.map((d) => {
-        if (d.id === 'doc-kh-2buoi' && latest2Buoi) return latest2Buoi;
-        if (d.id === 'doc-kh-gd-34' && latest34) return latest34;
-        return d;
-      });
-    });
-
-    setCurrentDocument((prev) => {
-      if (prev.id === 'doc-kh-2buoi' && latest2Buoi) return latest2Buoi;
-      if (prev.id === 'doc-kh-gd-34' && latest34) return latest34;
-      return prev;
-    });
+    fetch('/api/documents')
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setDocumentsList(res.data);
+          try {
+            localStorage.setItem('dbk_school_documents_archive', JSON.stringify(res.data));
+          } catch (e) {
+            console.error('Failed to save to localStorage', e);
+          }
+          setCurrentDocument((prev) => {
+            const match = res.data.find((d: SchoolDocument) => d.id === prev?.id);
+            return match || res.data.find((d: SchoolDocument) => d.id === 'doc-kh-2buoi') || res.data[0];
+          });
+        }
+      })
+      .catch((err) => console.log('Using local data', err));
   }, []);
 
   // Save directives list to localStorage
@@ -223,19 +215,56 @@ export default function App() {
     setDocumentsList((prev) =>
       prev.map((d) => (d.id === updatedDoc.id ? updatedDoc : d))
     );
+    // Persist permanently to server disk file
+    fetch('/api/documents', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedDoc),
+    }).catch((e) => console.error('Failed to save document to server', e));
   };
 
   // Handler: Save to archive
   const handleSaveToArchive = (doc: SchoolDocument) => {
+    const officialDoc = { ...doc, status: 'official' as const };
     setDocumentsList((prev) => {
       const existingIdx = prev.findIndex((d) => d.id === doc.id);
       if (existingIdx !== -1) {
         const updated = [...prev];
-        updated[existingIdx] = { ...doc, status: 'official' };
+        updated[existingIdx] = officialDoc;
         return updated;
       }
-      return [{ ...doc, status: 'official' }, ...prev];
+      return [officialDoc, ...prev];
     });
+    // Persist permanently to server disk file
+    fetch('/api/documents', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(officialDoc),
+    }).catch((e) => console.error('Failed to save document to server', e));
+  };
+
+  // Handler: Reset a document back to default template
+  const handleResetToDefault = (docId: string) => {
+    fetch(`/api/documents/reset-default/${docId}`, { method: 'POST' })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && res.data) {
+          const resetDoc = res.data;
+          setCurrentDocument(resetDoc);
+          setDocumentsList((prev) =>
+            prev.map((d) => (d.id === docId ? resetDoc : d))
+          );
+        }
+      })
+      .catch((e) => {
+        const defaultDoc = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === docId);
+        if (defaultDoc) {
+          setCurrentDocument(defaultDoc);
+          setDocumentsList((prev) =>
+            prev.map((d) => (d.id === docId ? defaultDoc : d))
+          );
+        }
+      });
   };
 
   // Handler: Select document from Archive
@@ -250,6 +279,8 @@ export default function App() {
     if (currentDocument?.id === id && documentsList.length > 1) {
       setCurrentDocument(documentsList.find((d) => d.id !== id) || INITIAL_SCHOOL_DOCUMENTS[0]);
     }
+    // Delete from server disk
+    fetch(`/api/documents/${id}`, { method: 'DELETE' }).catch((e) => console.error(e));
   };
 
   return (
@@ -279,6 +310,7 @@ export default function App() {
             document={currentDocument}
             onUpdateDocument={handleUpdateDocument}
             onSaveToArchive={handleSaveToArchive}
+            onResetToDefault={handleResetToDefault}
             onBack={() => setActiveTab('archive')}
             onViewSourceDirective={(directiveTitle, fullContent) => {
               // Switch to directives tab or locate the directive

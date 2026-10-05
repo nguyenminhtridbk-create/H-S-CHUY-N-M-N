@@ -14,7 +14,8 @@ import {
   ExternalLink,
   BookOpen,
   X,
-  FileCheck
+  FileCheck,
+  RotateCcw
 } from 'lucide-react';
 import { SchoolDocument } from '../types/document';
 import { exportDocumentToDocx } from '../utils/docxExport';
@@ -26,6 +27,7 @@ interface DocumentEditorViewProps {
   onSaveToArchive: (doc: SchoolDocument) => void;
   onBack?: () => void;
   onViewSourceDirective?: (directiveTitle: string, fullContent?: string) => void;
+  onResetToDefault?: (docId: string) => void;
 }
 
 export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
@@ -34,6 +36,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
   onSaveToArchive,
   onBack,
   onViewSourceDirective,
+  onResetToDefault,
 }) => {
   const [doc, setDoc] = useState<SchoolDocument>(initialDoc);
   const [isEditing, setIsEditing] = useState(false);
@@ -185,13 +188,34 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
             <span>In / PDF</span>
           </button>
 
-          {/* Save to Archive */}
+          {/* Reset to default template if needed */}
+          {onResetToDefault && (
+            <button
+              onClick={() => {
+                if (window.confirm(`Thầy có chắc chắn muốn khôi phục văn bản "${doc.title}" về bản mẫu gốc ban đầu không?\n\nLưu ý: Mọi chỉnh sửa của Thầy trên văn bản này sẽ được hoàn tác về bản mẫu gốc.`)) {
+                  onResetToDefault(doc.id);
+                }
+              }}
+              className="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 text-xs font-medium flex items-center gap-1.5 transition"
+              title="Khôi phục lại bản mẫu gốc ban đầu"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Khôi phục mẫu gốc</span>
+            </button>
+          )}
+
+          {/* Save permanently to Server & Archive */}
           <button
             onClick={handleSave}
-            className="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-medium flex items-center gap-1.5 transition"
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-2xs ${
+              savedSuccess
+                ? 'bg-emerald-600 text-white'
+                : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300'
+            }`}
+            title="Lưu vĩnh viễn văn bản vào hệ thống máy chủ và trình duyệt"
           >
-            {savedSuccess ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Save className="w-3.5 h-3.5" />}
-            <span>{savedSuccess ? 'Đã lưu' : 'Lưu vào Kho'}</span>
+            {savedSuccess ? <Check className="w-3.5 h-3.5" /> : <Save className="w-3.5 h-3.5" />}
+            <span>{savedSuccess ? 'Đã lưu vĩnh viễn!' : 'Lưu văn bản'}</span>
           </button>
 
           {/* Download Word DOCX */}

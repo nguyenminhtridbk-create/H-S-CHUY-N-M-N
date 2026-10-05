@@ -3,8 +3,10 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 import { PDFParse } from 'pdf-parse';
 import mammoth from 'mammoth';
+import { INITIAL_SCHOOL_DOCUMENTS } from './src/data/mockDocuments';
 
 dotenv.config();
 
@@ -16,6 +18,42 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
+
+const PERSISTED_DOCS_PATH = path.join(__dirname, 'src', 'data', 'persistedDocuments.json');
+
+// Helper to get all documents from disk
+function getPersistedDocuments(): any[] {
+  try {
+    if (fs.existsSync(PERSISTED_DOCS_PATH)) {
+      const data = fs.readFileSync(PERSISTED_DOCS_PATH, 'utf-8');
+      const docs = JSON.parse(data);
+      if (Array.isArray(docs) && docs.length > 0) {
+        return docs;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to read persisted documents:', e);
+  }
+  // Fallback to INITIAL_SCHOOL_DOCUMENTS and write to disk
+  try {
+    fs.writeFileSync(PERSISTED_DOCS_PATH, JSON.stringify(INITIAL_SCHOOL_DOCUMENTS, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Failed to initialize persistedDocuments.json:', e);
+  }
+  return INITIAL_SCHOOL_DOCUMENTS;
+}
+
+// Helper to save documents to disk
+function savePersistedDocuments(docs: any[]) {
+  try {
+    fs.writeFileSync(PERSISTED_DOCS_PATH, JSON.stringify(docs, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Failed to write persisted documents:', e);
+  }
+}
+
+// Initialize persisted documents file on startup if not existing
+getPersistedDocuments();
 
 // Initialize GoogleGenAI server-side with telemetry User-Agent
 const ai = new GoogleGenAI({
@@ -731,6 +769,72 @@ Trả về kết quả dạng JSON:
   } catch (error: any) {
     console.error('Error generating digital/ai orientation:', error);
     res.status(500).json({ success: false, error: error.message || 'Lỗi xây dựng định hướng năng lực số & AI' });
+  }
+});
+
+// API: Get all persisted documents from server disk
+app.get('/api/documents', (req, res) => {
+  try {
+    const docs = getPersistedDocuments();
+    res.json({ success: true, data: docs });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Save or update a document permanently to server disk
+app.post('/api/documents', (req, res) => {
+  try {
+    const doc = req.body;
+    if (!doc || !doc.id) {
+      return res.status(400).json({ success: false, error: 'Document id is required' });
+    }
+    const docs = getPersistedDocuments();
+    const idx = docs.findIndex((d: any) => d.id === doc.id);
+    if (idx !== -1) {
+      docs[idx] = { ...docs[idx], ...doc, updatedAt: new Date().toISOString() };
+    } else {
+      docs.unshift({ ...doc, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
+    }
+    savePersistedDocuments(docs);
+    res.json({ success: true, data: idx !== -1 ? docs[idx] : docs[0] });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Delete document from server disk
+app.delete('/api/documents/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    let docs = getPersistedDocuments();
+    docs = docs.filter((d: any) => d.id !== id);
+    savePersistedDocuments(docs);
+    res.json({ success: true, message: 'Deleted successfully' });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Reset a document to default template
+app.post('/api/documents/reset-default/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const defaultDoc = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === id);
+    if (!defaultDoc) {
+      return res.status(404).json({ success: false, error: 'Không tìm thấy mẫu mặc định của văn bản này' });
+    }
+    const docs = getPersistedDocuments();
+    const idx = docs.findIndex((d: any) => d.id === id);
+    if (idx !== -1) {
+      docs[idx] = { ...defaultDoc, updatedAt: new Date().toISOString() };
+    } else {
+      docs.unshift(defaultDoc);
+    }
+    savePersistedDocuments(docs);
+    res.json({ success: true, data: defaultDoc });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
   }
 });
 
