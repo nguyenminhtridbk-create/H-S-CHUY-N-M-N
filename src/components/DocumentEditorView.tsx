@@ -8,18 +8,61 @@ import {
   Edit3, 
   FileText, 
   Building2, 
-  Calendar,
-  Sparkles,
-  ChevronLeft,
-  ExternalLink,
-  BookOpen,
-  X,
+  Calendar, 
+  Sparkles, 
+  ChevronLeft, 
+  ExternalLink, 
+  BookOpen, 
+  X, 
   FileCheck,
   RotateCcw
 } from 'lucide-react';
 import { SchoolDocument } from '../types/document';
 import { exportDocumentToDocx } from '../utils/docxExport';
 import { AdministrativeDirectiveViewerModal } from './AdministrativeDirectiveViewerModal';
+
+/**
+ * Auto-expanding seamless textarea that inherits Times New Roman,
+ * with no boxy borders and auto-resizing height as the user types.
+ */
+const AutoExpandingTextarea: React.FC<{
+  value: string;
+  onChange: (val: string) => void;
+  className?: string;
+  style?: React.CSSProperties;
+  placeholder?: string;
+}> = ({ value, onChange, className = '', style, placeholder }) => {
+  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  const resize = () => {
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    }
+  };
+
+  React.useEffect(() => {
+    resize();
+  }, [value]);
+
+  return (
+    <textarea
+      ref={textareaRef}
+      value={value}
+      onChange={(e) => {
+        onChange(e.target.value);
+        resize();
+      }}
+      placeholder={placeholder}
+      rows={1}
+      style={{
+        fontFamily: '"Times New Roman", Times, serif',
+        ...style,
+      }}
+      className={`w-full resize-none overflow-hidden bg-transparent border-0 outline-none p-0 m-0 transition-colors ${className}`}
+    />
+  );
+};
 
 interface DocumentEditorViewProps {
   document: SchoolDocument;
@@ -130,7 +173,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 </>
               )}
             </div>
-            <p className="text-xs text-slate-600 truncate max-w-lg mt-0.5">
+            <p className="text-xs text-slate-600 truncate max-w-lg mt-0.5 font-medium">
               {doc.subTitle ? `${doc.title} - ${doc.subTitle}` : doc.title}
             </p>
           </div>
@@ -158,15 +201,31 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           {/* Toggle Edit mode */}
           <button
             onClick={() => setIsEditing(!isEditing)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-2xs ${
               isEditing 
-                ? 'bg-amber-100 text-amber-900 border border-amber-300' 
-                : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                ? 'bg-amber-500 text-white' 
+                : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
             }`}
           >
             <Edit3 className="w-3.5 h-3.5" />
-            <span>{isEditing ? 'Đang chỉnh sửa' : 'Chỉnh sửa'}</span>
+            <span>{isEditing ? 'Đang sửa trên Word' : 'Chỉnh sửa'}</span>
           </button>
+
+          {/* Reset to default template if needed */}
+          {onResetToDefault && (
+            <button
+              onClick={() => {
+                if (window.confirm(`Thầy có chắc chắn muốn khôi phục văn bản "${doc.title}" về bản mẫu gốc ban đầu không?\n\nLưu ý: Mọi chỉnh sửa của Thầy trên văn bản này sẽ được hoàn tác về bản mẫu gốc.`)) {
+                  onResetToDefault(doc.id);
+                }
+              }}
+              className="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 text-xs font-medium flex items-center gap-1.5 transition"
+              title="Khôi phục lại bản mẫu gốc ban đầu"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Khôi phục mẫu gốc</span>
+            </button>
+          )}
 
           {/* Copy Text */}
           <button
@@ -187,22 +246,6 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
             <Printer className="w-3.5 h-3.5 text-slate-600" />
             <span>In / PDF</span>
           </button>
-
-          {/* Reset to default template if needed */}
-          {onResetToDefault && (
-            <button
-              onClick={() => {
-                if (window.confirm(`Thầy có chắc chắn muốn khôi phục văn bản "${doc.title}" về bản mẫu gốc ban đầu không?\n\nLưu ý: Mọi chỉnh sửa của Thầy trên văn bản này sẽ được hoàn tác về bản mẫu gốc.`)) {
-                  onResetToDefault(doc.id);
-                }
-              }}
-              className="px-2.5 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 text-xs font-medium flex items-center gap-1.5 transition"
-              title="Khôi phục lại bản mẫu gốc ban đầu"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Khôi phục mẫu gốc</span>
-            </button>
-          )}
 
           {/* Save permanently to Server & Archive */}
           <button
@@ -229,6 +272,24 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Editing Mode Banner Guide */}
+      {isEditing && (
+        <div className="bg-amber-50 border border-amber-200 text-amber-950 rounded-xl px-4 py-2.5 flex items-center justify-between gap-3 text-xs shadow-2xs print:hidden animate-in fade-in duration-200">
+          <div className="flex items-center gap-2">
+            <Edit3 className="w-4 h-4 text-amber-700 shrink-0" />
+            <span>
+              <strong>Chế độ chỉnh sửa tự nhiên như Microsoft Word:</strong> Thầy chỉ cần nhấp chuột trực tiếp vào bất kỳ dòng chữ nào trên trang để sửa. Font chữ luôn là <strong>Times New Roman 14pt</strong>, căn lề và thụt đầu dòng tự nhiên, không có khung viền hộp gò bó. Chỉnh sửa xong, Thầy bấm nút <strong>"Lưu văn bản"</strong> ở trên!
+            </span>
+          </div>
+          <button
+            onClick={() => setIsEditing(false)}
+            className="px-3 py-1 bg-white hover:bg-amber-100 text-amber-900 border border-amber-300 rounded font-semibold shrink-0 transition"
+          >
+            Hoàn tất xem trước
+          </button>
+        </div>
+      )}
 
       {/* A4 Paper Document Canvas - Strict Decree 30/2020/NĐ-CP Typography */}
       <div className="bg-slate-200/70 p-4 sm:p-8 rounded-xl flex justify-center overflow-x-auto print:bg-white print:p-0">
@@ -286,7 +347,9 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                   type="text"
                   value={doc.documentNumber}
                   onChange={(e) => setDoc({ ...doc, documentNumber: e.target.value })}
-                  className="text-[13pt] text-center font-normal border border-slate-300 rounded px-2 py-0.5 w-full"
+                  style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                  className="text-[13pt] text-center font-normal bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none px-1 py-0.5 w-full transition"
+                  placeholder="Số:    /KH-THCS&THPTĐBK"
                 />
               ) : (
                 <span className="text-[13pt] font-normal">
@@ -317,7 +380,9 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                   type="text"
                   value={doc.signDate}
                   onChange={(e) => setDoc({ ...doc, signDate: e.target.value })}
-                  className="text-[13.5pt] italic text-center border border-slate-300 rounded px-2 py-0.5 mt-2 w-full"
+                  style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                  className="text-[13.5pt] italic text-center bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none mt-2 px-1 py-0.5 w-full transition"
+                  placeholder="Đồng Tháp, ngày... tháng... năm..."
                 />
               ) : (
                 <span className="text-[13.5pt] italic text-center mt-2 block">
@@ -330,20 +395,25 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           {/* Document Title & Subtitle */}
           <div className="text-center my-6">
             {isEditing ? (
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <input
                   type="text"
                   value={doc.title}
                   onChange={(e) => setDoc({ ...doc, title: e.target.value })}
-                  className="text-[15pt] font-bold text-center uppercase w-full border border-slate-300 rounded p-1"
+                  style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                  className="text-[15pt] sm:text-[16pt] font-bold text-center uppercase tracking-wide w-full bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none py-0.5 transition"
                 />
-                <input
-                  type="text"
-                  value={doc.subTitle || ''}
-                  onChange={(e) => setDoc({ ...doc, subTitle: e.target.value })}
-                  placeholder="Trích yếu nội dung (VD: Tổ chức dạy học 2 buổi/ngày năm học 2026 - 2027)"
-                  className="text-[14pt] font-bold text-center w-full border border-slate-300 rounded p-1"
-                />
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    value={doc.subTitle || ''}
+                    onChange={(e) => setDoc({ ...doc, subTitle: e.target.value })}
+                    placeholder="Trích yếu nội dung..."
+                    style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                    className="text-[14pt] font-bold text-center w-full bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none py-0.5 transition"
+                  />
+                  <div className="w-36 border-b-2 border-slate-900 mx-auto mt-1.5"></div>
+                </div>
               </div>
             ) : (
               <>
@@ -365,22 +435,44 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
           {/* Legal Bases: Indented 1.0cm, font 14pt regular (chữ thường đứng, không in nghiêng), text-justify */}
           {isEditing ? (
-            <div className="mb-5 space-y-1.5 p-3 bg-slate-50 rounded-lg border border-slate-200">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-slate-800 uppercase tracking-wide">
-                  Căn cứ xây dựng kế hoạch (Chữ thường đứng, không in nghiêng):
-                </label>
-                <span className="text-[11px] text-slate-500">
-                  (Chỉ cần 1 căn cứ văn bản gốc của Sở)
-                </span>
-              </div>
-              <textarea
-                value={doc.legalBases ? doc.legalBases.join('\n') : ''}
-                onChange={(e) => setDoc({ ...doc, legalBases: e.target.value.split('\n').filter(l => l.trim().length > 0) })}
-                rows={3}
-                className="w-full text-[13.5pt] font-normal not-italic border border-slate-300 rounded p-2 font-serif leading-relaxed text-slate-900"
-                placeholder="Ví dụ: Kế hoạch số    /KH-SGDĐT ngày    tháng 8 năm 2026 của Sở GDĐT Đồng Tháp..."
-              />
+            <div className="space-y-1.5 mb-2 text-justify">
+              {doc.legalBases?.map((base, idx) => (
+                <div key={idx} className="group relative flex items-start">
+                  <AutoExpandingTextarea
+                    value={base.startsWith('Căn cứ') ? base : `Căn cứ ${base}`}
+                    onChange={(val) => {
+                      const newBases = [...(doc.legalBases || [])];
+                      newBases[idx] = val;
+                      setDoc({ ...doc, legalBases: newBases });
+                    }}
+                    className="indent-[1cm] text-[14pt] leading-[1.4] text-slate-900 font-normal not-italic text-justify hover:bg-blue-50/15 focus:bg-blue-50/25 rounded-xs"
+                    placeholder="Nhập căn cứ pháp lý..."
+                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const newBases = (doc.legalBases || []).filter((_, i) => i !== idx);
+                      setDoc({ ...doc, legalBases: newBases });
+                    }}
+                    className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-600 text-xs p-1 ml-1 transition"
+                    title="Xóa căn cứ này"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+              <button
+                type="button"
+                onClick={() => {
+                  setDoc({
+                    ...doc,
+                    legalBases: [...(doc.legalBases || []), 'Căn cứ '],
+                  });
+                }}
+                className="text-xs text-blue-700 hover:text-blue-900 font-medium flex items-center gap-1 mt-1 pl-4 transition"
+              >
+                + Thêm căn cứ mới
+              </button>
             </div>
           ) : (
             doc.legalBases && doc.legalBases.length > 0 && (
@@ -388,7 +480,6 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 {doc.legalBases.map((base, idx) => {
                   const fullText = base.startsWith('Căn cứ') ? base : `Căn cứ ${base}`;
                   const isLast = idx === doc.legalBases.length - 1;
-                  // Nghị định 30: các căn cứ kết thúc bằng dấu chấm phẩy (;), căn cứ cuối cùng kết thúc bằng dấu chấm (.)
                   let formattedText = fullText;
                   if (isLast) {
                     if (!formattedText.endsWith('.')) formattedText = formattedText.replace(/;$/, '') + '.';
@@ -416,18 +507,21 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           {/* Sections Body: Roman Numeral Headings, Numbered items, Indent 1.0cm */}
           <div className="space-y-3 text-justify">
             {doc.sections.map((section, sIdx) => (
-              <div key={sIdx} className="space-y-2">
+              <div key={sIdx} className="space-y-1">
                 {isEditing ? (
-                  <input
-                    type="text"
-                    value={section.heading}
-                    onChange={(e) => {
-                      const newSections = [...doc.sections];
-                      newSections[sIdx].heading = e.target.value;
-                      setDoc({ ...doc, sections: newSections });
-                    }}
-                    className="font-bold text-[14pt] uppercase border border-slate-300 rounded px-2 py-1 w-full"
-                  />
+                  <div className="group relative">
+                    <input
+                      type="text"
+                      value={section.heading}
+                      onChange={(e) => {
+                        const newSections = [...doc.sections];
+                        newSections[sIdx].heading = e.target.value;
+                        setDoc({ ...doc, sections: newSections });
+                      }}
+                      style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                      className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] pl-0 indent-0 w-full bg-transparent border-0 border-b border-dashed border-transparent hover:border-slate-300 focus:border-blue-400 focus:bg-blue-50/20 outline-none transition"
+                    />
+                  </div>
                 ) : (
                   <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] pl-0 indent-0">
                     {section.heading}
@@ -435,15 +529,15 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 )}
 
                 {isEditing ? (
-                  <textarea
+                  <AutoExpandingTextarea
                     value={section.content}
-                    onChange={(e) => {
+                    onChange={(val) => {
                       const newSections = [...doc.sections];
-                      newSections[sIdx].content = e.target.value;
+                      newSections[sIdx].content = val;
                       setDoc({ ...doc, sections: newSections });
                     }}
-                    rows={10}
-                    className="w-full text-[13.5pt] border border-slate-300 rounded p-2 font-mono leading-relaxed"
+                    className="text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal hover:bg-blue-50/10 focus:bg-blue-50/20 rounded-xs p-1"
+                    placeholder="Nhập nội dung cho phần này..."
                   />
                 ) : (
                   <div className="space-y-2">
@@ -463,7 +557,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                         );
                       }
 
-                      // 2. Dấu gạch đầu dòng cấp 1 (bullet): - ... (chỉ thụt đầu hàng 1cm, từ hàng thứ 2 canh đều lề trái bình thường)
+                      // 2. Dấu gạch ngang cấp 1 (bullet): - ... (chỉ thụt đầu hàng 1.0cm, từ hàng thứ 2 canh đều lề trái bình thường)
                       if (trimmed.startsWith('-')) {
                         return (
                           <p
@@ -475,37 +569,37 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                         );
                       }
 
-                      // 3. Tiêu đề số thứ tự cấp 1 & 2: 1. Mục đích:, 2. Yêu cầu:, 1.1...
-                      // BẮT BUỘC IN ĐẬM VÀ THỤT ĐẦU DÒNG 1cm
-                      if (/^\d+(\.\d+)*\./.test(trimmed)) {
+                      // 3. Số thứ tự: 1. , 2. , 1.1. (In đậm, thụt 1.0cm, từ hàng thứ 2 canh đều lề trái)
+                      const isNumbered = /^\d+(\.\d+)*\./.test(trimmed);
+                      if (isNumbered) {
                         return (
                           <p
                             key={pIdx}
-                            className="indent-[1cm] text-[14pt] font-bold text-slate-950 mt-3 mb-1 leading-[1.4] text-justify"
+                            className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-bold"
                           >
                             {trimmed}
                           </p>
                         );
                       }
 
-                      // 4. Mục chữ cái: a), b), c), d)...
-                      // ĐÚNG LÀ CHỮ THƯỜNG, THỤT ĐẦU DÒNG 1cm
-                      if (/^[a-zđ]\)/i.test(trimmed)) {
+                      // 4. Tiểu mục chữ cái: a), b)... (chữ thường, thụt 1.0cm)
+                      const isLetterSub = /^[a-zđ]\)/i.test(trimmed);
+                      if (isLetterSub) {
                         return (
                           <p
                             key={pIdx}
-                            className="indent-[1cm] text-[14pt] font-normal text-slate-900 leading-[1.4] text-justify"
+                            className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
                           >
                             {trimmed}
                           </p>
                         );
                       }
 
-                      // 5. Đoạn văn xuôi thông thường: Thụt đầu dòng 1cm, chữ thường
+                      // 5. Đoạn văn xuôi thông thường (thụt 1.0cm)
                       return (
                         <p
                           key={pIdx}
-                          className="indent-[1cm] text-[14pt] font-normal text-slate-900 leading-[1.4] text-justify"
+                          className="indent-[1cm] pl-0 text-[14pt] leading-[1.4] text-justify text-slate-900 font-normal"
                         >
                           {trimmed}
                         </p>
@@ -515,75 +609,66 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                 )}
               </div>
             ))}
+
+            {isEditing && (
+              <button
+                type="button"
+                onClick={() => {
+                  const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+                  const nextRoman = romanNumerals[doc.sections.length] || `${doc.sections.length + 1}`;
+                  setDoc({
+                    ...doc,
+                    sections: [
+                      ...doc.sections,
+                      { heading: `${nextRoman}. MỤC MỚI`, content: '1. Nội dung chi tiết...' },
+                    ],
+                  });
+                }}
+                className="w-full py-2 border-2 border-dashed border-blue-200 hover:border-blue-400 text-blue-700 hover:text-blue-900 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition mt-4"
+              >
+                + Thêm phần mục La Mã mới
+              </button>
+            )}
           </div>
 
-          {/* Footer: Recipients (Left 11-12pt) & Signer (Right 13-14pt bold) */}
-          <div className="grid grid-cols-12 gap-4 mt-12 pt-4 items-start border-t border-slate-200">
-            {/* Left: Nơi nhận (Tiêu đề 12pt bold italic, danh sách 11pt thường) */}
+          {/* Footer 2-column layout: Nơi nhận (Trái) & Chữ ký (Phải) */}
+          <div className="grid grid-cols-12 gap-4 mt-8 pt-4 items-start">
+            {/* Left: Nơi nhận (Font 12pt in đậm, nghiêng; các mục con Font 11pt đứng thường) */}
             <div className="col-span-6 text-left">
-              <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
-                <strong className="text-[12pt] font-bold italic">
+              <div className="flex items-center justify-between mb-1">
+                <span className="text-[12pt] font-bold italic tracking-tight">
                   Nơi nhận:
-                </strong>
+                </span>
                 {isEditing && (
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setDoc({
-                          ...doc,
-                          recipients: [
-                            'Sở GDĐT Đồng Tháp (để báo cáo);',
-                            'Ban Giám hiệu (để chỉ đạo);',
-                            'Các tổ chuyên môn, văn phòng (để thực hiện);',
-                            'Lưu: VT, CM.',
-                          ],
-                        });
-                      }}
-                      className="text-[10.5px] px-2 py-0.5 rounded bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-semibold transition"
-                      title="Áp dụng chuẩn Nơi nhận tinh gọn 4 dòng"
-                    >
-                      ⚡ Chuẩn tinh gọn (4 dòng)
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        const cleaned = doc.recipients.filter((r) => {
-                          const lower = r.toLowerCase();
-                          return (
-                            !lower.includes('huyện tháp mười') &&
-                            !lower.includes('ubnd xã') &&
-                            !lower.includes('điểm tân kiều') &&
-                            !lower.includes('cha mẹ học sinh') &&
-                            !lower.includes('cmhs')
-                          );
-                        });
-                        setDoc({
-                          ...doc,
-                          recipients: cleaned.length >= 2 ? cleaned : [
-                            'Sở GDĐT Đồng Tháp (để báo cáo);',
-                            'Ban Giám hiệu (để chỉ đạo);',
-                            'Các tổ chuyên môn, văn phòng (để thực hiện);',
-                            'Lưu: VT, CM.',
-                          ],
-                        });
-                      }}
-                      className="text-[10.5px] px-2 py-0.5 rounded bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 font-semibold transition"
-                      title="Lọc bỏ bớt các nơi nhận ngoài thẩm quyền"
-                    >
-                      🧹 Tự động lọc bớt
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDoc({
+                        ...doc,
+                        recipients: [
+                          'Sở GDĐT Đồng Tháp (để báo cáo);',
+                          'Hiệu trưởng (để chỉ đạo);',
+                          'Các Phó Hiệu trưởng (để phối hợp);',
+                          'Ban Giám hiệu (để chỉ đạo);',
+                          'Các tổ chuyên môn, văn phòng (để thực hiện);',
+                          'Lưu: VT, CM.',
+                        ],
+                      });
+                    }}
+                    className="text-[10.5px] px-2 py-0.5 rounded bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 font-semibold transition"
+                    title="Lọc bỏ bớt các nơi nhận ngoài thẩm quyền"
+                  >
+                    🧹 Chuẩn hóa nơi nhận
+                  </button>
                 )}
               </div>
 
               {isEditing ? (
                 <div className="space-y-1.5">
-                  <textarea
+                  <AutoExpandingTextarea
                     value={doc.recipients.join('\n')}
-                    onChange={(e) => setDoc({ ...doc, recipients: e.target.value.split('\n') })}
-                    rows={5}
-                    className="w-full text-[11pt] border border-slate-300 rounded p-1.5 font-normal leading-normal"
+                    onChange={(val) => setDoc({ ...doc, recipients: val.split('\n') })}
+                    className="text-[11pt] leading-[1.3] text-slate-800 font-normal hover:bg-blue-50/15 focus:bg-blue-50/25 p-1 rounded-xs"
                     placeholder="Mỗi dòng là một nơi nhận..."
                   />
                   <div className="flex items-center gap-1 flex-wrap text-[10px] text-slate-500">
@@ -647,25 +732,49 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
 
             {/* Right: Chức vụ & Họ tên người ký */}
             <div className="col-span-6 text-center flex flex-col items-center justify-between min-h-[170px]">
-              <div>
-                {doc.signerRole.split('\n').map((line, idx) => (
-                  <strong
-                    key={idx}
-                    className={`block uppercase font-bold ${
-                      idx === 0 && line.includes('KT.') ? 'text-[13pt]' : 'text-[14pt]'
-                    }`}
-                  >
-                    {line}
+              {isEditing ? (
+                <div className="w-full space-y-1">
+                  <input
+                    type="text"
+                    value={doc.signerRole}
+                    onChange={(e) => setDoc({ ...doc, signerRole: e.target.value })}
+                    style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                    className="text-[13pt] font-bold uppercase text-center w-full bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none py-0.5 transition"
+                    placeholder="KT. HIỆU TRƯỞNG / PHÓ HIỆU TRƯỞNG"
+                  />
+                  <div className="h-24" />
+                  <input
+                    type="text"
+                    value={doc.signerName}
+                    onChange={(e) => setDoc({ ...doc, signerName: e.target.value })}
+                    style={{ fontFamily: '"Times New Roman", Times, serif' }}
+                    className="text-[14pt] font-bold text-center w-full bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none py-0.5 transition"
+                    placeholder="Họ và tên người ký"
+                  />
+                </div>
+              ) : (
+                <>
+                  <div>
+                    {doc.signerRole.split('\n').map((line, idx) => (
+                      <strong
+                        key={idx}
+                        className={`block uppercase font-bold ${
+                          idx === 0 && line.includes('KT.') ? 'text-[13pt]' : 'text-[14pt]'
+                        }`}
+                      >
+                        {line}
+                      </strong>
+                    ))}
+                  </div>
+
+                  {/* Space for physical signature / seal: Enter xuống thêm 2 hàng rộng rãi để ký và đóng dấu */}
+                  <div className="h-28 print:h-36" />
+
+                  <strong className="text-[14pt] font-bold tracking-tight text-slate-950">
+                    {doc.signerName}
                   </strong>
-                ))}
-              </div>
-
-              {/* Space for physical signature / seal: Enter xuống thêm 2 hàng rộng rãi để ký và đóng dấu */}
-              <div className="h-28 print:h-36" />
-
-              <strong className="text-[14pt] font-bold tracking-tight text-slate-950">
-                {doc.signerName}
-              </strong>
+                </>
+              )}
             </div>
           </div>
         </div>
