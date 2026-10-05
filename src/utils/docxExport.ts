@@ -35,6 +35,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
     width: { size: 100, type: WidthType.PERCENTAGE },
     borders: noBorder,
     rows: [
+      // Hàng 1: Cơ quan ban hành (trái) và Quốc hiệu, Tiêu ngữ (phải)
       new TableRow({
         children: [
           // Left: Cơ quan ban hành (Font 12.5-13pt = size 25-26)
@@ -87,21 +88,11 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                     font: 'Times New Roman',
                   }),
                 ],
-                spacing: { before: 20, after: 60 },
-              }),
-              new Paragraph({
-                alignment: AlignmentType.CENTER,
-                children: [
-                  new TextRun({
-                    text: doc.documentNumber || 'Số:    /KH-THCS&THPTĐBK',
-                    size: 25, // 12.5pt
-                    font: 'Times New Roman',
-                  }),
-                ],
+                spacing: { before: 20, after: 40 },
               }),
             ],
           }),
-          // Right: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 12.5 & 13.5pt rộng 62% để không bao giờ bị nhảy chữ NAM)
+          // Right: Quốc hiệu, Tiêu ngữ (Font 12.5 & 13.5pt rộng 62% để không bao giờ bị nhảy chữ NAM)
           new TableCell({
             width: { size: 62, type: WidthType.PERCENTAGE },
             borders: cellNoBorder,
@@ -140,10 +131,38 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                     font: 'Times New Roman',
                   }),
                 ],
-                spacing: { before: 20, after: 80 },
+                spacing: { before: 20, after: 40 },
               }),
+            ],
+          }),
+        ],
+      }),
+      // Hàng 2: Số ký hiệu văn bản (trái) và Địa danh, Ngày tháng năm (phải) - NGANG BẰNG NHAU TUYỆT ĐỐI
+      new TableRow({
+        children: [
+          new TableCell({
+            width: { size: 38, type: WidthType.PERCENTAGE },
+            borders: cellNoBorder,
+            children: [
               new Paragraph({
-                alignment: AlignmentType.RIGHT,
+                alignment: AlignmentType.CENTER,
+                children: [
+                  new TextRun({
+                    text: doc.documentNumber || 'Số:    /KH-THCS&THPTĐBK',
+                    size: 25, // 12.5pt
+                    font: 'Times New Roman',
+                  }),
+                ],
+                spacing: { before: 20, after: 20 },
+              }),
+            ],
+          }),
+          new TableCell({
+            width: { size: 62, type: WidthType.PERCENTAGE },
+            borders: cellNoBorder,
+            children: [
+              new Paragraph({
+                alignment: AlignmentType.CENTER,
                 children: [
                   new TextRun({
                     text: doc.signDate || 'Đồng Tháp, ngày 28 tháng 9 năm 2026',
@@ -152,6 +171,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                     font: 'Times New Roman',
                   }),
                 ],
+                spacing: { before: 20, after: 20 },
               }),
             ],
           }),
@@ -337,18 +357,29 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
                 ],
                 spacing: { after: 20 },
               }),
-              ...(doc.recipients || [
-                '- Sở GDĐT Đồng Tháp (báo cáo);',
-                '- Hiệu trưởng, các Phó Hiệu trưởng;',
-                '- Các tổ chuyên môn, tổ văn phòng;',
-                '- Đoàn – Hội – Đội;',
-                '- Lưu: VT.',
-              ]).map(
+              ...(doc.recipients && doc.recipients.length > 0
+                ? doc.recipients.map((r) => {
+                    const text = r.startsWith('-') ? r : `- ${r}`;
+                    if (text.includes('Lưu:')) {
+                      return '- Lưu: VT, Tr.';
+                    }
+                    return text;
+                  })
+                : [
+                    '- Sở GDĐT Đồng Tháp (để báo cáo);',
+                    '- Hiệu trưởng (để chỉ đạo);',
+                    '- Các Phó Hiệu trưởng (để phối hợp);',
+                    '- Các tổ chuyên môn, tổ văn phòng (để thực hiện);',
+                    '- Ban ĐD Cha mẹ học sinh (để phối hợp);',
+                    '- Đoàn trường, Đội TNTP (để phối hợp);',
+                    '- Lưu: VT, Tr.',
+                  ]
+              ).map(
                 (r) =>
                   new Paragraph({
                     children: [
                       new TextRun({
-                        text: r.startsWith('-') ? r : `- ${r}`,
+                        text: r,
                         size: 22, // 11pt
                         font: 'Times New Roman',
                       }),

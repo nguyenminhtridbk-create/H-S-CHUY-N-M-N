@@ -320,8 +320,8 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           }}
         >
           {/* Header 2-column table conforming to Decree 30 and School Sample */}
-          <div className="grid grid-cols-12 gap-4 pb-2 items-start">
-            {/* Left Header: Cơ quan ban hành (Font 13pt) */}
+          <div className="grid grid-cols-12 gap-x-4 gap-y-2 pb-2 items-start">
+            {/* Hàng 1 - Trái: Cơ quan ban hành (Font 13pt) */}
             <div className="col-span-5 text-center flex flex-col items-center">
               {/* Sở GDĐT Đồng Tháp: Font 13, chữ đứng, in hoa, không đậm */}
               <span className="text-[13pt] font-normal uppercase tracking-tight">
@@ -339,9 +339,28 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
               </strong>
 
               {/* Gạch chân dưới ĐỐC BINH KIỀU: dài 1/3 đến 1/2 dòng chữ, cách hở không đè dấu nặng */}
-              <div className="w-20 border-b-2 border-slate-900 mt-1.5 mb-2"></div>
+              <div className="w-20 border-b-2 border-slate-900 mt-1.5 mb-1"></div>
+            </div>
 
-              {/* Số, ký hiệu: Font 13, chữ thường, đứng */}
+            {/* Hàng 1 - Phải: Quốc hiệu, Tiêu ngữ (Font 12.5 & 14pt) */}
+            <div className="col-span-7 text-center flex flex-col items-center">
+              {/* CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM: Font 12.5, in hoa, đứng, ĐẬM, không ngắt dòng */}
+              <strong className="text-[12.5pt] font-bold uppercase tracking-tight whitespace-nowrap">
+                CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+              </strong>
+
+              {/* Độc lập - Tự do - Hạnh phúc: Font 14, in thường, đứng, ĐẬM */}
+              <div className="inline-block mt-0.5">
+                <strong className="text-[14pt] font-bold">
+                  Độc lập - Tự do - Hạnh phúc
+                </strong>
+                {/* Gạch chân dưới Tiêu ngữ: dài bằng 100% dòng chữ, cách hở không đè dấu nặng */}
+                <div className="w-full border-b-2 border-slate-900 mt-1.5 mb-1"></div>
+              </div>
+            </div>
+
+            {/* Hàng 2 - Trái: Số, ký hiệu (CÙNG HÀNG NGANG BẰNG VỚI NGÀY THÁNG NĂM) */}
+            <div className="col-span-5 text-center flex flex-col items-center justify-center">
               {isEditing ? (
                 <input
                   type="text"
@@ -358,34 +377,19 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
               )}
             </div>
 
-            {/* Right Header: Quốc hiệu, Tiêu ngữ, Địa danh & Ngày tháng (Font 12.5 & 14pt) */}
-            <div className="col-span-7 text-center flex flex-col items-center">
-              {/* CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM: Font 12.5, in hoa, đứng, ĐẬM, không ngắt dòng */}
-              <strong className="text-[12.5pt] font-bold uppercase tracking-tight whitespace-nowrap">
-                CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
-              </strong>
-
-              {/* Độc lập - Tự do - Hạnh phúc: Font 14, in thường, đứng, ĐẬM */}
-              <div className="inline-block mt-0.5">
-                <strong className="text-[14pt] font-bold">
-                  Độc lập - Tự do - Hạnh phúc
-                </strong>
-                {/* Gạch chân dưới Tiêu ngữ: dài bằng 100% dòng chữ, cách hở không đè dấu nặng */}
-                <div className="w-full border-b-2 border-slate-900 mt-1.5"></div>
-              </div>
-
-              {/* Địa danh và ngày tháng năm: Font 13.5-14pt, chữ thường, NGHIÊNG, canh giữa theo Tiêu ngữ */}
+            {/* Hàng 2 - Phải: Địa danh và ngày tháng năm (CÙNG HÀNG NGANG BẰNG VỚI SỐ KÝ HIỆU, CANH GIỮA) */}
+            <div className="col-span-7 text-center flex flex-col items-center justify-center">
               {isEditing ? (
                 <input
                   type="text"
                   value={doc.signDate}
                   onChange={(e) => setDoc({ ...doc, signDate: e.target.value })}
                   style={{ fontFamily: '"Times New Roman", Times, serif' }}
-                  className="text-[13.5pt] italic text-center bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none mt-2 px-1 py-0.5 w-full transition"
+                  className="text-[13.5pt] italic text-center bg-transparent border-0 border-b border-dashed border-slate-300 focus:border-blue-500 focus:bg-blue-50/20 outline-none px-1 py-0.5 w-full transition"
                   placeholder="Đồng Tháp, ngày... tháng... năm..."
                 />
               ) : (
-                <span className="text-[13.5pt] italic text-center mt-2 block">
+                <span className="text-[13.5pt] italic text-center block">
                   {doc.signDate || 'Đồng Tháp, ngày 28 tháng 9 năm 2026'}
                 </span>
               )}
@@ -710,12 +714,12 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                       type="button"
                       onClick={() => {
                         if (!doc.recipients.some(r => r.includes('Lưu:'))) {
-                          setDoc({ ...doc, recipients: [...doc.recipients, 'Lưu: VT, CM.'] });
+                          setDoc({ ...doc, recipients: [...doc.recipients, 'Lưu: VT, Tr.'] });
                         }
                       }}
                       className="px-1.5 py-0.5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
                     >
-                      + Lưu: VT, CM
+                      + Lưu: VT, Tr.
                     </button>
                   </div>
                 </div>

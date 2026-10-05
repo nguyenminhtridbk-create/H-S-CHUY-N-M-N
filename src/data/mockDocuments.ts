@@ -60,7 +60,7 @@ export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
       "Hiệu trưởng, các Phó Hiệu trưởng;",
       "Các tổ chuyên môn, tổ văn phòng;",
       "Đoàn – Hội – Đội;",
-      "Lưu: VT."
+      "Lưu: VT, Tr."
     ],
     "status": "official"
   },
@@ -112,7 +112,7 @@ export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
       "- Các tổ chuyên môn, văn phòng (để thực hiện);",
       "- Ban ĐD Cha mẹ học sinh (để phối hợp);",
       "- Đoàn trường, Đội TNTP (để phối hợp);",
-      "- Lưu: VT, CM."
+      "- Lưu: VT, Tr."
     ],
     "status": "official"
   },
@@ -172,7 +172,7 @@ export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
       "Các Phó Hiệu trưởng (để thực hiện);",
       "Ban đại diện CMHS trường (để phối hợp);",
       "Các tổ chuyên môn, tổ văn phòng (để thực hiện);",
-      "Lưu: VT, CM."
+      "Lưu: VT, Tr."
     ],
     "status": "official"
   }
