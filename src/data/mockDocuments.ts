@@ -353,4 +353,156 @@ b) Nội dung và hình thức dạy học:
     ],
     status: 'draft',
   },
+  {
+    id: 'doc-kh-dtht-48',
+    type: 'plan',
+    typeLabel: 'Kế hoạch',
+    documentNumber: 'Số: 48/KH-THCS&THPTĐBK',
+    title: 'KẾ HOẠCH',
+    subTitle: 'Tổ chức dạy thêm, học thêm trong nhà trường năm học 2026 - 2027',
+    signDate: 'Đồng Tháp, ngày 02 tháng 10 năm 2026',
+    createdDate: new Date('2026-10-02').toISOString(),
+    issuingAuthorityTop: 'SỞ GDĐT TỈNH ĐỒNG THÁP',
+    issuingAuthority: 'TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU',
+    signerRole: 'KT. HIỆU TRƯỞNG\nPHÓ HIỆU TRƯỞNG',
+    signerName: 'Nguyễn Minh Trí',
+    sourceDirectiveId: 'directive-dtht-87',
+    sourceDirective: 'Quyết định số 87/2026/QĐ-UBND của UBND tỉnh Đồng Tháp và CV 3223/SGDĐT-TCCB của Sở GDĐT',
+    sourceDirectiveFullText: `Căn cứ Quyết định số 87/2026/QĐ-UBND ngày 31/7/2026 của UBND tỉnh Đồng Tháp ban hành Quy định về dạy thêm, học thêm trên địa bàn tỉnh Đồng Tháp;
+Căn cứ Thông tư số 29/2024/TT-BGDĐT ngày 30/12/2024 của Bộ GDĐT quy định về dạy thêm, học thêm (được sửa đổi bởi Thông tư 19/2026/TT-BGDĐT);
+Căn cứ Công văn số 3223/SGDĐT-TCCB của Sở Giáo dục và Đào tạo Đồng Tháp về việc tăng cường công tác quản lý hoạt động dạy thêm, học thêm.`,
+    legalBases: [
+      'Thông tư số 29/2024/TT-BGDĐT ngày 30/12/2024 của Bộ trưởng Bộ Giáo dục và Đào tạo ban hành Quy định về dạy thêm, học thêm được sửa đổi, bổ sung bởi Thông tư số 19/2026/TT-BGDĐT',
+      'Quyết định số 87/2026/QĐ-UBND ngày 31/7/2026 của Ủy ban nhân dân tỉnh Đồng Tháp ban hành Quy định về dạy thêm, học thêm trên địa bàn tỉnh Đồng Tháp',
+      'Công văn số 3223/SGDĐT-TCCB ngày 28 tháng 8 năm 2026 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về việc tăng cường công tác quản lý hoạt động dạy thêm, học thêm',
+      'Kế hoạch số 34/KH-THCS&THPTĐBK ngày 25 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều về Kế hoạch Giáo dục Nhà trường năm học 2026 - 2027',
+      'Tình hình thực tế về nhu cầu học tập của học sinh, cha mẹ học sinh và điều kiện đội ngũ, cơ sở vật chất của nhà trường',
+    ],
+    sections: [
+      {
+        heading: 'I. MỤC ĐÍCH, YÊU CẦU',
+        content: `1. Mục đích:
+- Thực hiện nghiêm túc mục tiêu giáo dục toàn diện của Chương trình Giáo dục phổ thông 2018; nâng cao chất lượng giáo dục đại trà và bồi dưỡng mũi nhọn của nhà trường trong năm học 2026 - 2027.
+- Kịp thời củng cố, bổ sung lỗ hổng kiến thức và rèn luyện kỹ năng cơ bản cho học sinh có kết quả học tập ở mức Chưa đạt sau các đợt kiểm tra đánh giá định kỳ ở cả cấp THCS và cấp THPT.
+- Nâng cao chất lượng đội tuyển học sinh giỏi các môn văn hóa, phấn đấu đạt chỉ tiêu 18 giải cấp tỉnh và các giải cấp cơ sở theo Kế hoạch giáo dục số 34/KH-THCS&THPTĐBK.
+- Tổ chức ôn tập, hệ thống hóa kiến thức chuyên sâu, rèn luyện kỹ năng làm bài cho học sinh khối 9 ôn thi tuyển sinh vào lớp 10 (mục tiêu trúng tuyển 90%) và học sinh khối 12 ôn thi tốt nghiệp THPT năm 2027 (mục tiêu 100% tốt nghiệp, điểm bình quân đạt 5,99 điểm, tỷ lệ đỗ Đại học trên 75%).
+- Đáp ứng nguyện vọng chính đáng của học sinh và cha mẹ học sinh trong việc quản lý, bồi dưỡng học tập lành mạnh; hạn chế tối đa tình trạng dạy thêm, học thêm ngoài nhà trường trái quy định.
+
+2. Yêu cầu:
+- Tuyệt đối tuân thủ các quy định tại Thông tư số 29/2024/TT-BGDĐT (được sửa đổi bởi Thông tư số 19/2026/TT-BGDĐT), Quyết định số 87/2026/QĐ-UBND của UBND tỉnh Đồng Tháp và Công văn số 3223/SGDĐT-TCCB của Sở GDĐT Đồng Tháp.
+- Việc tổ chức dạy thêm trong nhà trường phải dựa trên tinh thần hoàn toàn tự nguyện của học sinh và có sự đồng thuận, cam kết bằng văn bản của cha mẹ học sinh; tuyệt đối không ép buộc học sinh học thêm dưới bất kỳ hình thức nào.
+- Nhà trường TUYỆT ĐỐI KHÔNG THU TIỀN học sinh đối với các lớp dạy thêm, học thêm trong nhà trường. Nguồn kinh phí chi trả cho giáo viên được bố trí từ nguồn ngân sách nhà nước chi sự nghiệp giáo dục được giao và định mức tiết dạy bồi dưỡng theo quy định.
+- Giáo viên tham gia giảng dạy phải chuẩn bị giáo án, kế hoạch bài dạy chu đáo, bám sát đối tượng; không cắt xén nội dung chương trình chính khóa để đưa vào dạy thêm; chấp hành nghiêm túc quy chế chuyên môn và giờ giấc lên lớp.`,
+      },
+      {
+        heading: 'II. ĐỐI TƯỢNG VÀ NGUYÊN TẮC TỔ CHỨC DẠY THÊM TRONG NHÀ TRƯỜNG',
+        content: `1. Đối tượng học thêm trong nhà trường:
+a) Học sinh có kết quả học tập ở các môn học cuối học kỳ liền kề hoặc sau các đợt kiểm tra định kỳ được đánh giá ở mức Chưa đạt, có nhu cầu phụ đạo, tự nguyện đăng ký học thêm và được cha mẹ học sinh đồng ý.
+b) Học sinh có năng khiếu, học lực tốt được nhà trường tuyển chọn vào các đội tuyển bồi dưỡng học sinh giỏi văn hóa các khối 8, 9, 10, 11, 12 để dự thi các cấp.
+c) Học sinh khối 9 có nguyện vọng ôn tập củng cố, nâng cao kiến thức để chuẩn bị tham gia kỳ thi tuyển sinh vào lớp 10 THPT năm học 2027 - 2028.
+d) Học sinh khối 12 có nguyện vọng ôn tập kiến thức, rèn luyện kỹ năng làm bài phục vụ kỳ thi tốt nghiệp THPT năm 2027 và xét tuyển Đại học, Cao đẳng.
+
+2. Nguyên tắc tổ chức:
+- Học sinh thuộc diện đối tượng trên tự nguyện làm Đơn xin học thêm theo mẫu của trường gửi Ban Giám hiệu. Cha mẹ học sinh (hoặc người giám hộ hợp pháp) phải trực tiếp ký xác nhận vào đơn và cam kết phối hợp cùng nhà trường quản lý học sinh trong suốt quá trình tham gia học thêm.
+- Nhà trường căn cứ vào số lượng học sinh đăng ký, kết quả học tập và năng lực thực tế để phân chia thành các lớp học phù hợp với từng nhóm đối tượng; tuyệt đối không lấy nguyên lớp học chính khóa để tổ chức thành lớp dạy thêm, học thêm.
+- Sĩ số lớp dạy thêm đảm bảo không vượt quá quy định của lớp chính khóa (không quá 45 học sinh/lớp); riêng đối với các lớp phụ đạo học sinh yếu kém và bồi dưỡng học sinh giỏi, nhà trường bố trí quy mô từ 20 đến 35 học sinh/lớp để giáo viên kèm cặp, theo sát từng em.
+- Không tổ chức dạy thêm đối với những nội dung đã được bố trí trong kế hoạch dạy học 2 buổi/ngày của nhà trường để tránh gây quá tải cho học sinh.`,
+      },
+      {
+        heading: 'III. NỘI DUNG, THỜI GIAN, THỜI LƯỢNG VÀ MÔN HỌC',
+        content: `1. Môn học và nội dung giảng dạy:
+a) Cấp THCS:
+- Các môn tổ chức: Ngữ văn, Toán, Tiếng Anh, Khoa học tự nhiên (Vật lí, Hóa học, Sinh học), Lịch sử và Địa lí.
+- Nội dung giảng dạy:
+  + Đối với học sinh chưa đạt: Tập trung ôn tập, khắc phục các lỗ hổng kiến thức cốt lõi, củng cố kỹ năng đọc - hiểu, kỹ năng tính toán cơ bản và phương pháp tự học.
+  + Đối với học sinh bồi dưỡng học sinh giỏi: Rèn luyện kỹ năng phân tích, tư duy phản biện, giải quyết các dạng bài toán thực tiễn và chuyên đề chuyên sâu bám sát ma trận đề thi chọn HSG cấp huyện, cấp tỉnh.
+  + Đối với học sinh khối 9 ôn thi vào lớp 10: Hệ thống hóa toàn diện kiến thức trọng tâm cấp THCS (trọng tâm là chương trình lớp 9); rèn luyện kỹ năng làm bài theo cấu trúc định dạng đề thi tuyển sinh lớp 10 của Sở GDĐT Đồng Tháp.
+
+b) Cấp THPT:
+- Các môn tổ chức: Toán, Ngữ văn, Tiếng Anh, Vật lí, Hóa học, Sinh học, Lịch sử, Địa lí, Giáo dục kinh tế và pháp luật, Tin học.
+- Nội dung giảng dạy:
+  + Đối với học sinh lớp 10, 11 chưa đạt: Củng cố chuẩn kiến thức, kỹ năng nền tảng của Chương trình GDPT 2018; hướng dẫn phương pháp làm bài trắc nghiệm và tự luận cơ bản.
+  + Đối với học sinh lớp 12: Hệ thống hóa kiến thức toàn khóa; tổ chức rèn luyện kỹ năng giải các dạng câu hỏi trắc nghiệm khách quan (đúng/sai, trả lời ngắn, nhiều lựa chọn) theo định dạng đề thi tốt nghiệp THPT từ năm 2025; kết hợp củng cố kiến thức các môn trong tổ hợp xét tuyển Đại học.
+  + Đối với đội tuyển HSG cấp tỉnh: Bồi dưỡng nâng cao năng lực học thuật, tư duy sáng tạo, kỹ năng giải quyết các vấn đề liên môn và thực tiễn (chỉ tiêu phấn đấu 18 giải cấp tỉnh).
+
+2. Thời gian và thời lượng tổ chức:
+- Thời gian thực hiện trong năm học:
+  + Học kỳ I: Bắt đầu từ tuần thứ 3 (ngày 21/9/2026) đến hết tuần thứ 18 (ngày 16/01/2027).
+  + Học kỳ II: Bắt đầu từ tuần thứ 20 (ngày 01/02/2027) đến hết ngày 22/5/2027.
+  + Giai đoạn ôn thi cao điểm (Khối 9 ôn thi vào 10 và Khối 12 ôn thi tốt nghiệp THPT): Từ ngày 24/5/2027 đến trước ngày thi chính thức của từng kỳ thi theo lịch của Bộ GDĐT và Sở GDĐT.
+- Thời lượng và khung giờ học:
+  + Thời lượng: Mỗi môn học thêm tổ chức không quá 02 tiết/tuần. Tổng số tiết học thêm trong tuần của mỗi học sinh không vượt quá 08 tiết/tuần nhằm đảm bảo sức khỏe và thời gian tự học ở nhà.
+  + Khung giờ bố trí: Xếp vào các buổi chiều trong tuần (từ Tiết 1 đến Tiết 4, trong khung giờ từ 12h30 đến 16h05) hoặc sáng thứ Bảy, hoàn toàn lệch ca với các buổi học chính khóa tại từng Điểm trường (Điểm chính, Điểm ĐBK, Điểm Tân Kiều).`,
+      },
+      {
+        heading: 'IV. QUẢN LÝ DẠY THÊM NGOÀI NHÀ TRƯỜNG VÀ CÔNG KHAI ĐƯỜNG DÂY NÓNG',
+        content: `1. Quản lý việc dạy thêm ngoài nhà trường của giáo viên:
+- Giáo viên của nhà trường khi tham gia dạy thêm ngoài nhà trường phải chấp hành nghiêm túc quy định tại khoản 3 Điều 6 Thông tư số 29/2024/TT-BGDĐT (sửa đổi bởi Thông tư 19/2026/TT-BGDĐT) và Quyết định số 87/2026/QĐ-UBND của UBND tỉnh Đồng Tháp.
+- Trước khi tham gia dạy thêm ngoài nhà trường, giáo viên bắt buộc phải có văn bản báo cáo Hiệu trưởng về môn dạy, địa điểm, thời gian, hình thức tham gia và cam kết thực hiện đúng các quy định hiện hành của ngành giáo dục.
+- Nghiêm cấm giáo viên dạy thêm ngoài nhà trường đối với học sinh mà mình đang trực tiếp dạy học chính khóa khi chưa được cấp có thẩm quyền cho phép; tuyệt đối không dùng bất kỳ hình thức nào ép buộc học sinh chính khóa đi học thêm; không đưa nội dung kiểm tra định kỳ vào dạy trước ở các lớp dạy thêm.
+- Nhà trường chủ động phối hợp với Ủy ban nhân dân xã Đốc Binh Kiều, Công an xã và các cơ quan, đơn vị có liên quan để theo dõi, giám sát hoạt động dạy thêm ngoài nhà trường của giáo viên. Giáo viên vi phạm quy định sẽ bị xử lý kỷ luật nghiêm theo quy định pháp luật và bị đánh giá không hoàn thành nhiệm vụ trong năm học.
+
+2. Thiết lập và công khai số điện thoại đường dây nóng:
+- Thực hiện chỉ đạo của Sở GDĐT tại Công văn số 3223/SGDĐT-TCCB và Điều 6 Quyết định 87/2026/QĐ-UBND, nhà trường thiết lập và công khai số điện thoại đường dây nóng tiếp nhận phản ánh về dạy thêm, học thêm:
+  + Số điện thoại đường dây nóng nhà trường: 0277.3824.115 (hoặc số trực ban BGH / Phó Hiệu trưởng Nguyễn Minh Trí).
+  + Hộp thư điện tử tiếp nhận phản ánh: thcs-thpt.docbinhkieu@dongthap.edu.vn.
+  + Đường dây nóng của Sở GDĐT tỉnh Đồng Tháp (để CMHS và nhân dân phản ánh khi cần): Phòng Tổ chức cán bộ Sở GDĐT - Điện thoại: 094.333.4774 (đồng chí Lê Thanh Phong).
+- Địa điểm niêm yết: Công khai trên Cổng thông tin điện tử của trường, Fanpage nhà trường và niêm yết tại Bảng thông báo công khai ở cả 3 điểm trường (Điểm chính, Điểm ĐBK, Điểm Tân Kiều).`,
+      },
+      {
+        heading: 'V. KINH PHÍ TỔ CHỨC VÀ ĐIỀU KIỆN CƠ SỞ VẬT CHẤT',
+        content: `1. Kinh phí tổ chức dạy thêm trong nhà trường:
+- Thực hiện nghiêm túc quy định tại Điều 8 Quyết định số 87/2026/QĐ-UBND và Thông tư số 29/2024/TT-BGDĐT: Nhà trường TUYỆT ĐỐI KHÔNG THU TIỀN HỌC THÊM của học sinh dưới bất kỳ hình thức nào.
+- Kinh phí chi trả cho công tác bồi dưỡng học sinh giỏi, phụ đạo học sinh chưa đạt và ôn tập thi tuyển sinh 10, ôn thi tốt nghiệp THPT được chi trả từ nguồn ngân sách nhà nước chi cho sự nghiệp giáo dục được cấp có thẩm quyền giao trong dự toán năm 2026 và năm 2027 của đơn vị.
+- Chế độ thanh toán dạy thừa giờ, dạy vượt định mức tiết dạy đối với giáo viên trực tiếp giảng dạy và công tác quản lý được thực hiện công khai, minh bạch theo Quy chế chi tiêu nội bộ và các quy định quản lý tài chính hiện hành.
+
+2. Điều kiện cơ sở vật chất, an toàn trường học:
+- Tận dụng hiệu quả 53 phòng học kiên cố, hệ thống tivi thông minh, máy chiếu, quạt mát, ánh sáng đạt chuẩn tại cả 3 điểm trường (Điểm chính 15.683 m², Điểm ĐBK 11.126,7 m², Điểm Tân Kiều 8.570,8 m²).
+- Đảm bảo đầy đủ bàn ghế phù hợp với tầm vóc học sinh, cung cấp nước uống hợp vệ sinh, hệ thống điện và chiếu sáng an toàn; phối hợp điều tiết trật tự an toàn giao thông trước cổng trường trong các giờ tan học buổi chiều.
+- Tuân thủ nghiêm ngặt các quy định về an ninh trật tự trường học, an toàn vệ sinh môi trường và phòng chống cháy nổ.`,
+      },
+      {
+        heading: 'VI. TỔ CHỨC THỰC HIỆN',
+        content: `1. Ban Giám hiệu nhà trường:
+- Hiệu trưởng Lê Thanh Cường: Chịu trách nhiệm toàn diện trước Giám đốc Sở GDĐT và pháp luật về toàn bộ hoạt động dạy thêm, học thêm trong và ngoài nhà trường của đơn vị; ban hành Quyết định thành lập Ban Quản lý dạy thêm, học thêm năm học 2026 - 2027.
+- Phó Hiệu trưởng Nguyễn Minh Trí (Trưởng ban Quản lý DTHT):
+  + Trực tiếp chỉ đạo xây dựng kế hoạch, phê duyệt danh sách học sinh theo từng nhóm đối tượng, phân công giáo viên giảng dạy và phê duyệt thời khóa biểu tại cả 3 điểm trường.
+  + Thường xuyên kiểm tra nền nếp dạy học, hồ sơ giáo án, tiến độ giảng dạy và chất lượng học tập của các lớp bồi dưỡng, phụ đạo; kịp thời đánh giá sự tiến bộ của học sinh yếu kém và kết quả rèn luyện của đội tuyển HSG.
+  + Chủ trì tiếp nhận, xác minh và xử lý kịp thời các thông tin phản ánh từ học sinh, cha mẹ học sinh qua đường dây nóng của nhà trường.
+
+2. Các Tổ chuyên môn:
+- Tổ chức rà soát, nắm chắc danh sách học sinh chưa đạt sau từng giai đoạn kiểm tra định kỳ để xây dựng kế hoạch phụ đạo chi tiết của tổ.
+- Biên soạn nội dung, đề cương, chuyên đề giảng dạy bám sát yêu cầu cần đạt của Chương trình GDPT 2018 theo từng môn học; đảm bảo tính phân hóa, không gây quá tải cho học sinh.
+- Tăng cường sinh hoạt tổ chuyên môn, dự giờ, trao đổi kinh nghiệm về đổi mới phương pháp giảng dạy, phương pháp hướng dẫn học sinh tự học.
+
+3. Giáo viên tham gia giảng dạy:
+- Chấp hành nghiêm túc sự phân công của Ban Giám hiệu và Tổ chuyên môn; chuẩn bị kế hoạch bài dạy, giáo án chu đáo trước khi lên lớp; quản lý tốt nền nếp, sĩ số học sinh.
+- Nêu cao tinh thần trách nhiệm, tâm huyết với nghề, khích lệ, động viên giúp học sinh yếu kém tự tin vươn lên; không dạy dồn ép; thường xuyên đánh giá sự tiến bộ của học sinh để điều chỉnh phương pháp dạy học phù hợp.
+- Thực hiện nghiêm túc cam kết về dạy thêm ngoài nhà trường; giữ gìn phẩm chất đạo đức nhà giáo, tuyệt đối không vi phạm quy định.
+
+4. Giáo viên chủ nhiệm lớp:
+- Phối hợp với giáo viên bộ môn nắm bắt học lực, hoàn cảnh của từng học sinh trong lớp để tư vấn, định hướng học sinh tham gia các lớp bồi dưỡng, phụ đạo đúng đối tượng.
+- Phát và thu nhận Đơn xin học thêm có chữ ký xác nhận của cha mẹ học sinh gửi về Ban Quản lý DTHT.
+- Thường xuyên giữ mối liên hệ chặt chẽ với phụ huynh học sinh để thông báo thời khóa biểu, tình hình học tập và sự tiến bộ của học sinh; kịp thời lắng nghe, phản ánh tâm tư nguyện vọng của gia đình với nhà trường.
+
+5. Tổ Văn phòng - Kế toán:
+- Bố trí phòng học, cơ sở vật chất, thiết bị dạy học, hệ thống điện, quạt mát phục vụ tốt các buổi dạy thêm tại các điểm trường; nhân viên bảo vệ, y tế túc trực đảm bảo an toàn tuyệt đối.
+- Bộ phận kế toán phối hợp với Ban Quản lý tổng hợp số tiết dạy thực tế, đối soát và tham mưu thực hiện chi trả chế độ thù lao cho giáo viên kịp thời, đúng quy định tài chính.
+
+6. Học sinh và Ban đại diện Cha mẹ học sinh:
+- Học sinh: Tham gia học tập đầy đủ, đúng giờ, chuyên cần, chấp hành nghiêm nội quy trường lớp; chủ động trao đổi với thầy cô về những nội dung chưa hiểu để tiến bộ.
+- Ban đại diện Cha mẹ học sinh: Phối hợp chặt chẽ với nhà trường trong công tác quản lý, giám sát hoạt động dạy thêm, học thêm; tạo điều kiện thuận lợi về thời gian, phương tiện đi lại cho con em; chủ động phản ánh kịp thời qua đường dây nóng các vấn đề phát sinh để nhà trường giải quyết./.`,
+      },
+    ],
+    recipients: [
+      'Sở GDĐT Đồng Tháp (để báo cáo);',
+      'UBND xã Đốc Binh Kiều (để phối hợp);',
+      'Hiệu trưởng (để chỉ đạo);',
+      'Các Phó Hiệu trưởng (để thực hiện);',
+      'Ban đại diện CMHS trường (để phối hợp);',
+      'Các tổ chuyên môn, tổ văn phòng (để thực hiện);',
+      'Lưu: VT, CM.',
+    ],
+    status: 'official',
+  },
 ];
