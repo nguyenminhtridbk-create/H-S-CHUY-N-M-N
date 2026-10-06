@@ -279,22 +279,41 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
 
   // Sections
   doc.sections.forEach((sec) => {
-    // Heading: Roman numeral heading bold 14pt (thụt đầu dòng 1.0cm = 567 twips bằng với các mục số; giãn đoạn trên 6pt = 120 twips, dưới 6pt = 120 twips đều nhau)
-    docChildren.push(
-      new Paragraph({
-        alignment: AlignmentType.JUSTIFIED,
-        children: [
-          new TextRun({
-            text: sec.heading,
-            bold: true,
-            size: 28, // 14pt
-            font: 'Times New Roman',
-          }),
-        ],
-        indent: { firstLine: 567 }, // Thụt đầu dòng 1.0cm bằng với các mục số và đoạn văn
-        spacing: { before: 120, after: 120 },
-      })
-    );
+    const isAppendix = sec.heading.toUpperCase().startsWith('PHỤ LỤC');
+    if (isAppendix) {
+      docChildren.push(
+        new Paragraph({
+          pageBreakBefore: true,
+          alignment: AlignmentType.CENTER,
+          children: [
+            new TextRun({
+              text: sec.heading,
+              bold: true,
+              size: 28, // 14pt
+              font: 'Times New Roman',
+            }),
+          ],
+          spacing: { before: 240, after: 140 },
+        })
+      );
+    } else {
+      // Heading: Roman numeral heading bold 14pt (thụt đầu dòng 1.0cm = 567 twips bằng với các mục số; giãn đoạn trên 6pt = 120 twips, dưới 6pt = 120 twips đều nhau)
+      docChildren.push(
+        new Paragraph({
+          alignment: AlignmentType.JUSTIFIED,
+          children: [
+            new TextRun({
+              text: sec.heading,
+              bold: true,
+              size: 28, // 14pt
+              font: 'Times New Roman',
+            }),
+          ],
+          indent: { firstLine: 567 }, // Thụt đầu dòng 1.0cm bằng với các mục số và đoạn văn
+          spacing: { before: 120, after: 120 },
+        })
+      );
+    }
 
     // Content paragraphs and tables
     const lines = sec.content.split('\n');

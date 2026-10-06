@@ -522,9 +522,23 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
                         newSections[sIdx].heading = e.target.value;
                         setDoc({ ...doc, sections: newSections });
                       }}
-                      style={{ fontFamily: '"Times New Roman", Times, serif', textIndent: '1cm' }}
-                      className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] indent-[1cm] pl-0 w-full bg-transparent border-0 border-b border-dashed border-transparent hover:border-slate-300 focus:border-blue-400 focus:bg-blue-50/20 outline-none transition"
+                      style={{
+                        fontFamily: '"Times New Roman", Times, serif',
+                        textIndent: section.heading.toUpperCase().startsWith('PHỤ LỤC') ? '0' : '1cm',
+                      }}
+                      className={`font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] pl-0 w-full bg-transparent border-0 border-b border-dashed border-transparent hover:border-slate-300 focus:border-blue-400 focus:bg-blue-50/20 outline-none transition ${
+                        section.heading.toUpperCase().startsWith('PHỤ LỤC') ? 'text-center' : 'indent-[1cm] text-justify'
+                      }`}
                     />
+                  </div>
+                ) : section.heading.toUpperCase().startsWith('PHỤ LỤC') ? (
+                  <div className="pt-8 mt-8 border-t-2 border-dashed border-slate-300 text-center">
+                    <span className="inline-block px-3 py-0.5 bg-blue-100 text-blue-800 text-xs font-semibold rounded-full uppercase tracking-wider mb-2">
+                      Văn bản đính kèm kế hoạch
+                    </span>
+                    <h2 className="font-bold text-[15pt] uppercase tracking-normal text-slate-950 text-center my-2">
+                      {section.heading}
+                    </h2>
                   </div>
                 ) : (
                   <h2 className="font-bold text-[14pt] uppercase tracking-normal text-slate-950 my-[6pt] indent-[1cm] pl-0 text-justify">
