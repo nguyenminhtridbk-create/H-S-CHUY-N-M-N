@@ -50,6 +50,13 @@ export const DocumentArchiveTab: React.FC<DocumentArchiveTabProps> = ({
 
   const handleQuickDownload = async (e: React.MouseEvent, doc: SchoolDocument) => {
     e.stopPropagation();
+    if (doc.sourceFileUrl) {
+      const link = document.createElement('a');
+      link.href = doc.sourceFileUrl;
+      link.download = 'Ke-hoach-kiem-tra-danh-gia-2026-2027.docx';
+      link.click();
+      return;
+    }
     await exportDocumentToDocx(doc);
   };
 

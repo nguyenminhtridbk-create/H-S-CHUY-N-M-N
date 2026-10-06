@@ -104,6 +104,13 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
   // Handle Copy full text for pasting into iDesk / VnResource
   const handleCopyText = async () => {
     try {
+      if (doc.sourceText) {
+        await navigator.clipboard.writeText(doc.sourceText);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
+      }
+
       let fullText = `${doc.issuingAuthorityTop || 'SỞ GDĐT TỈNH ĐỒNG THÁP'}\n${doc.issuingAuthority}\n${doc.documentNumber}\n\n`;
       fullText += `CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\nĐộc lập - Tự do - Hạnh phúc\n${doc.signDate}\n\n`;
       fullText += `${doc.title.toUpperCase()}\n`;
@@ -132,6 +139,10 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
   const handleExportWord = async () => {
     try {
       setIsDownloading(true);
+      if (doc.sourceFileUrl) {
+        window.location.assign(doc.sourceFileUrl);
+        return;
+      }
       await exportDocumentToDocx(doc);
     } catch (e) {
       console.error('Failed to export word', e);
@@ -199,20 +210,22 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
           )}
 
           {/* Toggle Edit mode */}
-          <button
-            onClick={() => setIsEditing(!isEditing)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-2xs ${
-              isEditing 
-                ? 'bg-amber-500 text-white' 
-                : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
-            }`}
-          >
-            <Edit3 className="w-3.5 h-3.5" />
-            <span>{isEditing ? 'Đang sửa trên Word' : 'Chỉnh sửa'}</span>
-          </button>
+          {!doc.sourceHtml && (
+            <button
+              onClick={() => setIsEditing(!isEditing)}
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition shadow-2xs ${
+                isEditing 
+                  ? 'bg-amber-500 text-white' 
+                  : 'bg-slate-100 hover:bg-slate-200 text-slate-800'
+              }`}
+            >
+              <Edit3 className="w-3.5 h-3.5" />
+              <span>{isEditing ? 'Đang sửa trên Word' : 'Chỉnh sửa'}</span>
+            </button>
+          )}
 
           {/* Reset to default template if needed */}
-          {onResetToDefault && (
+          {onResetToDefault && !doc.sourceHtml && (
             <button
               onClick={() => {
                 if (window.confirm(`Thầy có chắc chắn muốn khôi phục văn bản "${doc.title}" về bản mẫu gốc ban đầu không?\n\nLưu ý: Mọi chỉnh sửa của Thầy trên văn bản này sẽ được hoàn tác về bản mẫu gốc.`)) {
@@ -308,7 +321,7 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
         ` }} />
 
         <div 
-          className="bg-white text-slate-900 shadow-md print:shadow-none w-full max-w-[850px] min-h-[1130px] text-[14pt] leading-[1.4] transition-all"
+          className={`bg-white text-slate-900 shadow-md print:shadow-none w-full max-w-[850px] min-h-[1130px] text-[14pt] leading-[1.4] transition-all ${doc.sourceHtml ? 'docx-backed' : ''}`}
           style={{
             fontFamily: '"Times New Roman", Times, serif',
             lineHeight: '1.4',
@@ -319,6 +332,13 @@ export const DocumentEditorView: React.FC<DocumentEditorViewProps> = ({
             boxSizing: 'border-box',
           }}
         >
+          {doc.sourceHtml && (
+            <article
+              className="docx-source"
+              dangerouslySetInnerHTML={{ __html: doc.sourceHtml }}
+            />
+          )}
+
           {/* Header 2-column table conforming to Decree 30 and School Sample */}
           <div className="grid grid-cols-12 gap-x-4 gap-y-2 pb-2 items-start">
             {/* Hàng 1 - Trái: Cơ quan ban hành (Font 13pt) */}

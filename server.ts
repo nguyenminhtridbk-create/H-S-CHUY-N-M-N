@@ -20,6 +20,54 @@ app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 const PERSISTED_DOCS_PATH = path.join(__dirname, 'src', 'data', 'persistedDocuments.json');
+const ASSESSMENT_PLAN_DOCX_PATH = path.join(
+  __dirname,
+  'VAN-BAN-DEN',
+  'HUONG DAN KIEM TRA DANH GIA',
+  '39 KH KIỂM TRA ĐÁNH GIÁ 2026-2027.docx',
+);
+
+async function syncAssessmentPlanFromWord(docs: any[]) {
+  if (!fs.existsSync(ASSESSMENT_PLAN_DOCX_PATH)) return docs;
+
+  try {
+    const [htmlResult, textResult] = await Promise.all([
+      mammoth.convertToHtml({ path: ASSESSMENT_PLAN_DOCX_PATH }),
+      mammoth.extractRawText({ path: ASSESSMENT_PLAN_DOCX_PATH }),
+    ]);
+    const existing = docs.find((doc: any) => doc.id === 'doc-kh-ktdg-52');
+    if (!existing) return docs;
+
+    const sourcePlan = {
+      ...existing,
+      documentNumber: 'Số: __/KH-THCS&THPTĐBK',
+      title: 'KẾ HOẠCH',
+      subTitle: 'Tổ chức thực hiện kiểm tra, đánh giá học sinh năm học 2026 - 2027',
+      signDate: 'Đồng Tháp, ngày 05 tháng 10 năm 2026',
+      issuingAuthorityTop: 'SỞ GDĐT TỈNH ĐỒNG THÁP',
+      issuingAuthority: 'TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU',
+      signerRole: 'KT. HIỆU TRƯỞNG\nPHÓ HIỆU TRƯỞNG',
+      signerName: 'Nguyễn Minh Trí',
+      recipients: [
+        'Sở GDĐT Đồng Tháp (để báo cáo);',
+        'Hiệu trưởng (để chỉ đạo);',
+        'Các Phó Hiệu trưởng (để phối hợp);',
+        'Các tổ chuyên môn, tổ văn phòng (để thực hiện);',
+        'Ban ĐD Cha mẹ học sinh (để phối hợp);',
+        'Đoàn trường, Đội TNTP (để phối hợp);',
+        'Lưu: VT, Tr.',
+      ],
+      sourceHtml: htmlResult.value,
+      sourceText: textResult.value,
+      sourceFileUrl: '/api/documents/source/assessment-plan.docx',
+    };
+
+    return docs.map((doc: any) => doc.id === sourcePlan.id ? sourcePlan : doc);
+  } catch (error) {
+    console.error('Failed to import assessment plan DOCX:', error);
+    return docs;
+  }
+}
 
 // Helper to get all documents from disk
 function getPersistedDocuments(): any[] {
@@ -776,10 +824,19 @@ Trả về kết quả dạng JSON:
   }
 });
 
+// API: Download the original assessment plan Word file
+app.get('/api/documents/source/assessment-plan.docx', (req, res) => {
+  if (!fs.existsSync(ASSESSMENT_PLAN_DOCX_PATH)) {
+    return res.status(404).json({ success: false, error: 'Không tìm thấy file Word gốc' });
+  }
+  res.download(ASSESSMENT_PLAN_DOCX_PATH, path.basename(ASSESSMENT_PLAN_DOCX_PATH));
+});
+
 // API: Get all persisted documents from server disk
-app.get('/api/documents', (req, res) => {
+app.get('/api/documents', async (req, res) => {
   try {
-    const docs = getPersistedDocuments();
+    const docs = await syncAssessmentPlanFromWord(getPersistedDocuments());
+    savePersistedDocuments(docs);
     res.json({ success: true, data: docs });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });

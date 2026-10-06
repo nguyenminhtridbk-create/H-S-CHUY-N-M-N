@@ -18,7 +18,7 @@ const DEFAULT_SCHOOL_FACTS = `- Quy mô: 53 lớp, 2.143 học sinh (39 lớp TH
 - Định hướng chuyển đổi số: 100% hồ sơ, học bạ số, sổ điểm điện tử; khai thác AI an toàn, liêm chính trong dạy và học.`;
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('builder');
+  const [activeTab, setActiveTab] = useState<string>('editor');
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
 
   // Department Directives Repository (Lưu trữ sẵn trên webapp)
@@ -79,8 +79,8 @@ export default function App() {
 
   // Current document for Viewing / Editing in Editor
   const [currentDocument, setCurrentDocument] = useState<SchoolDocument>(() => {
-    const scheduleDraft = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'draft-ktdg-52-high-school-sessions');
-    return scheduleDraft || INITIAL_SCHOOL_DOCUMENTS[0];
+    const assessmentPlan = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'doc-kh-ktdg-52');
+    return assessmentPlan || INITIAL_SCHOOL_DOCUMENTS[0];
   });
 
   // Custom School Facts
@@ -107,7 +107,7 @@ export default function App() {
           }
           setCurrentDocument((prev) => {
             const match = res.data.find((d: SchoolDocument) => d.id === prev?.id);
-            return match || res.data.find((d: SchoolDocument) => d.id === 'doc-kh-dtht-48') || res.data[0];
+            return match || res.data.find((d: SchoolDocument) => d.id === 'doc-kh-ktdg-52') || res.data[0];
           });
         }
       })

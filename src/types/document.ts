@@ -59,6 +59,9 @@ export interface SchoolDocument {
   legalBases: string[]; // Các căn cứ pháp lý (Thông tư 32/2018, Thông tư 22/2021, Thông tư 15/2026, QĐ 2606...)
   sections: DocumentSection[];
   recipients: string[]; // Nơi nhận
+  sourceHtml?: string; // Nội dung DOCX gốc đã chuyển sang HTML để hiển thị nguyên văn
+  sourceText?: string; // Toàn văn DOCX gốc dùng khi sao chép
+  sourceFileUrl?: string; // URL tải DOCX gốc
   notes?: string;
   updatedAt?: string;
   status: 'draft' | 'reviewed' | 'official';
