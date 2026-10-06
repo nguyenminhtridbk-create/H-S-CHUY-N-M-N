@@ -1,1 +1,35 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
+
+/* Văn bản hành chính dạng HTML tĩnh (Công văn 471 và phụ lục) */
+.vb-doc { text-align: justify; }
+.vb-doc p { margin: 0; }
+.vb-doc .vb-p { text-indent: 2em; margin: 0.45em 0; text-align: justify; }
+.vb-doc .vb-tight { margin: 0.25em 0; }
+.vb-doc .vb-note-start { margin-bottom: 0.2em; }
+.vb-doc sup.fn { font-size: 0.7em; line-height: 0; vertical-align: super; }
+.vb-doc sup.fn::before { content: "("; }
+.vb-doc sup.fn::after { content: ")"; }
+.vb-doc table { border-collapse: collapse; table-layout: fixed; width: 100%; }
+.vb-doc .vb-plain td { border: none; padding: 1px 4px; vertical-align: top; }
+.vb-doc .vb-plain td.c { text-align: center; }
+.vb-doc .vb-head { margin-bottom: 0.6em; }
+.vb-doc .vb-gap { height: 0.8em; }
+.vb-doc .vb-ul { display: inline-block; border-bottom: 1px solid #000; padding: 0 0.6em 1px; }
+.vb-doc .vb-kg { padding-top: 0.6em; }
+.vb-doc .vb-kg-label { display: block; text-align: center; font-weight: 700; }
+.vb-doc .vb-kg-list { width: fit-content; margin: 0 auto; text-align: left; font-weight: 700; }
+.vb-doc .vb-sign { margin-top: 1.2em; page-break-inside: avoid; }
+.vb-doc .vb-recv { font-size: 0.85em; line-height: 1.35; }
+.vb-doc .vb-signer { padding-top: 0.2em; }
+.vb-doc .vb-sign-gap { height: 4.5em; }
+.vb-doc .doc-table { margin: 0.6em 0 0.8em; }
+.vb-doc .doc-table td { border: 1px solid #000; padding: 3px 5px; vertical-align: middle; line-height: 1.3; word-break: break-word; }
+.vb-doc .vb-struct { width: 92%; margin-left: auto; margin-right: auto; }
+.vb-doc .vb-struct td { text-align: center; }
+.vb-doc .vb-struct tr:nth-child(n+3) td[colspan="2"], .vb-doc .vb-struct tr:nth-child(n+3) td:nth-child(2)[rowspan] { text-align: left; }
+.vb-doc .doc-table td { height: 1.7em; }
+.vb-doc .vb-footnotes { margin-top: 1.4em; padding-top: 0.5em; border-top: 1px solid #000; font-size: 0.8em; text-align: justify; }
+.vb-doc .vb-footnotes p { margin: 0.2em 0; }
+.vb-doc .vb-ap-title, .vb-doc .vb-ap-no, .vb-doc .vb-ap-sub { text-align: center; margin: 0.35em 0; }
+@media print { .vb-doc .doc-table td { border-color: #000; } }
+

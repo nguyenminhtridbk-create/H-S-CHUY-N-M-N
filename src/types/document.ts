@@ -28,6 +28,7 @@ export interface DepartmentDirective {
   signer: string; // "KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn"
   summary: string; // Tóm tắt tinh thần chỉ đạo
   fullContent: string; // Toàn văn văn bản của Sở
+  htmlContent?: string; // Bản trình bày giữ nguyên thể thức và bảng biểu (HTML tĩnh, nội bộ)
   createdDate: string;
   fileName?: string; // Tên tệp đính kèm nếu có (.docx, .pdf)
   topic?: string; // Chuyên đề (2 buổi/ngày, Hướng nghiệp & phân luồng, Khung năng lực số, Kiểm tra đánh giá, Dạy thêm học thêm, Hồ sơ sổ sách...)

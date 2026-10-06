@@ -433,14 +433,14 @@ export const AdministrativeDirectiveViewerModal: React.FC<AdministrativeDirectiv
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-mono text-xs font-bold px-2 py-0.5 bg-amber-400/20 text-amber-300 border border-amber-400/30 rounded">
-                  {parsedDoc.documentNumber}
+                  {directive.htmlContent ? directive.documentNumber : parsedDoc.documentNumber}
                 </span>
                 <span className="text-xs text-slate-300 font-medium">
                   {parsedDoc.authorityMain}
                 </span>
               </div>
               <h3 className="font-bold text-sm text-white line-clamp-1 max-w-xl mt-0.5">
-                {parsedDoc.titleType}: {parsedDoc.titleSubject}
+                {directive.htmlContent ? directive.title : `${parsedDoc.titleType}: ${parsedDoc.titleSubject}`}
               </h3>
             </div>
           </div>
@@ -536,13 +536,16 @@ export const AdministrativeDirectiveViewerModal: React.FC<AdministrativeDirectiv
         {/* DOCUMENT PREVIEW CANVAS (100% PURE WHITE CANVAS THROUGHOUT ENTIRE SCROLL) */}
         <div className="flex-1 overflow-y-auto bg-white p-4 sm:p-8 flex justify-center print:bg-white print:p-0">
           <div
-            className="bg-white text-slate-900 border border-slate-200 shadow-sm sm:shadow-md print:border-none print:shadow-none w-full max-w-[850px] p-6 sm:p-14 min-h-full"
+            className={`bg-white text-slate-900 border border-slate-200 shadow-sm sm:shadow-md print:border-none print:shadow-none w-full ${directive.htmlContent && directive.documentNumber.startsWith('Phụ lục') ? 'max-w-none p-4 sm:p-8' : 'max-w-[850px] p-6 sm:p-14'} min-h-full`}
             style={{
               fontFamily: '"Times New Roman", Times, serif',
               fontSize: `${fontSizePt}pt`,
               lineHeight: '1.45',
             }}
           >
+            {directive.htmlContent ? (
+              <div className="vb-doc" dangerouslySetInnerHTML={{ __html: directive.htmlContent }} />
+            ) : (<>
             {/* ================= 1. HEADER 2 CỘT CHUẨN NGHỊ ĐỊNH 30/2020/NĐ-CP ================= */}
             <div className="grid grid-cols-12 gap-3 pb-3 items-start border-b border-slate-100">
               {/* CỘT TRÁI: CƠ QUAN BAN HÀNH & SỐ HIỆU */}
@@ -727,6 +730,7 @@ export const AdministrativeDirectiveViewerModal: React.FC<AdministrativeDirectiv
                 </strong>
               </div>
             </div>
+            </>)}
 
           </div>
         </div>

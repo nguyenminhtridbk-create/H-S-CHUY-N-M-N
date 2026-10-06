@@ -28,6 +28,10 @@ function getPersistedDocuments(): any[] {
       const data = fs.readFileSync(PERSISTED_DOCS_PATH, 'utf-8');
       const docs = JSON.parse(data);
       if (Array.isArray(docs) && docs.length > 0) {
+        const scheduleDraft = INITIAL_SCHOOL_DOCUMENTS.find((doc) => doc.id === 'draft-ktdg-52-high-school-sessions');
+        if (scheduleDraft && !docs.some((doc: any) => doc.id === scheduleDraft.id)) {
+          return [scheduleDraft, ...docs];
+        }
         return docs;
       }
     }

@@ -1,4 +1,5 @@
 import { SchoolDocument } from '../types/document';
+import { DRAFT_SCHEDULE_ADJUSTMENT } from './draftHighSchoolExamSchedule';
 
 export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
   {
@@ -189,7 +190,7 @@ export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
     "issuingAuthority": "TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU",
     "signerRole": "KT. HIỆU TRƯỞNG\nPHÓ HIỆU TRƯỞNG",
     "signerName": "Nguyễn Minh Trí",
-    "sourceDirectiveId": "directive-471-ktdg",
+    "sourceDirectiveId": "directive-cv471-sgddt",
     "sourceDirective": "Công văn số 471/SGDĐT-GDPT ngày 14/4/2025 của Sở GDĐT tỉnh Đồng Tháp",
     "sourceDirectiveFullText": "Công văn số 471/SGDĐT-GDPT ngày 14 tháng 4 năm 2025 của Sở Giáo dục và Đào tạo tỉnh Đồng Tháp về việc thực hiện kiểm tra, đánh giá đối với cấp THCS, THPT.",
     "legalBases": [
@@ -244,5 +245,6 @@ export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
     ],
     "status": "official",
     "updatedAt": "2026-10-06T01:26:33.701Z"
-  }
+  },
+  DRAFT_SCHEDULE_ADJUSTMENT
 ];
