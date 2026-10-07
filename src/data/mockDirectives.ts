@@ -1,7 +1,8 @@
 import { DepartmentDirective } from '../types/document';
+import SOURCES from './directiveSources.json';
 import { CV471_HTML, CV471_PLI_HTML, CV471_PLII_HTML, CV471_TEXT, CV471_PLI_TEXT, CV471_PLII_TEXT } from './cv471Source';
 
-export const INITIAL_DEPARTMENT_DIRECTIVES: DepartmentDirective[] = [
+const BASE_DIRECTIVES: DepartmentDirective[] = [
   {
     "id": "directive-1251-ubnd",
     "documentNumber": "Số: 1251/KH-UBND",
@@ -186,6 +187,20 @@ export const INITIAL_DEPARTMENT_DIRECTIVES: DepartmentDirective[] = [
     "linkedSchoolDocumentIds": []
   },
   {
+    "id": "directive-khung-nls-3456",
+    "documentNumber": "Số: 3456/BGDĐT-GDPT",
+    "title": "Phụ lục Khung năng lực số cho học sinh phổ thông và học viên GDTX (kèm Công văn 3456/BGDĐT-GDPT)",
+    "issuingAuthority": "BỘ GIÁO DỤC VÀ ĐÀO TẠO",
+    "signDate": "Hà Nội, ngày 27 tháng 6 năm 2025",
+    "signer": "KT. BỘ TRƯỞNG - THỨ TRƯỞNG Phạm Ngọc Thưởng",
+    "topic": "Khung năng lực số",
+    "fileSize": "PDF bản quét",
+    "summary": "Phụ lục kèm Công văn 3456/BGDĐT-GDPT: nội dung, mức độ cần đạt của Khung năng lực số theo từng cấp học.",
+    "fullContent": "",
+    "createdDate": "2025-06-27T00:00:00.000Z",
+    "linkedSchoolDocumentIds": []
+  },
+  {
     "id": "directive-cv3456-bgddt",
     "documentNumber": "Số: 3456/BGDĐT-GDPT",
     "title": "Công văn hướng dẫn triển khai thực hiện khung năng lực số cho học sinh phổ thông và học viên GDTX",
@@ -266,3 +281,11 @@ export const INITIAL_DEPARTMENT_DIRECTIVES: DepartmentDirective[] = [
     ]
   }
 ];
+
+// N?i dung nguy?n v?n d?ng t? c?c t?p g?c trong th? m?c VAN-BAN-DEN (scripts/build_sources.py)
+const SOURCE_MAP = SOURCES as Record<string, { html: string; text: string }>;
+
+export const INITIAL_DEPARTMENT_DIRECTIVES: DepartmentDirective[] = BASE_DIRECTIVES.map((d) => {
+  const src = SOURCE_MAP[d.id];
+  return src ? { ...d, htmlContent: src.html, fullContent: src.text } : d;
+});

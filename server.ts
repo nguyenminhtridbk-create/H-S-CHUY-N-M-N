@@ -27,6 +27,8 @@ const ASSESSMENT_PLAN_DOCX_PATH = path.join(
   '39 KH KIỂM TRA ĐÁNH GIÁ 2026-2027.docx',
 );
 
+const TWO_SESSION_PLAN_DOCX_PATH = path.join(__dirname, 'VAN-BAN-DEN', '33 K? HO?CH T? CH?C D?Y H?C 2 BU?I-NG?Y.docx');
+
 async function syncAssessmentPlanFromWord(docs: any[]) {
   if (!fs.existsSync(ASSESSMENT_PLAN_DOCX_PATH)) return docs;
 
@@ -825,6 +827,13 @@ Trả về kết quả dạng JSON:
 });
 
 // API: Download the original assessment plan Word file
+app.get('/api/documents/source/two-session-plan.docx', (req, res) => {
+  if (!fs.existsSync(TWO_SESSION_PLAN_DOCX_PATH)) {
+    return res.status(404).json({ error: 'Kh?ng t?m th?y file Word g?c' });
+  }
+  res.download(TWO_SESSION_PLAN_DOCX_PATH, path.basename(TWO_SESSION_PLAN_DOCX_PATH));
+});
+
 app.get('/api/documents/source/assessment-plan.docx', (req, res) => {
   if (!fs.existsSync(ASSESSMENT_PLAN_DOCX_PATH)) {
     return res.status(404).json({ success: false, error: 'Không tìm thấy file Word gốc' });

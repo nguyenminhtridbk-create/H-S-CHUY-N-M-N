@@ -41,3 +41,7 @@
 .docx-source td, .docx-source th { border: 1px solid #111; padding: 3px 5px; vertical-align: middle; }
 .docx-source ul, .docx-source ol { padding-left: 2em; }
 
+/* V?n b?n b?n qu?t: gi? nguy?n ?nh trang g?c */
+.vb-doc .vb-scan img { display: block; width: 100%; height: auto; margin: 0 0 10px; border: 1px solid #cbd5e1; }
+.vb-doc .vb-footnotes p { text-align: left; }
+.vb-doc table.doc-table td p { margin: 0; }

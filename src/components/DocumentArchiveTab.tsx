@@ -53,7 +53,7 @@ export const DocumentArchiveTab: React.FC<DocumentArchiveTabProps> = ({
     if (doc.sourceFileUrl) {
       const link = document.createElement('a');
       link.href = doc.sourceFileUrl;
-      link.download = 'Ke-hoach-kiem-tra-danh-gia-2026-2027.docx';
+      link.download = `${doc.id}.docx`;
       link.click();
       return;
     }
