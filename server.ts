@@ -7,6 +7,7 @@ import fs from 'fs';
 import { PDFParse } from 'pdf-parse';
 import mammoth from 'mammoth';
 import { INITIAL_SCHOOL_DOCUMENTS } from './src/data/mockDocuments';
+import { INITIAL_DEPARTMENT_DIRECTIVES } from './src/data/mockDirectives';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 const PERSISTED_DOCS_PATH = path.join(__dirname, 'src', 'data', 'persistedDocuments.json');
+const PERSISTED_DIRECTIVES_PATH = path.join(__dirname, 'src', 'data', 'persistedDirectives.json');
 const ASSESSMENT_PLAN_DOCX_PATH = path.join(
   __dirname,
   'VAN-BAN-DEN',
@@ -28,6 +30,39 @@ const ASSESSMENT_PLAN_DOCX_PATH = path.join(
 );
 
 const TWO_SESSION_PLAN_DOCX_PATH = path.join(__dirname, 'VAN-BAN-DEN', '33 K? HO?CH T? CH?C D?Y H?C 2 BU?I-NG?Y.docx');
+
+// Helper to get all directives from disk
+function getPersistedDirectives(): any[] {
+  try {
+    if (fs.existsSync(PERSISTED_DIRECTIVES_PATH)) {
+      const data = fs.readFileSync(PERSISTED_DIRECTIVES_PATH, 'utf-8');
+      const dirs = JSON.parse(data);
+      if (Array.isArray(dirs) && dirs.length > 0) {
+        return dirs;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to read persisted directives:', e);
+  }
+  try {
+    fs.writeFileSync(PERSISTED_DIRECTIVES_PATH, JSON.stringify(INITIAL_DEPARTMENT_DIRECTIVES, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Failed to initialize persistedDirectives.json:', e);
+  }
+  return INITIAL_DEPARTMENT_DIRECTIVES;
+}
+
+// Helper to save directives to disk
+function savePersistedDirectives(dirs: any[]) {
+  try {
+    fs.writeFileSync(PERSISTED_DIRECTIVES_PATH, JSON.stringify(dirs, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Failed to write persisted directives:', e);
+  }
+}
+
+// Initialize persisted directives file on startup if not existing
+getPersistedDirectives();
 
 async function syncAssessmentPlanFromWord(docs: any[]) {
   if (!fs.existsSync(ASSESSMENT_PLAN_DOCX_PATH)) return docs;
@@ -908,6 +943,50 @@ app.post('/api/documents/reset-default/:id', (req, res) => {
   }
 });
 
+// API: Get all directives from server disk
+app.get('/api/directives', (req, res) => {
+  try {
+    const list = getPersistedDirectives();
+    res.json({ success: true, data: list });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Save or update directive permanently to server disk
+app.post('/api/directives', (req, res) => {
+  try {
+    const dir = req.body;
+    if (!dir || !dir.id) {
+      return res.status(400).json({ success: false, error: 'Directive id is required' });
+    }
+    const current = getPersistedDirectives();
+    const idx = current.findIndex((d: any) => d.id === dir.id);
+    if (idx !== -1) {
+      current[idx] = { ...current[idx], ...dir };
+    } else {
+      current.unshift(dir);
+    }
+    savePersistedDirectives(current);
+    res.json({ success: true, data: current });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Delete directive from server disk
+app.delete('/api/directives/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    let list = getPersistedDirectives();
+    list = list.filter((d: any) => d.id !== id);
+    savePersistedDirectives(list);
+    res.json({ success: true, message: 'Deleted successfully' });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
 // API: Contextualize Higher Directives into Official School Administrative Documents (Nghị định 30/2020/NĐ-CP)
 app.post('/api/documents/contextualize', async (req, res) => {
   try {
@@ -983,10 +1062,10 @@ HÃY XUẤT RA DỮ LIỆU JSON ĐÚNG CHUẨN THỂ THỨC NGHỊ ĐỊNH 30/20
   "signerName": "${signerName}",
   "sourceDirective": "Tên và số hiệu văn bản nguồn của cấp trên",
   "legalBases": [
-    "Căn cứ Thông tư số 15/2026/TT-BGDĐT ngày 15/5/2026 của Bộ Giáo dục và Đào tạo ban hành Điều lệ trường TH, THCS, THPT và trường phổ thông có nhiều cấp học",
-    "Căn cứ Công văn số 5512/BGDĐT-GDTrH ngày 18/12/2020 của Bộ GDĐT",
-    "Căn cứ văn bản của Sở GDĐT Đồng Tháp..."
+    "Căn cứ [Văn bản/công văn chỉ đạo trực tiếp của Sở GDĐT hoặc Bộ GDĐT đang cụ thể hóa, ghi rõ số, ngày ban hành, cơ quan ban hành và trích yếu nội dung];",
+    "Căn cứ Kế hoạch số 34/KH-THCS&THPTĐBK ngày 25 tháng 9 năm 2026 của Trường THCS và THPT Đốc Binh Kiều về Kế hoạch giáo dục nhà trường năm học 2026 - 2027."
   ],
+  "__NOTE_LEGAL_BASES__": "QUY TẮC CỨNG: Chỉ để lại đúng 01 hoặc 02 căn cứ quan trọng nhất ở trên, tuyệt đối không liệt kê tràn lan các thông tư khác",
   "sections": [
     {
       "heading": "I. MỤC ĐÍCH, YÊU CẦU",
@@ -1480,6 +1559,146 @@ app.post('/api/extract-text', async (req, res) => {
   } catch (err: any) {
     console.error('Error in /api/extract-text:', err);
     res.status(500).json({ success: false, error: err.message || 'Không thể trích xuất nội dung file' });
+  }
+});
+
+// Endpoint to upload, parse, and save a Department Directive (Word / PDF) with ZERO AI quota cost
+app.post('/api/upload-directive-file', async (req, res) => {
+  try {
+    const { base64, fileName, topic = 'Hồ sơ sổ sách điện tử' } = req.body;
+    if (!base64 || !fileName) {
+      return res.status(400).json({ success: false, error: 'Thiếu dữ liệu tệp hoặc tên tệp' });
+    }
+
+    const buffer = Buffer.from(base64, 'base64');
+    let text = '';
+    let htmlContent = '';
+    const lower = (fileName || '').toLowerCase();
+
+    // 1. Save physical file to disk
+    const uploadDir = path.join(__dirname, 'VAN-BAN-DEN', 'UPLOADED');
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+    const safeBaseName = path.basename(fileName).replace(/[^a-zA-Z0-9._-]/g, '_');
+    const savedFilePath = path.join(uploadDir, `${Date.now()}_${safeBaseName}`);
+    try {
+      fs.writeFileSync(savedFilePath, buffer);
+    } catch (saveErr) {
+      console.warn('Could not save uploaded physical file to disk:', saveErr);
+    }
+
+    // 2. Extract text using native parsers (zero AI token)
+    if (lower.endsWith('.pdf')) {
+      const parser = new PDFParse({ data: buffer });
+      const parsed = await parser.getText();
+      text = parsed.text || '';
+    } else if (lower.endsWith('.docx')) {
+      const [raw, html] = await Promise.all([
+        mammoth.extractRawText({ buffer }),
+        mammoth.convertToHtml({ buffer }).catch(() => ({ value: '' })),
+      ]);
+      text = raw.value || '';
+      htmlContent = html.value || '';
+    } else {
+      text = buffer.toString('utf-8');
+    }
+
+    // 3. Clean artifacts
+    text = text
+      .replace(/-- \d+ of \d+ --/g, '')
+      .replace(/Trang \d+\/\d+/g, '')
+      .replace(/Trang \d+/g, '')
+      .replace(/[ \t]+/g, ' ')
+      .trim();
+
+    // 4. Heuristic regex metadata extraction
+    // Document number
+    let docNumber = '';
+    const numMatch = text.match(/(?:Số|Số:)\s*([0-9]+(?:\/[A-Za-z0-9\-–_&]+)+)/i);
+    if (numMatch) {
+      docNumber = `Số: ${numMatch[1].trim()}`;
+    } else {
+      const numMatch2 = fileName.match(/(\d{3,4}[\-_/A-Za-z]+)/i);
+      docNumber = numMatch2 ? `Số: ${numMatch2[1]}` : 'Số: .../SGDĐT-GDPT';
+    }
+
+    // Date
+    let signDate = 'Đồng Tháp, ngày 25 tháng 9 năm 2026';
+    const dateMatch = text.match(/(?:(?:Đồng Tháp|Tháp Mười|Hà Nội)[,\s]*)?ngày\s+(\d{1,2})\s+tháng\s+(\d{1,2})\s+năm\s+(\d{4})/i);
+    if (dateMatch) {
+      signDate = `Đồng Tháp, ngày ${dateMatch[1]} tháng ${dateMatch[2]} năm ${dateMatch[3]}`;
+    }
+
+    // Authority
+    let issuingAuthority = 'SỞ GDĐT TỈNH ĐỒNG THÁP';
+    if (/BỘ GIÁO DỤC VÀ ĐÀO TẠO/i.test(text.slice(0, 600))) {
+      issuingAuthority = 'BỘ GIÁO DỤC VÀ ĐÀO TẠO';
+    } else if (/ỦY BAN NHÂN DÂN/i.test(text.slice(0, 600))) {
+      issuingAuthority = 'ỦY BAN NHÂN DÂN TỈNH ĐỒNG THÁP';
+    }
+
+    // Subject / Title
+    let title = '';
+    const titleMatch = text.match(/(?:V\/v|Về việc)\s+([^\n\r]+)/i);
+    if (titleMatch) {
+      title = `Công văn về việc ${titleMatch[1].trim()}`;
+    } else {
+      const planMatch = text.match(/(?:KẾ HOẠCH|HƯỚNG DẪN|QUY CHẾ|QUYẾT ĐỊNH|THÔNG BÁO)\s+([^\n\r]+)/i);
+      if (planMatch) {
+        title = planMatch[0].trim();
+      } else {
+        title = fileName.replace(/\.[^/.]+$/, '').replace(/[_–-]/g, ' ');
+      }
+    }
+
+    // Signer
+    let signer = 'KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn';
+    if (/Nguyễn Phương Toàn/i.test(text.slice(-1200))) {
+      signer = 'KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn';
+    } else if (/Lê Thanh Cường/i.test(text.slice(-1200))) {
+      signer = 'HIỆU TRƯỞNG Lê Thanh Cường';
+    } else if (/Nguyễn Minh Trí/i.test(text.slice(-1200))) {
+      signer = 'KT. HIỆU TRƯỞNG - PHÓ HIỆU TRƯỞNG Nguyễn Minh Trí';
+    }
+
+    // Summary
+    const paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p.length > 30);
+    const summary = paragraphs.slice(0, 3).join('\n\n').slice(0, 500) || `Toàn văn văn bản chỉ đạo bóc tách từ tệp ${fileName}`;
+
+    const sizeKB = (buffer.length / 1024).toFixed(1) + ' KB';
+
+    const newDirective = {
+      id: `directive-${Date.now()}`,
+      documentNumber: docNumber,
+      title: title,
+      issuingAuthority: issuingAuthority,
+      signDate: signDate,
+      signer: signer,
+      summary: summary,
+      fullContent: text,
+      htmlContent: htmlContent || undefined,
+      createdDate: new Date().toISOString(),
+      fileName: fileName,
+      topic: topic,
+      fileSize: sizeKB,
+      linkedSchoolDocumentIds: []
+    };
+
+    // Save to persistent storage
+    const currentDirectives = getPersistedDirectives();
+    const updated = [newDirective, ...currentDirectives.filter((d: any) => d.id !== newDirective.id)];
+    savePersistedDirectives(updated);
+
+    res.json({
+      success: true,
+      data: newDirective,
+      textLength: text.length,
+      message: 'Đã trích xuất và lưu văn bản thành công (sử dụng 0 Token AI)!'
+    });
+  } catch (err: any) {
+    console.error('Error in /api/upload-directive-file:', err);
+    res.status(500).json({ success: false, error: err.message || 'Lỗi xử lý file tải lên' });
   }
 });
 

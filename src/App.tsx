@@ -10,6 +10,7 @@ import { TeacherDirectoryTab } from './components/TeacherDirectoryTab';
 import { SchoolDocument, DepartmentDirective } from './types/document';
 import { INITIAL_SCHOOL_DOCUMENTS } from './data/mockDocuments';
 import { INITIAL_DEPARTMENT_DIRECTIVES } from './data/mockDirectives';
+import { UploadDirectiveModal } from './components/UploadDirectiveModal';
 
 const DEFAULT_SCHOOL_FACTS = `- Quy mô: 53 lớp, 2.143 học sinh (39 lớp THCS gồm 24 lớp điểm Đốc Binh Kiều, 15 lớp điểm Tân Kiều cách 11km; 14 lớp THPT).
 - Đội ngũ: 120 Cán bộ, giáo viên, nhân viên (04 Ban Giám hiệu, 102 Giáo viên trực tiếp giảng dạy, 14 Nhân viên).
@@ -20,6 +21,7 @@ const DEFAULT_SCHOOL_FACTS = `- Quy mô: 53 lớp, 2.143 học sinh (39 lớp TH
 export default function App() {
   const [activeTab, setActiveTab] = useState<string>('editor');
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
+  const [isUploadDirectiveModalOpen, setIsUploadDirectiveModalOpen] = useState(false);
 
   // Department Directives Repository (Lưu trữ sẵn trên webapp)
   const [directivesList, setDirectivesList] = useState<DepartmentDirective[]>(() => {
@@ -94,7 +96,7 @@ export default function App() {
     }
   });
 
-  // Load documents from backend server storage on mount
+  // Load documents and directives from backend server storage on mount
   useEffect(() => {
     fetch('/api/documents')
       .then((res) => res.json())
@@ -113,6 +115,20 @@ export default function App() {
         }
       })
       .catch((err) => console.log('Using local data', err));
+
+    fetch('/api/directives')
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setDirectivesList(res.data);
+          try {
+            localStorage.setItem('dbk_department_directives', JSON.stringify(res.data));
+          } catch (e) {
+            console.error('Failed to save directives to localStorage', e);
+          }
+        }
+      })
+      .catch((err) => console.log('Using local directives', err));
   }, []);
 
   // Save directives list to localStorage
@@ -289,6 +305,7 @@ export default function App() {
       {/* Header */}
       <Header
         onOpenLegalModal={() => setIsLegalModalOpen(true)}
+        onOpenUploadModal={() => setIsUploadDirectiveModalOpen(true)}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         hasActiveDocument={!!currentDocument}
@@ -332,6 +349,7 @@ export default function App() {
               setCurrentDocument(sd);
               setActiveTab('editor');
             }}
+            onOpenUploadModal={() => setIsUploadDirectiveModalOpen(true)}
           />
         )}
 
@@ -376,6 +394,19 @@ export default function App() {
       <OfficialLegalRefModal
         isOpen={isLegalModalOpen}
         onClose={() => setIsLegalModalOpen(false)}
+      />
+
+      {/* Upload Directive Modal (Zero Token AI Parser) */}
+      <UploadDirectiveModal
+        isOpen={isUploadDirectiveModalOpen}
+        onClose={() => setIsUploadDirectiveModalOpen(false)}
+        onDirectiveSaved={(newDir) => {
+          handleAddDirective(newDir);
+        }}
+        onContextualizeNow={(newDir) => {
+          setSelectedDirectiveForBuilder(newDir);
+          setActiveTab('builder');
+        }}
       />
     </div>
   );

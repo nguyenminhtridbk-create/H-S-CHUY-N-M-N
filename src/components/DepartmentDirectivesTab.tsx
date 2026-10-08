@@ -29,6 +29,7 @@ interface DepartmentDirectivesTabProps {
   onDeleteDirective: (id: string) => void;
   onContextualizeDirective: (directive: DepartmentDirective) => void;
   onViewSchoolDocument: (doc: SchoolDocument) => void;
+  onOpenUploadModal?: () => void;
 }
 
 export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = ({
@@ -38,6 +39,7 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
   onDeleteDirective,
   onContextualizeDirective,
   onViewSchoolDocument,
+  onOpenUploadModal,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
@@ -164,13 +166,26 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
           </p>
         </div>
 
-        <button
-          onClick={() => setIsAddModalOpen(true)}
-          className="px-4 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold flex items-center gap-2 shadow-sm transition shrink-0"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Thêm văn bản của Sở lên webapp</span>
-        </button>
+        <div className="flex items-center gap-2 flex-wrap shrink-0">
+          {onOpenUploadModal && (
+            <button
+              onClick={onOpenUploadModal}
+              className="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-2 shadow-sm transition"
+              title="Tải lên Word/PDF bóc tách trực tiếp không tốn token AI"
+            >
+              <Upload className="w-4 h-4" />
+              <span>Tải lên file (Word / PDF) - 0 Token AI</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="px-4 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold flex items-center gap-2 shadow-sm transition"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Thêm văn bản của Sở</span>
+          </button>
+        </div>
       </div>
 
       {/* Topic Filter Pills */}

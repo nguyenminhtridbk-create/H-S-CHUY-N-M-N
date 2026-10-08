@@ -10,11 +10,13 @@ import {
   BookOpen,
   Sparkles,
   HelpCircle,
-  FolderOpen
+  FolderOpen,
+  Upload
 } from 'lucide-react';
 
 interface HeaderProps {
   onOpenLegalModal: () => void;
+  onOpenUploadModal?: () => void;
   activeTab: string;
   setActiveTab: (tab: string) => void;
   hasActiveDocument?: boolean;
@@ -22,6 +24,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ 
   onOpenLegalModal, 
+  onOpenUploadModal,
   activeTab, 
   setActiveTab,
   hasActiveDocument = false,
@@ -66,8 +69,20 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
-        {/* Legal Quick Action */}
-        <div className="flex items-center gap-2 self-stretch md:self-auto justify-end">
+        {/* Quick Actions */}
+        <div className="flex items-center gap-2 self-stretch md:self-auto justify-end flex-wrap">
+          {onOpenUploadModal && (
+            <button
+              onClick={onOpenUploadModal}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm border border-emerald-400/40 transition"
+              title="Tải lên tệp Word/PDF của Sở - Trích xuất tự động không tốn Quota AI"
+            >
+              <Upload className="w-3.5 h-3.5 text-white" />
+              <span>Tải lên văn bản (Word / PDF)</span>
+              <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-emerald-700/80 rounded font-normal text-emerald-100">0 Quota AI</span>
+            </button>
+          )}
+
           <button
             onClick={onOpenLegalModal}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-blue-900/60 hover:bg-blue-800 text-blue-100 border border-blue-700/50 shadow-sm transition"
