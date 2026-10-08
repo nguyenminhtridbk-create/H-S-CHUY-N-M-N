@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { DepartmentDirective } from '../types/document';
 import { DirectiveCategory, DEFAULT_DIRECTIVE_CATEGORIES } from '../data/categories';
+import { extractTextFromFile } from '../utils/fileReader';
 
 interface UploadDirectiveModalProps {
   isOpen: boolean;
@@ -134,23 +135,103 @@ export const UploadDirectiveModal: React.FC<UploadDirectiveModalProps> = ({
       }
       const base64 = btoa(binary);
 
-      // Send to server-side parser (Zero AI Token cost!)
-      const res = await fetch('/api/upload-directive-file', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          base64,
-          fileName: selectedFile.name,
-          topic,
-        }),
-      });
+      let dir: DepartmentDirective | null = null;
 
-      const resData = await res.json();
-      if (!resData.success || !resData.data) {
-        throw new Error(resData.error || 'Không thể trích xuất nội dung văn bản.');
+      try {
+        // Send to server-side parser (Zero AI Token cost!)
+        const res = await fetch('/api/upload-directive-file', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            base64,
+            fileName: selectedFile.name,
+            topic,
+          }),
+        });
+
+        if (res.ok) {
+          const resData = await res.json();
+          if (resData.success && resData.data) {
+            dir = resData.data;
+          }
+        }
+      } catch (serverErr) {
+        console.warn('Server upload-directive-file failed, using local parser:', serverErr);
       }
 
-      const dir: DepartmentDirective = resData.data;
+      // If server parser was not reachable or returned 404, fallback to client-side extraction!
+      if (!dir) {
+        const text = await extractTextFromFile(selectedFile);
+        if (!text || text.trim().length === 0) {
+          throw new Error('Không thể đọc được nội dung từ tệp. Vui lòng kiểm tra lại tệp văn bản.');
+        }
+
+        // Heuristic metadata extraction
+        let docNum = '';
+        const numMatch = text.match(/(?:Số|Số:)\s*([0-9]+(?:\/[A-Za-z0-9\-–_&]+)+)/i);
+        if (numMatch) {
+          docNum = `Số: ${numMatch[1].trim()}`;
+        } else {
+          const numMatch2 = selectedFile.name.match(/(\d{3,4}[\-_/A-Za-z]+)/i);
+          docNum = numMatch2 ? `Số: ${numMatch2[1]}` : 'Số: .../SGDĐT-GDPT';
+        }
+
+        let sDate = 'Đồng Tháp, ngày 25 tháng 9 năm 2026';
+        const dateMatch = text.match(/(?:(?:Đồng Tháp|Tháp Mười|Hà Nội)[,\s]*)?ngày\s+(\d{1,2})\s+tháng\s+(\d{1,2})\s+năm\s+(\d{4})/i);
+        if (dateMatch) {
+          sDate = `Đồng Tháp, ngày ${dateMatch[1]} tháng ${dateMatch[2]} năm ${dateMatch[3]}`;
+        }
+
+        let auth = 'SỞ GDĐT TỈNH ĐỒNG THÁP';
+        if (/BỘ GIÁO DỤC VÀ ĐÀO TẠO/i.test(text.slice(0, 600))) {
+          auth = 'BỘ GIÁO DỤC VÀ ĐÀO TẠO';
+        } else if (/ỦY BAN NHÂN DÂN/i.test(text.slice(0, 600))) {
+          auth = 'ỦY BAN NHÂN DÂN TỈNH ĐỒNG THÁP';
+        }
+
+        let sTitle = '';
+        const titleMatch = text.match(/(?:V\/v|Về việc)\s+([^\n\r]+)/i);
+        if (titleMatch) {
+          sTitle = `Công văn về việc ${titleMatch[1].trim()}`;
+        } else {
+          const planMatch = text.match(/(?:KẾ HOẠCH|HƯỚNG DẪN|QUY CHẾ|QUYẾT ĐỊNH|THÔNG BÁO)\s+([^\n\r]+)/i);
+          if (planMatch) {
+            sTitle = planMatch[0].trim();
+          } else {
+            sTitle = selectedFile.name.replace(/\.[^/.]+$/, '').replace(/[_–-]/g, ' ');
+          }
+        }
+
+        let sSigner = 'KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn';
+        if (/Nguyễn Phương Toàn/i.test(text.slice(-1200))) {
+          sSigner = 'KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn';
+        } else if (/Lê Thanh Cường/i.test(text.slice(-1200))) {
+          sSigner = 'HIỆU TRƯỞNG Lê Thanh Cường';
+        } else if (/Nguyễn Minh Trí/i.test(text.slice(-1200))) {
+          sSigner = 'KT. HIỆU TRƯỞNG - PHÓ HIỆU TRƯỞNG Nguyễn Minh Trí';
+        }
+
+        const paragraphs = text.split(/\n\s*\n/).map(p => p.trim()).filter(p => p.length > 30);
+        const summ = paragraphs.slice(0, 3).join('\n\n').slice(0, 500) || `Toàn văn văn bản chỉ đạo bóc tách từ tệp ${selectedFile.name}`;
+        const sizeKB = (selectedFile.size / 1024).toFixed(1) + ' KB';
+
+        dir = {
+          id: `directive-${Date.now()}`,
+          documentNumber: docNum,
+          title: sTitle,
+          issuingAuthority: auth,
+          signDate: sDate,
+          signer: sSigner,
+          summary: summ,
+          fullContent: text,
+          createdDate: new Date().toISOString(),
+          fileName: selectedFile.name,
+          topic: topic,
+          fileSize: sizeKB,
+          linkedSchoolDocumentIds: []
+        };
+      }
+
       setExtractedDirective(dir);
       setDocNumber(dir.documentNumber || '');
       setTitle(dir.title || '');

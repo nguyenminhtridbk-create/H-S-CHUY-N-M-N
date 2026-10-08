@@ -6,9 +6,6 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import { PDFParse } from 'pdf-parse';
 import mammoth from 'mammoth';
-import { INITIAL_SCHOOL_DOCUMENTS } from './src/data/mockDocuments';
-import { INITIAL_DEPARTMENT_DIRECTIVES } from './src/data/mockDirectives';
-
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -87,12 +84,7 @@ function getPersistedDirectives(): any[] {
   } catch (e) {
     console.error('Failed to read persisted directives:', e);
   }
-  try {
-    fs.writeFileSync(PERSISTED_DIRECTIVES_PATH, JSON.stringify(INITIAL_DEPARTMENT_DIRECTIVES, null, 2), 'utf-8');
-  } catch (e) {
-    console.error('Failed to initialize persistedDirectives.json:', e);
-  }
-  return INITIAL_DEPARTMENT_DIRECTIVES;
+  return [];
 }
 
 // Helper to save directives to disk
@@ -156,23 +148,13 @@ function getPersistedDocuments(): any[] {
       const data = fs.readFileSync(PERSISTED_DOCS_PATH, 'utf-8');
       const docs = JSON.parse(data);
       if (Array.isArray(docs) && docs.length > 0) {
-        const scheduleDraft = INITIAL_SCHOOL_DOCUMENTS.find((doc) => doc.id === 'draft-ktdg-52-high-school-sessions');
-        if (scheduleDraft && !docs.some((doc: any) => doc.id === scheduleDraft.id)) {
-          return [scheduleDraft, ...docs];
-        }
         return docs;
       }
     }
   } catch (e) {
     console.error('Failed to read persisted documents:', e);
   }
-  // Fallback to INITIAL_SCHOOL_DOCUMENTS and write to disk
-  try {
-    fs.writeFileSync(PERSISTED_DOCS_PATH, JSON.stringify(INITIAL_SCHOOL_DOCUMENTS, null, 2), 'utf-8');
-  } catch (e) {
-    console.error('Failed to initialize persistedDocuments.json:', e);
-  }
-  return INITIAL_SCHOOL_DOCUMENTS;
+  return [];
 }
 
 // Helper to save documents to disk
@@ -968,18 +950,11 @@ app.delete('/api/documents/:id', (req, res) => {
 app.post('/api/documents/reset-default/:id', (req, res) => {
   try {
     const { id } = req.params;
-    const defaultDoc = INITIAL_SCHOOL_DOCUMENTS.find((d) => d.id === id);
-    if (!defaultDoc) {
-      return res.status(404).json({ success: false, error: 'Không tìm thấy mẫu mặc định của văn bản này' });
-    }
     const docs = getPersistedDocuments();
-    const idx = docs.findIndex((d: any) => d.id === id);
-    if (idx !== -1) {
-      docs[idx] = { ...defaultDoc, updatedAt: new Date().toISOString() };
-    } else {
-      docs.unshift(defaultDoc);
+    const defaultDoc = docs.find((d: any) => d.id === id);
+    if (!defaultDoc) {
+      return res.status(404).json({ success: false, error: 'Không tìm thấy mẫu của văn bản này' });
     }
-    savePersistedDocuments(docs);
     res.json({ success: true, data: defaultDoc });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
