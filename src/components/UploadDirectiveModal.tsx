@@ -18,30 +18,26 @@ import {
   Layers
 } from 'lucide-react';
 import { DepartmentDirective } from '../types/document';
+import { DirectiveCategory, DEFAULT_DIRECTIVE_CATEGORIES } from '../data/categories';
 
 interface UploadDirectiveModalProps {
   isOpen: boolean;
   onClose: () => void;
   onDirectiveSaved: (directive: DepartmentDirective) => void;
   onContextualizeNow?: (directive: DepartmentDirective) => void;
+  categories?: DirectiveCategory[];
+  onAddCategory?: (name: string, desc?: string) => Promise<DirectiveCategory | null>;
+  defaultTopic?: string;
 }
-
-const TOPICS = [
-  'Hồ sơ sổ sách điện tử',
-  '2 buổi / ngày',
-  'Kiểm tra đánh giá',
-  'Khung năng lực số',
-  'Hướng nghiệp & Phân luồng',
-  'Dạy thêm học thêm',
-  'Chuyển đổi số & AI',
-  'Nhiệm vụ chung năm học'
-];
 
 export const UploadDirectiveModal: React.FC<UploadDirectiveModalProps> = ({
   isOpen,
   onClose,
   onDirectiveSaved,
   onContextualizeNow,
+  categories = DEFAULT_DIRECTIVE_CATEGORIES,
+  onAddCategory,
+  defaultTopic,
 }) => {
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -56,12 +52,38 @@ export const UploadDirectiveModal: React.FC<UploadDirectiveModalProps> = ({
   const [signDate, setSignDate] = useState('');
   const [issuingAuthority, setIssuingAuthority] = useState('SỞ GDĐT TỈNH ĐỒNG THÁP');
   const [signer, setSigner] = useState('');
-  const [topic, setTopic] = useState('Hồ sơ sổ sách điện tử');
+  const [topic, setTopic] = useState(defaultTopic || 'Hồ sơ sổ sách điện tử');
   const [previewContent, setPreviewContent] = useState('');
+
+  // Inline category creation
+  const [isCreatingCategory, setIsCreatingCategory] = useState(false);
+  const [newCatInput, setNewCatInput] = useState('');
+  const [savingCategory, setSavingCategory] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   if (!isOpen) return null;
+
+  const handleCreateCategoryQuick = async () => {
+    if (!newCatInput.trim()) return;
+    try {
+      setSavingCategory(true);
+      if (onAddCategory) {
+        const added = await onAddCategory(newCatInput.trim());
+        if (added) {
+          setTopic(added.name);
+        }
+      } else {
+        setTopic(newCatInput.trim());
+      }
+      setNewCatInput('');
+      setIsCreatingCategory(false);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSavingCategory(false);
+    }
+  };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -356,18 +378,68 @@ export const UploadDirectiveModal: React.FC<UploadDirectiveModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Chuyên đề quản lý:
-                  </label>
-                  <select
-                    value={topic}
-                    onChange={(e) => setTopic(e.target.value)}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
-                  >
-                    {TOPICS.map((t) => (
-                      <option key={t} value={t}>{t}</option>
-                    ))}
-                  </select>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-xs font-bold text-slate-700">
+                      Danh mục / Chuyên đề:
+                    </label>
+                    {!isCreatingCategory && (
+                      <button
+                        type="button"
+                        onClick={() => setIsCreatingCategory(true)}
+                        className="text-[11px] font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                      >
+                        + Tạo danh mục mới
+                      </button>
+                    )}
+                  </div>
+
+                  {isCreatingCategory ? (
+                    <div className="flex items-center gap-1.5">
+                      <input
+                        type="text"
+                        value={newCatInput}
+                        onChange={(e) => setNewCatInput(e.target.value)}
+                        placeholder="Nhập tên danh mục mới..."
+                        className="flex-1 px-2.5 py-1.5 text-xs bg-white border border-blue-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                        autoFocus
+                      />
+                      <button
+                        type="button"
+                        onClick={handleCreateCategoryQuick}
+                        disabled={savingCategory || !newCatInput.trim()}
+                        className="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-lg text-xs font-bold shrink-0"
+                      >
+                        {savingCategory ? 'Lưu...' : 'Lưu & Chọn'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsCreatingCategory(false);
+                          setNewCatInput('');
+                        }}
+                        className="px-2 py-1.5 border border-slate-300 text-slate-600 hover:bg-slate-100 rounded-lg text-xs shrink-0"
+                      >
+                        Hủy
+                      </button>
+                    </div>
+                  ) : (
+                    <select
+                      value={topic}
+                      onChange={(e) => {
+                        if (e.target.value === '__NEW__') {
+                          setIsCreatingCategory(true);
+                        } else {
+                          setTopic(e.target.value);
+                        }
+                      }}
+                      className="w-full px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+                    >
+                      {categories.filter(c => c.id !== 'all').map((c) => (
+                        <option key={c.id} value={c.name}>{c.label}</option>
+                      ))}
+                      <option value="__NEW__">+ Tạo danh mục mới...</option>
+                    </select>
+                  )}
                 </div>
               </div>
 

@@ -22,6 +22,49 @@ app.use(express.urlencoded({ extended: true, limit: '20mb' }));
 
 const PERSISTED_DOCS_PATH = path.join(__dirname, 'src', 'data', 'persistedDocuments.json');
 const PERSISTED_DIRECTIVES_PATH = path.join(__dirname, 'src', 'data', 'persistedDirectives.json');
+const PERSISTED_CATEGORIES_PATH = path.join(__dirname, 'src', 'data', 'persistedCategories.json');
+
+const DEFAULT_CATEGORIES = [
+  { id: 'all', name: 'Tất cả chuyên đề', label: 'Tất cả chuyên đề' },
+  { id: 'Hồ sơ sổ sách điện tử', name: 'Hồ sơ sổ sách điện tử', label: 'Hồ sơ sổ sách điện tử' },
+  { id: '2 buổi / ngày', name: '2 buổi / ngày', label: '2 buổi / ngày' },
+  { id: 'Khung năng lực số & AI', name: 'Khung năng lực số & AI', label: 'Khung năng lực số & AI' },
+  { id: 'Kiểm tra đánh giá', name: 'Kiểm tra đánh giá', label: 'Kiểm tra đánh giá' },
+  { id: 'Hướng nghiệp & Phân luồng', name: 'Hướng nghiệp & Phân luồng', label: 'Hướng nghiệp & Phân luồng' },
+  { id: 'Dạy thêm học thêm', name: 'Dạy thêm học thêm', label: 'Dạy thêm học thêm' },
+  { id: 'Nhiệm vụ chung năm học', name: 'Nhiệm vụ chung năm học', label: 'Nhiệm vụ năm học' }
+];
+
+function getPersistedCategories(): any[] {
+  try {
+    if (fs.existsSync(PERSISTED_CATEGORIES_PATH)) {
+      const data = fs.readFileSync(PERSISTED_CATEGORIES_PATH, 'utf-8');
+      const cats = JSON.parse(data);
+      if (Array.isArray(cats) && cats.length > 0) {
+        return cats;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to read persisted categories:', e);
+  }
+  try {
+    fs.writeFileSync(PERSISTED_CATEGORIES_PATH, JSON.stringify(DEFAULT_CATEGORIES, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Failed to initialize persistedCategories.json:', e);
+  }
+  return DEFAULT_CATEGORIES;
+}
+
+function savePersistedCategories(cats: any[]) {
+  try {
+    fs.writeFileSync(PERSISTED_CATEGORIES_PATH, JSON.stringify(cats, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('Failed to write persisted categories:', e);
+  }
+}
+
+// Initialize persisted categories file on startup
+getPersistedCategories();
 const ASSESSMENT_PLAN_DOCX_PATH = path.join(
   __dirname,
   'VAN-BAN-DEN',
@@ -982,6 +1025,59 @@ app.delete('/api/directives/:id', (req, res) => {
     list = list.filter((d: any) => d.id !== id);
     savePersistedDirectives(list);
     res.json({ success: true, message: 'Deleted successfully' });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Get all categories from server disk
+app.get('/api/categories', (req, res) => {
+  try {
+    const list = getPersistedCategories();
+    res.json({ success: true, data: list });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Create or update a category permanently
+app.post('/api/categories', (req, res) => {
+  try {
+    const { name, label, description } = req.body;
+    if (!name || typeof name !== 'string' || !name.trim()) {
+      return res.status(400).json({ success: false, error: 'Tên danh mục không được để trống' });
+    }
+    const trimmed = name.trim();
+    const categories = getPersistedCategories();
+    const existing = categories.find(
+      (c: any) => c.name.toLowerCase() === trimmed.toLowerCase() || c.id.toLowerCase() === trimmed.toLowerCase()
+    );
+    if (existing) {
+      return res.json({ success: true, data: categories, category: existing, message: 'Danh mục đã tồn tại' });
+    }
+    const newCat = {
+      id: trimmed,
+      name: trimmed,
+      label: label?.trim() || trimmed,
+      description: description?.trim() || '',
+      isCustom: true
+    };
+    categories.push(newCat);
+    savePersistedCategories(categories);
+    res.json({ success: true, data: categories, category: newCat });
+  } catch (error: any) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// API: Delete a custom category from server disk
+app.delete('/api/categories/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    let list = getPersistedCategories();
+    list = list.filter((c: any) => c.id !== id && c.name !== id);
+    savePersistedCategories(list);
+    res.json({ success: true, data: list });
   } catch (error: any) {
     res.status(500).json({ success: false, error: error.message });
   }

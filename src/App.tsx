@@ -10,6 +10,7 @@ import { TeacherDirectoryTab } from './components/TeacherDirectoryTab';
 import { SchoolDocument, DepartmentDirective } from './types/document';
 import { INITIAL_SCHOOL_DOCUMENTS } from './data/mockDocuments';
 import { INITIAL_DEPARTMENT_DIRECTIVES } from './data/mockDirectives';
+import { DirectiveCategory, DEFAULT_DIRECTIVE_CATEGORIES } from './data/categories';
 import { UploadDirectiveModal } from './components/UploadDirectiveModal';
 
 const DEFAULT_SCHOOL_FACTS = `- Quy mô: 53 lớp, 2.143 học sinh (39 lớp THCS gồm 24 lớp điểm Đốc Binh Kiều, 15 lớp điểm Tân Kiều cách 11km; 14 lớp THPT).
@@ -96,6 +97,20 @@ export default function App() {
     }
   });
 
+  // Directive Categories (Chuyên đề / Danh mục quản lý văn bản)
+  const [categoriesList, setCategoriesList] = useState<DirectiveCategory[]>(() => {
+    try {
+      const saved = localStorage.getItem('dbk_directive_categories');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {
+      // fallback
+    }
+    return DEFAULT_DIRECTIVE_CATEGORIES;
+  });
+
   // Load documents and directives from backend server storage on mount
   useEffect(() => {
     fetch('/api/documents')
@@ -129,7 +144,30 @@ export default function App() {
         }
       })
       .catch((err) => console.log('Using local directives', err));
+
+    fetch('/api/categories')
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.success && Array.isArray(res.data) && res.data.length > 0) {
+          setCategoriesList(res.data);
+          try {
+            localStorage.setItem('dbk_directive_categories', JSON.stringify(res.data));
+          } catch (e) {
+            console.error('Failed to save categories to localStorage', e);
+          }
+        }
+      })
+      .catch((err) => console.log('Using local categories', err));
   }, []);
+
+  // Save categories list to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('dbk_directive_categories', JSON.stringify(categoriesList));
+    } catch (e) {
+      console.error('Failed to save categories to localStorage', e);
+    }
+  }, [categoriesList]);
 
   // Save directives list to localStorage
   useEffect(() => {
@@ -157,6 +195,38 @@ export default function App() {
       console.error('Failed to save facts to localStorage', e);
     }
   }, [customFacts]);
+
+  // Handler: Add new category
+  const handleAddCategory = async (catName: string, desc?: string): Promise<DirectiveCategory | null> => {
+    const trimmed = catName.trim();
+    if (!trimmed) return null;
+    const existing = categoriesList.find(
+      (c) => c.name.toLowerCase() === trimmed.toLowerCase() || c.id.toLowerCase() === trimmed.toLowerCase()
+    );
+    if (existing) return existing;
+
+    const newCat: DirectiveCategory = {
+      id: trimmed,
+      name: trimmed,
+      label: trimmed,
+      description: desc || '',
+      isCustom: true,
+    };
+
+    setCategoriesList((prev) => [...prev, newCat]);
+
+    try {
+      await fetch('/api/categories', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newCat),
+      });
+    } catch (e) {
+      console.error('Failed to persist category to server', e);
+    }
+
+    return newCat;
+  };
 
   // Handler: Add new directive to webapp repository
   const handleAddDirective = (newDirective: DepartmentDirective) => {
@@ -342,6 +412,8 @@ export default function App() {
           <DepartmentDirectivesTab
             directives={directivesList}
             schoolDocuments={documentsList}
+            categories={categoriesList}
+            onAddCategory={handleAddCategory}
             onAddDirective={handleAddDirective}
             onDeleteDirective={handleDeleteDirective}
             onContextualizeDirective={handleContextualizeDirective}
@@ -400,6 +472,8 @@ export default function App() {
       <UploadDirectiveModal
         isOpen={isUploadDirectiveModalOpen}
         onClose={() => setIsUploadDirectiveModalOpen(false)}
+        categories={categoriesList}
+        onAddCategory={handleAddCategory}
         onDirectiveSaved={(newDir) => {
           handleAddDirective(newDir);
         }}

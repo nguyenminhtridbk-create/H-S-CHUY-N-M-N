@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   Building2, 
   FileText, 
@@ -16,9 +16,17 @@ import {
   Link2, 
   FileCheck,
   Save,
-  X
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  FolderPlus,
+  FolderX,
+  Layers,
+  Tag
 } from 'lucide-react';
 import { DepartmentDirective, SchoolDocument } from '../types/document';
+import { DirectiveCategory, DEFAULT_DIRECTIVE_CATEGORIES } from '../data/categories';
 import { extractTextFromFile } from '../utils/fileReader';
 import { AdministrativeDirectiveViewerModal } from './AdministrativeDirectiveViewerModal';
 
@@ -30,6 +38,9 @@ interface DepartmentDirectivesTabProps {
   onContextualizeDirective: (directive: DepartmentDirective) => void;
   onViewSchoolDocument: (doc: SchoolDocument) => void;
   onOpenUploadModal?: () => void;
+  categories?: DirectiveCategory[];
+  onAddCategory?: (name: string, desc?: string) => Promise<DirectiveCategory | null>;
+  onDeleteCategory?: (id: string) => void;
 }
 
 export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = ({
@@ -40,16 +51,34 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
   onContextualizeDirective,
   onViewSchoolDocument,
   onOpenUploadModal,
+  categories = DEFAULT_DIRECTIVE_CATEGORIES,
+  onAddCategory,
+  onDeleteCategory,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
   const [selectedDirectiveForView, setSelectedDirectiveForView] = useState<DepartmentDirective | null>(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
+  // Category creation modal
+  const [isNewCategoryModalOpen, setIsNewCategoryModalOpen] = useState(false);
+  const [newCatName, setNewCatName] = useState('');
+  const [newCatDesc, setNewCatDesc] = useState('');
+  const [creatingCategory, setCreatingCategory] = useState(false);
+
+  // Category Dropdown state
+  const [isCategoryDropdownOpen, setIsCategoryDropdownOpen] = useState(false);
+  const categoryDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Category horizontal scroll ref
+  const categoryScrollRef = useRef<HTMLDivElement>(null);
+  const [canCatScrollLeft, setCanCatScrollLeft] = useState(false);
+  const [canCatScrollRight, setCanCatScrollRight] = useState(false);
+
   // New Directive Form State
   const [newDocNumber, setNewDocNumber] = useState('');
   const [newTitle, setNewTitle] = useState('');
-  const [newTopic, setNewTopic] = useState('2 buổi / ngày');
+  const [newTopic, setNewTopic] = useState('Hồ sơ sổ sách điện tử');
   const [newAuthority, setNewAuthority] = useState('SỞ GDĐT TỈNH ĐỒNG THÁP');
   const [newSignDate, setNewSignDate] = useState('Đồng Tháp, ngày 28 tháng 8 năm 2026');
   const [newSigner, setNewSigner] = useState('KT. GIÁM ĐỐC - PHÓ GIÁM ĐỐC Nguyễn Phương Toàn');
@@ -58,17 +87,71 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
   const [uploadedFileName, setUploadedFileName] = useState('');
   const [readingFile, setReadingFile] = useState(false);
 
-  // Topics list
-  const TOPICS = [
-    { id: 'all', label: 'Tất cả chuyên đề' },
-    { id: '2 buổi / ngày', label: '2 buổi / ngày' },
-    { id: 'Hướng nghiệp & Phân luồng', label: 'Hướng nghiệp & Phân luồng' },
-    { id: 'Khung năng lực số', label: 'Khung năng lực số' },
-    { id: 'Kiểm tra đánh giá', label: 'Kiểm tra đánh giá' },
-    { id: 'Dạy thêm học thêm', label: 'Dạy thêm học thêm' },
-    { id: 'Hồ sơ sổ sách điện tử', label: 'Hồ sơ sổ sách điện tử' },
-    { id: 'Nhiệm vụ chung năm học', label: 'Nhiệm vụ năm học' },
-  ];
+  // Check scroll state for categories
+  const checkCategoryScroll = () => {
+    if (categoryScrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = categoryScrollRef.current;
+      setCanCatScrollLeft(scrollLeft > 10);
+      setCanCatScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  };
+
+  useEffect(() => {
+    checkCategoryScroll();
+    window.addEventListener('resize', checkCategoryScroll);
+    return () => window.removeEventListener('resize', checkCategoryScroll);
+  }, [categories]);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target as Node)) {
+        setIsCategoryDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleScrollCatLeft = () => {
+    if (categoryScrollRef.current) {
+      categoryScrollRef.current.scrollBy({ left: -240, behavior: 'smooth' });
+      setTimeout(checkCategoryScroll, 250);
+    }
+  };
+
+  const handleScrollCatRight = () => {
+    if (categoryScrollRef.current) {
+      categoryScrollRef.current.scrollBy({ left: 240, behavior: 'smooth' });
+      setTimeout(checkCategoryScroll, 250);
+    }
+  };
+
+  // Submit new category
+  const handleCreateCategorySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newCatName.trim()) return;
+
+    try {
+      setCreatingCategory(true);
+      if (onAddCategory) {
+        const added = await onAddCategory(newCatName.trim(), newCatDesc.trim());
+        if (added) {
+          setSelectedTopic(added.name);
+        }
+      } else {
+        setSelectedTopic(newCatName.trim());
+      }
+      setNewCatName('');
+      setNewCatDesc('');
+      setIsNewCategoryModalOpen(false);
+      setTimeout(checkCategoryScroll, 200);
+    } catch (err) {
+      console.error('Failed to create category:', err);
+    } finally {
+      setCreatingCategory(false);
+    }
+  };
 
   // Filter
   const filteredDirectives = directives.filter((d) => {
@@ -188,30 +271,172 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
         </div>
       </div>
 
-      {/* Topic Filter Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-        {TOPICS.map((t) => (
+      {/* TOPIC / CATEGORY NAVIGATION BAR WITH HORIZONTAL SCROLL & DROPDOWN */}
+      <div className="bg-white rounded-xl p-3 border border-slate-200 shadow-sm space-y-2">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <Tag className="w-3.5 h-3.5 text-blue-600" />
+              Danh mục chuyên đề:
+            </span>
+            <span className="text-[11px] text-slate-400">
+              ({categories.length - 1} danh mục)
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {/* Quick Dropdown Category Switcher */}
+            <div className="relative" ref={categoryDropdownRef}>
+              <button
+                onClick={() => setIsCategoryDropdownOpen(!isCategoryDropdownOpen)}
+                className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 flex items-center gap-1.5 transition"
+                title="Xổ xuống chọn nhanh danh mục văn bản"
+              >
+                <Layers className="w-3.5 h-3.5 text-blue-600" />
+                <span>Xổ xuống chọn:</span>
+                <span className="font-bold text-blue-800 max-w-[150px] truncate">
+                  {categories.find(c => c.name === selectedTopic || c.id === selectedTopic)?.label || selectedTopic}
+                </span>
+                <ChevronDown className={`w-3.5 h-3.5 text-slate-500 transition-transform ${isCategoryDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {isCategoryDropdownOpen && (
+                <div className="absolute right-0 top-full mt-1.5 w-72 bg-white rounded-xl shadow-xl border border-slate-200 py-1.5 z-30 max-h-80 overflow-y-auto">
+                  <div className="px-3 py-1 text-[11px] font-bold text-slate-400 uppercase border-b border-slate-100 mb-1">
+                    Danh sách các danh mục
+                  </div>
+                  {categories.map((c) => {
+                    const count = c.id === 'all' 
+                      ? directives.length 
+                      : directives.filter((d) => d.topic === c.name || d.topic === c.id).length;
+                    const isSelected = selectedTopic === c.id || selectedTopic === c.name;
+                    return (
+                      <button
+                        key={c.id}
+                        onClick={() => {
+                          setSelectedTopic(c.name);
+                          setIsCategoryDropdownOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 text-xs flex items-center justify-between transition ${
+                          isSelected ? 'bg-blue-50 text-blue-800 font-bold' : 'text-slate-700 hover:bg-slate-50'
+                        }`}
+                      >
+                        <span className="truncate">{c.label}</span>
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full ${isSelected ? 'bg-blue-200 text-blue-900 font-bold' : 'bg-slate-100 text-slate-500'}`}>
+                          {count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                  <div className="border-t border-slate-100 mt-1 pt-1 px-2">
+                    <button
+                      onClick={() => {
+                        setIsCategoryDropdownOpen(false);
+                        setIsNewCategoryModalOpen(true);
+                      }}
+                      className="w-full px-2.5 py-1.5 text-xs text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 rounded-lg flex items-center justify-center gap-1.5 transition"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                      <span>+ Tạo danh mục mới...</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Button to Create New Category directly */}
+            <button
+              onClick={() => setIsNewCategoryModalOpen(true)}
+              className="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1.5 shadow-sm transition active:scale-95"
+              title="Tạo danh mục mới để đưa văn bản vào"
+            >
+              <FolderPlus className="w-3.5 h-3.5 text-white" />
+              <span>+ Tạo danh mục mới</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Horizontal Category Scroll Container with Arrow Buttons */}
+        <div className="flex items-center gap-1.5 pt-1">
+          {/* Scroll Left Button */}
           <button
-            key={t.id}
-            onClick={() => setSelectedTopic(t.id)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ${
-              selectedTopic === t.id
-                ? 'bg-blue-700 text-white shadow-xs'
-                : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
+            onClick={handleScrollCatLeft}
+            disabled={!canCatScrollLeft}
+            title="Cuộn danh mục sang trái"
+            className={`p-1.5 rounded-lg border text-slate-600 transition shrink-0 ${
+              canCatScrollLeft
+                ? 'bg-slate-100 hover:bg-blue-600 hover:text-white border-slate-300 cursor-pointer shadow-xs'
+                : 'opacity-30 border-transparent cursor-not-allowed'
             }`}
           >
-            <span>{t.label}</span>
-            {t.id !== 'all' && (
-              <span
-                className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
-                  selectedTopic === t.id ? 'bg-blue-800 text-blue-100' : 'bg-slate-100 text-slate-500'
-                }`}
-              >
-                {directives.filter((d) => d.topic === t.id).length}
-              </span>
-            )}
+            <ChevronLeft className="w-4 h-4" />
           </button>
-        ))}
+
+          {/* Category Pills Container */}
+          <div 
+            ref={categoryScrollRef}
+            onScroll={checkCategoryScroll}
+            className="flex-1 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar scrollbar-none scroll-smooth"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {categories.map((t) => {
+              const isSelected = selectedTopic === t.id || selectedTopic === t.name;
+              const count = t.id === 'all' 
+                ? directives.length 
+                : directives.filter((d) => d.topic === t.name || d.topic === t.id).length;
+
+              return (
+                <button
+                  key={t.id}
+                  onClick={() => setSelectedTopic(t.name)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 shrink-0 ${
+                    isSelected
+                      ? 'bg-blue-700 text-white shadow-xs'
+                      : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
+                  }`}
+                >
+                  <span>{t.label}</span>
+                  {t.id !== 'all' && (
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                        isSelected ? 'bg-blue-800 text-blue-100' : 'bg-slate-100 text-slate-500'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  )}
+                  {t.isCustom && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400" title="Danh mục do Thầy tạo"></span>
+                  )}
+                </button>
+              );
+            })}
+
+            {/* Inline Quick Add Category Button */}
+            <button
+              onClick={() => setIsNewCategoryModalOpen(true)}
+              className="px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap text-blue-700 bg-blue-50 hover:bg-blue-100 border border-dashed border-blue-300 flex items-center gap-1 shrink-0 transition"
+              title="Tạo thêm danh mục mới"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Thêm tab danh mục</span>
+            </button>
+          </div>
+
+          {/* Scroll Right Button */}
+          <button
+            onClick={handleScrollCatRight}
+            disabled={!canCatScrollRight}
+            title="Cuộn danh mục sang phải"
+            className={`p-1.5 rounded-lg border text-slate-600 transition shrink-0 ${
+              canCatScrollRight
+                ? 'bg-slate-100 hover:bg-blue-600 hover:text-white border-slate-300 cursor-pointer shadow-xs'
+                : 'opacity-30 border-transparent cursor-not-allowed'
+            }`}
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {/* Search Bar */}
@@ -230,6 +455,44 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
           {filteredDirectives.length} văn bản
         </span>
       </div>
+
+      {/* Empty State when category has no directives */}
+      {filteredDirectives.length === 0 && (
+        <div className="bg-white rounded-xl border border-dashed border-slate-300 p-8 text-center space-y-4">
+          <div className="w-14 h-14 bg-blue-50 border border-blue-200 rounded-2xl flex items-center justify-center mx-auto text-blue-600">
+            <FolderX className="w-7 h-7" />
+          </div>
+          <div className="max-w-md mx-auto">
+            <h3 className="font-bold text-slate-800 text-sm md:text-base">
+              Chưa có văn bản trong danh mục "{selectedTopic === 'all' ? 'này' : selectedTopic}"
+            </h3>
+            <p className="text-xs text-slate-500 mt-1">
+              Thầy có thể đưa văn bản vào danh mục này bằng cách tải tệp Word / PDF lên hoặc thêm văn bản thủ công ngay bên dưới.
+            </p>
+          </div>
+          <div className="flex items-center justify-center gap-3 flex-wrap pt-2">
+            {onOpenUploadModal && (
+              <button
+                onClick={onOpenUploadModal}
+                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm transition active:scale-95"
+              >
+                <Upload className="w-3.5 h-3.5" />
+                <span>Tải tệp Word / PDF vào danh mục này</span>
+              </button>
+            )}
+            <button
+              onClick={() => {
+                setNewTopic(selectedTopic !== 'all' ? selectedTopic : 'Hồ sơ sổ sách điện tử');
+                setIsAddModalOpen(true);
+              }}
+              className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white rounded-xl text-xs font-bold flex items-center gap-2 shadow-sm transition active:scale-95"
+            >
+              <Plus className="w-3.5 h-3.5" />
+              <span>Thêm văn bản thủ công</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Directives List */}
       <div className="space-y-4">
@@ -333,6 +596,77 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
         })}
       </div>
 
+      {/* MODAL: CREATE NEW CATEGORY */}
+      {isNewCategoryModalOpen && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full border border-slate-200 overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+            <div className="px-5 py-4 bg-gradient-to-r from-blue-900 to-indigo-900 text-white flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <FolderPlus className="w-5 h-5 text-amber-300" />
+                <h3 className="font-bold text-sm sm:text-base">Tạo Danh Mục Mới Cho Văn Bản</h3>
+              </div>
+              <button
+                onClick={() => setIsNewCategoryModalOpen(false)}
+                className="text-slate-300 hover:text-white p-1 rounded-lg hover:bg-white/10 transition"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateCategorySubmit} className="p-5 space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Tên danh mục mới / Tab chuyên đề: <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={newCatName}
+                  onChange={(e) => setNewCatName(e.target.value)}
+                  placeholder="VD: Chuyên môn, Đoàn thanh niên, Chủ nhiệm, Khảo thí..."
+                  className="w-full text-xs rounded-lg border border-slate-300 p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium"
+                  autoFocus
+                  required
+                />
+                <p className="text-[11px] text-slate-500 mt-1">
+                  Danh mục này sẽ xuất hiện thành một tab mới trên giao diện và trong cửa sổ tải lên tệp.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Mô tả / Ghi chú (Tùy chọn):
+                </label>
+                <textarea
+                  value={newCatDesc}
+                  onChange={(e) => setNewCatDesc(e.target.value)}
+                  placeholder="Ghi chú về mục đích hoặc loại văn bản trong danh mục này..."
+                  rows={2}
+                  className="w-full text-xs rounded-lg border border-slate-300 p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+
+              <div className="pt-2 border-t border-slate-100 flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsNewCategoryModalOpen(false)}
+                  className="px-4 py-2 border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="submit"
+                  disabled={creatingCategory || !newCatName.trim()}
+                  className="px-4 py-2 bg-blue-700 hover:bg-blue-800 disabled:opacity-50 text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-sm transition active:scale-95"
+                >
+                  <Check className="w-4 h-4 text-white" />
+                  <span>{creatingCategory ? 'Đang tạo...' : 'Tạo danh mục & Chọn ngay'}</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* MODAL 1: VIEW FULL CONTENT OF SỞ'S DIRECTIVE - OFFICIAL DECREE 30 FORMAT */}
       {selectedDirectiveForView && (
         <AdministrativeDirectiveViewerModal
@@ -418,16 +752,19 @@ export const DepartmentDirectivesTab: React.FC<DepartmentDirectivesTabProps> = (
                   </label>
                   <select
                     value={newTopic}
-                    onChange={(e) => setNewTopic(e.target.value)}
+                    onChange={(e) => {
+                      if (e.target.value === '__NEW__') {
+                        setIsNewCategoryModalOpen(true);
+                      } else {
+                        setNewTopic(e.target.value);
+                      }
+                    }}
                     className="w-full text-xs font-medium rounded-lg border border-slate-300 p-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white"
                   >
-                    <option value="2 buổi / ngày">2 buổi / ngày</option>
-                    <option value="Hướng nghiệp & Phân luồng">Hướng nghiệp & Phân luồng</option>
-                    <option value="Khung năng lực số">Khung năng lực số</option>
-                    <option value="Kiểm tra đánh giá">Kiểm tra đánh giá</option>
-                    <option value="Dạy thêm học thêm">Dạy thêm học thêm</option>
-                    <option value="Hồ sơ sổ sách điện tử">Hồ sơ sổ sách điện tử</option>
-                    <option value="Nhiệm vụ chung năm học">Nhiệm vụ chung năm học</option>
+                    {categories.filter(c => c.id !== 'all').map((c) => (
+                      <option key={c.id} value={c.name}>{c.label}</option>
+                    ))}
+                    <option value="__NEW__">+ Tạo danh mục mới...</option>
                   </select>
                 </div>
 
