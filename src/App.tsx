@@ -79,8 +79,9 @@ export default function App() {
 
   // Current document for Viewing / Editing in Editor
   const [currentDocument, setCurrentDocument] = useState<SchoolDocument>(() => {
+    const hsssPlan = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'doc-kh-hsss-55');
     const assessmentPlan = INITIAL_SCHOOL_DOCUMENTS.find(d => d.id === 'doc-kh-ktdg-52');
-    return assessmentPlan || INITIAL_SCHOOL_DOCUMENTS[0];
+    return hsssPlan || assessmentPlan || INITIAL_SCHOOL_DOCUMENTS[0];
   });
 
   // Custom School Facts
@@ -107,7 +108,7 @@ export default function App() {
           }
           setCurrentDocument((prev) => {
             const match = res.data.find((d: SchoolDocument) => d.id === prev?.id);
-            return match || res.data.find((d: SchoolDocument) => d.id === 'doc-kh-ktdg-52') || res.data[0];
+            return match || res.data.find((d: SchoolDocument) => d.id === 'doc-kh-hsss-55') || res.data.find((d: SchoolDocument) => d.id === 'doc-kh-ktdg-52') || res.data[0];
           });
         }
       })

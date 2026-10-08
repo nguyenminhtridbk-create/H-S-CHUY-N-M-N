@@ -1,0 +1,236 @@
+UBND TỈNH ĐỒNG THÁP CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+SỞ GIÁO DỤC VÀ ĐÀO TẠO Độc lập - Tự do - Hạnh phúc
+Số: /SGDĐT-GDPT Đồng Tháp, ngày tháng 9 năm 2026
+V/v hướng dẫn sử dụng hồ sơ,
+sổ sách điện tử tại các cơ sở giáo dục
+phổ thông kể từ năm học 2026 - 2027
+Kính gửi:
+- Uỷ ban nhân dân các xã, phường;
+- Thủ trưởng các đơn vị trực thuộc Sở.
+Căn cứ Thông tư số 08/2025/TT-BGDĐT ngày 12 tháng 5 năm 2025 của
+Bộ Giáo dục và Đào tạo (GDĐT) quy định thời hạn lưu trữ hồ sơ, tài liệu thuộc
+lĩnh vực GDĐT (Thông tư số 08/2025/TT-BGDĐT); Thông tư số 15/2026/TT-
+BGDĐT ngày 24 tháng 3 năm 2026 của Bộ GDĐT ban hành Điều lệ trường tiểu
+học, trường trung học cơ sở, trường trung học phổ thông và trường phổ thông có
+nhiều cấp học (Thông tư số 15/2026/TT-BGDĐT); Công văn số 6020/BGDĐT-
+KHCNTT ngày 08 tháng 9 năm 2026 của Bộ GDĐT về việc triển khai một số
+nhiệm vụ trọng tâm về chuyển đổi số năm học 2026 - 2027; Kế hoạch số 1014/KH-
+SGDĐT ngày 19 tháng 8 năm 2026 của Sở GDĐT về việc chuyển đổi số ngành
+GDĐT giai đoạn 2026 - 2030.
+Sở GDĐT tỉnh Đồng Tháp hướng dẫn sử dụng hồ sơ, sổ sách điện tử (sau
+đây gọi chung là hồ sơ điện tử) tại các cơ sở giáo dục phổ thông kể từ năm học
+2026 - 2027 (sau đây gọi là nhà trường), cụ thể như sau:
+I. MỤC ĐÍCH, YÊU CẦU
+1. Mục đích
+Đẩy mạnh sử dụng công nghệ thông tin trong tổ chức và quản lý các hoạt
+động chuyên môn trong các cơ sở giáo dục; tăng cường chuyển đổi số trong giáo
+dục để nâng cao hiệu quả công tác quản lý giáo dục; thực hiện nhập số liệu, khai
+thác, sử dụng thống nhất dữ liệu toàn ngành về trường, lớp, học sinh, giáo viên,
+trường chuẩn quốc gia và các thông tin khác trong quản lý, báo cáo.
+Tiếp tục hực hiện tinh giản hồ sơ, sổ sách; đẩy mạnh sử dụng hồ sơ điện tử
+(HSĐT) thay thế hồ sơ giấy theo đúng quy định tại Thông tư số 15/2026/TT-
+BGDĐT.
+2. Yêu cầu
+Việc sử dụng và quản lý HSĐT phải đúng quy định; bảo đảm hiệu quả, tiết
+kiệm, thống nhất, liên thông, đồng bộ, chính xác, an toàn, bảo mật, toàn vẹn và có
+khả năng xác thực, truy vết dữ liệu.
+Việc cập nhật, khai thác và lưu trữ HSĐT phải thực hiện theo tiến độ kế
+hoạch giáo dục của nhà trường; dữ liệu được sao lưu, dự phòng theo phương án
+được phê duyệt; chỉ in lưu trữ khi pháp luật hoặc phương án lưu trữ hợp pháp của
+đơn vị yêu cầu, đáp ứng yêu cầu kiểm tra, thanh tra.
+
+-- 1 of 6 --
+
+2
+Cán bộ quản lý, giáo viên, nhân viên được hướng dẫn, tập huấn và sử dụng
+thành thạo HSĐT; đảm bảo trách nhiệm, minh bạch trong phạm vi được phân
+quyền; tuân thủ quy định về bảo vệ dữ liệu cá nhân và bí mật nhà nước (nếu có).
+Đảm bảo tất cả dữ liệu đáp ứng theo tiêu chí “đúng, đủ, sạch, sống, thống
+nhất, dùng chung”; từ phần mềm riêng lẻ sang nền tảng số dùng chung, kết nối,
+liên thông.
+II. NỘI DUNG
+1. Các loại hồ sơ được sử dụng hồ sơ điện tử và những quy định chung
+Các loại HSĐT thực hiện theo quy định tại Thông tư số 15/2026/TT-
+BGDĐT và các hướng dẫn chuyên môn của Bộ GDĐT. Trong quá trình thực hiện
+nhiệm vụ, các đơn vị cần linh hoạt sử dụng các hình thức ghi nhận, lưu trữ thông
+tin cần thiết phục vụ việc nhận xét, đánh giá,… đảm bảo chính xác, khách quan.
+HSĐT phải đảm bảo các quy định của cơ quan có thẩm quyền về hệ thống
+trường thông tin, nội dung và cấu trúc biểu mẫu. Đồng thời, quá trình khởi tạo,
+cập nhật, quản lý và lưu trữ HSĐT phải được thực hiện trên các hệ thống/phần
+mềm đáp ứng đầy đủ tiêu chuẩn pháp lý về: Tính toàn vẹn dữ liệu, phân quyền
+truy cập, bảo mật, xác thực người dùng, lưu vết nhật ký thao tác, khả năng tra cứu
+và sao lưu. Khi đáp ứng các tiêu chuẩn nêu trên, HSĐT mang giá trị pháp lý tương
+đương hồ sơ giấy. Việc sử dụng HSĐT thay thế hồ sơ truyền thống sẽ được triển
+khai theo một lộ trình phù hợp, căn cứ vào thực trạng hạ tầng công nghệ thông tin
+của từng địa phương, đơn vị và năng lực ứng dụng của đội ngũ giáo viên.
+2. Yêu cầu đối với việc quản lý hồ sơ điện tử
+Việc quản lý HSĐT phải thực hiện theo quy định về thời hạn lưu trữ tại
+Thông tư số 08/2025/TT-BGDĐT và các yêu cầu về nghiệp vụ lưu trữ tài liệu số
+theo thông tư số 05/2025/TT-BNV ngày 14 tháng 5 năm 2025 của Bộ Nội vụ.
+Phần mềm quản lý trường học được sử dụng để cập nhật thông tin vào
+HSĐT phải đảm bảo các tính năng về nhập liệu, xử lý dữ liệu theo quy định và có
+khả năng đồng bộ được với hệ thống cơ sở dữ liệu ngành giáo dục1. Hỗ trợ xuất,
+chuyển giao dữ liệu theo định dạng thông dụng, tự chủ được trong việc sao lưu và
+phục hồi dữ liệu.
+Đảm bảo tổ chức thực hiện theo tinh thần “6 rõ”: Rõ người, rõ việc, rõ thời
+gian, rõ trách nhiệm, rõ sản phẩm, rõ thẩm quyền.
+III. TRÁCH NHIỆM CỦA CÁ NHÂN, TỔ CHỨC LIÊN QUAN
+1. Trách nhiệm của Hiệu trưởng
+Ban hành Quyết định thành lập Ban Quản trị hệ thống phần mềm, ứng dụng
+quản lý trường học (sau đây gọi là Ban Quản trị), phân công nhiệm vụ cụ thể cho
+từng thành viên.
+Tổ chức việc cấp, phân quyền, thay đổi, khóa và thu hồi tài khoản theo
+nhiệm vụ được phân công; không trực tiếp nắm giữ hoặc sử dụng mật khẩu cá
+1 https://csdl.moet.gov.vn
+
+-- 2 of 6 --
+
+3
+nhân của người dùng; trường hợp xử lý sự cố phải sử dụng tài khoản quản trị
+riêng, có phê duyệt, giới hạn thời gian và ghi nhận đầy đủ nhật ký thao tác.
+Xây dựng và ban hành quy trình vận hành, quản lý và sử dụng, trong đó lưu
+ý đến các vấn đề sau:
+- Quy định trách nhiệm cá nhân của mỗi cán bộ quản lý, giáo viên, nhân
+viên khi tham gia sử dụng.
+- Quy định về bảo mật, an toàn thông tin và tài khoản người dùng theo quy
+định hiện hành của pháp luật.
+- Quy định việc mở, khóa và điều chỉnh dữ liệu trên hệ thống; xác định rõ người
+có thẩm quyền, thời điểm, điều kiện, phương thức phê duyệt, việc lưu vết và trách
+nhiệm cập nhật sau khi mở khóa.
+Tổ chức tập huấn, tạo điều kiện thuận lợi cho giáo viên, nhân viên của nhà
+trường tham gia sử dụng, khai thác hệ thống phần mềm một cách hiệu quả, đúng
+chức năng, nhiệm vụ được phân công.
+Kiểm tra, giám sát HSĐT của giáo viên; phê duyệt việc điều chỉnh dữ liệu theo
+đúng quy định chuyên môn, đảm bảo có minh chứng, người phê duyệt, nhật ký thao
+tác và khả năng truy xuất lịch sử thay đổi.
+2. Trách nhiệm chung của các thành viên tham gia sử dụng hệ thống
+phần mềm quản lý nhà trường
+Có trách nhiệm bảo mật tài khoản truy cập, không nhờ hoặc cung cấp tài
+khoản cá nhân để người khác làm thay công việc của mình.
+Tùy theo vai trò và trách nhiệm được phân công, có thể phải thực hiện các
+nhiệm vụ khác theo yêu cầu của Hiệu trưởng.
+Chỉ thực hiện các thao tác, quy trình nghiệp vụ được cho phép trên phần mềm.
+Chịu trách nhiệm về tính chính xác, đầy đủ, kịp thời và hợp pháp của thông
+tin do cá nhân cập nhật trong phạm vi nhiệm vụ được phân công; thực hiện điều
+chỉnh khi phát hiện sai sót theo quy trình và đảm bảo lưu vết.
+Báo cáo ngay Hiệu trưởng về các vấn đề bất thường xảy ra khi truy cập
+vào phần mềm.
+3. Trách nhiệm của các thành viên Ban Quản trị
+Hỗ trợ Hiệu trưởng phân quyền sử dụng phần mềm cho các cá nhân, tổ,
+nhóm, bộ phận liên quan. Tham mưu cho Hiệu trưởng đảm bảo các điều kiện về
+hạ tầng, thiết bị và nhân lực phục vụ hoạt động của phần mềm quản lý trường học.
+Quản lý và bảo mật dữ liệu, thực hiện khóa/mở việc nhập liệu trên phần
+mềm theo quyết định hoặc phê duyệt của Hiệu trưởng và đảm bảo lưu vết thao tác.
+Phối hợp với nhà cung cấp hoặc bộ phận kỹ thuật cập nhật, kiểm thử và
+thông báo việc thay đổi chức năng phần mềm khi có quy định mới; đảm bảo dữ
+liệu đang quản lý được bảo toàn, có phương án sao lưu và ghi nhận thay đổi.
+
+-- 3 of 6 --
+
+4
+Cập nhật dữ liệu ban đầu vào đầu mỗi năm học hoặc có thay đổi theo sự
+phân công của Hiệu trưởng.
+Hướng dẫn, hỗ trợ các thành viên sử dụng phần mềm quản lý trường học.
+Chịu trách nhiệm trước Hiệu trưởng trong việc theo dõi nhập liệu các HSĐT,
+không chịu trách nhiệm nhập toàn bộ hồ sơ thay cho người được phân công.
+4. Trách nhiệm của giáo viên chủ nhiệm
+Cập nhật danh sách và sơ yếu lý lịch học sinh vào đầu năm học hoặc ngay
+khi có sự thay đổi thông tin cá nhân học sinh.
+Cập nhật HSĐT đúng chức năng được phân công trên hệ thống theo tiến
+độ kế hoạch giáo dục nhà trường, chỉ khai thác dữ liệu học sinh trong phạm vi
+nhiệm vụ được giao
+5. Trách nhiệm của giáo viên môn học
+a) Thực hiện chung đối với giáo viên môn học, giáo viên phụ trách hoạt
+động giáo dục
+Phối hợp với giáo viên chủ nhiệm trực tiếp cập nhật HSĐT đúng chức năng
+được phân công trên hệ thống theo tiến độ kế hoạch giáo dục nhà trường.
+b) Thực hiện về kết quả kiểm tra, đánh giá và xác nhận
+Thực hiện kiểm tra, rà soát và cập nhật HSĐT theo quy định chuyên môn;
+trường hợp có nhiều giáo viên cùng phụ trách một nội dung, Hiệu trưởng phân
+công rõ người điều phối, người nhập liệu và trách nhiệm kiểm tra đối chiếu. Dữ
+liệu trên hệ thống phải thống nhất với minh chứng và được khóa, xác nhận theo
+quy trình của nhà trường.
+Kiểm tra, đối chiếu kết quả kiểm tra, đánh giá do mình phụ trách theo từng
+thời điểm, học kỳ và cả năm; xác nhận dữ liệu theo quy trình của nhà trường.
+c) Báo cáo, đề xuất với Ban Quản trị về sự cố, lỗi cập nhật của hệ thống
+phần mềm và các khó khăn, vướng mắc có liên quan.
+IV. CÔNG TÁC NHẬP LIỆU
+1. Quản lý nhập dữ liệu
+Việc nhập dữ liệu phải thực hiện theo đúng vị trí, chức năng, nhiệm vụ được
+phân công theo các quy định quy chế của từng đơn vị (theo các quyết định phân công).
+Người nhập dữ liệu phải cập nhật đầy đủ, chính xác, kịp thời; không tự ý
+xóa, sửa hoặc làm sai lệch dữ liệu sau khi đã khóa hoặc xác nhận. Khi phát hiện
+sai sót, phải thực hiện điều chỉnh theo quy trình, có căn cứ và lưu vết.
+Hiệu trưởng nhà trường quyết định việc đóng và mở khóa hệ thống phần
+mềm nhập liệu theo định kỳ hoặc không định kỳ.
+Giáo viên hoặc người được phân công cập nhật HSĐT trên hệ thống hoặc
+sử dụng chức năng đồng bộ được phê duyệt; người cập nhật phải kiểm tra dữ liệu
+trước khi xác nhận.
+
+-- 4 of 6 --
+
+5
+HSĐT trên hệ thống phải thống nhất với minh chứng và hồ sơ liên quan;
+dữ liệu đồng bộ phải được kiểm tra tính đầy đủ, chính xác và tình trạng cập nhật.
+Hiệu trưởng chỉ đạo kiểm tra tiến độ và chất lượng cập nhật HSĐT được
+sử dụng để hỗ trợ quản lý, kịp thời khắc phục sai sót và thực hiện trách nhiệm
+giải trình, không dùng một cách máy móc làm căn cứ duy nhất để đánh giá thi đua.
+Việc điều chỉnh các sai sót trong quá trình nhập thông tin theo đề nghị của
+giáo viên phải thực hiện đúng theo quy định tại khoản 2 Mục IV của Hướng dẫn này.
+2. Quy định chỉnh sửa dữ liệu
+Khi phát hiện dữ liệu bị nhập sai, người phát hiện hoặc người được phân
+công phải lập đề nghị/biên bản, nêu rõ dữ liệu cũ, dữ liệu mới, lý do, minh chứng
+và người thực hiện; Hiệu trưởng hoặc người được ủy quyền phê duyệt. Việc sửa
+được thực hiện trên hệ thống bởi người có thẩm quyền, có nhật ký thao tác và
+lưu hồ sơ kèm minh chứng theo thời hạn quy định.
+Quy trình thực hiện như sau: Người phát hiện hoặc người được phân công
+lập đề nghị/biên bản điều chỉnh và kèm minh chứng; trình người có thẩm quyền
+phê duyệt; sau khi được phê duyệt, người có thẩm quyền hoặc người được phân
+công cùng Ban Quản trị thực hiện điều chỉnh trên hệ thống. Sau khi hoàn tất,
+kiểm tra dữ liệu, cập nhật hồ sơ liên quan, ghi nhận nhật ký thao tác và lưu hồ sơ
+kèm minh chứng theo thời hạn quy định. Thông tin lưu vết tối thiểu gồm thời
+điểm mở khóa, dữ liệu trước và sau điều chỉnh, lý do, người đề nghị, người phê
+duyệt và người thực hiện.
+V. TỔ CHỨC IN ẤN, LƯU TRỮ HỒ SƠ ĐIỆN TỬ
+1. In ấn hồ sơ, sổ sách điện tử
+Hồ sơ thuộc danh mục tại Thông tư số 08/2025/TT-BGDĐT được bảo quản
+theo đúng thời hạn và nghiệp vụ lưu trữ; chỉ in bản giấy khi pháp luật hoặc phương
+án lưu trữ hợp pháp của đơn vị yêu cầu.
+Bản in từ HSĐT phải đúng các biểu mẫu do Bộ GDĐT quy định.
+Trường hợp in bản giấy, nhà trường lựa chọn vật tư, phương thức in, đóng
+gói, ký xác nhận và bảo quản phù hợp yêu cầu lưu trữ; việc đóng dấu giáp lai, ký
+xác nhận và lập bìa thực hiện theo quy định về văn thư, lưu trữ và quy trình của
+nhà trường, không áp dụng máy móc cho HSĐT.
+2. Lưu trữ hồ sơ, sổ sách điện tử
+Dữ liệu HSĐT thuộc diện lưu trữ được đóng gói, xuất hoặc chuyển giao
+theo định dạng và cấu trúc dữ liệu phù hợp; bảo quản cả dữ liệu gốc, thông tin mô
+tả, chữ ký số hoặc thông tin xác nhận, nhật ký và thông tin bảo đảm tính toàn vẹn
+theo quy định. Việc ký số thực hiện khi pháp luật hoặc quy trình nghiệp vụ yêu cầu.
+Hiệu trưởng hoặc thủ trưởng đơn vị tổ chức bảo quản tài liệu số và chịu
+trách nhiệm chỉ đạo phương án lưu trữ, sao lưu, phục hồi, kiểm tra tính toàn vẹn,
+phân quyền truy cập và xử lý sự cố. Việc sao lưu được thực hiện trên các môi
+trường độc lập, có kiểm tra khả năng khôi phục định kỳ; không coi USB, thẻ nhớ
+
+-- 5 of 6 --
+
+6
+hoặc đĩa CD là phương thức lưu trữ duy nhất. Việc tiêu hủy thiết bị hoặc tài liệu
+thực hiện theo quy định về lưu trữ, bảo mật và bảo vệ dữ liệu.
+VI. KIỂM TRA, GIÁM SÁT
+Hiệu trưởng chịu trách nhiệm tổ chức, điều hành, kiểm tra và bảo đảm
+điều kiện thực hiện việc quản lý HSĐT của nhà trường; phân công trách nhiệm
+cụ thể và chịu trách nhiệm giải trình trong phạm vi thẩm quyền, không thay thế
+trách nhiệm chuyên môn của người cập nhật dữ liệu.
+Nhận được Công văn này, Sở GDĐT đề nghị thủ trưởng các đơn vị nghiên
+cứu và thực hiện đầy đủ, nghiêm túc. Trong quá trình thực hiện, nếu có những
+vấn đề khó khăn, vướng mắc; các đơn vị phản hồi kịp thời về Sở GDĐT (qua
+Phòng Giáo dục Phổ thông, Email: giaoducphothong@dongthap.edu.vn) để
+được hướng dẫn thống nhất./.
+Nơi nhận: KT. GIÁM ĐỐC
+- Như trên;
+- Giám đốc, Phó Giám đốc Sở GDĐT (để báo cáo); PHÓ GIÁM ĐỐC
+- Lưu: VT, GDPT (D).
+Nguyễn Phương Toàn
+
+-- 6 of 6 --
+
