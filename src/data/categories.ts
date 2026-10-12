@@ -14,5 +14,6 @@ export const DEFAULT_DIRECTIVE_CATEGORIES: DirectiveCategory[] = [
   { id: 'Kiểm tra đánh giá', name: 'Kiểm tra đánh giá', label: 'Kiểm tra đánh giá' },
   { id: 'Hướng nghiệp & Phân luồng', name: 'Hướng nghiệp & Phân luồng', label: 'Hướng nghiệp & Phân luồng' },
   { id: 'Dạy thêm học thêm', name: 'Dạy thêm học thêm', label: 'Dạy thêm học thêm' },
+  { id: 'Thi đua khen thưởng & NĐ 233', name: 'Thi đua khen thưởng & NĐ 233', label: 'Thi đua & NĐ 233', description: 'Quy chế thi đua, biểu điểm 100đ và đánh giá xếp loại viên chức' },
   { id: 'Nhiệm vụ chung năm học', name: 'Nhiệm vụ chung năm học', label: 'Nhiệm vụ năm học' },
 ];

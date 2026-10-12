@@ -12,6 +12,7 @@ import { INITIAL_SCHOOL_DOCUMENTS } from './data/mockDocuments';
 import { INITIAL_DEPARTMENT_DIRECTIVES } from './data/mockDirectives';
 import { DirectiveCategory, DEFAULT_DIRECTIVE_CATEGORIES } from './data/categories';
 import { UploadDirectiveModal } from './components/UploadDirectiveModal';
+import { EmulationRulesTab } from './components/EmulationRulesTab';
 
 const DEFAULT_SCHOOL_FACTS = `- Quy mô: 53 lớp, 2.143 học sinh (39 lớp THCS gồm 24 lớp điểm Đốc Binh Kiều, 15 lớp điểm Tân Kiều cách 11km; 14 lớp THPT).
 - Đội ngũ: 120 Cán bộ, giáo viên, nhân viên (04 Ban Giám hiệu, 102 Giáo viên trực tiếp giảng dạy, 14 Nhân viên).
@@ -435,7 +436,21 @@ export default function App() {
           />
         )}
 
-        {/* Tab 5: School Profile & Staff (Dữ liệu trường & 120 CB-GV-NV) */}
+        {/* Tab 5: Emulation Rules (Quy Định Thi Đua Viên Chức Mới Chuẩn NĐ 233) */}
+        {activeTab === 'emulation_rules' && (
+          <EmulationRulesTab
+            onOpenInEditor={(doc) => {
+              handleSaveToArchive(doc);
+              setCurrentDocument(doc);
+              setActiveTab('editor');
+            }}
+            onSaveToArchive={(doc) => {
+              handleSaveToArchive(doc);
+            }}
+          />
+        )}
+
+        {/* Tab 6: School Profile & Staff (Dữ liệu trường & 120 CB-GV-NV) */}
         {activeTab === 'school_profile' && (
           <div className="space-y-6">
             <SchoolContextPanel

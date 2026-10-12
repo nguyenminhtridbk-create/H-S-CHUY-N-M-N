@@ -17,7 +17,8 @@ import {
   ChevronDown,
   Check,
   Layers,
-  Menu
+  Menu,
+  Award
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -86,9 +87,18 @@ export const Header: React.FC<HeaderProps> = ({
       accentColor: 'from-emerald-500/20 to-teal-500/20',
     },
     {
+      id: 'emulation_rules',
+      name: '5. Quy Định Thi Đua Viên Chức (Chuẩn NĐ 233)',
+      shortName: '5. Quy Định Thi Đua Mới',
+      icon: <Award className="w-4 h-4 text-amber-400" />,
+      desc: 'Biểu điểm 100đ, máy tính chấm điểm, văn bản quy chế và ma trận 3 trường',
+      badge: 'Mới - NĐ 233',
+      accentColor: 'from-amber-500/20 to-rose-500/20',
+    },
+    {
       id: 'school_profile',
-      name: '5. Dữ Liệu Trường & Đội Ngũ (120 CB-GV-NV)',
-      shortName: '5. Dữ Liệu & Đội Ngũ',
+      name: '6. Dữ Liệu Trường & Đội Ngũ (120 CB-GV-NV)',
+      shortName: '6. Dữ Liệu & Đội Ngũ',
       icon: <Users className="w-4 h-4 text-purple-300" />,
       desc: 'Hồ sơ 53 lớp, 3 điểm trường, 102 giáo viên và tổ chuyên môn',
       accentColor: 'from-purple-500/20 to-pink-500/20',
