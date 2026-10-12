@@ -13,6 +13,88 @@ import {
 } from 'docx';
 import { SchoolDocument } from '../types/document';
 
+function parseFormattedRuns(text: string, fontSize: number = 28, defaultBold?: boolean): TextRun[] {
+  if (!text.includes('*') && !text.includes('_')) {
+    return [
+      new TextRun({
+        text,
+        size: fontSize,
+        font: 'Times New Roman',
+        bold: defaultBold,
+      }),
+    ];
+  }
+
+  const runs: TextRun[] = [];
+  const regex = /(\*\*.*?\*\*|\*[^*]+?\*)/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      const plain = text.substring(lastIndex, match.index);
+      if (plain) {
+        runs.push(
+          new TextRun({
+            text: plain,
+            size: fontSize,
+            font: 'Times New Roman',
+            bold: defaultBold,
+          })
+        );
+      }
+    }
+
+    const token = match[0];
+    if (token.startsWith('**') && token.endsWith('**')) {
+      runs.push(
+        new TextRun({
+          text: token.slice(2, -2),
+          size: fontSize,
+          font: 'Times New Roman',
+          bold: true,
+        })
+      );
+    } else if (token.startsWith('*') && token.endsWith('*')) {
+      runs.push(
+        new TextRun({
+          text: token.slice(1, -1),
+          size: fontSize,
+          font: 'Times New Roman',
+          italics: true,
+          bold: defaultBold,
+        })
+      );
+    }
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    const trailing = text.substring(lastIndex);
+    if (trailing) {
+      runs.push(
+        new TextRun({
+          text: trailing,
+          size: fontSize,
+          font: 'Times New Roman',
+          bold: defaultBold,
+        })
+      );
+    }
+  }
+
+  return runs.length > 0
+    ? runs
+    : [
+        new TextRun({
+          text,
+          size: fontSize,
+          font: 'Times New Roman',
+          bold: defaultBold,
+        }),
+      ];
+}
+
 export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
   const noBorder = {
     top: { style: BorderStyle.NONE, size: 0, color: 'auto' },
@@ -351,6 +433,13 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
       }
     }
 
+    const cellTableBorder = {
+      top: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+      bottom: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+      left: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+      right: { style: BorderStyle.SINGLE, size: 4, color: '000000' },
+    };
+
     blocks.forEach((block) => {
       if (block.type === 'table') {
         const contentTable = new Table({
@@ -369,18 +458,12 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
               children: rowCells.map((cellText, cIdx) => {
                 const isCenter = cIdx === 0 || cellText.length <= 6 || (/^\d/.test(cellText) && cellText.length < 15);
                 return new TableCell({
-                  borders: cellNoBorder, // Individual cells don't double border
+                  borders: cellTableBorder,
+                  shading: isHeader ? { fill: 'F1F5F9' } : undefined,
                   children: [
                     new Paragraph({
                       alignment: isHeader ? AlignmentType.CENTER : isCenter ? AlignmentType.CENTER : AlignmentType.LEFT,
-                      children: [
-                        new TextRun({
-                          text: cellText,
-                          bold: isHeader,
-                          size: 24, // 12pt
-                          font: 'Times New Roman',
-                        }),
-                      ],
+                      children: parseFormattedRuns(cellText, 24, isHeader),
                       spacing: { line: 240, before: 60, after: 60 },
                     }),
                   ],
@@ -414,14 +497,7 @@ export async function exportDocumentToDocx(doc: SchoolDocument): Promise<void> {
       docChildren.push(
         new Paragraph({
           alignment: AlignmentType.JUSTIFIED,
-          children: [
-            new TextRun({
-              text: trimmed,
-              size: 28, // 14pt
-              font: 'Times New Roman',
-              bold: isNumbered ? true : undefined, // Numbered items like 1. Mục đích: are bold; a), b)... are normal
-            }),
-          ],
+          children: parseFormattedRuns(trimmed, 28, isNumbered ? true : undefined),
           indent: indentConfig,
           spacing: { line: 280, before: isNumbered ? 120 : 40, after: 60 },
         })

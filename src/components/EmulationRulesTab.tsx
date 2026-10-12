@@ -32,7 +32,8 @@ import {
   Scale,
   FileQuestion,
   GraduationCap,
-  Briefcase
+  Briefcase,
+  Loader2
 } from 'lucide-react';
 import { 
   EMULATION_CRITERIA_LIST, 
@@ -47,6 +48,8 @@ import {
   PenaltyItem,
   BonusItem
 } from '../data/emulationRulesData';
+import { OFFICIAL_EMULATION_DOCUMENT } from '../data/officialEmulationDocument';
+import { exportDocumentToDocx } from '../utils/docxExport';
 import { SchoolDocument } from '../types/document';
 
 interface EmulationRulesTabProps {
@@ -62,6 +65,7 @@ export const EmulationRulesTab: React.FC<EmulationRulesTabProps> = ({
   const [criteriaType, setCriteriaType] = useState<'teacher' | 'leader' | 'staff'>('teacher');
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'common' | 'duty' | 'penalty' | 'bonus'>('all');
+  const [isExportingDocx, setIsExportingDocx] = useState(false);
 
   // --- Calculator State ---
   const [calcRole, setCalcRole] = useState<'teacher' | 'homeroom' | 'leader' | 'staff'>('teacher');
@@ -193,204 +197,19 @@ export const EmulationRulesTab: React.FC<EmulationRulesTabProps> = ({
 
   // Handler: create official school document object
   const createOfficialDocumentObject = (): SchoolDocument => {
-    return {
-      id: 'doc-qc-thidua-233',
-      type: 'regulation',
-      typeLabel: 'Quy chế',
-      status: 'official',
-      documentNumber: 'Số: 15/QĐ-THCS&THPTĐBK',
-      title: 'QUYẾT ĐỊNH & QUY CHẾ THI ĐUA, KHEN THƯỞNG VIÊN CHỨC',
-      subTitle: 'Năm học 2026 - 2027 (Chuẩn hóa theo Nghị định 233/2026/NĐ-CP & Thống nhất sau sáp nhập 3 trường)',
-      signDate: 'Đồng Tháp, ngày 28 tháng 9 năm 2026',
-      createdDate: new Date().toISOString(),
-      issuingAuthorityTop: 'SỞ GDĐT TỈNH ĐỒNG THÁP',
-      issuingAuthority: 'TRƯỜNG THCS VÀ THPT\nĐỐC BINH KIỀU',
-      signerRole: 'HIỆU TRƯỞNG',
-      signerName: 'Lê Thanh Cường',
-      sourceDirective: 'Nghị định số 233/2026/NĐ-CP ngày 26/6/2026 của Chính phủ về đánh giá, xếp loại chất lượng viên chức và Luật Thi đua, Khen thưởng 2022',
-      legalBases: [
-        'Căn cứ Luật Viên chức ngày 15 tháng 11 năm 2010 và Luật sửa đổi, bổ sung một số điều của Luật Cán bộ, công chức và Luật Viên chức ngày 25 tháng 11 năm 2019;',
-        'Căn cứ Luật Thi đua, khen thưởng ngày 15 tháng 6 năm 2022 và Nghị định số 98/2023/NĐ-CP ngày 31 tháng 12 năm 2023 của Chính phủ quy định chi tiết thi hành một số điều của Luật Thi đua, khen thưởng;',
-        'Căn cứ Nghị định số 233/2026/NĐ-CP ngày 26 tháng 6 năm 2026 của Chính phủ quy định về đánh giá, xếp loại chất lượng đối với đơn vị sự nghiệp công lập và viên chức;',
-        'Căn cứ Quyết định số 2606/QĐ-UBND ngày 13 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập Trường THCS Đốc Binh Kiều, Trường THCS Tân Kiều và Trường THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều;',
-        'Theo đề nghị của Hội đồng Thi đua - Khen thưởng Trường THCS và THPT Đốc Binh Kiều và Nghị quyết Hội nghị Cán bộ, Viên chức năm học 2026 - 2027.'
-      ],
-      sections: [
-        {
-          heading: 'Chương I: QUY ĐỊNH CHUNG',
-          content: `Điều 1. Phạm vi điều chỉnh và đối tượng áp dụng
-1. Quy chế này quy định về nguyên tắc, tiêu chuẩn, thang điểm đánh giá, quy trình xét thi đua và xếp loại chất lượng đối với toàn thể cán bộ quản lý, giáo viên, nhân viên (CB-GV-NV) công tác tại Trường THCS và THPT Đốc Binh Kiều (bao gồm Điểm chính cấp THPT, Điểm Trường THCS Đốc Binh Kiều và Điểm Trường THCS Tân Kiều).
-2. Quy định này áp dụng thực hiện đánh giá định kỳ theo học kỳ và tổng kết xếp loại cả năm học 2026 - 2027; làm căn cứ bình xét các danh hiệu thi đua (Lao động tiên tiến, Chiến sĩ thi đua cơ sở, Bằng khen các cấp) và xếp loại chất lượng viên chức hàng năm theo quy định của pháp luật.
+    return OFFICIAL_EMULATION_DOCUMENT;
+  };
 
-Điều 2. Nguyên tắc đánh giá và xét thi đua
-1. Thực hiện nghiêm túc nguyên tắc dân chủ, công khai, công bằng, minh bạch, khách quan, chính xác và đoàn kết nội bộ.
-2. Đánh giá dựa trên kết quả thực hiện nhiệm vụ cụ thể được giao (sản phẩm công việc đầu ra, chất lượng bài dạy, hiệu quả giáo dục, tỷ lệ duy trì sĩ số và hồ sơ điện tử).
-3. Thống nhất áp dụng thang điểm 100 theo đúng quy định tại Điều 12 Nghị định 233/2026/NĐ-CP của Chính phủ, kết hợp với điểm thưởng khuyến khích (tối đa 20 điểm) và bảng điểm trừ chi tiết cho từng hành vi vi phạm.
-4. BẮT BUỘC KHỐNG CHẾ XẾP LOẠI THẤP NHẤT: Bất kỳ viên chức nào có vi phạm ở mức độ nghiêm trọng về đạo đức nhà giáo hoặc tư tưởng chính trị, hoặc bị kỷ luật từ khiển trách trở lên trong năm học đều bị xếp loại KHÔNG HOÀN THÀNH NHIỆM VỤ và không xét bất kỳ danh hiệu thi đua nào.`
-        },
-        {
-          heading: 'Chương II: KHUNG TIÊU CHUẨN ĐÁNH GIÁ (THANG ĐIỂM 100 CHUẨN NGHỊ ĐỊNH 233)',
-          content: `Điều 3. Khung tiêu chí chung (Tối đa 30 điểm)
-Áp dụng thống nhất cho tất cả viên chức (giáo viên và nhân viên):
-1. Tiêu chí 1: Chính trị tư tưởng (Tối đa 10 điểm)
-- Chấp hành nghiêm đường lối, chủ trương của Đảng, chính sách pháp luật Nhà nước và quy chế ngành: 3.0 điểm.
-- Bản lĩnh chính trị vững vàng, kiên định lập trường, bảo vệ uy tín nhà trường: 2.5 điểm.
-- Đặt lợi ích tập thể lên trên cá nhân; tinh thần trách nhiệm cao: 2.5 điểm.
-- Tham gia học tập chính trị hè, nghị quyết và bồi dưỡng thường xuyên đầy đủ: 2.0 điểm.
-
-2. Tiêu chí 2: Đạo đức, lối sống và Đạo đức nhà giáo (Tối đa 10 điểm)
-- Thực hiện chuẩn mực đạo đức nghề nghiệp theo Thông tư 06/2019/TT-BGDĐT: 3.0 điểm.
-- Giữ gìn khối đoàn kết nội bộ, hỗ trợ đồng nghiệp giữa các điểm trường: 3.0 điểm.
-- Thương yêu, công bằng, tôn trọng nhân cách học sinh, không xúc phạm thân thể/danh dự: 2.5 điểm.
-- Lối sống giản dị, trung thực, không tiêu cực, không trục lợi: 1.5 điểm.
-
-3. Tiêu chí 3: Tác phong, lề lối làm việc và Kỷ luật kỷ cương (Tối đa 10 điểm)
-- Chấp hành nghiêm túc sự phân công của BGH và Tổ trưởng (kể cả điều động dạy liên điểm): 3.0 điểm.
-- Đảm bảo ngày giờ công, không bỏ tiết, không đi trễ về sớm: 3.0 điểm.
-- Văn hóa công sở chuẩn mực (trang phục, đeo thẻ viên chức, ứng xử chuẩn mực trên mạng xã hội): 2.0 điểm.
-- Thực hiện chế độ thông tin, báo cáo trung thực, kịp thời: 2.0 điểm.
-
-Điều 4. Khung tiêu chí kết quả thực hiện nhiệm vụ chuyên môn đối với Giáo viên (Tối đa 70 điểm)
-1. Tiêu chí 1: Kế hoạch giáo dục, quy chế chuyên môn và tiến độ PPCT (Tối đa 20 điểm)
-- Dạy đúng tiến độ PPCT, không cắt xén, không dồn ép, đảm bảo 35 tuần thực học: 6.0 điểm.
-- Thực hiện nghiêm túc 100% tiết thực hành, thí nghiệm tại các phòng bộ môn: 5.0 điểm.
-- Đổi mới phương pháp dạy học, phát huy tính tích cực của học sinh: 5.0 điểm.
-- Quản lý nề nếp lớp học, không để học sinh làm ồn hoặc lang thang: 4.0 điểm.
-
-2. Tiêu chí 2: Hồ sơ sổ sách điện tử (vnEdu) và Chuyển đổi số (Tối đa 15 điểm)
-- Nộp Kế hoạch bài dạy (Giáo án) lên vnEdu đúng hạn trước 2 ngày, đúng mẫu CV 3284: 5.0 điểm.
-- Cập nhật sổ điểm, học bạ điện tử đầy đủ, kịp thời theo quy định chuyên môn: 4.0 điểm.
-- Ký và ghi chép sổ đầu bài đầy đủ, chính xác sau mỗi tiết dạy: 3.0 điểm.
-- Ứng dụng hiệu quả học liệu số, tivi thông minh và AI hỗ trợ dạy học có kiểm chứng: 3.0 điểm.
-
-3. Tiêu chí 3: Chất lượng giảng dạy, kiểm tra đánh giá và không lệch điểm (Tối đa 15 điểm)
-- Đủ số cột kiểm tra; ra đề bám sát ma trận, bản đặc tả; hướng dẫn chấm chính xác: 5.0 điểm.
-- Chấm thi công bằng, khách quan, chính xác (không sai sót tỷ lệ đối soát bài thi): 4.0 điểm.
-- Kiểm soát độ lệch điểm: Điểm TBM cả năm so với TB điểm thi HK không chênh lệch quá 2.0 điểm: 3.0 điểm.
-- Tỷ lệ học sinh đạt yêu cầu cần đạt (YCCĐ) theo chỉ tiêu đăng ký đầu năm: 3.0 điểm.
-
-4. Tiêu chí 4: Công tác chủ nhiệm lớp, duy trì sĩ số và phối hợp giáo dục (Tối đa 10 điểm)
-- Duy trì 100% sĩ số, có biên bản vận động học sinh có nguy cơ bỏ học (nhất là điểm Tân Kiều): 3.0 điểm.
-- Vận động học sinh tham gia BHYT đạt từ 95% đến 100%: 2.5 điểm.
-- Quản lý nề nếp thi đua lớp; không để xảy ra bạo lực học đường hay quay clip: 2.5 điểm.
-- Phối hợp chặt chẽ với cha mẹ học sinh và giáo viên bộ môn: 2.0 điểm.
-
-5. Tiêu chí 5: Sinh hoạt chuyên môn, dự giờ thăm lớp và bồi dưỡng học sinh (Tối đa 10 điểm)
-- Tham gia sinh hoạt tổ chuyên môn theo nghiên cứu bài học (2 tuần/lần, kết nối liên điểm): 3.0 điểm.
-- Thực hiện đủ chỉ tiêu dự giờ (ít nhất 1 tiết/GV trong tổ/năm) và thao giảng, hội giảng: 3.0 điểm.
-- Tích cực phụ đạo miễn phí cho học sinh có nguy cơ chưa đạt YCCĐ buổi 2: 2.0 điểm.
-- Sử dụng hiệu quả thiết bị dạy học số và tự làm đồ dùng dạy học: 2.0 điểm.
-
-Điều 5. Khung tiêu chí chuyên môn đối với Nhân viên Văn phòng - Chuyên trách (Tối đa 70 điểm)
-1. Hoàn thành chức trách, vị trí việc làm (Kế toán, Văn thư, Thư viện, Thiết bị, Y tế, CNTT, Bảo vệ): Tối đa 35 điểm.
-2. Quản lý cơ sở vật chất, tài sản, hồ sơ sổ sách và phục vụ giảng dạy tại cả 3 điểm trường: Tối đa 20 điểm.
-3. Kỷ luật ngày giờ công, trực trường và an toàn cơ quan: Tối đa 15 điểm.`
-        },
-        {
-          heading: 'Chương III: CƠ CHẾ ĐIỂM TRỪ VÀ ĐIỀU KHOẢN KHỐNG CHẾ XẾP LOẠI THẤP NHẤT',
-          content: `Điều 6. Xử lý vi phạm nghiêm trọng - Khống chế xếp loại Không hoàn thành nhiệm vụ
-Viên chức thuộc một trong các trường hợp sau đây bị khống chế XẾP LOẠI KHÔNG HOÀN THÀNH NHIỆM VỤ (mức thấp nhất), đồng thời không được xét tặng bất kỳ danh hiệu thi đua nào:
-1. Vi phạm nghiêm trọng về tư tưởng chính trị, phát ngôn sai trái, vi phạm chủ trương của Đảng, pháp luật Nhà nước.
-2. Vi phạm nghiêm trọng đạo đức nhà giáo: Xúc phạm danh dự, nhân phẩm hoặc xâm phạm thân thể học sinh, đồng nghiệp (có kết luận xác minh).
-3. Bị xử lý kỷ luật từ hình thức Khiển trách trở lên trong năm đánh giá theo quy định tại Điều 13 Nghị định 233/2026/NĐ-CP.
-4. Tổ chức hoặc tham gia dạy thêm sai quy định bị cấp có thẩm quyền lập biên bản hoặc kiểm tra kết luận xử lý.
-5. Vi phạm quy chế thi cử, gian lận sửa điểm, lộ đề kiểm tra hoặc đánh giá sai lệch kết quả học sinh mang tính chất nghiêm trọng.
-6. Gây rối, chia rẽ mất đoàn kết nội bộ nghiêm trọng; kích động khiếu kiện trái quy định gây khủng hoảng truyền thông ảnh hưởng uy tín nhà trường.
-
-Điều 7. Quy định các mức điểm trừ chi tiết trong năm học
-1. Kỷ luật lao động:
-- Bỏ tiết giảng dạy không có lý do: Lần 1 trừ 5 điểm/tiết; Lần 2 trừ 10 điểm/tiết. Có 02 biên bản BGH không xét thi đua.
-- Vào trễ hoặc ra sớm (từ 5-15 phút): trừ 1 điểm/lần; Trễ 15-20 phút: trừ 2 điểm/lần; Trễ quá 20 phút: trừ 4 điểm/lần. Trễ từ 5 lần hạ một bậc thi đua.
-- Vắng họp Hội đồng sư phạm, Đại hội, Khai giảng, Tổng kết không lý do: trừ 5 điểm/lần (có phép trừ 1 điểm/lần từ lần 2).
-- Vắng sinh hoạt dưới cờ đầu tuần không phép: trừ 3 điểm/lần (có phép trừ 0.5 điểm/lần từ lần 2).
-- Tự ý đổi tiết, nhờ dạy thay không báo cáo chuyên môn: trừ 3 điểm/người (trừ cả người nhờ và người dạy thay).
-- Vắng bồi dưỡng chính trị hè hoặc tập huấn chuyên môn không phép: trừ 5 điểm/buổi.
-- Nghỉ việc riêng có phép quá 15 ngày trong năm: trừ 10 điểm (khống chế tối đa xếp loại Hoàn thành nhiệm vụ).
-
-2. Quy chế chuyên môn và hồ sơ sổ sách:
-- Cắt xén hoặc dồn ép phân phối chương trình môn học: trừ 5 điểm/lần.
-- Bỏ tiết thực hành, thí nghiệm không có lý do chính đáng: trừ 3 điểm/tiết.
-- Đuổi học sinh ra khỏi lớp sai quy định (để học sinh lang thang bên ngoài/xuống căn tin): trừ 2 điểm/lần.
-- Sử dụng điện thoại vì mục đích cá nhân trong giờ dạy hoặc dự giờ: trừ 2 điểm/lần.
-- Không nộp Kế hoạch bài dạy (Giáo án) lên vnEdu: trừ 5 điểm/lần (nộp trễ trừ 2 điểm/lần).
-- Vào điểm, vào học bạ điện tử chậm tiến độ: trừ 2 điểm/lần.
-- Thiếu cột điểm kiểm tra quá 1 tuần: trừ 3 điểm/lớp (thiếu cột điểm cuối năm không khắc phục: khống chế HTNV).
-- Ra đề kiểm tra sai sót ma trận, đáp án dẫn đến sửa điểm: trừ 3 điểm/lần.
-- Chấm thi sai sót khi chấm kiểm tra lại: Lệch 0.5 - 1.0đ: trừ 2đ/bài; Lệch 1.0 - 2.0đ: trừ 4đ/bài; Lệch > 2.0đ: trừ 6đ/bài.
-- Điểm TBM cuối năm lệch bất thường so với điểm thi HK (> 2.5 điểm): trừ 3 điểm/môn.
-- Không dự giờ đủ số tiết quy định: trừ 2 điểm/tiết thiếu (bỏ thao giảng: trừ 5 điểm/tiết).
-
-3. Công tác chủ nhiệm và nề nếp:
-- Lớp chủ nhiệm có học sinh bỏ học không đi vận động: trừ 5 điểm/học sinh (có biên bản vận động đầy đủ trừ 1 điểm/học sinh).
-- Thu BHYT học sinh dưới 95%: cứ 1% dưới 95% trừ 1 điểm.
-- Học sinh lớp chủ nhiệm đánh nhau, bạo lực học đường hoặc quay clip đăng mạng: trừ 5 điểm/vụ.
-- Không đeo thẻ viên chức, sai trang phục quy định: trừ 1 điểm/lần. Hút thuốc lá trong khuôn viên trường: trừ 5 điểm/lần.`
-        },
-        {
-          heading: 'Chương IV: ĐIỂM THƯỞNG KHUYẾN KHÍCH VÀ NGUYÊN TẮC XẾP LOẠI',
-          content: `Điều 8. Điểm thưởng khuyến khích (Tối đa 20 điểm cộng thêm)
-1. Bồi dưỡng học sinh giỏi văn hóa:
-- Cấp Cụm / Cấp Huyện: Giải Nhất 6đ; Giải Nhì 5đ; Giải Ba 4đ; Giải KK 3đ.
-- Cấp Tỉnh: Giải Nhất 15đ; Giải Nhì 12đ; Giải Ba 10đ; Giải KK 8đ.
-- Cấp Toàn quốc: Dự thi 10đ; Đạt giải 20đ.
-- Sáng tạo KHKT, STEM, Ý tưởng khởi nghiệp: Điểm thưởng tương đương giải HSG văn hóa.
-
-2. Giáo viên dạy giỏi và Sáng kiến kinh nghiệm:
-- Giáo viên dạy giỏi cấp Trường: 5 điểm; Cấp Xã / Cấp Huyện: 10 điểm; Cấp Tỉnh: 15 điểm; Viên phấn vàng: 20 điểm.
-- Sáng kiến kinh nghiệm cấp Cơ sở: 5 điểm; Cấp Tỉnh: 10 điểm.
-
-3. Tuyển sinh lớp 10 và Tốt nghiệp THPT:
-- Giáo viên dạy môn thi tuyển sinh 10 (THCS) có tỷ lệ đỗ đạt chuẩn và cao hơn mặt bằng chung: +10 điểm/môn.
-- Giáo viên trực tiếp ôn thi tốt nghiệp THPT (khối 12) đạt kết quả xuất sắc cao hơn mặt bằng tỉnh: +10 điểm/môn.
-
-4. Hoạt động chủ nhiệm và Nghĩa cử nhân ái:
-- GVCN duy trì 100% sĩ số học sinh cả năm học: +5 điểm.
-- GVCN vận động BHYT đạt 100%: +3 điểm (đạt 96-99%: +2 điểm).
-- Tham gia phong trào Hiến máu nhân đạo (có giấy chứng nhận): +10 điểm/lần.
-- Cứu người gặp nạn, việc làm nghĩa hiệp được biểu dương khen thưởng: +10 điểm/lần.
-- Cán bộ kiêm nhiệm (Tổ trưởng, TKHĐ, Bí thư Đoàn, Tổng phụ trách Đội) hoàn thành xuất sắc: +5 điểm.
-
-Điều 9. Mức xếp loại chất lượng viên chức theo Nghị định 233/2026/NĐ-CP
-1. Hoàn thành xuất sắc nhiệm vụ:
-- Điểm đánh giá từ 90 điểm trở lên.
-- Có giải pháp đổi mới, sáng kiến được áp dụng hiệu quả HOẶC bồi dưỡng học sinh đạt giải cấp tỉnh trở lên HOẶC đạt giáo viên dạy giỏi.
-- Tỷ lệ viên chức xếp loại "Hoàn thành xuất sắc nhiệm vụ" không vượt quá 20% tổng số viên chức được xếp loại "Hoàn thành tốt nhiệm vụ" của trường.
-
-2. Hoàn thành tốt nhiệm vụ:
-- Điểm đánh giá đạt từ 70 điểm đến dưới 90 điểm.
-- Các tiêu chí chuyên môn hoàn thành đúng tiến độ, không vi phạm kỷ luật.
-
-3. Hoàn thành nhiệm vụ:
-- Điểm đánh giá đạt từ 50 điểm đến dưới 70 điểm.
-
-4. Không hoàn thành nhiệm vụ:
-- Điểm đánh giá đạt dưới 50 điểm HOẶC thuộc các trường hợp vi phạm nghiêm trọng quy định tại Điều 6 của Quy chế này.`
-        },
-        {
-          heading: 'Chương V: TỔ CHỨC THỰC HIỆN',
-          content: `Điều 10. Trách nhiệm của các bộ phận và cá nhân
-1. Ban Giám hiệu:
-- Thầy Hiệu trưởng Lê Thanh Cường chỉ đạo toàn diện công tác thi đua, khen thưởng và ký quyết định công nhận kết quả.
-- Thầy Phó Hiệu trưởng Nguyễn Minh Trí trực tiếp điều hành công tác chấm điểm, thẩm định số liệu chuyên môn, điểm thi, vnEdu và chỉ đạo hoạt động thi đua tại cả 3 điểm trường.
-- Cán bộ phụ trách Điểm Trường Tân Kiều giám sát chặt chẽ nền nếp kỷ luật lao động và việc thực hiện phân công tại điểm trường xa 11km.
-
-2. Thư ký Hội đồng và Ban Thi đua:
-- Định kỳ tổng hợp số liệu vắng họp, trễ giờ, biên bản kiểm tra chuyên môn và kết quả thi đua tuần/tháng từ các bộ phận để công khai minh bạch.
-- Hướng dẫn viên chức tự chấm điểm và tổ chức họp tổ bình xét công khai trước khi trình Hội đồng Thi đua - Khen thưởng nhà trường.
-
-3. Toàn thể Cán bộ, Giáo viên, Nhân viên:
-- Nghiêm túc quán triệt và thực hiện đầy đủ các điều khoản của Quy chế này; phát huy tinh thần đoàn kết, đổi mới sáng tạo, quyết tâm xây dựng Trường THCS và THPT Đốc Binh Kiều trở thành điểm sáng giáo dục của tỉnh Đồng Tháp./.`
-        }
-      ],
-      recipients: [
-        'Sở GDĐT Đồng Tháp (để báo cáo);',
-        'Chi bộ Đảng, Ban Giám hiệu (để chỉ đạo);',
-        'Công đoàn cơ sở, Đoàn TN, Đội TNTP (để phối hợp);',
-        '08 Tổ chuyên môn và Tổ Văn phòng (để thực hiện);',
-        'Toàn thể CB-GV-NV (3 điểm trường);',
-        'Lưu: VT, HĐTĐ.'
-      ]
-    };
+  const handleDownloadDocxDirectly = async () => {
+    setIsExportingDocx(true);
+    try {
+      const doc = createOfficialDocumentObject();
+      await exportDocumentToDocx(doc);
+    } catch (err) {
+      console.error('Lỗi khi tải file Word:', err);
+    } finally {
+      setIsExportingDocx(false);
+    }
   };
 
   const handleOpenDocInEditor = () => {
@@ -411,6 +230,77 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(doc),
     }).catch(e => console.error(e));
+  };
+
+  const renderOfficialSectionContent = (content: string) => {
+    const lines = content.split('\n');
+    const elements: React.ReactNode[] = [];
+    let tableLines: string[] = [];
+
+    const flushTable = (key: number) => {
+      if (tableLines.length === 0) return null;
+      const cleanLines = tableLines.filter(tl => !tl.includes('---'));
+      const rows = cleanLines.map(tl => tl.split('|').map(c => c.trim()).slice(1, -1));
+      tableLines = [];
+      if (rows.length === 0) return null;
+      const header = rows[0];
+      const dataRows = rows.slice(1);
+      return (
+        <div key={`table-${key}`} className="overflow-x-auto my-3 rounded-lg border border-slate-300 shadow-xs">
+          <table className="w-full text-xs text-left border-collapse">
+            <thead className="bg-slate-100 text-slate-900 font-bold border-b border-slate-300">
+              <tr>
+                {header.map((col, cIdx) => (
+                  <th key={cIdx} className="p-2.5 border border-slate-300 text-center font-bold bg-slate-100">{col}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {dataRows.map((r, rIdx) => (
+                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}>
+                  {r.map((cell, cIdx) => {
+                    const isCenter = cIdx === 0 || cell.length <= 6 || (/^\d/.test(cell) && cell.length < 15);
+                    return (
+                      <td key={cIdx} className={`p-2.5 border border-slate-300 align-top whitespace-pre-line text-slate-800 ${isCenter ? 'text-center font-medium' : 'text-left'}`}>
+                        {cell}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    };
+
+    let blockIdx = 0;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = line.trim();
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        tableLines.push(trimmed);
+      } else {
+        if (tableLines.length > 0) {
+          const t = flushTable(blockIdx++);
+          if (t) elements.push(t);
+        }
+        if (trimmed.length > 0) {
+          const isBoldHeading = trimmed.startsWith('**') && trimmed.endsWith('**');
+          const isNumbered = /^\d+\.\s/.test(trimmed) || trimmed.startsWith('Điều ');
+          elements.push(
+            <p key={`p-${blockIdx++}`} className={`leading-relaxed text-slate-800 my-1.5 ${isBoldHeading || isNumbered ? 'font-semibold text-slate-900' : ''}`}>
+              {trimmed}
+            </p>
+          );
+        }
+      }
+    }
+    if (tableLines.length > 0) {
+      const t = flushTable(blockIdx++);
+      if (t) elements.push(t);
+    }
+    return elements;
   };
 
   return (
@@ -446,20 +336,32 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
+            <button
+              onClick={handleDownloadDocxDirectly}
+              disabled={isExportingDocx}
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg shadow-emerald-600/30 transition-all hover:scale-[1.02] cursor-pointer disabled:opacity-70"
+            >
+              {isExportingDocx ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Download className="w-4 h-4" />
+              )}
+              <span>{isExportingDocx ? 'Đang tạo file Word...' : 'Tải File Word (.docx) Đầy Đủ'}</span>
+            </button>
             <button
               onClick={handleOpenDocInEditor}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition-all hover:scale-[1.02]"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow transition-all hover:scale-[1.01]"
             >
               <FileText className="w-4 h-4" />
-              Mở Văn Bản Chuẩn & Xuất Word
+              Mở Xem Trên Khung A4
             </button>
             <button
               onClick={handleSaveDocToArchive}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-xs border border-white/20 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-medium text-xs border border-white/20 transition-all"
             >
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              Lưu Vào Kho Văn Bản Trường
+              Lưu Vào Kho Văn Bản
             </button>
           </div>
         </div>
@@ -1136,19 +1038,31 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
           <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <h3 className="text-sm font-bold text-slate-800">
-                Toàn Văn Văn Bản Hành Chính (Chuẩn Nghị Định 30/2020/NĐ-CP)
+                Toàn Văn Văn Bản Hành Chính (Chuẩn Nghị Định 30/2020/NĐ-CP & Thang Điểm 100)
               </h3>
               <p className="text-xs text-slate-500">
-                Ban hành kèm Quyết định số 15/QĐ-THCS&THPTĐBK của Hiệu trưởng Trường THCS và THPT Đốc Binh Kiều.
+                Ban hành kèm Quyết định số 15/QĐ-THCS&THPTĐBK (Toàn văn 9 Chương, 18 Điều, 3 Phụ Lục chi tiết đồng bộ 100% với file Word .docx).
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <button
+                onClick={handleDownloadDocxDirectly}
+                disabled={isExportingDocx}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all disabled:opacity-70 cursor-pointer"
+              >
+                {isExportingDocx ? (
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                ) : (
+                  <Download className="w-3.5 h-3.5" />
+                )}
+                <span>{isExportingDocx ? 'Đang xuất Word...' : 'Tải File Word (.docx) Đầy Đủ'}</span>
+              </button>
               <button
                 onClick={handleOpenDocInEditor}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
               >
                 <FileText className="w-3.5 h-3.5" />
-                Mở trong Trình soạn thảo & Xuất Word (.docx)
+                Mở Trong Trình Soạn Thảo (A4)
               </button>
             </div>
           </div>
@@ -1158,25 +1072,24 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
             {/* Header: Quốc hiệu & Cơ quan ban hành */}
             <div className="grid grid-cols-2 gap-4 pb-4 border-b border-slate-200 text-center text-xs">
               <div>
-                <div className="font-semibold text-slate-700">SỞ GIÁO DỤC VÀ ĐÀO TẠO ĐỒNG THÁP</div>
+                <div className="font-semibold text-slate-700">{OFFICIAL_EMULATION_DOCUMENT.issuingAuthorityTop}</div>
                 <div className="font-bold text-slate-900 uppercase">TRƯỜNG THCS VÀ THPT ĐỐC BINH KIỀU</div>
-                <div className="font-mono text-slate-600 mt-1">Số: 15/QĐ-THCS&THPTĐBK</div>
+                <div className="font-mono text-slate-600 mt-1">{OFFICIAL_EMULATION_DOCUMENT.documentNumber}</div>
               </div>
               <div>
                 <div className="font-bold text-slate-900">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</div>
                 <div className="font-bold text-slate-900">Độc lập - Tự do - Hạnh phúc</div>
-                <div className="italic text-slate-600 mt-1">Tháp Mười, ngày 28 tháng 9 năm 2026</div>
+                <div className="italic text-slate-600 mt-1">{OFFICIAL_EMULATION_DOCUMENT.signDate}</div>
               </div>
             </div>
 
             {/* Title */}
             <div className="text-center space-y-2 py-2">
               <h2 className="text-base sm:text-lg font-black uppercase text-slate-950 tracking-wide">
-                QUYẾT ĐỊNH
+                {OFFICIAL_EMULATION_DOCUMENT.title}
               </h2>
               <p className="text-xs sm:text-sm font-bold text-slate-800">
-                Ban hành Quy chế thi đua, khen thưởng và bảng điểm đánh giá xếp loại viên chức<br />
-                năm học 2026 - 2027 theo chuẩn Nghị định số 233/2026/NĐ-CP
+                {OFFICIAL_EMULATION_DOCUMENT.subTitle}
               </p>
               <div className="font-bold text-xs uppercase pt-2 text-slate-700">
                 HIỆU TRƯỞNG TRƯỜNG THCS VÀ THPT ĐỐC BINH KIỀU
@@ -1185,29 +1098,32 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
 
             {/* Legal bases */}
             <div className="text-xs space-y-1.5 italic text-slate-700 text-justify">
-              <p>Căn cứ Luật Viên chức ngày 15 tháng 11 năm 2010 và Luật sửa đổi, bổ sung một số điều của Luật Cán bộ, công chức và Luật Viên chức ngày 25 tháng 11 năm 2019;</p>
-              <p>Căn cứ Luật Thi đua, khen thưởng ngày 15 tháng 6 năm 2022 và Nghị định số 98/2023/NĐ-CP của Chính phủ;</p>
-              <p>Căn cứ Nghị định số 233/2026/NĐ-CP ngày 26 tháng 6 năm 2026 của Chính phủ quy định về đánh giá, xếp loại chất lượng đối với đơn vị sự nghiệp công lập và viên chức;</p>
-              <p>Căn cứ Quyết định số 2606/QĐ-UBND ngày 13 tháng 8 năm 2026 của Ủy ban nhân dân tỉnh Đồng Tháp về việc sáp nhập Trường THCS Đốc Binh Kiều, Trường THCS Tân Kiều và Trường THPT Đốc Binh Kiều thành Trường THCS và THPT Đốc Binh Kiều;</p>
-              <p>Theo đề nghị của Hội đồng Thi đua - Khen thưởng Trường THCS và THPT Đốc Binh Kiều và Nghị quyết Hội nghị Cán bộ, Viên chức năm học 2026 - 2027.</p>
+              {OFFICIAL_EMULATION_DOCUMENT.legalBases?.map((base, idx) => (
+                <p key={idx}>{base}</p>
+              ))}
             </div>
 
-            {/* Decision body */}
-            <div className="text-xs space-y-3 pt-2 text-justify">
-              <div className="text-center font-bold uppercase text-slate-900 pb-1">QUYẾT ĐỊNH:</div>
-              <p><strong>Điều 1.</strong> Ban hành kèm theo Quyết định này "Quy chế thi đua, khen thưởng và biểu điểm đánh giá xếp loại viên chức năm học 2026 - 2027" của Trường THCS và THPT Đốc Binh Kiều.</p>
-              <p><strong>Điều 2.</strong> Quy chế này là văn bản chính thức áp dụng thống nhất cho toàn thể cán bộ quản lý, giáo viên, nhân viên thuộc cả 3 điểm trường (Điểm chính cấp THPT, Điểm Trường Đốc Binh Kiều và Điểm Trường Tân Kiều). Bảng điểm thi đua được thực hiện theo nguyên tắc công khai, minh bạch, lấy hiệu quả công việc và sản phẩm sư phạm làm thước đo chủ yếu.</p>
-              <p><strong>Điều 3.</strong> Các Phó Hiệu trưởng, Chủ tịch Công đoàn, Bí thư Đoàn trường, Tổng phụ trách Đội, các Tổ trưởng chuyên môn, Tổ trưởng văn phòng và toàn thể viên chức nhà trường chịu trách nhiệm thi hành Quyết định này kể từ ngày ký./.</p>
+            {/* All Sections & Appendices */}
+            <div className="space-y-8 pt-4 border-t-2 border-slate-300">
+              {OFFICIAL_EMULATION_DOCUMENT.sections.map((sec, sIdx) => (
+                <div key={sIdx} className="space-y-3 pt-6 border-t border-slate-200 first:border-t-0 first:pt-0">
+                  <h3 className="font-black uppercase text-slate-950 text-sm tracking-wide bg-slate-100 p-2.5 rounded-lg border border-slate-300 text-center">
+                    {sec.heading}
+                  </h3>
+                  <div className="text-xs space-y-2 text-justify">
+                    {renderOfficialSectionContent(sec.content)}
+                  </div>
+                </div>
+              ))}
             </div>
 
-            {/* Signatures */}
-            <div className="grid grid-cols-2 gap-4 pt-6 text-xs">
+            {/* Signatures & Recipients Footer */}
+            <div className="grid grid-cols-2 gap-4 pt-8 border-t-2 border-slate-300 text-xs">
               <div className="space-y-1 text-2xs text-slate-600">
                 <div className="font-bold uppercase text-slate-800">Nơi nhận:</div>
-                <div>- Sở GDĐT Đồng Tháp (để b/c);</div>
-                <div>- BGH, Công đoàn, Đoàn - Đội;</div>
-                <div>- 08 Tổ chuyên môn & VP;</div>
-                <div>- Lưu: VT, HĐTĐ.</div>
+                {OFFICIAL_EMULATION_DOCUMENT.recipients?.map((rec, rIdx) => (
+                  <div key={rIdx}>- {rec}</div>
+                ))}
               </div>
               <div className="text-center space-y-12">
                 <div>
@@ -1215,50 +1131,7 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
                   <div className="text-2xs text-slate-500">(Ký số, đóng dấu)</div>
                 </div>
                 <div className="font-bold text-slate-950 uppercase text-sm">
-                  Lê Thanh Cường
-                </div>
-              </div>
-            </div>
-
-            {/* Attached Regulation */}
-            <div className="pt-8 border-t-2 border-slate-400 space-y-6">
-              <div className="text-center space-y-1">
-                <h3 className="text-sm font-bold uppercase text-slate-700">
-                  QUY CHẾ THI ĐUA, KHEN THƯỞNG VÀ BIỂU ĐIỂM ĐÁNH GIÁ VIÊN CHỨC
-                </h3>
-                <p className="text-xs italic text-slate-600">
-                  (Ban hành kèm theo Quyết định số 15/QĐ-THCS&THPTĐBK ngày 28 tháng 9 năm 2026)
-                </p>
-              </div>
-
-              {/* Sections of regulation */}
-              <div className="space-y-4 text-xs text-justify">
-                <div>
-                  <h4 className="font-bold uppercase text-slate-900 pb-1">Chương I: QUY ĐỊNH CHUNG</h4>
-                  <p className="leading-relaxed">
-                    Quy chế xác định mục tiêu xây dựng môi trường sư phạm kỷ cương, tình thương, trách nhiệm; khích lệ phong trào thi đua "Dạy tốt - Học tốt"; nâng cao chất lượng giáo dục toàn diện tại cả 3 điểm trường (đặc biệt hỗ trợ tạo điều kiện cho điểm Tân Kiều cách 11km). Toàn bộ quá trình đánh giá tuân thủ thang điểm 100 theo Nghị định 233/2026/NĐ-CP của Chính phủ.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-bold uppercase text-slate-900 pb-1">Chương II: KHUNG TIÊU CHUẨN ĐÁNH GIÁ 100 ĐIỂM</h4>
-                  <p className="leading-relaxed">
-                    Chia làm 2 nhóm tiêu chí: Khung tiêu chí chung (tối đa 30 điểm) gồm Chính trị tư tưởng (10đ), Đạo đức lối sống (10đ), Tác phong kỷ luật lề lối làm việc (10đ); Khung tiêu chí thực hiện nhiệm vụ chuyên môn và giáo dục (tối đa 70 điểm) gồm Tiến độ PPCT (20đ), Hồ sơ sổ sách vnEdu (15đ), Chất lượng kiểm tra không lệch điểm (15đ), Chủ nhiệm duy trì sĩ số (10đ), Dự giờ thao giảng (10đ).
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-bold uppercase text-slate-900 pb-1">Chương III: XỬ LÝ VI PHẠM & ĐIỀU KHOẢN KHỐNG CHẾ</h4>
-                  <p className="leading-relaxed">
-                    <strong>Điều 6 (Quy tắc cứng):</strong> Viên chức vi phạm nghiêm trọng về tư tưởng chính trị, đạo đức nhà giáo, bị kỷ luật từ khiển trách trở lên, vi phạm dạy thêm sai quy định bị lập biên bản, hoặc gian lận thi cử mang tính chất nghiêm trọng đều bị xếp loại <strong>KHÔNG HOÀN THÀNH NHIỆM VỤ</strong> (xếp loại thấp nhất), đồng thời không được xét bất kỳ danh hiệu thi đua nào.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-bold uppercase text-slate-900 pb-1">Chương IV: ĐIỂM THƯỞNG & XẾP LOẠI</h4>
-                  <p className="leading-relaxed">
-                    Điểm thưởng khuyến khích cộng thêm tối đa 20 điểm. Mức xếp loại: Hoàn thành xuất sắc nhiệm vụ (từ 90 điểm trở lên, khống chế tỷ lệ không quá 20% số viên chức Hoàn thành tốt); Hoàn thành tốt nhiệm vụ (từ 70 đến dưới 90 điểm); Hoàn thành nhiệm vụ (từ 50 đến dưới 70 điểm); Không hoàn thành nhiệm vụ (dưới 50 điểm hoặc vi phạm nghiêm trọng).
-                  </p>
+                  {OFFICIAL_EMULATION_DOCUMENT.signerName}
                 </div>
               </div>
             </div>
