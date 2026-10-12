@@ -29,11 +29,16 @@ import {
   Printer,
   FileCheck,
   AlertOctagon,
-  Scale
+  Scale,
+  FileQuestion,
+  GraduationCap,
+  Briefcase
 } from 'lucide-react';
 import { 
   EMULATION_CRITERIA_LIST, 
   STAFF_EMULATION_CRITERIA, 
+  LEADER_EMULATION_CRITERIA,
+  EVIDENCE_GUIDELINES,
   PENALTY_RULES, 
   BONUS_RULES, 
   RATING_STANDARDS, 
@@ -53,8 +58,8 @@ export const EmulationRulesTab: React.FC<EmulationRulesTabProps> = ({
   onOpenInEditor,
   onSaveToArchive,
 }) => {
-  const [activeSubTab, setActiveSubTab] = useState<'criteria' | 'calculator' | 'regulation' | 'matrix'>('criteria');
-  const [criteriaType, setCriteriaType] = useState<'teacher' | 'staff'>('teacher');
+  const [activeSubTab, setActiveSubTab] = useState<'criteria' | 'calculator' | 'regulation' | 'matrix' | 'evidence' | 'qna'>('criteria');
+  const [criteriaType, setCriteriaType] = useState<'teacher' | 'leader' | 'staff'>('teacher');
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'common' | 'duty' | 'penalty' | 'bonus'>('all');
 
@@ -74,7 +79,12 @@ export const EmulationRulesTab: React.FC<EmulationRulesTabProps> = ({
 
   // Search filtered criteria
   const filteredCriteria = useMemo(() => {
-    const list = criteriaType === 'teacher' ? EMULATION_CRITERIA_LIST : STAFF_EMULATION_CRITERIA;
+    let list: EmulationCriterion[] = EMULATION_CRITERIA_LIST;
+    if (criteriaType === 'leader') {
+      list = LEADER_EMULATION_CRITERIA;
+    } else if (criteriaType === 'staff') {
+      list = STAFF_EMULATION_CRITERIA;
+    }
     return list.filter(item => {
       const matchSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -504,6 +514,30 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
           <Scale className="w-4 h-4" />
           4. Ma Trận Đối Chiếu (3 Trường & NĐ 233)
         </button>
+
+        <button
+          onClick={() => setActiveSubTab('evidence')}
+          className={`flex-1 min-w-[150px] py-2.5 px-4 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+            activeSubTab === 'evidence'
+              ? 'bg-amber-600 text-white shadow-sm'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+          }`}
+        >
+          <FileQuestion className="w-4 h-4" />
+          5. Hướng Dẫn Minh Chứng (Tránh Cảm Tính)
+        </button>
+
+        <button
+          onClick={() => setActiveSubTab('qna')}
+          className={`flex-1 min-w-[150px] py-2.5 px-4 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-2 ${
+            activeSubTab === 'qna'
+              ? 'bg-teal-600 text-white shadow-sm'
+              : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+          }`}
+        >
+          <HelpCircle className="w-4 h-4" />
+          6. Giải Đáp 7 Vấn Đề (BGH Lưu Ý)
+        </button>
       </div>
 
       {/* --- SUBTAB 1: BIỂU ĐIỂM CHI TIẾT --- */}
@@ -513,25 +547,38 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
           <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-xs font-bold text-slate-700">Đối tượng:</span>
-              <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-1">
+              <div className="inline-flex rounded-lg border border-slate-200 bg-slate-50 p-1 flex-wrap gap-1">
                 <button
                   onClick={() => setCriteriaType('teacher')}
-                  className={`px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                  className={`px-3 py-1 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
                     criteriaType === 'teacher'
                       ? 'bg-blue-600 text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
-                  Giáo viên (102 người)
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  Giáo viên giảng dạy (102 người)
+                </button>
+                <button
+                  onClick={() => setCriteriaType('leader')}
+                  className={`px-3 py-1 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                    criteriaType === 'leader'
+                      ? 'bg-indigo-600 text-white shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <Briefcase className="w-3.5 h-3.5" />
+                  Tổ trưởng / Tổ phó / Lãnh đạo (CBQL)
                 </button>
                 <button
                   onClick={() => setCriteriaType('staff')}
-                  className={`px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                  className={`px-3 py-1 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
                     criteriaType === 'staff'
                       ? 'bg-blue-600 text-white shadow-xs'
                       : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
+                  <Users className="w-3.5 h-3.5" />
                   Nhân viên Văn phòng (14 người)
                 </button>
               </div>
@@ -567,7 +614,11 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
             <div className="flex items-center justify-between">
               <h2 className="text-base font-extrabold text-slate-800 flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block" />
-                {criteriaType === 'teacher' ? 'BẢNG TIÊU CHÍ ĐÁNH GIÁ GIÁO VIÊN' : 'BẢNG TIÊU CHÍ ĐÁNH GIÁ NHÂN VIÊN'} (THANG ĐIỂM 100 CHUẨN NĐ 233)
+                {criteriaType === 'teacher' 
+                  ? 'BẢNG TIÊU CHÍ ĐÁNH GIÁ GIÁO VIÊN GIẢNG DẠY' 
+                  : criteriaType === 'leader'
+                  ? 'BẢNG TIÊU CHÍ ĐÁNH GIÁ TỔ TRƯỞNG, TỔ PHÓ & CÁN BỘ QUẢN LÝ'
+                  : 'BẢNG TIÊU CHÍ ĐÁNH GIÁ NHÂN VIÊN VĂN PHÒNG'} (THANG ĐIỂM 100 CHUẨN NĐ 233)
               </h2>
               <span className="text-xs font-medium text-slate-500">
                 Hiển thị {filteredCriteria.length} tiêu chí
@@ -1284,6 +1335,348 @@ Viên chức thuộc một trong các trường hợp sau đây bị khống ch�
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* --- SUBTAB 5: HƯỚNG DẪN MINH CHỨNG ĐÁNH GIÁ (TRÁNH CẢM TÍNH) --- */}
+      {activeSubTab === 'evidence' && (
+        <div className="space-y-6">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4.5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-start gap-3">
+              <div className="p-2.5 bg-amber-600 text-white rounded-lg shrink-0 mt-0.5">
+                <FileQuestion className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="text-sm md:text-base font-bold text-amber-950">
+                  HƯỚNG DẪN XÁC ĐỊNH MINH CHỨNG ĐÁNH GIÁ THI ĐUA (CÂU HỎI SỐ 7)
+                </h3>
+                <p className="text-xs text-amber-800 mt-1 leading-relaxed">
+                  Giải quyết triệt để vấn đề: <em>"Lấy gì làm căn cứ để chấm cho thầy cô được 5.0 điểm Đổi mới PPDH, hồ sơ, sĩ số cuối năm mà không bị cảm tính?"</em> - Mọi điểm số đều gắn liền với sản phẩm và nguồn minh chứng lưu trữ cụ thể.
+                </p>
+              </div>
+            </div>
+            <span className="shrink-0 text-xs font-bold px-3 py-1.5 rounded-lg bg-amber-200/80 text-amber-900 border border-amber-300">
+              Minh bạch 100%
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {EVIDENCE_GUIDELINES.map((eg, idx) => (
+              <div
+                key={eg.id}
+                className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3 hover:border-amber-400 transition-all"
+              >
+                <div className="flex items-start justify-between gap-2 pb-2 border-b border-slate-100">
+                  <div className="space-y-0.5">
+                    <span className="text-2xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                      Tiêu chí #{idx + 1}
+                    </span>
+                    <h4 className="text-sm font-bold text-slate-900 pt-1 leading-snug">
+                      {eg.criterionName}
+                    </h4>
+                  </div>
+                  <span className="text-xs font-black text-amber-700 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200 shrink-0">
+                    {eg.maxScore} điểm
+                  </span>
+                </div>
+
+                <div className="space-y-2 text-xs">
+                  <div>
+                    <span className="font-bold text-slate-700">Loại hình minh chứng:</span>
+                    <p className="text-slate-900 font-medium mt-0.5 bg-slate-50 p-2 rounded border border-slate-100">
+                      {eg.evidenceType}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-2xs">
+                    <div className="bg-blue-50/70 p-2 rounded border border-blue-100">
+                      <span className="font-bold text-blue-900 block">Nơi lưu trữ minh chứng:</span>
+                      <span className="text-slate-700">{eg.storageLocation}</span>
+                    </div>
+                    <div className="bg-emerald-50/70 p-2 rounded border border-emerald-100">
+                      <span className="font-bold text-emerald-900 block">Phương thức thẩm định:</span>
+                      <span className="text-slate-700">{eg.verificationMethod}</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-1 space-y-1.5">
+                    <span className="font-bold text-slate-800 block text-2xs uppercase tracking-wide">
+                      Hướng dẫn chi tiết cách chấm & kiểm tra chéo:
+                    </span>
+                    <ul className="space-y-1">
+                      {eg.detailedGuide.map((step, sIdx) => (
+                        <li key={sIdx} className="flex items-start gap-1.5 text-xs text-slate-600 leading-relaxed">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{step}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* --- SUBTAB 6: GIẢI ĐÁP TOÀN BỘ 7 CÂU HỎI QUAN TRỌNG CỦA BGH --- */}
+      {activeSubTab === 'qna' && (
+        <div className="space-y-5">
+          <div className="bg-teal-50 border border-teal-200 rounded-xl p-5 flex items-start gap-3">
+            <div className="p-2.5 bg-teal-600 text-white rounded-lg shrink-0 mt-0.5">
+              <HelpCircle className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-base font-bold text-teal-950">
+                BẢN GIẢI TRÌNH & HƯỚNG DẪN 7 NỘI DUNG TRỌNG TÂM CỦA BAN GIÁM HIỆU
+              </h3>
+              <p className="text-xs text-teal-800 mt-1 leading-relaxed">
+                Căn cứ Nghị định 233/NĐ-CP, Nghị định 368/2026/NĐ-CP, Luật Viên chức 129/2025/QH15 và thực tiễn sáp nhập 3 trường (THPT Đốc Binh Kiều, THCS Đốc Binh Kiều, THCS Tân Kiều).
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            {/* Câu 1 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  1
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Phân nhóm đánh giá 70 điểm chuyên môn (Lãnh đạo/Tổ trưởng/Tổ phó - Giáo viên - Nhân viên)
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed">
+                <p>
+                  <strong>Thầy/cô nhớ hoàn toàn chính xác!</strong> Theo Nghị định 233, Nghị định 368/2026/NĐ-CP và Luật Viên chức 129/2025/QH15, đánh giá viên chức bắt buộc phải gắn liền với bản mô tả vị trí việc làm. Khung 100 điểm được phân chia thống nhất: <strong>30 điểm Tiêu chí chung</strong> và <strong>70 điểm Tiêu chí chuyên môn</strong>.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1">
+                  <div className="bg-indigo-50/80 p-3 rounded-lg border border-indigo-200">
+                    <span className="font-bold text-indigo-900 block mb-1">1. Lãnh đạo, Tổ trưởng, Tổ phó (70đ)</span>
+                    <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                      <li>Chuyên môn/giảng dạy cá nhân: 35đ</li>
+                      <li>Năng lực quản lý điều hành tổ: 25đ</li>
+                      <li>Xếp loại tập thể tổ/đoàn thể: 10đ</li>
+                    </ul>
+                  </div>
+                  <div className="bg-blue-50/80 p-3 rounded-lg border border-blue-200">
+                    <span className="font-bold text-blue-900 block mb-1">2. Giáo viên trực tiếp dạy (70đ)</span>
+                    <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                      <li>QCCM, tiến độ PPCT, HSSS: 30đ</li>
+                      <li>Chất lượng bộ môn & chuẩn điểm: 25đ</li>
+                      <li>Đổi mới PPDH, SHCM theo NCBH: 15đ</li>
+                    </ul>
+                  </div>
+                  <div className="bg-emerald-50/80 p-3 rounded-lg border border-emerald-200">
+                    <span className="font-bold text-emerald-900 block mb-1">3. Nhân viên Văn phòng (70đ)</span>
+                    <ul className="list-disc pl-4 space-y-1 text-slate-700">
+                      <li>Kế hoạch công tác vị trí việc làm: 20đ</li>
+                      <li>Hồ sơ nghiệp vụ chuyên môn ngành dọc: 20đ</li>
+                      <li>Tiến độ, độ chính xác phục vụ: 20đ</li>
+                      <li>Bồi dưỡng & sáng kiến cải tiến: 10đ</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Câu 2 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  2
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Xếp hạng thi đua GVCN: Nên đưa vào xếp loại viên chức hay để riêng? Phương án tối ưu
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed">
+                <p>
+                  <strong>Phương án tối ưu:</strong> Tách bạch giữa <em>Trách nhiệm quản lý lớp (thuộc thang điểm 70)</em> và <em>Xếp hạng thi đua phong trào toàn trường (thuộc Điểm thưởng & Danh hiệu thi đua)</em>.
+                </p>
+                <div className="bg-white p-3 rounded border border-slate-200 space-y-1">
+                  <p><strong>- Trong 70 điểm chuyên môn chuẩn:</strong> Dành 15 điểm định lượng cho công tác hoàn thành trách nhiệm chủ nhiệm (duy trì sĩ số, cập nhật vnEdu, liên lạc cha mẹ học sinh, sổ chủ nhiệm). Làm tròn trách nhiệm thì hưởng trọn điểm.</p>
+                  <p><strong>- Xếp hạng thi đua GVCN tuần/học kỳ (1 đến 13):</strong> Dùng làm căn cứ tính <strong>Điểm Thưởng (Cộng điểm)</strong> từ +1.0đ đến +3.0đ và là điều kiện tiên quyết để xét danh hiệu <strong>Chiến sĩ thi đua cơ sở</strong> và <strong>Giáo viên chủ nhiệm giỏi</strong>.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Câu 3 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  3
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Học sinh vi phạm nhiều hoặc lớp không tham gia phong trào thì GVCN bị xử lý ra sao?
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed">
+                <ul className="space-y-1.5 list-disc pl-4">
+                  <li><strong>Học sinh bị kỷ luật cấp trường:</strong> Học sinh bị khiển trách cấp trường: trừ <strong>2.0đ/HS</strong>; Học sinh bị cảnh cáo hoặc đình chỉ học tập: trừ <strong>5.0đ/HS</strong>.</li>
+                  <li><strong>Lớp có từ 02 học sinh trở lên bị xử lý kỷ luật tạm dừng học tập:</strong> GVCN <strong>không được xếp loại Hoàn thành xuất sắc nhiệm vụ</strong>.</li>
+                  <li><strong>Lớp không tham gia phong trào bắt buộc do trường/Đoàn/Đội phát động:</strong> Trừ <strong>3.0 điểm/phong trào</strong>.</li>
+                  <li><strong>Lớp bỏ lao động theo kế hoạch phân công:</strong> Trừ <strong>5.0 điểm/buổi</strong>.</li>
+                  <li><em>Điều kiện miễn trừ/giảm nhẹ:</em> Nếu GVCN có sổ theo dõi, đã lập biên bản làm việc với phụ huynh từ 02 lần trở lên và báo cáo kịp thời với BGH thì được giảm 50% mức trừ điểm.</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Câu 4 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  4
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Cơ chế công bằng: GV chủ nhiệm nhiều việc, dễ bị trừ điểm vs GV không chủ nhiệm
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed">
+                <p>
+                  <strong>Giải pháp 3 lớp bảo vệ công bằng tuyệt đối:</strong>
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-2 pt-1">
+                  <div className="p-2.5 bg-amber-50 rounded border border-amber-200">
+                    <span className="font-bold text-amber-950 block">1. Tiêu chí chuyên môn thay thế (15đ)</span>
+                    <p className="mt-1 text-slate-600">GV không làm chủ nhiệm phải thực hiện: Phụ đạo HS yếu kém (5đ); Ban coi/chấm thi, làm ĐDDH (5đ); Quản sinh, hỗ trợ phong trào trường (5đ). Không tham gia bị trừ 5 - 10đ.</p>
+                  </div>
+                  <div className="p-2.5 bg-rose-50 rounded border border-rose-200">
+                    <span className="font-bold text-rose-950 block">2. Khống chế trần xếp loại (Cap Policy)</span>
+                    <p className="mt-1 text-slate-600">GV chỉ dạy thuần túy không kiêm nhiệm chủ nhiệm hoặc đoàn thể thì cuối năm <strong>chỉ xếp tối đa Hoàn thành tốt nhiệm vụ (Loại B)</strong>, không xét Xuất sắc (trừ khi đạt GVDG tỉnh hoặc giải QG).</p>
+                  </div>
+                  <div className="p-2.5 bg-emerald-50 rounded border border-emerald-200">
+                    <span className="font-bold text-emerald-950 block">3. Điểm cộng độc quyền cho GVCN</span>
+                    <p className="mt-1 text-slate-600">Duy trì sĩ số 100%: <strong>+5.0đ</strong>; BHYT đạt 100%: <strong>+5.0đ</strong>; Lớp đạt Top 1, 2, 3 trường: <strong>+1.5đ đến +3.0đ</strong>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Câu 5 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  5
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Kết quả chuyên môn: Tỷ lệ thế nào là cao/thấp? Ngưỡng đánh giá định lượng rõ ràng
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="p-2.5 bg-white rounded border border-slate-200">
+                    <span className="font-bold text-blue-900 block mb-1">Môn Toán, Ngữ văn, Tiếng Anh:</span>
+                    <ul className="space-y-1">
+                      <li>• Tỷ lệ Đạt &gt;= 95%: Đạt chuẩn (trọn điểm 10/10).</li>
+                      <li>• Tỷ lệ Đạt 85% - 94.9%: Trừ 2.0 điểm.</li>
+                      <li>• Tỷ lệ Đạt 70% - 84.9%: Trừ 5.0 điểm.</li>
+                      <li>• Tỷ lệ Đạt &lt; 70%: <strong>Quá thấp / Yếu</strong>, trừ 10.0 điểm và không xếp loại Xuất sắc.</li>
+                    </ul>
+                  </div>
+                  <div className="p-2.5 bg-white rounded border border-slate-200">
+                    <span className="font-bold text-emerald-900 block mb-1">Các môn học còn lại (KHTN, Tin, Sử, Địa...):</span>
+                    <ul className="space-y-1">
+                      <li>• Tỷ lệ Đạt &gt;= 98%: Đạt chuẩn (trọn điểm).</li>
+                      <li>• Tỷ lệ Đạt 90% - 97.9%: Trừ 2.0 điểm.</li>
+                      <li>• Tỷ lệ Đạt &lt; 90%: Trừ 5.0 điểm.</li>
+                      <li>• Điểm liệt (&lt; 2.0đ) định kỳ &gt; 5%: Trừ 1.0đ/lớp/lần.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="p-2.5 bg-amber-50 rounded border border-amber-200">
+                  <span className="font-bold text-amber-950 block">Ngưỡng thi Tuyển sinh 10 & Tốt nghiệp THPT:</span>
+                  <p className="mt-0.5">Điểm môn thi đạt bằng hoặc cao hơn trung bình Tỉnh/Cụm: <strong>Cộng 10.0 điểm</strong>; Thấp hơn mặt bằng tỉnh trên 1.0 điểm: <strong>Trừ 10.0 điểm</strong>.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Câu 6 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  6
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Bảng điểm cộng chi tiết: Hội thi phong trào thể thao, văn nghệ và Học sinh giỏi các cấp
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed overflow-x-auto">
+                <table className="w-full text-left border-collapse border border-slate-300 text-2xs sm:text-xs">
+                  <thead>
+                    <tr className="bg-slate-200 text-slate-900">
+                      <th className="p-2 border border-slate-300 font-bold">Nội dung hội thi</th>
+                      <th className="p-2 border border-slate-300 font-bold text-center">Giải Nhất</th>
+                      <th className="p-2 border border-slate-300 font-bold text-center">Giải Nhì</th>
+                      <th className="p-2 border border-slate-300 font-bold text-center">Giải Ba</th>
+                      <th className="p-2 border border-slate-300 font-bold text-center">Giải KK</th>
+                      <th className="p-2 border border-slate-300 font-bold text-center">Tham gia</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="p-2 border border-slate-300 font-semibold">HSG Văn hóa, KHKT, STEM Cụm/Huyện</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-blue-700">+15đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+14đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+13đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+12đ</td>
+                      <td className="p-2 border border-slate-300 text-center text-slate-500">+2đ</td>
+                    </tr>
+                    <tr className="bg-blue-50/50">
+                      <td className="p-2 border border-slate-300 font-semibold">HSG Văn hóa, KHKT, STEM Cấp Tỉnh</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-blue-700">+22đ</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-blue-700">+20đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+18đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+16đ</td>
+                      <td className="p-2 border border-slate-300 text-center text-slate-500">+5đ</td>
+                    </tr>
+                    <tr className="bg-amber-50/50">
+                      <td className="p-2 border border-slate-300 font-semibold">HSG Văn hóa, KHKT Toàn Quốc (Quốc Gia)</td>
+                      <td className="p-2 border border-slate-300 text-center font-black text-rose-700">+45đ</td>
+                      <td className="p-2 border border-slate-300 text-center font-black text-rose-700">+40đ</td>
+                      <td className="p-2 border border-slate-300 text-center font-black text-rose-700">+35đ</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-rose-700">+30đ</td>
+                      <td className="p-2 border border-slate-300 text-center text-rose-700">+15đ</td>
+                    </tr>
+                    <tr>
+                      <td className="p-2 border border-slate-300 font-semibold">Phong trào HKPĐ, TDTT, Ca múa hát cấp Cụm</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-emerald-700">+6đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+5đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+4đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+3đ</td>
+                      <td className="p-2 border border-slate-300 text-center text-slate-500">+1đ</td>
+                    </tr>
+                    <tr className="bg-emerald-50/50">
+                      <td className="p-2 border border-slate-300 font-semibold">Phong trào HKPĐ, TDTT, Ca múa hát Cấp Tỉnh</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-emerald-700">+20đ</td>
+                      <td className="p-2 border border-slate-300 text-center font-bold text-emerald-700">+16đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+12đ</td>
+                      <td className="p-2 border border-slate-300 text-center">+8đ</td>
+                      <td className="p-2 border border-slate-300 text-center text-slate-500">+4đ</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Câu 7 */}
+            <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 rounded-lg bg-teal-600 text-white font-black text-xs flex items-center justify-center shrink-0">
+                  7
+                </span>
+                <h4 className="text-sm font-bold text-slate-900">
+                  Hệ thống minh chứng xét thi đua (Căn cứ chấm 5.0đ Đổi mới PPDH, hồ sơ, sĩ số)
+                </h4>
+              </div>
+              <div className="text-xs text-slate-700 space-y-2 bg-slate-50 p-3.5 rounded-lg border border-slate-100 leading-relaxed">
+                <p>
+                  Đã được tích hợp đầy đủ vào <strong>Mục 5. Hướng Dẫn Minh Chứng</strong> ngay trên thanh công cụ phía trên. Mọi giáo viên và tổ trưởng chuyên môn đều có thể tra cứu chính xác nơi lưu trữ và thẩm định: Kế hoạch bài dạy vnEdu theo CV 5512, Biên bản dự giờ xếp loại Tốt, sản phẩm học tập số, log xuất điểm hệ thống và sổ theo dõi chuyên cần.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       )}

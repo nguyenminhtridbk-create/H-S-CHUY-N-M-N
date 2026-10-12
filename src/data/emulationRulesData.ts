@@ -16,6 +16,7 @@ export interface EmulationCriterion {
   scope: 'all' | 'teacher' | 'homeroom' | 'staff' | 'leader';
   description: string;
   sourceOrigin: string;
+  evidenceGuide?: string;
   subCriteria?: {
     id: string;
     text: string;
@@ -1145,5 +1146,97 @@ export const COMPARISON_MATRIX = [
     thcsDbk: 'Áp dụng cho THCS điểm Đốc Binh Kiều.',
     thcsTanKieu: 'Áp dụng cho THCS điểm Tân Kiều.',
     adoptedSolution: 'Thống nhất cho cả 53 lớp và 120 CB-GV-NV: Ưu tiên điều kiện công tác cho giáo viên dạy tại điểm Tân Kiều cách 11km; sinh hoạt chuyên môn trực tuyến liên điểm.'
+  }
+];
+
+// BẢNG HƯỚNG DẪN MINH CHỨNG ĐÁNH GIÁ THI ĐUA (CÂU HỎI SỐ 7)
+export interface EvidenceGuideItem {
+  id: string;
+  criterionName: string;
+  maxScore: number;
+  evidenceType: string;
+  storageLocation: string;
+  verificationMethod: string;
+  detailedGuide: string[];
+}
+
+export const EVIDENCE_GUIDELINES: EvidenceGuideItem[] = [
+  {
+    id: 'ev-1',
+    criterionName: 'Đổi mới phương pháp dạy học & phát huy tính tích cực của học sinh',
+    maxScore: 5.0,
+    evidenceType: 'Kế hoạch bài dạy (Giáo án) + Biên bản dự giờ + Sản phẩm học tập của học sinh',
+    storageLocation: 'Hệ thống quản lý bài dạy vnEdu + Sổ dự giờ của Tổ chuyên môn',
+    verificationMethod: 'Tổ trưởng chuyên môn và BGH đối soát hồ sơ, kiểm tra chéo và dự giờ',
+    detailedGuide: [
+      'Kế hoạch bài dạy (giáo án) trên vnEdu thể hiện rõ chuỗi 4 hoạt động học theo Công văn 5512/CV 3284 (Mở đầu, Hình thành kiến thức, Luyện tập, Vận dụng), có sử dụng PPDH tích cực (dạy học dự án, giải quyết vấn đề, đóng vai, STEM, trạm...).',
+      'Có ít nhất 01 biên bản dự giờ của Tổ trưởng hoặc đồng nghiệp đánh giá tiết dạy đạt loại Tốt, trong đó có nhận xét rõ: Học sinh tích cực tương tác, hoạt động nhóm hiệu quả, giáo viên chuyển giao nhiệm vụ rõ ràng.',
+      'Minh chứng về ứng dụng CNTT/chuyển đổi số trong đổi mới PPDH: bài trình chiếu tương tác, video clip bài giảng, phiếu học tập số trên Canva/Quizizz/Padlet/Google Form được lưu trong thư mục hồ sơ tổ.'
+    ]
+  },
+  {
+    id: 'ev-2',
+    criterionName: 'Sinh hoạt chuyên môn theo nghiên cứu bài học (SHCM theo NCBH)',
+    maxScore: 5.0,
+    evidenceType: 'Sổ biên bản sinh hoạt tổ chuyên môn + Kế hoạch bài dạy minh họa',
+    storageLocation: 'Sổ biên bản họp tổ (bản ký tay hoặc vnEdu) do Thư ký tổ ghi chép',
+    verificationMethod: 'Tổ trưởng chuyên môn tổng hợp số lượt tham gia và đóng góp ý kiến',
+    detailedGuide: [
+      'Có tham gia đầy đủ các kỳ SHCM theo NCBH định kỳ 2 tuần/lần của tổ (đạt tỷ lệ tham gia 100%).',
+      'Trực tiếp tham gia thiết kế bài học minh họa HOẶC trực tiếp dạy minh họa HOẶC có ý kiến phân tích hoạt động học của học sinh được ghi cụ thể trong biên bản họp tổ.',
+      'Ứng dụng biên bản rút kinh nghiệm của tổ vào các tiết dạy thực tế trên lớp.'
+    ]
+  },
+  {
+    id: 'ev-3',
+    criterionName: 'Hồ sơ sổ sách điện tử (vnEdu) và Chuyển đổi số',
+    maxScore: 15.0,
+    evidenceType: 'Lịch sử nộp/phê duyệt bài dạy trên vnEdu + Tiến độ nhập điểm và học bạ số',
+    storageLocation: 'Hệ thống quản trị vnEdu của nhà trường',
+    verificationMethod: 'Phó Hiệu trưởng phụ trách chuyên môn xuất báo cáo log hệ thống vnEdu',
+    detailedGuide: [
+      'Kế hoạch bài dạy nộp lên vnEdu đúng hạn trước 02 ngày theo lịch dạy, 100% được Tổ trưởng duyệt đạt yêu cầu.',
+      'Cập nhật sổ điểm số đầy đủ, đúng hạn sau mỗi bài kiểm tra định kỳ; không có biên bản nhắc nhở trễ hạn điểm.',
+      'Ký số sổ đầu bài điện tử, sổ theo dõi và học bạ điện tử đầy đủ theo từng mốc thời gian quy định của Sở GDĐT.'
+    ]
+  },
+  {
+    id: 'ev-4',
+    criterionName: 'Chất lượng chuyên môn, ngưỡng điểm và không lệch điểm',
+    maxScore: 15.0,
+    evidenceType: 'Báo cáo thống kê điểm TBM và điểm kiểm tra HK từ cơ sở dữ liệu vnEdu',
+    storageLocation: 'Dữ liệu phần mềm quản lý vnEdu xuất cuối học kỳ và cuối năm',
+    verificationMethod: 'Đối chiếu chéo tự động: Tỷ lệ Đạt >= 95% (Toán, Văn, Anh >= 85%), độ lệch TBM vs Thi HK <= 2.0đ',
+    detailedGuide: [
+      'Bảng tổng hợp điểm môn học do giáo viên phụ trách: Tỷ lệ học sinh đạt yêu cầu môn học đạt từ chỉ tiêu giao đầu năm trở lên (chuẩn: >= 95% đối với THCS; >= 90% đối với THPT, riêng Toán-Văn-Anh >= 85%).',
+      'Độ lệch giữa điểm TBM cả năm và điểm thi học kỳ: không vượt quá 2.0 điểm (đảm bảo đánh giá công bằng, không chạy theo thành tích).',
+      'Tỷ lệ điểm liệt (0 - 2.0đ) trong các kỳ kiểm tra định kỳ không vượt quá 5% trên tổng số học sinh giảng dạy.'
+    ]
+  },
+  {
+    id: 'ev-5',
+    criterionName: 'Công tác chủ nhiệm lớp & Duy trì sĩ số',
+    maxScore: 15.0,
+    evidenceType: 'Sổ chủ nhiệm số + Báo cáo biến động sĩ số học sinh + Biên bản liên lạc phụ huynh',
+    storageLocation: 'vnEdu + Hồ sơ học vụ nhà trường + Biên bản của Ban Giám hiệu',
+    verificationMethod: 'Hiệu phó phụ trách kiểm tra sĩ số đầu năm và cuối năm học',
+    detailedGuide: [
+      'Duy trì sĩ số 100%, không có học sinh bỏ học không phép (hoặc học sinh nghỉ học có đầy đủ biên bản vận động nhiều lần, có xác nhận chính quyền địa phương).',
+      'Báo cáo thu Bảo hiểm y tế học sinh đạt từ 96% đến 100% (có xác nhận của Kế toán/Thủ quỹ).',
+      'Sổ chủ nhiệm có đầy đủ kế hoạch năm/tháng/tuần, sơ đồ lớp, lý lịch học sinh hoàn cảnh khó khăn tại điểm trường.'
+    ]
+  },
+  {
+    id: 'ev-6',
+    criterionName: 'Bồi dưỡng học sinh giỏi & Hội thi phong trào các cấp (Điểm thưởng)',
+    maxScore: 20.0,
+    evidenceType: 'Quyết định phân công huấn luyện của trường + Quyết định công nhận giải thưởng của BTC',
+    storageLocation: 'Văn thư nhà trường + Quyết định của Sở GDĐT / UBND tỉnh / Bộ GDĐT',
+    verificationMethod: 'Hội đồng Thi đua - Khen thưởng đối chiếu quyết định khen thưởng chính thức',
+    detailedGuide: [
+      'Quyết định của Hiệu trưởng phân công giáo viên trực tiếp bồi dưỡng đội tuyển HSG hoặc huấn luyện phong trào.',
+      'Quyết định công nhận đạt giải hoặc Giấy chứng nhận của Ban tổ chức giải (Cụm, Tỉnh, Quốc gia).',
+      'Trường hợp 02 giáo viên cùng bồi dưỡng một đội tuyển thì điểm thưởng chia đôi theo quyết định phân công.'
+    ]
   }
 ];

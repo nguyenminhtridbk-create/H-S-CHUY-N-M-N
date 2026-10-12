@@ -21,7 +21,7 @@ const DEFAULT_SCHOOL_FACTS = `- Quy mô: 53 lớp, 2.143 học sinh (39 lớp TH
 - Định hướng chuyển đổi số: 100% hồ sơ, học bạ số, sổ điểm điện tử; khai thác AI an toàn, liêm chính trong dạy và học.`;
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('editor');
+  const [activeTab, setActiveTab] = useState<string>('emulation_rules');
   const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
   const [isUploadDirectiveModalOpen, setIsUploadDirectiveModalOpen] = useState(false);
 
