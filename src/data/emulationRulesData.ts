@@ -153,10 +153,14 @@ export const EMULATION_CRITERIA_LIST: EmulationCriterion[] = [
     sourceOrigin: 'THPT ĐBK & THCS ĐBK',
     description: 'Đánh giá học sinh công bằng, khách quan theo Thông tư 22/2021/TT-BGDĐT; đủ số cột kiểm tra; đề kiểm tra ma trận chuẩn; không có sự chênh lệch bất thường giữa điểm thường xuyên và điểm kiểm tra định kỳ.',
     subCriteria: [
-      { id: '6.1', text: 'Đủ số cột kiểm tra thường xuyên và định kỳ; ra đề bám sát ma trận, bản đặc tả; hướng dẫn chấm chính xác', score: 5 },
+      { id: '6.1', text: 'Đủ số cột kiểm tra thường xuyên và định kỳ; ra đề bám sát ma trận, bản đặc tả; hướng dẫn chấm chính xác', score: 4 },
       { id: '6.2', text: 'Chấm thi công bằng, khách quan, chính xác (không sai sót tỷ lệ điểm khi đối soát bài thi tập trung)', score: 4 },
-      { id: '6.3', text: 'Kiểm soát độ lệch điểm: Điểm TBM cả năm so với TB điểm thi HK không chênh lệch quá 2.0 điểm', score: 3 },
-      { id: '6.4', text: 'Chất lượng bộ môn đạt chỉ tiêu đầu năm: Tỷ lệ học sinh đạt yêu cầu cần đạt (YCCĐ) theo kế hoạch của trường', score: 3 }
+      { id: '6.3', text: 'Kiểm soát độ lệch điểm: Điểm TBM cả năm so với TB điểm thi HK không chênh lệch quá 2.0 điểm (ngừa bệnh thành tích)', score: 3 },
+      { 
+        id: '6.4', 
+        text: 'Chất lượng bộ môn đạt ngưỡng chuẩn: Tỷ lệ HS đạt điểm TBM từ 5.0 trở lên đạt >= 95% (THCS) và >= 90% (THPT; riêng Toán, Văn, Anh >= 85%). Tỷ lệ điểm KTHK dưới 5.0 không quá 15% (THCS) và 25% (THPT); tỷ lệ điểm liệt dưới 2.0đ không quá 5%', 
+        score: 4 
+      }
     ]
   },
   {
@@ -191,6 +195,108 @@ export const EMULATION_CRITERIA_LIST: EmulationCriterion[] = [
       { id: '8.2', text: 'Thực hiện đầy đủ chỉ tiêu dự giờ thăm lớp (ít nhất 01 tiết/giáo viên trong tổ/năm) và tham gia thao giảng, hội giảng', score: 3 },
       { id: '8.3', text: 'Tích cực phụ đạo miễn phí cho học sinh có nguy cơ chưa đạt YCCĐ theo kế hoạch dạy học 2 buổi/ngày', score: 2 },
       { id: '8.4', text: 'Sử dụng hiệu quả thiết bị dạy học số và tự làm đồ dùng dạy học phục vụ bài giảng', score: 2 }
+    ]
+  },
+  // TIÊU CHÍ THAY THẾ CÔNG BẰNG DÀNH CHO GIÁO VIÊN KHÔNG LÀM CHỦ NHIỆM
+  {
+    id: 'crit-7-alt',
+    code: 'II.4 (Thay thế)',
+    title: 'Nhiệm vụ chuyên môn thay thế (Dành riêng cho Giáo viên KHÔNG làm chủ nhiệm)',
+    maxScore: 10,
+    category: 'duty',
+    categoryTitle: 'Nhiệm Vụ Chuyên Môn Thay Thế (Dành cho GV không chủ nhiệm - 10 điểm)',
+    scope: 'teacher',
+    sourceOrigin: 'Giải pháp cân bằng quyền lợi công bằng',
+    description: 'Để bảo đảm công bằng, giáo viên không làm chủ nhiệm không bị trừ điểm oan cũng không được cho điểm khống, mà 10 điểm này được lượng hóa bằng các nhiệm vụ chuyên môn thay thế tương đương.',
+    subCriteria: [
+      { id: '7.1.alt', text: 'Tích cực trực tiếp phụ đạo miễn phí cho học sinh có nguy cơ chưa đạt YCCĐ theo kế hoạch dạy học 2 buổi/ngày của trường (ít nhất 2 tiết/tuần)', score: 4 },
+      { id: '7.2.alt', text: 'Chất lượng học tập bộ môn vượt chỉ tiêu đăng ký đầu năm từ 3% trở lên; không có học sinh bị điểm liệt (dưới 2.0đ)', score: 3 },
+      { id: '7.3.alt', text: 'Tích cực tham gia quản lý nề nếp chung, coi thi, chấm thi tập trung, hỗ trợ công tác Đoàn - Đội và hoạt động trải nghiệm hướng nghiệp', score: 3 }
+    ]
+  }
+];
+
+// TIÊU CHÍ ĐÁNH GIÁ DÀNH RIÊNG CHO CÁN BỘ QUẢN LÝ, TỔ TRƯỞNG, TỔ PHÓ CHUYÊN MÔN
+// (Theo phân nhóm quy định tại Nghị định 233/2026/NĐ-CP & Luật Viên chức 129/2025/QH15)
+export const LEADER_EMULATION_CRITERIA: EmulationCriterion[] = [
+  {
+    id: 'lead-1',
+    code: 'I',
+    title: 'Khung tiêu chí chung (Chính trị, Đạo đức, Tác phong & Tính nêu gương)',
+    maxScore: 30,
+    category: 'common',
+    categoryTitle: 'Khung Tiêu Chí Chung (Tối đa 30 điểm)',
+    scope: 'leader',
+    sourceOrigin: 'Nghị định 233 & NĐ 368',
+    description: 'Chính trị tư tưởng (10đ), Đạo đức lối sống (10đ), Tác phong gương mẫu và quy tụ đoàn kết tập thể (10đ). Mức xếp loại của người đứng đầu không cao hơn mức xếp loại của tập thể do mình phụ trách.',
+    subCriteria: [
+      { id: 'L1.1', text: 'Bản lĩnh chính trị vững vàng, kiên quyết đấu tranh chống tiêu cực, lãng phí và suy thoái', score: 10 },
+      { id: 'L1.2', text: 'Gương mẫu về đạo đức nhà giáo, lối sống liêm chính, tôn trọng lắng nghe ý kiến đồng nghiệp', score: 10 },
+      { id: 'L1.3', text: 'Phong cách lãnh đạo khoa học, dân chủ, dám nghĩ dám làm, dám chịu trách nhiệm', score: 10 }
+    ]
+  },
+  {
+    id: 'lead-2',
+    code: 'II.1',
+    title: 'Năng lực quản lý điều hành, xây dựng kế hoạch và triển khai nhiệm vụ của Tổ/Bộ phận',
+    maxScore: 20,
+    category: 'duty',
+    categoryTitle: 'Trách Nhiệm Quản Lý & Điều Hành (70 điểm)',
+    scope: 'leader',
+    sourceOrigin: 'NĐ 233 & Chỉ đạo Sở',
+    description: 'Xây dựng kế hoạch giáo dục tổ chuyên môn (CV 5512/3284) chất lượng, duyệt đúng hạn; phân công giáo viên hợp lý, khoa học; điều hành sinh hoạt tổ đúng định kỳ 2 tuần/lần.',
+    subCriteria: [
+      { id: 'L2.1', text: 'Kế hoạch giáo dục của tổ và phân phối chương trình được phê duyệt đúng tiến độ trước ngày 05/9', score: 7 },
+      { id: 'L2.2', text: 'Tổ chức sinh hoạt chuyên môn định kỳ theo nghiên cứu bài học có chất lượng, kết nối trực tuyến hiệu quả giữa các điểm trường', score: 7 },
+      { id: 'L2.3', text: 'Thẩm định, duyệt Kế hoạch bài dạy trên vnEdu đúng hạn; không để giáo viên nộp trễ kéo dài', score: 6 }
+    ]
+  },
+  {
+    id: 'lead-3',
+    code: 'II.2',
+    title: 'Kết quả chất lượng chuyên môn và phong trào hội thi của Tổ đạt chỉ tiêu đề ra',
+    maxScore: 20,
+    category: 'duty',
+    categoryTitle: 'Trách Nhiệm Quản Lý & Điều Hành (70 điểm)',
+    scope: 'leader',
+    sourceOrigin: 'Tổng hợp 3 trường',
+    description: 'Chất lượng học sinh các bộ môn trong tổ đạt và vượt chỉ tiêu; tổ tham gia đầy đủ và đạt giải các kỳ thi HSG, KHKT, STEM, GVDG cấp huyện, tỉnh.',
+    subCriteria: [
+      { id: 'L3.1', text: 'Tất cả các môn trong tổ đều đạt chỉ tiêu chất lượng bộ môn cuối năm (không có môn bị tụt giảm bất thường)', score: 7 },
+      { id: 'L3.2', text: 'Tổ có học sinh tham gia và đạt giải kỳ thi chọn HSG văn hóa, cuộc thi KHKT, STEM cấp cụm hoặc cấp tỉnh', score: 7 },
+      { id: 'L3.3', text: 'Động viên, bồi dưỡng giáo viên trong tổ tham gia Hội thi GVDG các cấp và có giáo viên đạt giải', score: 6 }
+    ]
+  },
+  {
+    id: 'lead-4',
+    code: 'II.3',
+    title: 'Công tác kiểm tra nội bộ, dự giờ và giám sát quy chế chuyên môn',
+    maxScore: 15,
+    category: 'duty',
+    categoryTitle: 'Trách Nhiệm Quản Lý & Điều Hành (70 điểm)',
+    scope: 'leader',
+    sourceOrigin: 'THPT ĐBK & THCS Tân Kiều',
+    description: 'Thực hiện đầy đủ kế hoạch kiểm tra chuyên đề, kiểm tra hồ sơ, dự giờ giáo viên trong tổ; kiểm tra kê khai thừa thiếu tiết chính xác.',
+    subCriteria: [
+      { id: 'L4.1', text: 'Kiểm tra hồ sơ sổ sách, sổ điểm, học bạ số của 100% giáo viên trong tổ định kỳ theo tháng và học kỳ', score: 6 },
+      { id: 'L4.2', text: 'Thực hiện chỉ tiêu dự giờ thăm lớp của Tổ trưởng (ít nhất 2 tiết/tháng) và tổ chức thao giảng hội giảng', score: 5 },
+      { id: 'L4.3', text: 'Giám sát kê khai thừa thiếu tiết, dạy thay, dạy bù trung thực, chính xác tuyệt đối', score: 4 }
+    ]
+  },
+  {
+    id: 'lead-5',
+    code: 'II.4',
+    title: 'Giảng dạy cá nhân và xây dựng tập thể tổ đoàn kết vững mạnh',
+    maxScore: 15,
+    category: 'duty',
+    categoryTitle: 'Trách Nhiệm Quản Lý & Điều Hành (70 điểm)',
+    scope: 'leader',
+    sourceOrigin: 'Tổng hợp 3 trường',
+    description: 'Thực hiện định mức tiết dạy của Tổ trưởng/Tổ phó nghiêm túc; trong tổ không có cá nhân bị kỷ luật hay vi phạm quy chế chuyên môn; tập thể tổ đoàn kết, gắn bó.',
+    subCriteria: [
+      { id: 'L5.1', text: 'Thực hiện đầy đủ định mức giờ dạy cá nhân (được giảm tiết theo quy định) với chất lượng tốt', score: 6 },
+      { id: 'L5.2', text: 'Trong tổ không có giáo viên vi phạm đạo đức nhà giáo, không có giáo viên bị khống chế thi đua', score: 5 },
+      { id: 'L5.3', text: 'Tập thể tổ được Hội đồng thi đua nhà trường công nhận Tập thể Lao động Tiên tiến trở lên', score: 4 }
     ]
   }
 ];
@@ -676,15 +782,59 @@ export const BONUS_RULES: BonusItem[] = [
     sourceSchool: 'THCS ĐBK & THCS Tân Kiều'
   },
   {
-    id: 'bon-3',
-    code: 'THUONG-03',
-    achievement: 'Bồi dưỡng học sinh đạt giải Cấp Toàn Quốc (hoặc dự thi quốc gia)',
+    id: 'bon-3-first',
+    code: 'THUONG-03A',
+    achievement: 'Bồi dưỡng học sinh đạt GIẢI NHẤT Cấp Toàn Quốc (văn hóa, KHKT, HKPĐ toàn quốc)',
     bonusScore: 20,
     unit: 'giải',
     category: 'student_prize',
     categoryLabel: 'Bồi Dưỡng Học Sinh Giỏi & Hội Thi Sáng Tạo',
-    detail: 'Tham gia vòng quốc gia: 10đ; Đạt giải quốc gia: 20đ.',
-    sourceSchool: 'THCS ĐBK'
+    detail: 'Đạt Giải Nhất cấp Toàn quốc: +20 điểm thưởng (mức tối đa).',
+    sourceSchool: 'THCS ĐBK & Nghị định 233'
+  },
+  {
+    id: 'bon-3-second',
+    code: 'THUONG-03B',
+    achievement: 'Bồi dưỡng học sinh đạt GIẢI NHÌ Cấp Toàn Quốc (văn hóa, KHKT toàn quốc)',
+    bonusScore: 18,
+    unit: 'giải',
+    category: 'student_prize',
+    categoryLabel: 'Bồi Dưỡng Học Sinh Giỏi & Hội Thi Sáng Tạo',
+    detail: 'Đạt Giải Nhì cấp Toàn quốc: +18 điểm thưởng.',
+    sourceSchool: 'THCS ĐBK & Nghị định 233'
+  },
+  {
+    id: 'bon-3-third',
+    code: 'THUONG-03C',
+    achievement: 'Bồi dưỡng học sinh đạt GIẢI BA Cấp Toàn Quốc (văn hóa, KHKT toàn quốc)',
+    bonusScore: 15,
+    unit: 'giải',
+    category: 'student_prize',
+    categoryLabel: 'Bồi Dưỡng Học Sinh Giỏi & Hội Thi Sáng Tạo',
+    detail: 'Đạt Giải Ba cấp Toàn quốc: +15 điểm thưởng.',
+    sourceSchool: 'THCS ĐBK & Nghị định 233'
+  },
+  {
+    id: 'bon-3-kk',
+    code: 'THUONG-03D',
+    achievement: 'Bồi dưỡng học sinh đạt GIẢI KHUYẾN KHÍCH Cấp Toàn Quốc',
+    bonusScore: 12,
+    unit: 'giải',
+    category: 'student_prize',
+    categoryLabel: 'Bồi Dưỡng Học Sinh Giỏi & Hội Thi Sáng Tạo',
+    detail: 'Đạt Giải Khuyến khích cấp Toàn quốc: +12 điểm thưởng.',
+    sourceSchool: 'THCS ĐBK & Nghị định 233'
+  },
+  {
+    id: 'bon-3-part',
+    code: 'THUONG-03E',
+    achievement: 'Bồi dưỡng học sinh THAM GIA ĐỘI TUYỂN DỰ THI VÒNG TOÀN QUỐC (chưa có giải)',
+    bonusScore: 8,
+    unit: 'học sinh',
+    category: 'student_prize',
+    categoryLabel: 'Bồi Dưỡng Học Sinh Giỏi & Hội Thi Sáng Tạo',
+    detail: 'Được Sở GDĐT triệu tập bồi dưỡng và tham gia thi vòng toàn quốc: +8 điểm/học sinh.',
+    sourceSchool: 'THCS ĐBK & THCS Tân Kiều'
   },
   {
     id: 'bon-4',
@@ -696,6 +846,39 @@ export const BONUS_RULES: BonusItem[] = [
     categoryLabel: 'Bồi Dưỡng Học Sinh Giỏi & Hội Thi Sáng Tạo',
     detail: 'Tính điểm tương đương giải HSG văn hóa. Giải tập thể tính gấp đôi.',
     sourceSchool: 'THCS ĐBK & THCS Tân Kiều'
+  },
+  {
+    id: 'bon-sports-prov',
+    code: 'THUONG-04A',
+    achievement: 'Huấn luyện học sinh đạt giải Hội khỏe Phù Đổng (HKPĐ), TDTT, Điền kinh, Bơi lội Cấp Tỉnh',
+    bonusScore: 12,
+    unit: 'giải',
+    category: 'student_prize',
+    categoryLabel: 'Phong Trào Thể Dục Thể Thao & Hội Khỏe Phù Đổng',
+    detail: 'Giải Nhất: +12đ; Giải Nhì: +10đ; Giải Ba: +8đ; Giải KK: +6đ. Giải đồng đội/tập thể nhân đôi.',
+    sourceSchool: 'THCS Tân Kiều & THCS ĐBK'
+  },
+  {
+    id: 'bon-arts-prov',
+    code: 'THUONG-04B',
+    achievement: 'Huấn luyện / Dàn dựng học sinh đạt giải Hội thi Văn nghệ, Ca múa hát, Giai điệu tuổi hồng Cấp Tỉnh',
+    bonusScore: 12,
+    unit: 'tiết mục',
+    category: 'student_prize',
+    categoryLabel: 'Phong Trào Văn Nghệ & Ca Múa Hát Học Đường',
+    detail: 'Giải Nhất: +12đ; Giải Nhì: +10đ; Giải Ba: +8đ; Giải KK: +6đ. Giải toàn đoàn nhân đôi.',
+    sourceSchool: 'THCS Tân Kiều & THCS ĐBK'
+  },
+  {
+    id: 'bon-sports-cluster',
+    code: 'THUONG-04C',
+    achievement: 'Huấn luyện học sinh đạt giải HKPĐ, TDTT, Văn nghệ Cấp Cụm Xã / Cấp Huyện',
+    bonusScore: 6,
+    unit: 'giải',
+    category: 'student_prize',
+    categoryLabel: 'Phong Trào Thể Thao & Văn Nghệ Cấp Cụm/Xã',
+    detail: 'Giải Nhất: +6đ; Giải Nhì: +5đ; Giải Ba: +4đ; Giải KK: +3đ.',
+    sourceSchool: 'THCS Tân Kiều & THCS ĐBK'
   },
 
   // 2. Giáo viên dạy giỏi & Danh hiệu nghề nghiệp
