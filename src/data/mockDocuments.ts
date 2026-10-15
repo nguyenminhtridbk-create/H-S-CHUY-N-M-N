@@ -1,8 +1,10 @@
 import { SchoolDocument } from '../types/document';
 import { DRAFT_SCHEDULE_ADJUSTMENT } from './draftHighSchoolExamSchedule';
 import { OFFICIAL_EMULATION_DOCUMENT } from './officialEmulationDocument';
+import { OFFICIAL_ASSESSMENT_REGULATION_DOCUMENT } from './officialAssessmentRegulationDocument';
 
 export const INITIAL_SCHOOL_DOCUMENTS: SchoolDocument[] = [
+  OFFICIAL_ASSESSMENT_REGULATION_DOCUMENT,
   OFFICIAL_EMULATION_DOCUMENT,
   {
     "id": "doc-kh-hsss-55",

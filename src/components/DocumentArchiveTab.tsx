@@ -12,7 +12,10 @@ import {
   CheckCircle, 
   Clock,
   Printer,
-  ChevronRight
+  ChevronRight,
+  Award,
+  Sparkles,
+  BookOpen
 } from 'lucide-react';
 import { SchoolDocument, DOCUMENT_TYPES } from '../types/document';
 import { exportDocumentToDocx } from '../utils/docxExport';
@@ -91,6 +94,89 @@ export const DocumentArchiveTab: React.FC<DocumentArchiveTabProps> = ({
         </button>
       </div>
 
+      {/* Featured Regulations Spotlight */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Spotlight 1: Quy chế Kiểm tra Đánh giá học sinh (Tam Nông chuyển thể) */}
+        {documents.find(d => d.id === 'doc-qc-ktdg-dbk') && (() => {
+          const ktdgDoc = documents.find(d => d.id === 'doc-qc-ktdg-dbk')!;
+          return (
+            <div className="bg-gradient-to-br from-amber-900/90 via-slate-900 to-amber-950 text-white rounded-2xl p-5 border border-amber-500/40 shadow-md relative overflow-hidden flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-400 text-slate-950 flex items-center gap-1 shadow-xs">
+                    <Sparkles className="w-3 h-3" />
+                    CHUẨN TAM NÔNG CHUYỂN THỂ
+                  </span>
+                  <span className="text-2xs font-mono text-amber-200/80">{ktdgDoc.documentNumber}</span>
+                </div>
+                <h3 className="font-extrabold text-white text-base leading-snug">
+                  Quy Chế Kiểm Tra, Đánh Giá Học Sinh Năm Học 2026 - 2027
+                </h3>
+                <p className="text-xs text-amber-100/80 line-clamp-2">
+                  Giữ nguyên phần cứng 9 Chương, 27 Điều từ THPT Tam Nông; sửa đổi câu từ thích ứng trường liên cấp THCS & THPT và 3 điểm trường Đốc Binh Kiều.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                <button
+                  onClick={() => onSelectDocument(ktdgDoc)}
+                  className="px-3.5 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition flex items-center gap-1.5 shadow cursor-pointer"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Xem A4 & Chỉnh sửa</span>
+                </button>
+                <button
+                  onClick={(e) => handleQuickDownload(e, ktdgDoc)}
+                  className="px-3.5 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-semibold border border-white/20 transition flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5 text-amber-300" />
+                  <span>Tải Word (.docx)</span>
+                </button>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Spotlight 2: Quy chế Thi đua 100đ Chuẩn NĐ 233 */}
+        {documents.find(d => d.id === 'doc-qc-thidua-233') && (() => {
+          const emulDoc = documents.find(d => d.id === 'doc-qc-thidua-233')!;
+          return (
+            <div className="bg-gradient-to-br from-indigo-950 via-slate-900 to-blue-950 text-white rounded-2xl p-5 border border-indigo-500/40 shadow-md relative overflow-hidden flex flex-col justify-between">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-400 text-slate-950 flex items-center gap-1 shadow-xs">
+                    <Award className="w-3 h-3" />
+                    CHUẨN NGHỊ ĐỊNH 233/2026
+                  </span>
+                  <span className="text-2xs font-mono text-indigo-200/80">{emulDoc.documentNumber}</span>
+                </div>
+                <h3 className="font-extrabold text-white text-base leading-snug">
+                  Quy Chế & Biểu Điểm Thi Đua Viên Chức (100 Điểm)
+                </h3>
+                <p className="text-xs text-indigo-100/80 line-clamp-2">
+                  Đồng bộ 3 nhóm đánh giá, cơ chế GVCN & GVBM, ngưỡng chất lượng, bảng cộng/trừ chi tiết và minh chứng 100% lượng hóa.
+                </p>
+              </div>
+              <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                <button
+                  onClick={() => onSelectDocument(emulDoc)}
+                  className="px-3.5 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white text-xs font-bold transition flex items-center gap-1.5 shadow cursor-pointer"
+                >
+                  <Eye className="w-3.5 h-3.5" />
+                  <span>Xem A4 & Chỉnh sửa</span>
+                </button>
+                <button
+                  onClick={(e) => handleQuickDownload(e, emulDoc)}
+                  className="px-3.5 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-white text-xs font-semibold border border-white/20 transition flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Download className="w-3.5 h-3.5 text-indigo-300" />
+                  <span>Tải Word (.docx)</span>
+                </button>
+              </div>
+            </div>
+          );
+        })()}
+      </div>
+
       {/* Filter and Search Bar */}
       <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between items-stretch md:items-center gap-3">
         <div className="flex items-center gap-3 flex-1 flex-wrap">
@@ -150,10 +236,22 @@ export const DocumentArchiveTab: React.FC<DocumentArchiveTabProps> = ({
               <div>
                 {/* Header Tag and Document Number */}
                 <div className="flex items-start justify-between gap-2 mb-2">
-                  <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-bold border border-blue-100">
-                    {doc.documentNumber}
-                  </span>
-                  <span className="text-[11px] text-slate-500">{getTypeLabel(doc.type)}</span>
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-800 font-bold border border-blue-100">
+                      {doc.documentNumber}
+                    </span>
+                    {doc.id === 'doc-qc-ktdg-dbk' && (
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">
+                        Khung Tam Nông
+                      </span>
+                    )}
+                    {doc.id === 'doc-qc-thidua-233' && (
+                      <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-900 border border-indigo-300">
+                        Chuẩn NĐ 233
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-[11px] text-slate-500 shrink-0">{getTypeLabel(doc.type)}</span>
                 </div>
 
                 {/* Title */}
